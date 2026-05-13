@@ -1,0 +1,126 @@
+<!--
+  Source: Framer template fr_1n3krzxb8q8ncr6fwa1j8fzyde (Upreach base)
+  Page: / (Home), nodeId augiA20Il
+  Snapshot: 2026-05-13
+  Use: reference structure for /web/src/components/sections/* React reescrita
+-->
+
+# Home — 10 sections in vertical Stack
+
+1. **Hero** (BG: /Black/BG Dark; padding 152px 60px 92px)
+   - Container 60/40 split (1200px max-width)
+   - Left (588px): Heading (/H1) + Description (/18-regular) + 2 Main Buttons (primary + ghost) + BrandsTicker (450x55)
+   - Right: MainImageContainer (404x512 rounded-24px) + 2 InfoCard absolute (+65% ROI Boost, 2k+ Success Stories) + IconCircle (SmileySticker)
+   - Original headline: "Grow your business, master every move."
+   - Original desc: "Helping businesses thrive with innovative digital strategies..."
+   - CTAs: "Book a call" (-> /contact-page) + "Learn more" (-> /#about)
+
+2. **About** (BG: /White/White; centered, padding 152px 60px)
+   - BgBlur (581x118 cobalt echo 30% opacity, behind text)
+   - Heading (/H2, max 1000px): editorial statement
+
+3. **Services** (BG: /White/White; padding 100px 60px)
+   - Heading (/H2) "What we offer" + Description (/18-medium) "Comprehensive solutions for business success."
+   - Cards: grid 3x2, 6 ServiceCard components
+     - Digital Marketing (ArrowCircleUp)
+     - Business Consulting (Chat)
+     - Lead Generation (Percent)
+     - Brand Strategy (File)
+     - Content Writing (Pen)
+     - Strategic Planning (Path)
+
+4. **WhyChooseUs** (BG: /Black/BG Dark; padding 100px 60px)
+   - GridBackground component
+   - Heading (/H2) "Why we're the right choice"
+   - VideoCard (70% width 432h) + InfoCard3 (Growth-Driven) + InfoCard1 (10+ Years)
+   - 3 InfoText stats: 98% Client Success / 200+ Campaigns / $250K+ Revenue
+
+5. **Work** (BG: /White/White; padding 100px 60px)
+   - Heading "Success You Can See"
+   - ProjectCards ticker (speed=60, direction=left, gap=24)
+   - 4 ProjectCard examples (Elevate Fashion, PureGlow Skincare, UrbanFit Gym, ChronoLux)
+
+6. **Comparison** (BG: /Black/BG Dark; padding 100px 60px)
+   - Heading "Why Upreach Stands Out"
+   - 2 columns: "Others Agencies" (4 cons) + "Upreach" (4 pros)
+   - ComparisonCard component
+
+7. **Testimonials** (padding 100px 60px)
+   - Heading "What Our Clients Say"
+   - Cards grid 3x2 with 6 TestimonialCard
+
+8. **Team** (componentId="eZo8d9lrh")
+
+9. **FaQs** (componentId="lDI4_c_kw")
+
+10. **CTA** (componentId="RM0zwtxQl")
+
+---
+
+# Components referenciados (35 total)
+
+Main Button, Navigation, Main logo, Link, Service Card, Project Card, Testimonial Card,
+Footer, FAQs, Accordion, 404, Form button, Play Button, CTA, Blog Tag, Project Card Tag,
+Team, Info Text, Comparison Card, Blog Card, Grid Background, Info Card 1/2/3,
+Comparison Text, Brands-Ticker, Icon Button, Icon Circle, Text & Icon, Video card,
+Team Member Card, Bullet point, Feature, Award, Form Button.
+
+# Color Styles ja aplicados ao template (Master Brand)
+
+| Path | Light | Uso |
+|---|---|---|
+| `/Cobalt Mark` | rgb(30,64,175) | CTAs, links, focus rings (era verde Primary-2 main) |
+| `/Cobalt Echo` | rgb(219,234,254) | Backgrounds suaves, badges (era Primary-1 verde claro) |
+| `/Cobalt Press` | rgb(29,78,216) | Hover de CTA (era Primary-3 verde escuro) |
+| `/Vertical/Teal Pulse` | rgb(15,118,110) | Acento vertical médica MedCitado |
+| `/Vertical/Teal Echo` | rgb(204,251,241) | Background vertical médica |
+| `/Text/Charcoal Ink` | rgb(15,23,42) | Texto primario |
+| `/Text/Steel Read` | rgb(71,85,105) | Texto secundario |
+| `/Text/Fog Caption` | rgb(148,163,184) | Captions, metadata |
+| `/Surface/Warm Whisper` | rgb(250,250,249) | Cards, surface 2 |
+| `/Surface/Whisper Border` | rgba(226,232,240,0.6) | Bordas 1px |
+
+# Text Styles ja aplicados (Geist + Fraunces + JetBrains Mono)
+
+Todos os 12 styles existentes (H1, H2, H3, 32-medium/bold, 22-medium/bold,
+18-regular/medium, Body-16-regular/medium, Small-15-medium) trocados de
+Satoshi para Geist com tracking ajustado.
+
+Novos:
+- `/Editorial/Italic Display` - Fraunces 600 italic 60px (palavras-ancora hero)
+- `/Editorial/Italic Heading` - Fraunces 600 italic 44px (palavras-ancora H2)
+- `/Mono` - JetBrains Mono regular 14px (numeros, code, metadata)
+- `/Eyebrow` - Geist 600 12px uppercase tracking-wider (badges)
+
+# Mapeamento de copy: Upreach (placeholder) -> Henrique Pimentel
+
+| Section | Upreach | Henrique Pimentel |
+|---|---|---|
+| Hero H1 | Grow your business, master every move. | Sistemas de IA que entregam *resultado mensurável*. |
+| Hero desc | Helping businesses thrive with... | Implemento — não vendo slide deck. Cada projeto tem audit, métrica e relatório. |
+| Hero CTA | Book a call | Agendar diagnóstico de 30 min |
+| Hero ghost | Learn more | Ver cases reais → |
+| About statement | At Upreach, we deliver real results through high-converting marketing strategies... | Atendo founders, empresas e profissionais que querem usar IA como vantagem operacional concreta. Cada projeto entrega sistema rodando, métrica acessível e relatório explicado. |
+| Services H2 | What we offer | O que implemento |
+| Services desc | Comprehensive solutions for business success | Três frentes onde IA vira vantagem mensurável. |
+| Service 1 | Digital Marketing | Presença Generativa (GEO/AEO) — badge MedCitado |
+| Service 2 | Business Consulting | Atendimento 24/7 com IA |
+| Service 3 | Lead Generation | Automação de Captação |
+| Service 4 | Brand Strategy | Sites Técnicos Mensuráveis |
+| Service 5 | Content Writing | Engenharia de Produto IA |
+| Service 6 | Strategic Planning | Consultoria Técnica |
+| WhyChooseUs H2 | Why we're the right choice | Por que trabalhar comigo |
+| WhyChooseUs desc | We create impactful strategies... | Implemento — não terceirizo. Sistema entregue, métrica acessível, relatório mensal. Sem agência intermediária. |
+| Stat 1 | 98% Client Success | 18+ anos de software |
+| Stat 2 | 200+ Campaigns | 1 caso piloto vivo |
+| Stat 3 | $250K+ Revenue | 20% GEO coverage mês 1 |
+| Work H2 | Success You Can See | Cases reais |
+| Work desc | A glimpse into our most impactful... | Implementações em produção com números mensuráveis. |
+| Project 1 | Elevate Fashion | Dra. Fátima Knappe — Geriatra |
+| Project 2 | PureGlow Skincare | [Em breve — próxima vertical] |
+| Project 3 | UrbanFit Gym | Digital Fisher |
+| Project 4 | ChronoLux | Sergere |
+| Comparison H2 | Why Upreach Stands Out | Por que não consultoria slide-deck |
+| Others col | Others Agencies | Consultorias tradicionais |
+| Our col | Upreach | Henrique Pimentel |
+| FAQs CTA Text | various | (manter estrutura, copy nova) |

@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+/* Brand tokens — fonte: docs/brand.md
+   Master Brand: Henrique Pimentel — Consultor de Tecnologia em IA
+   Acento: azul-cobalto Stripe (#1E40AF) */
+
+:root {
+  /* Base neutra (light mode) */
+  --bg-primary: #FFFFFF;
+  --bg-subtle: #FAFAF9;
+  --bg-muted: #F5F5F4;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-tertiary: #94A3B8;
+  --border-default: #E2E8F0;
+
+  /* Acento Master (azul-cobalto Stripe) */
+  --accent-primary: #1E40AF;
+  --accent-hover: #1D4ED8;
+  --accent-text: #1E3A8A;
+  --accent-subtle-bg: #DBEAFE;
+
+  /* Acento Vertical Medica (MedCitado) — Teal-700, saturacao calibrada < 80% */
+  --vertical-medico-primary: #0F766E;
+  --vertical-medico-subtle-bg: #CCFBF1;
+  --vertical-medico-text: #134E4A;
+
+  /* Estados */
+  --success: #0F766E;
+  --warning: #B45309;
+  --error: #B91C1C;
+  --info: #1E40AF;
+}
+
+.dark {
+  --bg-primary: #0A0A0A;
+  --bg-subtle: #171717;
+  --bg-muted: #262626;
+  --text-primary: #FAFAF9;
+  --text-secondary: #A1A1AA;
+  --text-tertiary: #71717A;
+  --border-default: #27272A;
+  --accent-primary: #3B82F6;
+  --accent-hover: #60A5FA;
+  --accent-text: #DBEAFE;
+  --accent-subtle-bg: #1E3A8A;
+  --vertical-medico-primary: #14B8A6;
+  --vertical-medico-subtle-bg: #134E4A;
+  --vertical-medico-text: #CCFBF1;
+}
+
+/* Tailwind v4 @theme: mapeia tokens para classes Tailwind */
+@theme inline {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-subtle: var(--bg-subtle);
+  --color-bg-muted: var(--bg-muted);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-border-default: var(--border-default);
+  --color-accent: var(--accent-primary);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-text: var(--accent-text);
+  --color-accent-subtle-bg: var(--accent-subtle-bg);
+  --color-vertical-medico: var(--vertical-medico-primary);
+  --color-vertical-medico-bg: var(--vertical-medico-subtle-bg);
+  --color-vertical-medico-text: var(--vertical-medico-text);
+
+  /* Fontes (variaveis injetadas pelo next/font no layout.tsx) */
+  --font-sans: var(--font-geist), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+/* Base */
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Selecao com acento */
+::selection {
+  background: var(--accent-subtle-bg);
+  color: var(--accent-text);
+}
+
+/* Focus visible padronizado */
+*:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Card hover elevation (warm-blue tinted shadow, no scale) */
+.card-hover {
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+.card-hover:hover {
+  border-color: var(--text-tertiary);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 8px 24px -12px rgba(15, 23, 42, 0.08);
+}
+
+/* Shimmer for image placeholders */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--bg-subtle) 0%,
+    var(--bg-muted) 40%,
+    var(--bg-subtle) 80%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Reduce motion respect */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Selection in dark mode tweaks */
+.dark ::selection {
+  background: var(--accent-subtle-bg);
+  color: var(--text-primary);
+}

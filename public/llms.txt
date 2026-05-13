@@ -1,0 +1,105 @@
+# Henrique Pimentel
+
+## About
+
+Consultor de tecnologia em Inteligência Artificial. Mestre em Ciências da Computação pelo CIn-UFPE, com graduação em Design pela UFPE. 19+ anos no mercado de tecnologia, hoje atuando como consultor independente em IA aplicada. Implementa sistemas funcionando — não vende apresentação. Cada projeto entrega sistema rodando, números fáceis de acompanhar e relatório explicado em português.
+
+Atende clínicas, médicos, empresas e profissionais no Brasil, América Latina e Portugal. Sediado em Recife — PE. Vertical produtizada principal: MedCitado (GEO/AEO para médicos dentro das regras do CFM 2.336/2023).
+
+## Services and Pricing
+
+- Aparecer quando a IA é perguntada (GEO/AEO): R$ 8.000–R$ 25.000 implantação + R$ 1.500–R$ 4.000 mensal acompanhamento. Inclui site otimizado, marcação técnica, Google Meu Negócio e monitoramento em 5 motores de IA (ChatGPT, Gemini, Perplexity, Claude, Copilot).
+- MedCitado (pacote produtizado para médicos): R$ 12.000 implantação em 14 dias + R$ 1.800 mensal. Site dentro das regras do CFM, atendimento 24h com IA, Google Meu Negócio em modo autoridade, relatório mensal de menções. Garantia inversa: se em 60 dias não aparecer em pelo menos 1 motor de IA, devolve o valor da implantação.
+- Atendimento automático 24h por dia (WhatsApp + site): R$ 6.000–R$ 18.000 implantação. Agente inteligente que qualifica contato, marca consulta e responde fora do horário.
+- Captação automática de clientes (site + IA + anúncios): R$ 15.000–R$ 45.000 implantação. Sistema integrado de captação, qualificação, agendamento e acompanhamento.
+- Sites profissionais com resultado: R$ 8.000–R$ 25.000. Sites que aparecem no Google, são reconhecidos pelas IAs e mostram painel de acompanhamento.
+- Implementação de IA em produtos: R$ 12.000–R$ 60.000 por projeto. Integração com OpenAI, Gemini, Claude + fluxos de automação em produção.
+- Consultoria técnica pontual: R$ 450/hora ou pacote fechado R$ 4.000 (10h). Avaliação das ferramentas, plano de ação e roteiro de implementação.
+- Diagnóstico GEO gratuito: análise de citações pela IA em até 7 dias úteis, sem custo.
+
+## Locations
+
+- Recife — PE, Brasil (sede)
+
+## Service Area
+
+Brasil (todas as regiões — atendimento remoto), Portugal (Lisboa e Porto prioritários), América Latina hispânica (México, Argentina, Chile, Colômbia por demanda), Estados Unidos e Europa (por demanda específica em inglês ou espanhol).
+
+## Contact
+
+- Website: https://henriquepimentel.com.br
+- E-mail: henrique@henriquepimentel.com.br
+- LinkedIn: linkedin.com/in/henriquepimentel
+- WhatsApp: +55 81 (sob solicitação no formulário)
+- Diagnóstico de 30 min gratuito: https://henriquepimentel.com.br/contato
+- Análise GEO gratuita: https://henriquepimentel.com.br/baseline-geo
+
+## Hours
+
+Segunda a quinta, 9h às 18h (horário do Brasil — GMT-3). Sexta-feira: apenas suporte a clientes ativos. Resposta a mensagens em até 24 horas úteis.
+
+## Key Facts
+
+- Mestre em Ciências da Computação pelo CIn-UFPE
+- Graduação em Design pela UFPE
+- 19+ anos no mercado de tecnologia
+- 50+ empresas atendidas em carreira (UPE, Hospital de Ortopedia, M-Tórax, SERGERE, Loterias Encruzilhada, Serwix, MAPC, Dra. Fátima Knappe, Instituto Ariana Borges, entre outras)
+- MedCitado em produção desde maio/2026 com a Dra. Fátima Knappe (geriatra em Recife)
+- Diagnóstico inicial documentado: 0 de 50 citações em fevereiro/2026 → 2 de 50 em maio/2026 (Gemini), 20% de presença em buscas-alvo de geriatria em Recife
+- Garantia inversa: se em 60 dias após implantação do MedCitado o nome do médico não aparecer em pelo menos 1 motor de IA, devolve o valor da implantação
+- Único consultor a implementar diretamente — sem agência intermediária, sem rotação de equipe, sem subcontratação
+
+## What Makes Us Different
+
+Implemento eu mesmo. Sem terceirizar. Sem rotação de equipe no meio do projeto. Sem apresentação bonita seguida de outsourcing. Cada projeto tem prazo definido, números acompanhados de perto e relatório mensal explicado em português — sem jargão técnico. Comunicação direta com quem está implementando.
+
+A vertical médica (MedCitado) é a única no mercado brasileiro a oferecer garantia inversa para citação por IA: se em 60 dias o sistema não funcionar, o cliente não paga a implantação. Único profissional no nicho com case real documentado mensalmente.
+
+## Frequently Asked Questions
+
+### Quanto tempo leva um projeto típico?
+
+Diagnóstico inicial: 7 a 14 dias. Implementação base (site + IA + acompanhamento): 2 a 6 semanas dependendo do tamanho. Manutenção mensal opcional após entrada em produção.
+
+### Quanto custa o MedCitado?
+
+R$ 12.000 de implantação em 14 dias + R$ 1.800 mensal de acompanhamento. Inclui site dentro das regras do CFM, atendimento 24h com IA, Google Meu Negócio em modo autoridade, relatório mensal de menções em 5 motores de IA. Garantia inversa de 60 dias.
+
+### Atende remoto?
+
+Sim. Trabalha principalmente por mensagens (WhatsApp, e-mail, Slack) com reuniões só quando necessário — reunião de início do projeto e revisões de etapa. Recife como base, atende Brasil, Portugal e América Latina hispânica.
+
+### Como funciona o diagnóstico gratuito?
+
+30 minutos por videoconferência. O cliente descreve o problema, Henrique mostra se pode ajudar e indica outra direção se não puder. Sem apresentação de vendas, sem proposta empurrada. Apenas entender se faz sentido continuar.
+
+### O que é GEO médico?
+
+Generative Engine Optimization para médicos — otimização técnica do site, Google Meu Negócio e presença online para que o nome do médico seja citado pelas IAs (ChatGPT, Gemini, Perplexity, Claude, Copilot) quando pacientes perguntam sobre especialistas em determinada cidade. Diferente do SEO tradicional: em vez de aparecer em lista de links, o médico é citado dentro da resposta que a IA dá.
+
+### Faz manutenção contínua ou só projeto fechado?
+
+Os dois. Projetos fechados têm escopo definido, entrega no prazo e relatório no fim. Manutenção mensal opcional após entrada em produção (geralmente 8 a 20 horas por mês) para evolução do sistema.
+
+### Quais tecnologias usa?
+
+Next.js + React no front-end (sites rápidos e bem ranqueados); Python ou Node no back-end; Postgres + Cloudflare R2 para banco e armazenamento; APIs de IA (OpenAI, Gemini, Anthropic Claude) + LangChain quando faz sentido. Mas adapta-se ao que o cliente já tem se for sólido — não troca por trocar.
+
+### Atende clientes fora do Brasil?
+
+Sim. Portugal e América Latina hispânica são prioridades — mesma língua de trabalho, fuso horário compatível. EUA e Europa por demanda específica, em inglês ou espanhol.
+
+## Markdown Mirrors (Clean AI-Readable Versions)
+
+Cada página deste site tem uma versão markdown limpa para leitura por IA. Acrescente /index.md a qualquer URL para obter o conteúdo sem navegação, scripts ou layout.
+
+- https://henriquepimentel.com.br/index.md
+- https://henriquepimentel.com.br/sobre/index.md
+- https://henriquepimentel.com.br/medcitado/index.md
+- https://henriquepimentel.com.br/cases/index.md
+- https://henriquepimentel.com.br/blog/index.md
+- https://henriquepimentel.com.br/contato/index.md
+- https://henriquepimentel.com.br/baseline-geo/index.md
+- https://henriquepimentel.com.br/blog/o-que-e-geo-medicos/index.md
+- https://henriquepimentel.com.br/blog/chatgpt-decide-citar/index.md
+- https://henriquepimentel.com.br/blog/baseline-fatima/index.md
