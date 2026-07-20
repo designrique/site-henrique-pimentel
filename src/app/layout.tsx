@@ -3,6 +3,7 @@ import { Geist, Fraunces, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { BreadcrumbInjector } from "@/components/breadcrumb-injector";
 import "./globals.css";
 
 const geist = Geist({
@@ -107,12 +108,17 @@ const jsonLdGraph = {
         "ChatGPT",
         "Gemini",
         "Claude",
+        "Perplexity",
+        "Copilot",
         "Automação com IA",
         "Site para médicos",
         "Marketing médico CFM",
         "Schema.org",
+        "JSON-LD",
+        "llms.txt",
         "Next.js",
         "Python",
+        "WhatsApp Business API",
       ],
       knowsLanguage: ["pt-BR", "en", "es"],
       address: {
@@ -121,6 +127,79 @@ const jsonLdGraph = {
         addressRegion: "PE",
         addressCountry: "BR",
       },
+      about: [
+        {
+          "@type": "Thing",
+          name: "Generative Engine Optimization",
+          url: "https://en.wikipedia.org/wiki/Search_engine_optimization",
+          description: "Otimização de conteúdo para motores generativos (ChatGPT, Gemini, Perplexity, Claude, Copilot).",
+        },
+        {
+          "@type": "Thing",
+          name: "Search Engine Optimization",
+          url: "https://developers.google.com/search/docs",
+          description: "Otimização para buscadores tradicionais (Google, Bing).",
+        },
+        {
+          "@type": "Thing",
+          name: "Inteligência Artificial Aplicada",
+          url: "https://en.wikipedia.org/wiki/Artificial_intelligence",
+          description: "Aplicação prática de IA em processos de negócio: atendimento, captação e posicionamento.",
+        },
+        {
+          "@type": "Thing",
+          name: "Marketing médico",
+          url: "https://www.cfm.org.br/resolucoes-cfm",
+          description: "Marketing para médicos dentro das regras do CFM (Resolução 2.336/2023).",
+        },
+      ],
+      mentions: [
+        {
+          "@type": "Thing",
+          name: "ChatGPT",
+          url: "https://openai.com/chatgpt",
+        },
+        {
+          "@type": "Thing",
+          name: "Gemini",
+          url: "https://deepmind.google/technologies/gemini/",
+        },
+        {
+          "@type": "Thing",
+          name: "Perplexity",
+          url: "https://www.perplexity.ai/",
+        },
+        {
+          "@type": "Thing",
+          name: "Claude",
+          url: "https://www.anthropic.com/claude",
+        },
+        {
+          "@type": "Thing",
+          name: "Copilot",
+          url: "https://www.microsoft.com/copilot/",
+        },
+        {
+          "@type": "Thing",
+          name: "Schema.org",
+          url: "https://schema.org/",
+        },
+        {
+          "@type": "Thing",
+          name: "llms.txt",
+          url: "https://llmstxt.org/",
+        },
+        {
+          "@type": "Thing",
+          name: "Next.js",
+          url: "https://nextjs.org/",
+        },
+        {
+          "@type": "Thing",
+          name: "Cloudflare Pages",
+          url: "https://developers.cloudflare.com/pages/",
+        },
+      ],
     },
     {
       "@type": "ProfessionalService",
@@ -149,9 +228,15 @@ const jsonLdGraph = {
       priceRange: "R$ 4.000 – R$ 60.000",
       openingHoursSpecification: {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         opens: "09:00",
         closes: "18:00",
+      },
+      potentialAction: {
+        "@type": "ReserveAction",
+        target: `${SITE_URL}/contato/`,
+        name: "Agendar diagnóstico de 30 min",
+        actionStatus: "PotentialActionStatus",
       },
       hasOfferCatalog: {
         "@type": "OfferCatalog",
@@ -228,6 +313,15 @@ const jsonLdGraph = {
       name: "Henrique Pimentel — Consultor de Tecnologia em IA",
       inLanguage: "pt-BR",
       publisher: { "@id": `${SITE_URL}/#henrique` },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${SITE_URL}/blog?q={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: ["h1", "section:first-of-type p:first-of-type"],
+      },
     },
   ],
 };
@@ -256,6 +350,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <BreadcrumbInjector />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
