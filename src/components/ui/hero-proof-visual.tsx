@@ -94,7 +94,7 @@ export function HeroProofVisual({ tone = "master" }: HeroProofVisualProps) {
         className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-[color:var(--border-default)] bg-[color:var(--bg-subtle)] shadow-[0_8px_30px_-12px_rgba(15,23,42,0.18)]"
       >
         <Image
-          src="/foto-henrique.jpeg"
+          src="/foto-henrique.webp"
           alt="Henrique Pimentel — Consultor de Tecnologia em IA, em Recife"
           fill
           priority

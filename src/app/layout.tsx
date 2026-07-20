@@ -75,7 +75,7 @@ const jsonLdGraph = {
       name: "Henrique Pimentel",
       jobTitle: "Consultor de Tecnologia em Inteligência Artificial",
       url: SITE_URL,
-      image: `${SITE_URL}/foto-henrique.jpeg`,
+      image: `${SITE_URL}/foto-henrique.webp`,
       sameAs: [
         "https://linkedin.com/in/henriquepimentel",
         "https://github.com/henriquepimentel",
@@ -206,7 +206,7 @@ const jsonLdGraph = {
       "@id": `${SITE_URL}/#service`,
       name: "Henrique Pimentel — Consultoria de Tecnologia em IA",
       url: SITE_URL,
-      image: `${SITE_URL}/foto-henrique.jpeg`,
+      image: `${SITE_URL}/foto-henrique.webp`,
       founder: { "@id": `${SITE_URL}/#henrique` },
       employee: { "@id": `${SITE_URL}/#henrique` },
       description:
