@@ -123,8 +123,10 @@ const jsonLdGraph = {
       knowsLanguage: ["pt-BR", "en", "es"],
       address: {
         "@type": "PostalAddress",
+        streetAddress: "Rua Capitão Zuzinha, 22, Sala 07",
         addressLocality: "Recife",
         addressRegion: "PE",
+        postalCode: "51030-420",
         addressCountry: "BR",
       },
       about: [
@@ -221,10 +223,18 @@ const jsonLdGraph = {
       ],
       address: {
         "@type": "PostalAddress",
+        streetAddress: "Rua Capitão Zuzinha, 22, Sala 07",
         addressLocality: "Recife",
         addressRegion: "PE",
+        postalCode: "51030-420",
         addressCountry: "BR",
       },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: -8.1163,
+        longitude: -34.9234,
+      },
+      telephone: "+558132999262",
       priceRange: "R$ 4.000 – R$ 60.000",
       openingHoursSpecification: {
         "@type": "OpeningHoursSpecification",
