@@ -1,0 +1,2542 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "hp-site",
+    "is_monorepo": false,
+    "total_files": 62,
+    "entry_points": [],
+    "tech_stack": [
+      {
+        "name": "Next.js",
+        "version": "16.2.6",
+        "category": "framework"
+      },
+      {
+        "name": "React",
+        "version": "19.2.4",
+        "category": "framework"
+      },
+      {
+        "name": "Tailwind CSS",
+        "version": "4",
+        "category": "framework"
+      },
+      {
+        "name": "Node.js",
+        "version": null,
+        "category": "language"
+      },
+      {
+        "name": "TypeScript",
+        "version": "5",
+        "category": "language"
+      }
+    ],
+    "entry_candidates": [],
+    "graph_mode": "flow"
+  },
+  "nodes": [
+    {
+      "id": "file:README.md",
+      "type": "document",
+      "filePath": "README.md",
+      "language": "markdown",
+      "symbolCount": 0,
+      "lineCount": 62,
+      "complexity": "simple",
+      "pagerank": 0.005805,
+      "communityId": 6,
+      "tags": [],
+      "summary": "Project overview and entry point for new readers."
+    },
+    {
+      "id": "file:eslint.config.mjs",
+      "type": "file",
+      "filePath": "eslint.config.mjs",
+      "language": "javascript",
+      "symbolCount": 0,
+      "lineCount": 11,
+      "complexity": "simple",
+      "pagerank": 0.005805,
+      "communityId": 5,
+      "tags": [],
+      "summary": "Application module eslint.config.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:next.config.ts",
+      "type": "file",
+      "filePath": "next.config.ts",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 4,
+      "complexity": "simple",
+      "pagerank": 0.005805,
+      "communityId": 2,
+      "tags": [],
+      "summary": "Application module next.config (1 symbols).",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:package.json",
+      "type": "config",
+      "filePath": "package.json",
+      "language": "json",
+      "symbolCount": 0,
+      "lineCount": 15,
+      "complexity": "simple",
+      "pagerank": 0.005805,
+      "communityId": 7,
+      "tags": [
+        "config"
+      ],
+      "summary": "Node package manifest: dependencies, scripts, and metadata."
+    },
+    {
+      "id": "file:pnpm-workspace.yaml",
+      "type": "config",
+      "filePath": "pnpm-workspace.yaml",
+      "language": "yaml",
+      "symbolCount": 0,
+      "lineCount": 1,
+      "complexity": "simple",
+      "pagerank": 0.005805,
+      "communityId": 8,
+      "tags": [
+        "config",
+        "low_signal_summary"
+      ],
+      "summary": "Configuration file: pnpm-workspace.yaml."
+    },
+    {
+      "id": "file:postcss.config.mjs",
+      "type": "file",
+      "filePath": "postcss.config.mjs",
+      "language": "javascript",
+      "symbolCount": 1,
+      "lineCount": 2,
+      "complexity": "simple",
+      "pagerank": 0.005805,
+      "communityId": 9,
+      "tags": [],
+      "summary": "Application module postcss.config (1 symbols).",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/baseline-geo/baseline-geo-client.tsx",
+      "type": "file",
+      "filePath": "src/app/baseline-geo/baseline-geo-client.tsx",
+      "language": "typescript",
+      "symbolCount": 3,
+      "lineCount": 275,
+      "complexity": "moderate",
+      "pagerank": 0.00745,
+      "communityId": 0,
+      "tags": [],
+      "summary": "Application module baseline-geo-client defining BaselineGeoClient, Field.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/baseline-geo/index.md/route.ts",
+      "type": "file",
+      "filePath": "src/app/baseline-geo/index.md/route.ts",
+      "language": "typescript",
+      "symbolCount": 2,
+      "lineCount": 4,
+      "complexity": "simple",
+      "pagerank": 0.005805,
+      "communityId": 4,
+      "tags": [],
+      "summary": "Application module route defining GET.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/baseline-geo/page.tsx",
+      "type": "file",
+      "filePath": "src/app/baseline-geo/page.tsx",
+      "language": "typescript",
+      "symbolCount": 2,
+      "lineCount": 13,
+      "complexity": "simple",
+      "pagerank": 0.005805,
+      "communityId": 0,
+      "tags": [],
+      "summary": "Application module page defining BaselineGeoPage.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/blog/[slug]/index.md/route.ts",
+      "type": "file",
+      "filePath": "src/app/blog/[slug]/index.md/route.ts",
+      "language": "typescript",
+      "symbolCount": 4,
+      "lineCount": 12,
+      "complexity": "moderate",
+      "pagerank": 0.005805,
+      "communityId": 4,
+      "tags": [],
+      "summary": "Application module route defining generateStaticParams, GET.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/blog/[slug]/page.tsx",
+      "type": "file",
+      "filePath": "src/app/blog/[slug]/page.tsx",
+      "language": "typescript",
+      "symbolCount": 5,
+      "lineCount": 211,
+      "complexity": "moderate",
+      "pagerank": 0.005805,
+      "communityId": 2,
+      "tags": [],
+      "summary": "Application module page defining PageProps, generateStaticParams, generateMetadata.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/blog/index.md/route.ts",
+      "type": "file",
+      "filePath": "src/app/blog/index.md/route.ts",
+      "language": "typescript",
+      "symbolCount": 2,
+      "lineCount": 4,
+      "complexity": "simple",
+      "pagerank": 0.005805,
+      "communityId": 4,
+      "tags": [],
+      "summary": "Application module route defining GET.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/blog/page.tsx",
+      "type": "file",
+      "filePath": "src/app/blog/page.tsx",
+      "language": "typescript",
+      "symbolCount": 5,
+      "lineCount": 242,
+      "complexity": "moderate",
+      "pagerank": 0.005805,
+      "communityId": 2,
+      "tags": [],
+      "summary": "Application module page defining BlogPage, PostRow, CategoryBadge.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/cases/index.md/route.ts",
+      "type": "file",
+      "filePath": "src/app/cases/index.md/route.ts",
+      "language": "typescript",
+      "symbolCount": 2,
+      "lineCount": 4,
+      "complexity": "simple",
+      "pagerank": 0.005805,
+      "communityId": 4,
+      "tags": [],
+      "summary": "Application module route defining GET.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/cases/page.tsx",
+      "type": "file",
+      "filePath": "src/app/cases/page.tsx",
+      "language": "typescript",
+      "symbolCount": 5,
+      "lineCount": 199,
+      "complexity": "moderate",
+      "pagerank": 0.005805,
+      "communityId": 2,
+      "tags": [],
+      "summary": "Application module page defining Case, CasesPage.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/contato/index.md/route.ts",
+      "type": "file",
+      "filePath": "src/app/contato/index.md/route.ts",
+      "language": "typescript",
+      "symbolCount": 2,
+      "lineCount": 4,
+      "complexity": "simple",
+      "pagerank": 0.005805,
+      "communityId": 4,
+      "tags": [],
+      "summary": "Application module route defining GET.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/contato/page.tsx",
+      "type": "file",
+      "filePath": "src/app/contato/page.tsx",
+      "language": "typescript",
+      "symbolCount": 6,
+      "lineCount": 270,
+      "complexity": "moderate",
+      "pagerank": 0.005805,
+      "communityId": 0,
+      "tags": [],
+      "summary": "Application module page defining ContatoPage, Field, DirectCard.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/index.md/route.ts",
+      "type": "file",
+      "filePath": "src/app/index.md/route.ts",
+      "language": "typescript",
+      "symbolCount": 2,
+      "lineCount": 4,
+      "complexity": "simple",
+      "pagerank": 0.005805,
+      "communityId": 4,
+      "tags": [],
+      "summary": "Application module route defining GET.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/layout.tsx",
+      "type": "file",
+      "filePath": "src/app/layout.tsx",
+      "language": "typescript",
+      "symbolCount": 4,
+      "lineCount": 288,
+      "complexity": "moderate",
+      "pagerank": 0.005805,
+      "communityId": 0,
+      "tags": [],
+      "summary": "Application module layout defining RootLayout.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/medcitado/index.md/route.ts",
+      "type": "file",
+      "filePath": "src/app/medcitado/index.md/route.ts",
+      "language": "typescript",
+      "symbolCount": 2,
+      "lineCount": 4,
+      "complexity": "simple",
+      "pagerank": 0.005805,
+      "communityId": 4,
+      "tags": [],
+      "summary": "Application module route defining GET.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/medcitado/page.tsx",
+      "type": "file",
+      "filePath": "src/app/medcitado/page.tsx",
+      "language": "typescript",
+      "symbolCount": 3,
+      "lineCount": 257,
+      "complexity": "moderate",
+      "pagerank": 0.005805,
+      "communityId": 2,
+      "tags": [],
+      "summary": "Application module page defining MedCitadoPage.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/page.tsx",
+      "type": "file",
+      "filePath": "src/app/page.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 19,
+      "complexity": "simple",
+      "pagerank": 0.005805,
+      "communityId": 1,
+      "tags": [],
+      "summary": "Application module page defining Home.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/robots.ts",
+      "type": "file",
+      "filePath": "src/app/robots.ts",
+      "language": "typescript",
+      "symbolCount": 3,
+      "lineCount": 27,
+      "complexity": "simple",
+      "pagerank": 0.005805,
+      "communityId": 2,
+      "tags": [],
+      "summary": "Application module robots defining robots.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/sitemap.ts",
+      "type": "file",
+      "filePath": "src/app/sitemap.ts",
+      "language": "typescript",
+      "symbolCount": 3,
+      "lineCount": 36,
+      "complexity": "simple",
+      "pagerank": 0.005805,
+      "communityId": 2,
+      "tags": [],
+      "summary": "Application module sitemap defining sitemap.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/sobre/index.md/route.ts",
+      "type": "file",
+      "filePath": "src/app/sobre/index.md/route.ts",
+      "language": "typescript",
+      "symbolCount": 2,
+      "lineCount": 4,
+      "complexity": "simple",
+      "pagerank": 0.005805,
+      "communityId": 4,
+      "tags": [],
+      "summary": "Application module route defining GET.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/app/sobre/page.tsx",
+      "type": "file",
+      "filePath": "src/app/sobre/page.tsx",
+      "language": "typescript",
+      "symbolCount": 4,
+      "lineCount": 185,
+      "complexity": "moderate",
+      "pagerank": 0.005805,
+      "communityId": 2,
+      "tags": [],
+      "summary": "Application module page defining SobrePage.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/blog/prose.tsx",
+      "type": "file",
+      "filePath": "src/components/blog/prose.tsx",
+      "language": "typescript",
+      "symbolCount": 6,
+      "lineCount": 75,
+      "complexity": "moderate",
+      "pagerank": 0.039146,
+      "communityId": 3,
+      "tags": [],
+      "summary": "UI module prose defining PostProse, H2, H3.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/breadcrumb-injector.tsx",
+      "type": "file",
+      "filePath": "src/components/breadcrumb-injector.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 7,
+      "complexity": "simple",
+      "pagerank": 0.006627,
+      "communityId": 0,
+      "tags": [],
+      "summary": "UI module breadcrumb-injector defining BreadcrumbInjector.",
+      "primaryOwner": "root"
+    },
+    {
+      "id": "file:src/components/breadcrumb-jsonld.tsx",
+      "type": "file",
+      "filePath": "src/components/breadcrumb-jsonld.tsx",
+      "language": "typescript",
+      "symbolCount": 6,
+      "lineCount": 40,
+      "complexity": "moderate",
+      "pagerank": 0.008622,
+      "communityId": 0,
+      "tags": [],
+      "summary": "UI module breadcrumb-jsonld defining BreadcrumbItem, BreadcrumbJsonLdProps, BreadcrumbJsonLd.",
+      "primaryOwner": "root"
+    },
+    {
+      "id": "file:src/components/footer.tsx",
+      "type": "file",
+      "filePath": "src/components/footer.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 81,
+      "complexity": "simple",
+      "pagerank": 0.006627,
+      "communityId": 0,
+      "tags": [],
+      "summary": "UI module footer defining Footer.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/header.tsx",
+      "type": "file",
+      "filePath": "src/components/header.tsx",
+      "language": "typescript",
+      "symbolCount": 2,
+      "lineCount": 53,
+      "complexity": "simple",
+      "pagerank": 0.006627,
+      "communityId": 0,
+      "tags": [],
+      "summary": "UI module header defining Header.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/logo.tsx",
+      "type": "file",
+      "filePath": "src/components/logo.tsx",
+      "language": "typescript",
+      "symbolCount": 3,
+      "lineCount": 49,
+      "complexity": "simple",
+      "pagerank": 0.01003,
+      "communityId": 0,
+      "tags": [],
+      "summary": "UI module logo defining LogoProps, Logo.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/sections/about-statement.tsx",
+      "type": "file",
+      "filePath": "src/components/sections/about-statement.tsx",
+      "language": "typescript",
+      "symbolCount": 2,
+      "lineCount": 27,
+      "complexity": "simple",
+      "pagerank": 0.006353,
+      "communityId": 1,
+      "tags": [],
+      "summary": "UI module about-statement defining AboutStatementProps, AboutStatement.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/sections/cases-strip.tsx",
+      "type": "file",
+      "filePath": "src/components/sections/cases-strip.tsx",
+      "language": "typescript",
+      "symbolCount": 4,
+      "lineCount": 85,
+      "complexity": "moderate",
+      "pagerank": 0.006353,
+      "communityId": 1,
+      "tags": [],
+      "summary": "UI module cases-strip defining Case, CasesStripProps, CasesStrip.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/sections/comparison.tsx",
+      "type": "file",
+      "filePath": "src/components/sections/comparison.tsx",
+      "language": "typescript",
+      "symbolCount": 6,
+      "lineCount": 107,
+      "complexity": "moderate",
+      "pagerank": 0.006353,
+      "communityId": 1,
+      "tags": [],
+      "summary": "UI module comparison defining Comparison, ComparisonColumn, CheckIcon.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/sections/cta-block.tsx",
+      "type": "file",
+      "filePath": "src/components/sections/cta-block.tsx",
+      "language": "typescript",
+      "symbolCount": 2,
+      "lineCount": 41,
+      "complexity": "simple",
+      "pagerank": 0.011041,
+      "communityId": 2,
+      "tags": [],
+      "summary": "UI module cta-block defining CtaBlockProps, CtaBlock.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/sections/faqs.tsx",
+      "type": "file",
+      "filePath": "src/components/sections/faqs.tsx",
+      "language": "typescript",
+      "symbolCount": 5,
+      "lineCount": 122,
+      "complexity": "moderate",
+      "pagerank": 0.00734,
+      "communityId": 0,
+      "tags": [],
+      "summary": "UI module faqs defining FAQ, FAQsProps, FAQs.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/sections/hero.tsx",
+      "type": "file",
+      "filePath": "src/components/sections/hero.tsx",
+      "language": "typescript",
+      "symbolCount": 2,
+      "lineCount": 137,
+      "complexity": "moderate",
+      "pagerank": 0.00734,
+      "communityId": 1,
+      "tags": [],
+      "summary": "UI module hero defining HeroProps, Hero.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/sections/services.tsx",
+      "type": "file",
+      "filePath": "src/components/sections/services.tsx",
+      "language": "typescript",
+      "symbolCount": 5,
+      "lineCount": 106,
+      "complexity": "moderate",
+      "pagerank": 0.006353,
+      "communityId": 1,
+      "tags": [],
+      "summary": "UI module services defining Service, ServicesProps, Services.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/sections/trusted-by.tsx",
+      "type": "file",
+      "filePath": "src/components/sections/trusted-by.tsx",
+      "language": "typescript",
+      "symbolCount": 5,
+      "lineCount": 97,
+      "complexity": "moderate",
+      "pagerank": 0.006353,
+      "communityId": 1,
+      "tags": [],
+      "summary": "UI module trusted-by defining Brand, TrustedByProps, TrustedBy.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/sections/why-stats.tsx",
+      "type": "file",
+      "filePath": "src/components/sections/why-stats.tsx",
+      "language": "typescript",
+      "symbolCount": 4,
+      "lineCount": 58,
+      "complexity": "moderate",
+      "pagerank": 0.006353,
+      "communityId": 1,
+      "tags": [],
+      "summary": "UI module why-stats defining Stat, WhyStatsProps, WhyStats.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/theme-provider.tsx",
+      "type": "file",
+      "filePath": "src/components/theme-provider.tsx",
+      "language": "typescript",
+      "symbolCount": 2,
+      "lineCount": 8,
+      "complexity": "simple",
+      "pagerank": 0.006627,
+      "communityId": 0,
+      "tags": [],
+      "summary": "UI module theme-provider defining ThemeProvider.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/theme-toggle.tsx",
+      "type": "file",
+      "filePath": "src/components/theme-toggle.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 45,
+      "complexity": "simple",
+      "pagerank": 0.007213,
+      "communityId": 0,
+      "tags": [],
+      "summary": "UI module theme-toggle defining ThemeToggle.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/ui/brand-ticker.tsx",
+      "type": "file",
+      "filePath": "src/components/ui/brand-ticker.tsx",
+      "language": "typescript",
+      "symbolCount": 4,
+      "lineCount": 48,
+      "complexity": "moderate",
+      "pagerank": 0.006845,
+      "communityId": 1,
+      "tags": [],
+      "summary": "UI module brand-ticker defining TickerItem, BrandTickerProps, BrandTicker.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/ui/button.tsx",
+      "type": "file",
+      "filePath": "src/components/ui/button.tsx",
+      "language": "typescript",
+      "symbolCount": 10,
+      "lineCount": 47,
+      "complexity": "moderate",
+      "pagerank": 0.012524,
+      "communityId": 0,
+      "tags": [],
+      "summary": "UI module button defining BaseProps, getClasses, ButtonProps.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/ui/container.tsx",
+      "type": "file",
+      "filePath": "src/components/ui/container.tsx",
+      "language": "typescript",
+      "symbolCount": 3,
+      "lineCount": 13,
+      "complexity": "simple",
+      "pagerank": 0.037177,
+      "communityId": 2,
+      "tags": [],
+      "summary": "UI module container defining ContainerProps, Container.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/ui/eyebrow-badge.tsx",
+      "type": "file",
+      "filePath": "src/components/ui/eyebrow-badge.tsx",
+      "language": "typescript",
+      "symbolCount": 2,
+      "lineCount": 25,
+      "complexity": "simple",
+      "pagerank": 0.006845,
+      "communityId": 1,
+      "tags": [],
+      "summary": "UI module eyebrow-badge defining EyebrowBadgeProps, EyebrowBadge.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/ui/hero-proof-visual.tsx",
+      "type": "file",
+      "filePath": "src/components/ui/hero-proof-visual.tsx",
+      "language": "typescript",
+      "symbolCount": 7,
+      "lineCount": 120,
+      "complexity": "moderate",
+      "pagerank": 0.006845,
+      "communityId": 1,
+      "tags": [],
+      "summary": "UI module hero-proof-visual defining FloatingCardProps, FloatingCard, HeroProofVisualProps.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/components/ui/reveal.tsx",
+      "type": "file",
+      "filePath": "src/components/ui/reveal.tsx",
+      "language": "typescript",
+      "symbolCount": 6,
+      "lineCount": 38,
+      "complexity": "moderate",
+      "pagerank": 0.018546,
+      "communityId": 1,
+      "tags": [],
+      "summary": "UI module reveal defining RevealProps, Reveal, StaggerProps.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/content/mirrors/handler.ts",
+      "type": "file",
+      "filePath": "src/content/mirrors/handler.ts",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 11,
+      "complexity": "simple",
+      "pagerank": 0.042813,
+      "communityId": 4,
+      "tags": [],
+      "summary": "Application module handler defining mirrorResponse.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/content/mirrors/index.ts",
+      "type": "file",
+      "filePath": "src/content/mirrors/index.ts",
+      "language": "typescript",
+      "symbolCount": 13,
+      "lineCount": 397,
+      "complexity": "moderate",
+      "pagerank": 0.042194,
+      "communityId": 4,
+      "tags": [
+        "entry_point"
+      ],
+      "summary": "Application module index defining Mirror, today, frontmatter.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/content/posts/baseline-fatima.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/baseline-fatima.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 429,
+      "complexity": "moderate",
+      "pagerank": 0.009805,
+      "communityId": 3,
+      "tags": [],
+      "summary": "Application module baseline-fatima (1 symbols).",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/content/posts/chatgpt-decide-citar.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/chatgpt-decide-citar.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 245,
+      "complexity": "moderate",
+      "pagerank": 0.009805,
+      "communityId": 3,
+      "tags": [],
+      "summary": "Application module chatgpt-decide-citar (1 symbols).",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/content/posts/framework-geo-extracao-ia.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/framework-geo-extracao-ia.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 411,
+      "complexity": "moderate",
+      "pagerank": 0.009805,
+      "communityId": 3,
+      "tags": [],
+      "summary": "Application module framework-geo-extracao-ia (1 symbols)."
+    },
+    {
+      "id": "file:src/content/posts/geist-vs-inter.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/geist-vs-inter.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 24,
+      "complexity": "simple",
+      "pagerank": 0.009805,
+      "communityId": 3,
+      "tags": [],
+      "summary": "Application module geist-vs-inter (1 symbols).",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/content/posts/index.ts",
+      "type": "file",
+      "filePath": "src/content/posts/index.ts",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 18,
+      "complexity": "simple",
+      "pagerank": 0.042354,
+      "communityId": 3,
+      "tags": [
+        "barrel"
+      ],
+      "summary": "Re-export barrel for posts/.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/content/posts/iptables-docker-bridge-fix.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/iptables-docker-bridge-fix.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 25,
+      "complexity": "simple",
+      "pagerank": 0.009805,
+      "communityId": 3,
+      "tags": [],
+      "summary": "Application module iptables-docker-bridge-fix (1 symbols).",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/content/posts/o-que-e-geo-medicos.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/o-que-e-geo-medicos.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 309,
+      "complexity": "moderate",
+      "pagerank": 0.009805,
+      "communityId": 3,
+      "tags": [],
+      "summary": "Application module o-que-e-geo-medicos (1 symbols).",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/content/posts/postgres-swarm-supabase.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/postgres-swarm-supabase.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 27,
+      "complexity": "simple",
+      "pagerank": 0.009805,
+      "communityId": 3,
+      "tags": [],
+      "summary": "Application module postgres-swarm-supabase (1 symbols).",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/content/posts/site-cfm-safe-nextjs.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/site-cfm-safe-nextjs.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 48,
+      "complexity": "simple",
+      "pagerank": 0.009805,
+      "communityId": 3,
+      "tags": [],
+      "summary": "Application module site-cfm-safe-nextjs (1 symbols).",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/lib/posts.ts",
+      "type": "file",
+      "filePath": "src/lib/posts.ts",
+      "language": "typescript",
+      "symbolCount": 6,
+      "lineCount": 34,
+      "complexity": "moderate",
+      "pagerank": 0.086002,
+      "communityId": 3,
+      "tags": [],
+      "summary": "Service module posts defining PostMeta, PostEntry, getPosts.",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:tsconfig.json",
+      "type": "config",
+      "filePath": "tsconfig.json",
+      "language": "json",
+      "symbolCount": 0,
+      "lineCount": 16,
+      "complexity": "simple",
+      "pagerank": 0.005805,
+      "communityId": 11,
+      "tags": [
+        "config"
+      ],
+      "summary": "TypeScript compiler configuration."
+    },
+    {
+      "id": "function:src/components/blog/prose.tsx:H2",
+      "type": "function",
+      "filePath": "src/components/blog/prose.tsx",
+      "name": "H2",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/components/blog/prose.tsx:H3",
+      "type": "function",
+      "filePath": "src/components/blog/prose.tsx",
+      "name": "H3",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/components/blog/prose.tsx:Lead",
+      "type": "function",
+      "filePath": "src/components/blog/prose.tsx",
+      "name": "Lead",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/components/blog/prose.tsx:List",
+      "type": "function",
+      "filePath": "src/components/blog/prose.tsx",
+      "name": "List",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/components/blog/prose.tsx:PostProse",
+      "type": "function",
+      "filePath": "src/components/blog/prose.tsx",
+      "name": "PostProse",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/components/blog/prose.tsx:Quote",
+      "type": "function",
+      "filePath": "src/components/blog/prose.tsx",
+      "name": "Quote",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/components/ui/button.tsx:Button",
+      "type": "function",
+      "filePath": "src/components/ui/button.tsx",
+      "name": "Button",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/components/ui/button.tsx:LinkButton",
+      "type": "function",
+      "filePath": "src/components/ui/button.tsx",
+      "name": "LinkButton",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/components/ui/button.tsx:getClasses",
+      "type": "function",
+      "filePath": "src/components/ui/button.tsx",
+      "name": "getClasses",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/components/ui/container.tsx:Container",
+      "type": "function",
+      "filePath": "src/components/ui/container.tsx",
+      "name": "Container",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/components/ui/reveal.tsx:Reveal",
+      "type": "function",
+      "filePath": "src/components/ui/reveal.tsx",
+      "name": "Reveal",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/components/ui/reveal.tsx:Stagger",
+      "type": "function",
+      "filePath": "src/components/ui/reveal.tsx",
+      "name": "Stagger",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/content/mirrors/handler.ts:mirrorResponse",
+      "type": "function",
+      "filePath": "src/content/mirrors/handler.ts",
+      "name": "mirrorResponse",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/content/mirrors/index.ts:frontmatter",
+      "type": "function",
+      "filePath": "src/content/mirrors/index.ts",
+      "name": "frontmatter",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/content/mirrors/index.ts:getMirrorByPath",
+      "type": "function",
+      "filePath": "src/content/mirrors/index.ts",
+      "name": "getMirrorByPath",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/content/mirrors/index.ts:today",
+      "type": "function",
+      "filePath": "src/content/mirrors/index.ts",
+      "name": "today",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/content/mirrors/index.ts:wrap",
+      "type": "function",
+      "filePath": "src/content/mirrors/index.ts",
+      "name": "wrap",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/lib/posts.ts:formatPostDate",
+      "type": "function",
+      "filePath": "src/lib/posts.ts",
+      "name": "formatPostDate",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/lib/posts.ts:getAllPosts",
+      "type": "function",
+      "filePath": "src/lib/posts.ts",
+      "name": "getAllPosts",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/lib/posts.ts:getPostBySlug",
+      "type": "function",
+      "filePath": "src/lib/posts.ts",
+      "name": "getPostBySlug",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/lib/posts.ts:getPosts",
+      "type": "function",
+      "filePath": "src/lib/posts.ts",
+      "name": "getPosts",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:eslint.config.mjs",
+      "target": "file:external:eslint-config-next/core-web-vitals",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:eslint.config.mjs",
+      "target": "file:external:eslint-config-next/typescript",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:eslint.config.mjs",
+      "target": "file:external:eslint/config",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:next.config.ts",
+      "target": "file:external:next",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/baseline-geo/baseline-geo-client.tsx",
+      "target": "file:external:next/link",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/baseline-geo/baseline-geo-client.tsx",
+      "target": "file:external:next/navigation",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/baseline-geo/baseline-geo-client.tsx",
+      "target": "file:src/components/ui/container.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/baseline-geo/index.md/route.ts",
+      "target": "file:src/content/mirrors/handler.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/baseline-geo/page.tsx",
+      "target": "file:external:next",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/baseline-geo/page.tsx",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/baseline-geo/page.tsx",
+      "target": "file:src/app/baseline-geo/baseline-geo-client.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/blog/[slug]/index.md/route.ts",
+      "target": "file:src/content/mirrors/handler.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/blog/[slug]/index.md/route.ts",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/blog/[slug]/page.tsx",
+      "target": "file:external:next",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/blog/[slug]/page.tsx",
+      "target": "file:external:next/link",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/blog/[slug]/page.tsx",
+      "target": "file:external:next/navigation",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/blog/[slug]/page.tsx",
+      "target": "file:src/components/sections/cta-block.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/blog/[slug]/page.tsx",
+      "target": "file:src/components/ui/container.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/blog/[slug]/page.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/blog/index.md/route.ts",
+      "target": "file:src/content/mirrors/handler.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/blog/page.tsx",
+      "target": "file:external:next",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/blog/page.tsx",
+      "target": "file:external:next/link",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/blog/page.tsx",
+      "target": "file:src/components/ui/container.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/blog/page.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/cases/index.md/route.ts",
+      "target": "file:src/content/mirrors/handler.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/cases/page.tsx",
+      "target": "file:external:next",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/cases/page.tsx",
+      "target": "file:external:next/link",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/cases/page.tsx",
+      "target": "file:src/components/sections/cta-block.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/cases/page.tsx",
+      "target": "file:src/components/ui/container.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/contato/index.md/route.ts",
+      "target": "file:src/content/mirrors/handler.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/contato/page.tsx",
+      "target": "file:external:next",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/contato/page.tsx",
+      "target": "file:external:next/link",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/contato/page.tsx",
+      "target": "file:src/components/sections/faqs.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/contato/page.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/contato/page.tsx",
+      "target": "file:src/components/ui/container.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/index.md/route.ts",
+      "target": "file:src/content/mirrors/handler.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/layout.tsx",
+      "target": "file:external:next",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/layout.tsx",
+      "target": "file:external:next/font/google",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/layout.tsx",
+      "target": "file:src/components/breadcrumb-injector.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/layout.tsx",
+      "target": "file:src/components/footer.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/layout.tsx",
+      "target": "file:src/components/header.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/layout.tsx",
+      "target": "file:src/components/theme-provider.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/medcitado/index.md/route.ts",
+      "target": "file:src/content/mirrors/handler.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/medcitado/page.tsx",
+      "target": "file:external:next",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/medcitado/page.tsx",
+      "target": "file:external:next/link",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/medcitado/page.tsx",
+      "target": "file:src/components/sections/cta-block.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/medcitado/page.tsx",
+      "target": "file:src/components/sections/hero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/medcitado/page.tsx",
+      "target": "file:src/components/ui/container.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/page.tsx",
+      "target": "file:src/components/sections/about-statement.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/page.tsx",
+      "target": "file:src/components/sections/cases-strip.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/page.tsx",
+      "target": "file:src/components/sections/comparison.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/page.tsx",
+      "target": "file:src/components/sections/cta-block.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/page.tsx",
+      "target": "file:src/components/sections/faqs.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/page.tsx",
+      "target": "file:src/components/sections/hero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/page.tsx",
+      "target": "file:src/components/sections/services.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/page.tsx",
+      "target": "file:src/components/sections/trusted-by.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/page.tsx",
+      "target": "file:src/components/sections/why-stats.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/robots.ts",
+      "target": "file:external:next",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/sitemap.ts",
+      "target": "file:external:next",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/sitemap.ts",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/sobre/index.md/route.ts",
+      "target": "file:src/content/mirrors/handler.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/sobre/page.tsx",
+      "target": "file:external:next",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/sobre/page.tsx",
+      "target": "file:src/components/sections/cta-block.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/app/sobre/page.tsx",
+      "target": "file:src/components/ui/container.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/blog/prose.tsx",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/blog/prose.tsx",
+      "target": "function:src/components/blog/prose.tsx:H2",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/blog/prose.tsx",
+      "target": "function:src/components/blog/prose.tsx:H3",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/blog/prose.tsx",
+      "target": "function:src/components/blog/prose.tsx:Lead",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/blog/prose.tsx",
+      "target": "function:src/components/blog/prose.tsx:List",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/blog/prose.tsx",
+      "target": "function:src/components/blog/prose.tsx:PostProse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/blog/prose.tsx",
+      "target": "function:src/components/blog/prose.tsx:Quote",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/breadcrumb-injector.tsx",
+      "target": "file:external:next/navigation",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/breadcrumb-injector.tsx",
+      "target": "file:src/components/breadcrumb-jsonld.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/breadcrumb-jsonld.tsx",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/footer.tsx",
+      "target": "file:external:next/link",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/footer.tsx",
+      "target": "file:src/components/logo.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/header.tsx",
+      "target": "file:external:next/link",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/header.tsx",
+      "target": "file:external:next/navigation",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/header.tsx",
+      "target": "file:src/components/logo.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/header.tsx",
+      "target": "file:src/components/theme-toggle.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/logo.tsx",
+      "target": "file:external:next/link",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/about-statement.tsx",
+      "target": "file:src/components/ui/container.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/about-statement.tsx",
+      "target": "file:src/components/ui/reveal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/cases-strip.tsx",
+      "target": "file:external:next/link",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/cases-strip.tsx",
+      "target": "file:src/components/ui/container.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/cases-strip.tsx",
+      "target": "file:src/components/ui/reveal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/comparison.tsx",
+      "target": "file:src/components/ui/container.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/comparison.tsx",
+      "target": "file:src/components/ui/reveal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/cta-block.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/cta-block.tsx",
+      "target": "file:src/components/ui/container.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/faqs.tsx",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/faqs.tsx",
+      "target": "file:src/components/ui/container.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/hero.tsx",
+      "target": "file:src/components/ui/brand-ticker.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/hero.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/hero.tsx",
+      "target": "file:src/components/ui/container.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/hero.tsx",
+      "target": "file:src/components/ui/eyebrow-badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/hero.tsx",
+      "target": "file:src/components/ui/hero-proof-visual.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/hero.tsx",
+      "target": "file:src/components/ui/reveal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/services.tsx",
+      "target": "file:external:next/link",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/services.tsx",
+      "target": "file:src/components/ui/container.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/services.tsx",
+      "target": "file:src/components/ui/reveal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/trusted-by.tsx",
+      "target": "file:external:motion/react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/trusted-by.tsx",
+      "target": "file:external:next/image",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/trusted-by.tsx",
+      "target": "file:src/components/ui/container.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/why-stats.tsx",
+      "target": "file:src/components/ui/container.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/why-stats.tsx",
+      "target": "file:src/components/ui/reveal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/theme-provider.tsx",
+      "target": "file:external:next-themes",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/theme-provider.tsx",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/theme-toggle.tsx",
+      "target": "file:external:next-themes",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/theme-toggle.tsx",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/brand-ticker.tsx",
+      "target": "file:external:motion/react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/button.tsx",
+      "target": "file:external:next/link",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/button.tsx",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/button.tsx",
+      "target": "function:src/components/ui/button.tsx:Button",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/button.tsx",
+      "target": "function:src/components/ui/button.tsx:LinkButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/button.tsx",
+      "target": "function:src/components/ui/button.tsx:getClasses",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/container.tsx",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/container.tsx",
+      "target": "function:src/components/ui/container.tsx:Container",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/eyebrow-badge.tsx",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/hero-proof-visual.tsx",
+      "target": "file:external:motion/react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/hero-proof-visual.tsx",
+      "target": "file:external:next/image",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/reveal.tsx",
+      "target": "file:external:motion/react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/reveal.tsx",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/reveal.tsx",
+      "target": "function:src/components/ui/reveal.tsx:Reveal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/reveal.tsx",
+      "target": "function:src/components/ui/reveal.tsx:Stagger",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/mirrors/handler.ts",
+      "target": "file:src/content/mirrors/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/mirrors/handler.ts",
+      "target": "function:src/content/mirrors/handler.ts:mirrorResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/mirrors/index.ts",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/mirrors/index.ts",
+      "target": "function:src/content/mirrors/index.ts:frontmatter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/mirrors/index.ts",
+      "target": "function:src/content/mirrors/index.ts:getMirrorByPath",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/mirrors/index.ts",
+      "target": "function:src/content/mirrors/index.ts:today",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/mirrors/index.ts",
+      "target": "function:src/content/mirrors/index.ts:wrap",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/baseline-fatima.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/baseline-fatima.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/chatgpt-decide-citar.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/chatgpt-decide-citar.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/framework-geo-extracao-ia.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/framework-geo-extracao-ia.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/geist-vs-inter.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/geist-vs-inter.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/baseline-fatima.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/chatgpt-decide-citar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/framework-geo-extracao-ia.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/geist-vs-inter.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/iptables-docker-bridge-fix.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/o-que-e-geo-medicos.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/postgres-swarm-supabase.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/site-cfm-safe-nextjs.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/iptables-docker-bridge-fix.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/iptables-docker-bridge-fix.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/o-que-e-geo-medicos.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/o-que-e-geo-medicos.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/postgres-swarm-supabase.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/postgres-swarm-supabase.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/site-cfm-safe-nextjs.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/site-cfm-safe-nextjs.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lib/posts.ts",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lib/posts.ts",
+      "target": "file:src/content/posts/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lib/posts.ts",
+      "target": "function:src/lib/posts.ts:formatPostDate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lib/posts.ts",
+      "target": "function:src/lib/posts.ts:getAllPosts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lib/posts.ts",
+      "target": "function:src/lib/posts.ts:getPostBySlug",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lib/posts.ts",
+      "target": "function:src/lib/posts.ts:getPosts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:application",
+      "name": "Application",
+      "description": "",
+      "nodeIds": [
+        "file:README.md",
+        "file:eslint.config.mjs",
+        "file:next.config.ts",
+        "file:package.json",
+        "file:pnpm-workspace.yaml",
+        "file:postcss.config.mjs",
+        "file:src/app/baseline-geo/baseline-geo-client.tsx",
+        "file:src/app/baseline-geo/index.md/route.ts",
+        "file:src/app/baseline-geo/page.tsx",
+        "file:src/app/blog/[slug]/index.md/route.ts",
+        "file:src/app/blog/[slug]/page.tsx",
+        "file:src/app/blog/index.md/route.ts",
+        "file:src/app/blog/page.tsx",
+        "file:src/app/cases/index.md/route.ts",
+        "file:src/app/cases/page.tsx",
+        "file:src/app/contato/index.md/route.ts",
+        "file:src/app/contato/page.tsx",
+        "file:src/app/index.md/route.ts",
+        "file:src/app/layout.tsx",
+        "file:src/app/medcitado/index.md/route.ts",
+        "file:src/app/medcitado/page.tsx",
+        "file:src/app/page.tsx",
+        "file:src/app/robots.ts",
+        "file:src/app/sitemap.ts",
+        "file:src/app/sobre/index.md/route.ts",
+        "file:src/app/sobre/page.tsx",
+        "file:src/content/mirrors/handler.ts",
+        "file:src/content/mirrors/index.ts",
+        "file:src/content/posts/baseline-fatima.tsx",
+        "file:src/content/posts/chatgpt-decide-citar.tsx",
+        "file:src/content/posts/framework-geo-extracao-ia.tsx",
+        "file:src/content/posts/geist-vs-inter.tsx",
+        "file:src/content/posts/index.ts",
+        "file:src/content/posts/iptables-docker-bridge-fix.tsx",
+        "file:src/content/posts/o-que-e-geo-medicos.tsx",
+        "file:src/content/posts/postgres-swarm-supabase.tsx",
+        "file:src/content/posts/site-cfm-safe-nextjs.tsx",
+        "file:tsconfig.json"
+      ],
+      "display_order": 0,
+      "order_basis": "imports"
+    },
+    {
+      "id": "layer:service",
+      "name": "Service",
+      "description": "",
+      "nodeIds": [
+        "file:src/lib/posts.ts"
+      ],
+      "display_order": 1,
+      "order_basis": "imports"
+    },
+    {
+      "id": "layer:ui",
+      "name": "UI",
+      "description": "",
+      "nodeIds": [
+        "file:src/components/blog/prose.tsx",
+        "file:src/components/breadcrumb-injector.tsx",
+        "file:src/components/breadcrumb-jsonld.tsx",
+        "file:src/components/footer.tsx",
+        "file:src/components/header.tsx",
+        "file:src/components/logo.tsx",
+        "file:src/components/sections/about-statement.tsx",
+        "file:src/components/sections/cases-strip.tsx",
+        "file:src/components/sections/comparison.tsx",
+        "file:src/components/sections/cta-block.tsx",
+        "file:src/components/sections/faqs.tsx",
+        "file:src/components/sections/hero.tsx",
+        "file:src/components/sections/services.tsx",
+        "file:src/components/sections/trusted-by.tsx",
+        "file:src/components/sections/why-stats.tsx",
+        "file:src/components/theme-provider.tsx",
+        "file:src/components/theme-toggle.tsx",
+        "file:src/components/ui/brand-ticker.tsx",
+        "file:src/components/ui/button.tsx",
+        "file:src/components/ui/container.tsx",
+        "file:src/components/ui/eyebrow-badge.tsx",
+        "file:src/components/ui/hero-proof-visual.tsx",
+        "file:src/components/ui/reveal.tsx"
+      ],
+      "display_order": 2,
+      "order_basis": "imports"
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "target_path": "README.md",
+      "page_type": "repo_overview",
+      "title": "README.md",
+      "depth": 0,
+      "kind": "overview",
+      "reason": "Start here for the end-to-end picture before diving into the code.",
+      "layer_id": "layer:application"
+    },
+    {
+      "order": 2,
+      "target_path": "src/content/posts/index.ts",
+      "page_type": "file_page",
+      "title": "index.ts",
+      "depth": 0,
+      "kind": "code",
+      "reason": "A re-export hub \u2014 the package's public surface fans out from here.",
+      "layer_id": "layer:application"
+    },
+    {
+      "order": 3,
+      "target_path": "src/lib/posts.ts",
+      "page_type": "file_page",
+      "title": "posts.ts",
+      "depth": 1,
+      "kind": "code",
+      "reason": "Directly imported by the anchor above; a core collaborator.",
+      "layer_id": "layer:service"
+    },
+    {
+      "order": 4,
+      "target_path": "src/content/posts/baseline-fatima.tsx",
+      "page_type": "file_page",
+      "title": "baseline-fatima.tsx",
+      "depth": 1,
+      "kind": "code",
+      "reason": "Directly imported by the anchor above; a core collaborator.",
+      "layer_id": "layer:application"
+    },
+    {
+      "order": 5,
+      "target_path": "src/content/posts/chatgpt-decide-citar.tsx",
+      "page_type": "file_page",
+      "title": "chatgpt-decide-citar.tsx",
+      "depth": 1,
+      "kind": "code",
+      "reason": "Directly imported by the anchor above; a core collaborator.",
+      "layer_id": "layer:application"
+    },
+    {
+      "order": 6,
+      "target_path": "src/content/posts/framework-geo-extracao-ia.tsx",
+      "page_type": "file_page",
+      "title": "framework-geo-extracao-ia.tsx",
+      "depth": 1,
+      "kind": "code",
+      "reason": "Directly imported by the anchor above; a core collaborator.",
+      "layer_id": "layer:application"
+    },
+    {
+      "order": 7,
+      "target_path": "src/content/posts/geist-vs-inter.tsx",
+      "page_type": "file_page",
+      "title": "geist-vs-inter.tsx",
+      "depth": 1,
+      "kind": "code",
+      "reason": "Directly imported by the anchor above; a core collaborator.",
+      "layer_id": "layer:application"
+    },
+    {
+      "order": 8,
+      "target_path": "src/content/posts/iptables-docker-bridge-fix.tsx",
+      "page_type": "file_page",
+      "title": "iptables-docker-bridge-fix.tsx",
+      "depth": 1,
+      "kind": "code",
+      "reason": "Directly imported by the anchor above; a core collaborator.",
+      "layer_id": "layer:application"
+    },
+    {
+      "order": 9,
+      "target_path": "src/content/posts/o-que-e-geo-medicos.tsx",
+      "page_type": "file_page",
+      "title": "o-que-e-geo-medicos.tsx",
+      "depth": 1,
+      "kind": "code",
+      "reason": "Directly imported by the anchor above; a core collaborator.",
+      "layer_id": "layer:application"
+    },
+    {
+      "order": 10,
+      "target_path": "src/content/posts/postgres-swarm-supabase.tsx",
+      "page_type": "file_page",
+      "title": "postgres-swarm-supabase.tsx",
+      "depth": 1,
+      "kind": "code",
+      "reason": "Directly imported by the anchor above; a core collaborator.",
+      "layer_id": "layer:application"
+    },
+    {
+      "order": 11,
+      "target_path": "src/components/blog/prose.tsx",
+      "page_type": "file_page",
+      "title": "prose.tsx",
+      "depth": 1,
+      "kind": "code",
+      "reason": "The UI layer's anchor \u2014 its most depended-on file.",
+      "layer_id": "layer:ui"
+    },
+    {
+      "order": 12,
+      "target_path": "src/app/layout.tsx",
+      "page_type": "file_page",
+      "title": "layout.tsx",
+      "depth": 0,
+      "kind": "code",
+      "reason": "A top churn hotspot \u2014 one of the most frequently changed files in the repo; worth understanding early.",
+      "layer_id": "layer:application"
+    }
+  ],
+  "modules": [
+    {
+      "id": "module:application",
+      "name": "Application",
+      "path": "",
+      "layerId": "layer:application",
+      "nodeIds": [
+        "file:README.md",
+        "file:eslint.config.mjs",
+        "file:next.config.ts",
+        "file:package.json",
+        "file:pnpm-workspace.yaml",
+        "file:postcss.config.mjs",
+        "file:src/app/baseline-geo/baseline-geo-client.tsx",
+        "file:src/app/baseline-geo/index.md/route.ts",
+        "file:src/app/baseline-geo/page.tsx",
+        "file:src/app/blog/[slug]/index.md/route.ts",
+        "file:src/app/blog/[slug]/page.tsx",
+        "file:src/app/blog/index.md/route.ts",
+        "file:src/app/blog/page.tsx",
+        "file:src/app/cases/index.md/route.ts",
+        "file:src/app/cases/page.tsx",
+        "file:src/app/contato/index.md/route.ts",
+        "file:src/app/contato/page.tsx",
+        "file:src/app/index.md/route.ts",
+        "file:src/app/layout.tsx",
+        "file:src/app/medcitado/index.md/route.ts",
+        "file:src/app/medcitado/page.tsx",
+        "file:src/app/page.tsx",
+        "file:src/app/robots.ts",
+        "file:src/app/sitemap.ts",
+        "file:src/app/sobre/index.md/route.ts",
+        "file:src/app/sobre/page.tsx",
+        "file:src/content/mirrors/handler.ts",
+        "file:src/content/mirrors/index.ts",
+        "file:src/content/posts/baseline-fatima.tsx",
+        "file:src/content/posts/chatgpt-decide-citar.tsx",
+        "file:src/content/posts/framework-geo-extracao-ia.tsx",
+        "file:src/content/posts/geist-vs-inter.tsx",
+        "file:src/content/posts/index.ts",
+        "file:src/content/posts/iptables-docker-bridge-fix.tsx",
+        "file:src/content/posts/o-que-e-geo-medicos.tsx",
+        "file:src/content/posts/postgres-swarm-supabase.tsx",
+        "file:src/content/posts/site-cfm-safe-nextjs.tsx",
+        "file:tsconfig.json"
+      ],
+      "wholeLayer": true,
+      "language": "typescript"
+    },
+    {
+      "id": "module:src-components",
+      "name": "UI",
+      "path": "src/components",
+      "layerId": "layer:ui",
+      "nodeIds": [
+        "file:src/components/blog/prose.tsx",
+        "file:src/components/breadcrumb-injector.tsx",
+        "file:src/components/breadcrumb-jsonld.tsx",
+        "file:src/components/footer.tsx",
+        "file:src/components/header.tsx",
+        "file:src/components/logo.tsx",
+        "file:src/components/sections/about-statement.tsx",
+        "file:src/components/sections/cases-strip.tsx",
+        "file:src/components/sections/comparison.tsx",
+        "file:src/components/sections/cta-block.tsx",
+        "file:src/components/sections/faqs.tsx",
+        "file:src/components/sections/hero.tsx",
+        "file:src/components/sections/services.tsx",
+        "file:src/components/sections/trusted-by.tsx",
+        "file:src/components/sections/why-stats.tsx",
+        "file:src/components/theme-provider.tsx",
+        "file:src/components/theme-toggle.tsx",
+        "file:src/components/ui/brand-ticker.tsx",
+        "file:src/components/ui/button.tsx",
+        "file:src/components/ui/container.tsx",
+        "file:src/components/ui/eyebrow-badge.tsx",
+        "file:src/components/ui/hero-proof-visual.tsx",
+        "file:src/components/ui/reveal.tsx"
+      ],
+      "wholeLayer": true,
+      "language": "typescript"
+    }
+  ]
+}

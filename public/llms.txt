@@ -103,3 +103,29 @@ Cada página deste site tem uma versão markdown limpa para leitura por IA. Acre
 - https://henriquepimentel.com.br/blog/o-que-e-geo-medicos/index.md
 - https://henriquepimentel.com.br/blog/chatgpt-decide-citar/index.md
 - https://henriquepimentel.com.br/blog/baseline-fatima/index.md
+- https://henriquepimentel.com.br/blog/framework-geo-extracao-ia/index.md
+
+## Entity Graph
+
+Henrique Pimentel is an independent AI technology consultant based in Recife, Brazil, connecting [Generative Engine Optimization (GEO)](https://en.wikipedia.org/wiki/Search_engine_optimization) and [AI agent automation](https://en.wikipedia.org/wiki/Intelligent_agent) to verifiable [medical marketing](https://www.cfm.org.br/resolucoes-cfm) frameworks within the Brazilian healthcare market.
+
+Core entities and their relationships:
+
+- **Henrique Pimentel** → is a [Person](https://schema.org/Person) who provides [ProfessionalService](https://schema.org/ProfessionalService) in [Generative Engine Optimization](https://developers.google.com/search/docs/appearance/structured-data/intro-to-structured-data) and AI automation, serving [Healthcare](https://en.wikipedia.org/wiki/Health_care) clients in Brazil, Portugal, and Latin America.
+- **MedCitado** → is a productized service connecting [ChatGPT](https://openai.com/chatgpt), [Gemini](https://deepmind.google/technologies/gemini/), [Perplexity](https://www.perplexity.ai/), [Claude](https://www.anthropic.com/claude), and [Copilot](https://www.microsoft.com/copilot/) citation monitoring for physicians, governed by [CFM Resolution 2.336/2023](https://www.cfm.org.br/resolucoes-cfm).
+- **Pimentel Tech** → is the legal entity (CNPJ 64.922.118/0001-50) operating as a [technology consultancy](https://schema.org/ProfessionalService) in [Recife, Pernambuco](https://en.wikipedia.org/wiki/Recife).
+- **Schema.org** structured data → implemented via [JSON-LD](https://developers.google.com/search/docs/appearance/structured-data/intro-to-structured-data) following [Google Search Central guidelines](https://developers.google.com/search/docs).
+- **llms.txt** → implemented per the [llms.txt proposal](https://llmstxt.org/) for AI-readable site summaries.
+
+## Authority Reference Anchors
+
+Claims made on this site are anchored to the following authoritative sources:
+
+- [Google Search Central — Structured Data](https://developers.google.com/search/docs/appearance/structured-data/intro-to-structured-data): basis for Schema.org implementation claims
+- [CFM Resolution 2.336/2023](https://www.cfm.org.br/resolucoes-cfm): basis for medical marketing compliance claims
+- [OpenAI](https://openai.com/): source for ChatGPT user statistics
+- [Google AI Overviews](https://blog.google/products/search/google-ai-overviews-search/): basis for AI-powered search claims
+- [Schema.org](https://schema.org/): vocabulary used for all structured data
+- [llms.txt proposal](https://llmstxt.org/): specification for the llms.txt file served at /llms.txt
+- [Next.js documentation](https://nextjs.org/docs): framework used for site implementation
+- [Cloudflare Pages](https://developers.cloudflare.com/pages/): hosting and edge deployment

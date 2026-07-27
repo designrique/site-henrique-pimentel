@@ -1,0 +1,43 @@
+{
+  "last_sync_commit": "ba0c42504d8a587fefeffd20896b4fcdd550b175",
+  "total_pages": 42,
+  "provider": "openrouter",
+  "model": "anthropic/claude-sonnet-4.6",
+  "docs_enabled": true,
+  "run_mode": "standard",
+  "git_tier": "full",
+  "include_submodules": false,
+  "total_tokens": 0,
+  "phase_timings": {
+    "co_change": 0.01,
+    "traverse": 0.3,
+    "git": 0.44,
+    "parse": 1.34,
+    "tsconfig": 0.0,
+    "graph.ts_index": 0.0,
+    "graph.imports": 0.02,
+    "graph.type_refs": 0.0,
+    "graph.heritage": 0.0,
+    "graph.calls": 0.0,
+    "dynamic_hints": 0.03,
+    "graph.metrics": 0.49,
+    "graph.communities": 0.02,
+    "external_systems": 0.0,
+    "dead_code": 0.12,
+    "health": 1.09,
+    "decisions": 4.57,
+    "knowledge_graph.skeleton": 0.0,
+    "graph.flows": 0.0
+  },
+  "knowledge_graph": {
+    "version": "1.0.0",
+    "node_count": 83,
+    "layer_count": 3,
+    "tour_steps": 12,
+    "has_summaries": true,
+    "fingerprint": "1c7b0a519cc9b38f"
+  },
+  "store_format_version": 1,
+  "written_by_version": "0.34.0",
+  "config_fingerprint": "e3bf174296190a312437cfc058ddb787980f19534513538adf6dca22259a581a"
+}

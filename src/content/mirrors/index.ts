@@ -37,6 +37,8 @@ const homeMirror: Mirror = {
   body: `
 # Henrique Pimentel — Consultor de Tecnologia em IA
 
+Henrique Pimentel is an independent AI technology consultant based in Recife, Brazil, connecting [Generative Engine Optimization (GEO)](https://en.wikipedia.org/wiki/Search_engine_optimization) and [AI agent automation](https://en.wikipedia.org/wiki/Intelligent_agent) to verifiable [medical marketing](https://www.cfm.org.br/resolucoes-cfm) frameworks for clinics, physicians, and businesses in Brazil and Portugal. Mestre em Ciências da Computação pelo CIn-UFPE, com graduação em Design pela UFPE.
+
 Eu mesmo implemento — não vendo apresentação bonita. Cada projeto tem diagnóstico, números acompanhados de perto e relatório explicado em português. Atendo clínicas, médicos, empresas e profissionais que querem usar IA como vantagem concreta.
 
 ## Áreas de atuação

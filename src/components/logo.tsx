@@ -32,7 +32,7 @@ export function Logo({ variant = "wordmark", className = "", href }: LogoProps) 
           <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[color:var(--text-primary)] text-[color:var(--bg-primary)] font-bold tracking-tight text-base">
             HP.
           </span>
-          <span className="flex flex-col leading-tight">
+          <span className="hidden sm:flex sm:flex-col leading-tight">
             <span className="text-base font-bold tracking-[-0.02em] text-[color:var(--text-primary)]">
               Henrique Pimentel.
             </span>

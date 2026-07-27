@@ -1,0 +1,5 @@
+tier2_tail_enabled: true
+provider: openrouter
+model: anthropic/claude-sonnet-4.6
+embedder: openrouter
+reasoning: auto

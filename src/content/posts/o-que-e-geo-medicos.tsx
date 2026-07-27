@@ -63,13 +63,26 @@ const post: PostEntry = {
           <li>
             <strong>O ChatGPT passou de 400 milhões para 800 milhões de
             usuários semanais</strong> entre janeiro e abril de 2026
-            (dados da OpenAI). É o canal de busca que mais cresce no mundo.
+            (dados da{" "}
+            <a
+              href="https://openai.com/chatgpt"
+              rel="noopener noreferrer"
+            >
+              OpenAI
+            </a>
+            ). É o canal de busca que mais cresce no mundo.
           </li>
           <li>
-            <strong>O Google integrou AI Overviews em 100% das buscas
-            médicas em português</strong>. Quando alguém pesquisa
-            &ldquo;sintomas de Alzheimer&rdquo;, a IA do Google responde
-            direto na tela — e cita 2 ou 3 fontes profissionais.
+            <strong>O Google integrou{" "}
+            <a
+              href="https://blog.google/products/search/google-ai-overviews-search/"
+              rel="noopener noreferrer"
+            >
+              AI Overviews
+            </a>{" "}
+            em 100% das buscas médicas em português</strong>. Quando alguém
+            pesquisa &ldquo;sintomas de Alzheimer&rdquo;, a IA do Google
+            responde direto na tela — e cita 2 ou 3 fontes profissionais.
           </li>
           <li>
             <strong>43% dos pacientes brasileiros entre 35 e 55 anos
@@ -129,10 +142,15 @@ const post: PostEntry = {
 
         <List>
           <li>
-            <strong>Marcação técnica do site</strong> (Schema.org
-            MedicalBusiness, Physician, MedicalSpecialty) — a IA
-            precisa entender que aquele site representa um médico
-            verificável.
+            <strong>Marcação técnica do site</strong> (
+            <a
+              href="https://schema.org/MedicalBusiness"
+              rel="noopener noreferrer"
+            >
+              Schema.org MedicalBusiness
+            </a>
+            , Physician, MedicalSpecialty) — a IA precisa entender que
+            aquele site representa um médico verificável.
           </li>
           <li>
             <strong>Citações externas em fontes confiáveis</strong>
@@ -275,8 +293,21 @@ const post: PostEntry = {
             estruturadas, não em legendas).
           </li>
           <li>
-            <strong>Comprar links</strong> — Google penaliza, IAs
-            ignoram, e ainda fere a Resolução CFM 2.336/2023.
+            <strong>Comprar links</strong> —{" "}
+            <a
+              href="https://developers.google.com/search/docs/essentials/spam-policies"
+              rel="noopener noreferrer"
+            >
+              Google penaliza
+            </a>
+            , IAs ignoram, e ainda fere a{" "}
+            <a
+              href="https://www.cfm.org.br/resolucoes-cfm"
+              rel="noopener noreferrer"
+            >
+              Resolução CFM 2.336/2023
+            </a>
+            .
           </li>
         </List>
 
