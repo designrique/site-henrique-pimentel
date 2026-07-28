@@ -11,8 +11,10 @@ import frameworkGeoExtracaoIa from "./framework-geo-extracao-ia";
 import atendenteIaWhatsApp24h from "./atendente-ia-whatsapp-24h";
 import captacaoAutomaticaClientes from "./captacao-automatica-clientes";
 import siteAtivoCaptacao from "./site-ativo-captacao";
+import comoAparecerNoChatgpt from "./como-aparecer-no-chatgpt";
 
 export const postRegistry: PostEntry[] = [
+  comoAparecerNoChatgpt,
   frameworkGeoExtracaoIa,
   atendenteIaWhatsApp24h,
   captacaoAutomaticaClientes,

@@ -7,6 +7,7 @@ import { ThemeToggle } from "./theme-toggle";
 
 const navItems = [
   { href: "/sobre", label: "Sobre" },
+  { href: "/servicos/consultoria-ia", label: "Consultoria de IA" },
   { href: "/cases", label: "Cases" },
   { href: "/blog", label: "Blog" },
   { href: "/medcitado", label: "MedCitado", badge: "medico" as const },

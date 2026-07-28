@@ -257,8 +257,8 @@ const post: PostEntry = {
             — de 0 a 2 motores citando em 60 dias
           </li>
           <li>
-            <a href="/servicos/geo-ia">
-              Serviço de SEO/GEO — implementação técnica completa
+            <a href="/medcitado">
+              MedCitado — implementação técnica completa de GEO
             </a>{" "}
             — a página de oferta que converte o cluster
           </li>

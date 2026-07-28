@@ -2,7 +2,10 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { Container } from "@/components/ui/container";
+
+const WHATSAPP_NUMBER = "5581997906153";
 
 const steps = [
   {
@@ -13,7 +16,7 @@ const steps = [
   {
     num: "02",
     title: "Eu faço o diagnóstico inicial",
-    text: "Rodo as buscas reais nos 5 motores (ChatGPT, Gemini, Perplexity, Claude, Copilot) com a ferramenta aberta que mantenho em /tools/geo-baseline.",
+    text: "Rodo as buscas reais nos 5 motores (ChatGPT, Gemini, Perplexity, Claude, Copilot) com a ferramenta aberta que mantenho em /baseline-geo.",
   },
   {
     num: "03",
@@ -34,6 +37,24 @@ export function BaselineGeoClient() {
     tone === "vertical"
       ? "var(--vertical-medico-subtle-bg)"
       : "var(--accent-subtle-bg)";
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    profession: isMedico ? "Médico — " : "",
+    city: "",
+    queries: "",
+    message: "",
+  });
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const text = `Olá Henrique, solicito a análise GEO gratuita.\n\nNome: ${form.name}\nE-mail: ${form.email}\nProfissão: ${form.profession}\nCidade: ${form.city}\nTermos: ${form.queries}${form.message ? `\nObs: ${form.message}` : ""}`;
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`,
+      "_blank",
+    );
+  }
 
   return (
     <>
@@ -133,7 +154,7 @@ export function BaselineGeoClient() {
               </div>
             </div>
 
-            <form className="lg:col-span-7 rounded-2xl border border-[color:var(--border-default)] bg-[color:var(--bg-subtle)] p-6 sm:p-8 space-y-5">
+            <form onSubmit={handleSubmit} className="lg:col-span-7 rounded-2xl border border-[color:var(--border-default)] bg-[color:var(--bg-subtle)] p-6 sm:p-8 space-y-5">
               <div>
                 <h2 className="text-xl font-semibold text-[color:var(--text-primary)]">
                   Solicitar análise GEO
@@ -144,11 +165,27 @@ export function BaselineGeoClient() {
               </div>
 
               <Field id="name" label="Seu nome" required>
-                <input id="name" name="name" type="text" required className="bg-input" />
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  className="bg-input"
+                />
               </Field>
 
               <Field id="email" label="E-mail" required>
-                <input id="email" name="email" type="email" required className="bg-input" />
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  className="bg-input"
+                />
               </Field>
 
               <Field id="profession" label="Profissão / Segmento" required>
@@ -157,7 +194,8 @@ export function BaselineGeoClient() {
                   name="profession"
                   type="text"
                   required
-                  defaultValue={isMedico ? "Médico — " : ""}
+                  value={form.profession}
+                  onChange={(e) => setForm({ ...form, profession: e.target.value })}
                   placeholder={
                     isMedico
                       ? "Ex: Geriatra · CRM-PE"
@@ -173,6 +211,8 @@ export function BaselineGeoClient() {
                   name="city"
                   type="text"
                   required
+                  value={form.city}
+                  onChange={(e) => setForm({ ...form, city: e.target.value })}
                   placeholder="Ex: Recife, Lisboa, São Paulo"
                   className="bg-input"
                 />
@@ -188,6 +228,8 @@ export function BaselineGeoClient() {
                   name="queries"
                   rows={3}
                   required
+                  value={form.queries}
+                  onChange={(e) => setForm({ ...form, queries: e.target.value })}
                   placeholder={
                     isMedico
                       ? "Ex: melhor geriatra Recife · geriatra cuidados paliativos Recife · médico para Alzheimer"
@@ -202,6 +244,8 @@ export function BaselineGeoClient() {
                   id="message"
                   name="message"
                   rows={3}
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
                   className="bg-input"
                 />
               </Field>

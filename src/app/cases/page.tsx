@@ -33,7 +33,7 @@ const cases: Case[] = [
       { label: "Especialidade", value: "Geriatria · cuidados paliativos" },
     ],
     stack: "Next.js 16 + Cloudflare Pages + n8n + Looker Studio",
-    href: "/cases/fatima-knappe",
+    href: "/blog/baseline-fatima",
   },
   {
     client: "[Endocrinologista · Portugal]",

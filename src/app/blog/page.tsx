@@ -107,18 +107,11 @@ export default async function BlogPage() {
                 </h3>
                 <ul className="mt-4 space-y-2">
                   {categories.map((c) => (
-                    <li key={c.name}>
-                      <Link
-                        href={`/blog/categoria/${c.name
-                          .toLowerCase()
-                          .replace(/[ /]/g, "-")}`}
-                        className="flex items-center justify-between text-sm text-[color:var(--text-secondary)] hover:text-[color:var(--text-primary)] py-1"
-                      >
-                        <span>{c.name}</span>
-                        <span className="font-mono text-xs text-[color:var(--text-tertiary)]">
-                          {String(c.count).padStart(2, "0")}
-                        </span>
-                      </Link>
+                    <li key={c.name} className="flex items-center justify-between text-sm text-[color:var(--text-secondary)] py-1">
+                      <span>{c.name}</span>
+                      <span className="font-mono text-xs text-[color:var(--text-tertiary)]">
+                        {String(c.count).padStart(2, "0")}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -156,7 +149,7 @@ export default async function BlogPage() {
                   Ferramentas públicas
                 </h3>
                 <Link
-                  href="/tools/geo-baseline"
+                  href="/baseline-geo"
                   className="mt-3 inline-block text-sm font-medium text-[color:var(--accent-primary)] hover:underline"
                 >
                   Ferramenta de análise GEO →
