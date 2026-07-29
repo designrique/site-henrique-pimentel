@@ -1,0 +1,18 @@
+{
+  "name": "Fechar a Conta",
+  "short_name": "Fechar a Conta",
+  "description": "Caderninho de gastos da família Knappe · Pimentel",
+  "start_url": "/fechar-a-conta/",
+  "scope": "/fechar-a-conta/",
+  "display": "standalone",
+  "background_color": "#EAEDE7",
+  "theme_color": "#EAEDE7",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

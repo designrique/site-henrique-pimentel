@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#EAEDE7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Fechar a Conta">
 <title>Fechar a Conta</title>
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -37,6 +43,50 @@
     font-family:'Fraunces',serif; font-weight:600; font-size:28px;
     margin:0; letter-spacing:-.01em;
   }
+  .user-row{
+    display:flex; align-items:center; justify-content:space-between; margin-top:8px;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted);
+  }
+  .user-row .sync-dot{
+    display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:5px;
+    background:var(--muted); vertical-align:1px;
+  }
+  .sync-dot.on{background:var(--positive);}
+  .user-row button{
+    background:none; border:none; color:var(--muted); font-family:'IBM Plex Mono',monospace;
+    font-size:11px; cursor:pointer; text-decoration:underline; text-underline-offset:3px; padding:4px;
+  }
+
+  /* Login screen */
+  #loginScreen{max-width:400px; margin:0 auto; padding:12vh 20px 40px; display:none;}
+  #loginScreen.show{display:block;}
+  #loginScreen .eyebrow{text-align:center;}
+  #loginScreen h1{text-align:center; margin-bottom:6px;}
+  #loginScreen .login-sub{
+    text-align:center; font-size:13px; color:var(--muted); margin:0 0 28px;
+    font-family:'Fraunces',serif; font-style:italic;
+  }
+  .login-card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px; padding:22px 18px;
+  }
+  #appScreen{display:none;}
+  #appScreen.show{display:block;}
+
+  /* Loading */
+  .loading-line{
+    text-align:center; font-family:'IBM Plex Mono',monospace; font-size:12px;
+    color:var(--muted); padding:24px 0;
+  }
+
+  /* Toast */
+  #toast{
+    position:fixed; bottom:92px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--ink); color:var(--card); font-size:13px; padding:10px 18px;
+    border-radius:24px; opacity:0; pointer-events:none; transition:all .3s ease; z-index:60;
+    max-width:88vw; text-align:center; font-family:'IBM Plex Mono',monospace;
+  }
+  #toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+  #toast.err{background:var(--negative);}
 
   /* Month nav */
   .month-nav{
@@ -178,12 +228,14 @@
   .hist-arrow{font-size:11px; margin-left:4px;}
   .export-btn{
     width:100%; padding:12px; background:none; color:var(--ink); border:1px dashed var(--line);
-    border-radius:10px; font-size:13px; font-weight:500; cursor:pointer; margin-bottom:24px;
+    border-radius:10px; font-size:13px; font-weight:500; cursor:pointer; margin-bottom:10px;
     font-family:'IBM Plex Mono',monospace;
   }
+  .export-row{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:24px;}
+  .export-row .export-btn{margin-bottom:0;}
 
   /* Filter tabs */
-  .tabs{display:flex; gap:6px; margin-bottom:10px;}
+  .tabs{display:flex; gap:6px; margin-bottom:10px; flex-wrap:wrap;}
   .tab{
     font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase;
     letter-spacing:.05em; padding:7px 12px; border-radius:20px; border:1px solid var(--line);
@@ -258,18 +310,49 @@
     width:100%; padding:14px; background:var(--ink); color:var(--card); border:none;
     border-radius:10px; font-size:15px; font-weight:600; margin-top:6px; cursor:pointer;
   }
+  .save-btn:disabled{opacity:.55; cursor:wait;}
   .cancel-btn{
     width:100%; padding:10px; background:none; color:var(--muted); border:none;
     font-size:13px; margin-top:8px; cursor:pointer;
   }
   #fieldFatura{display:none;}
+  .login-err{
+    color:var(--negative); font-size:12px; margin-top:10px; display:none;
+    font-family:'IBM Plex Mono',monospace;
+  }
 </style>
 </head>
 <body>
 
+<!-- ============ TELA DE LOGIN ============ -->
+<div id="loginScreen">
+  <p class="eyebrow">Knappe · Pimentel</p>
+  <h1>Fechar a Conta</h1>
+  <p class="login-sub">o caderninho de gastos da família</p>
+  <div class="login-card">
+    <div class="field">
+      <label>E-mail</label>
+      <input type="email" id="loginEmail" autocomplete="username" placeholder="seu e-mail">
+    </div>
+    <div class="field">
+      <label>Senha</label>
+      <input type="password" id="loginPass" autocomplete="current-password" placeholder="sua senha">
+    </div>
+    <button class="save-btn" id="loginBtn" onclick="doLogin()">Entrar</button>
+    <div class="login-err" id="loginErr"></div>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="appScreen">
+
 <header>
   <p class="eyebrow">Knappe · Pimentel</p>
   <h1>Fechar a Conta</h1>
+  <div class="user-row">
+    <span><span class="sync-dot" id="syncDot"></span><span id="userName">—</span></span>
+    <button onclick="doLogout()">sair</button>
+  </div>
 </header>
 
 <div class="wrap">
@@ -362,7 +445,11 @@
     </table>
   </div>
 
-  <button class="export-btn" onclick="exportCsv()">↓ Exportar todos os lançamentos (.csv)</button>
+  <div class="export-row">
+    <button class="export-btn" onclick="exportCsv()">↓ Exportar .csv</button>
+    <button class="export-btn" onclick="document.getElementById('csvFile').click()">↑ Importar .csv</button>
+  </div>
+  <input type="file" id="csvFile" accept=".csv,text/csv" style="display:none" onchange="importCsv(event)">
 
   <div class="view-toggle">
     <span id="vFatura" class="active" onclick="setView('fatura')">ver por fatura</span>
@@ -378,7 +465,7 @@
     <div class="tab" data-f="debito" onclick="setFilter('debito')">Débito</div>
   </div>
 
-  <div id="entriesList"></div>
+  <div id="entriesList"><div class="loading-line">carregando…</div></div>
 
 </div>
 
@@ -426,8 +513,29 @@
   </div>
 </div>
 
+</div><!-- /appScreen -->
+
+<div id="toast"></div>
+
+<script src="supabase.js"></script>
 <script>
-let data = { entries: [], income: {} };
+/* ================= Supabase ================= */
+const SUPABASE_URL = 'https://gjsdsjfkjyuznmlbofbq.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_1UZyjHPsgCpzCXRJqCSJ7A_xEF2LUpm';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const NOMES = {
+  'hdgpimentel@gmail.com': 'Henrique',
+  'fatinhaknappe@gmail.com': 'Fátima'
+};
+function nomeDe(email){
+  if(!email) return '';
+  return NOMES[email.toLowerCase()] || email.split('@')[0];
+}
+
+/* ================= Estado ================= */
+let data = { entries: [], income: {}, weeklyIncome: {} };
+let currentUser = null;
 let currentMonth = monthKey(new Date());
 let currentView = 'fatura';
 let currentFilter = 'todos';
@@ -435,8 +543,7 @@ let formTipo = 'debito';
 let formCategoria = 'variavel';
 let editingId = null;
 
-const STORAGE_KEY = 'kp-budget-data';
-
+/* ================= Helpers ================= */
 function monthKey(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0'); }
 function monthLabelText(mk){
   const [y,m] = mk.split('-').map(Number);
@@ -458,26 +565,127 @@ function defaultFaturaMonth(dateStr){
   const d = new Date(dateStr+'T00:00:00');
   return monthKey(new Date(d.getFullYear(), d.getMonth()+1, 1));
 }
+function escapeHtml(s){
+  const d = document.createElement('div'); d.textContent = s; return d.innerHTML;
+}
+let toastTimer = null;
+function toast(msg, isErr){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = isErr ? 'show err' : 'show';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>{ t.className=''; }, 3200);
+}
 
-function loadData(){
+/* ================= Auth ================= */
+async function doLogin(){
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass = document.getElementById('loginPass').value;
+  const errEl = document.getElementById('loginErr');
+  errEl.style.display = 'none';
+  if(!email || !pass){ errEl.textContent='Preencha e-mail e senha.'; errEl.style.display='block'; return; }
+  const btn = document.getElementById('loginBtn');
+  btn.disabled = true; btn.textContent = 'Entrando…';
+  const { error } = await sb.auth.signInWithPassword({ email, password: pass });
+  btn.disabled = false; btn.textContent = 'Entrar';
+  if(error){
+    errEl.textContent = 'Login falhou: e-mail ou senha incorretos.';
+    errEl.style.display = 'block';
+    return;
+  }
+}
+async function doLogout(){
+  await sb.auth.signOut();
+}
+document.getElementById('loginPass').addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
+
+sb.auth.onAuthStateChange((_event, session)=>{
+  if(session && session.user){
+    currentUser = session.user;
+    showApp();
+  }else{
+    currentUser = null;
+    showLogin();
+  }
+});
+
+function showLogin(){
+  document.getElementById('loginScreen').classList.add('show');
+  document.getElementById('appScreen').classList.remove('show');
+  stopRealtime();
+}
+let appStarted = false;
+function showApp(){
+  document.getElementById('loginScreen').classList.remove('show');
+  document.getElementById('appScreen').classList.add('show');
+  document.getElementById('userName').textContent = nomeDe(currentUser.email);
+  loadAll().then(()=>{ renderAll(); });
+  startRealtime();
+  appStarted = true;
+}
+
+/* ================= Dados (Supabase) ================= */
+function rowToEntry(r){
+  return {
+    id: r.id, tipo: r.tipo, categoria: r.categoria,
+    descricao: r.descricao || '', valor: Number(r.valor),
+    tag: r.tag || '', dataCompra: r.data_compra,
+    mesFatura: r.mes_fatura, criadoPor: r.criado_por || ''
+  };
+}
+
+async function loadAll(){
   try{
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if(raw){ data = JSON.parse(raw); }
-  }catch(e){ /* sem dados ainda ou storage indisponível */ }
-  if(!data.entries) data.entries = [];
-  if(!data.income) data.income = {};
-  if(!data.weeklyIncome) data.weeklyIncome = {};
-}
-function persist(){
-  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
-  catch(e){ console.error('Falha ao salvar', e); }
+    const [ent, inc, wk] = await Promise.all([
+      sb.from('entries').select('*').order('data_compra', {ascending:false}),
+      sb.from('monthly_income').select('*'),
+      sb.from('weekly_income').select('*')
+    ]);
+    if(ent.error||inc.error||wk.error) throw (ent.error||inc.error||wk.error);
+    data.entries = (ent.data||[]).map(rowToEntry);
+    data.income = {};
+    (inc.data||[]).forEach(r=>{ data.income[r.mes] = Number(r.teto); });
+    data.weeklyIncome = {};
+    (wk.data||[]).forEach(r=>{ data.weeklyIncome[r.semana] = Number(r.teto); });
+  }catch(e){
+    console.error(e);
+    toast('Erro ao carregar dados. Verifique a internet.', true);
+  }
 }
 
+function renderAll(){ render(); renderReports(); renderHistory(); }
+
+/* ---- Realtime: mudanças feitas em outro aparelho aparecem aqui ---- */
+let rtChannel = null;
+let reloadTimer = null;
+function scheduleReload(){
+  clearTimeout(reloadTimer);
+  reloadTimer = setTimeout(async ()=>{ await loadAll(); renderAll(); }, 350);
+}
+function startRealtime(){
+  stopRealtime();
+  rtChannel = sb.channel('familia')
+    .on('postgres_changes', {event:'*', schema:'public', table:'entries'}, scheduleReload)
+    .on('postgres_changes', {event:'*', schema:'public', table:'monthly_income'}, scheduleReload)
+    .on('postgres_changes', {event:'*', schema:'public', table:'weekly_income'}, scheduleReload)
+    .subscribe((status)=>{
+      document.getElementById('syncDot').classList.toggle('on', status==='SUBSCRIBED');
+    });
+}
+function stopRealtime(){
+  if(rtChannel){ sb.removeChannel(rtChannel); rtChannel = null; }
+  document.getElementById('syncDot').classList.remove('on');
+}
+/* Celular volta do bolso → recarrega para pegar o que mudou */
+document.addEventListener('visibilitychange', ()=>{
+  if(document.visibilityState==='visible' && currentUser && appStarted) scheduleReload();
+});
+
+/* ================= Navegação / filtros ================= */
 function changeMonth(delta){
   currentMonth = addMonths(currentMonth, delta);
   render();
 }
-
 function setView(v){
   currentView = v;
   document.getElementById('vFatura').classList.toggle('active', v==='fatura');
@@ -499,7 +707,6 @@ function entriesInFaturaView(mk){
 function entriesInCompraView(mk){
   return data.entries.filter(e=> e.dataCompra.slice(0,7)===mk);
 }
-
 function applyFilter(list){
   if(currentFilter==='todos') return list;
   if(currentFilter==='fixo') return list.filter(e=>e.categoria==='fixo');
@@ -508,7 +715,6 @@ function applyFilter(list){
   if(currentFilter==='debito') return list.filter(e=>e.tipo==='debito');
   return list;
 }
-
 function sum(list){ return list.reduce((a,e)=>a+Number(e.valor),0); }
 
 function tagGroups(list){
@@ -529,7 +735,7 @@ function renderTagBreakdown(listElId, boxElId, list){
   ).join('');
 }
 
-/* ---- Reports (dia/semana) ---- */
+/* ================= Relatórios (dia/semana) ================= */
 let reportPeriod = 'dia';
 let reportDayKey = toKey(new Date());
 let reportWeekStart = mondayOf(new Date());
@@ -607,15 +813,17 @@ function renderReports(){
   }
 }
 
-document.getElementById('repTetoInput').addEventListener('change', (ev)=>{
+document.getElementById('repTetoInput').addEventListener('change', async (ev)=>{
   const wk = ev.target.dataset.weekKey;
   if(!wk) return;
-  if(!data.weeklyIncome) data.weeklyIncome = {};
-  data.weeklyIncome[wk] = Number(ev.target.value)||0;
-  persist();
+  const teto = Number(ev.target.value)||0;
+  data.weeklyIncome[wk] = teto;
   renderReports();
+  const { error } = await sb.from('weekly_income').upsert({ semana: wk, teto: teto, updated_at: new Date().toISOString() });
+  if(error){ toast('Erro ao salvar teto semanal.', true); }
 });
 
+/* ================= Render principal ================= */
 function render(){
   document.getElementById('monthLabel').textContent = monthLabelText(currentMonth);
   const teto = Number(data.income[currentMonth] || 0);
@@ -679,9 +887,10 @@ function renderList(list){
     }
     const tagClass = e.tipo==='cartao' ? 'cartao' : 'debito';
     const tagText = e.tipo==='cartao' ? 'Cartão' : 'Débito';
+    const porQuem = e.criadoPor ? ` · ${escapeHtml(e.criadoPor)}` : '';
     const subText = e.tipo==='cartao'
-      ? `Fatura ${monthLabelText(e.mesFatura)} · ${e.categoria==='fixo'?'fixo':'variável'}`
-      : `${e.categoria==='fixo'?'fixo':'variável'}`;
+      ? `Fatura ${monthLabelText(e.mesFatura)} · ${e.categoria==='fixo'?'fixo':'variável'}${porQuem}`
+      : `${e.categoria==='fixo'?'fixo':'variável'}${porQuem}`;
     const tagChip = e.tag ? `<span class="tag-chip">${escapeHtml(e.tag)}</span>` : '';
     html += `
       <div class="entry">
@@ -698,29 +907,28 @@ function renderList(list){
   el.innerHTML = html;
 }
 
-function escapeHtml(s){
-  const d = document.createElement('div'); d.textContent = s; return d.innerHTML;
-}
-
-function deleteEntry(id){
+/* ================= CRUD ================= */
+async function deleteEntry(id){
   const e = data.entries.find(x=>x.id===id);
   if(!e) return;
   const ok = confirm(`Excluir "${e.descricao||'sem descrição'}" — ${fmt(e.valor)}?\n\nEssa ação não pode ser desfeita.`);
   if(!ok) return;
   data.entries = data.entries.filter(x=>x.id!==id);
-  persist();
-  render();
-  renderHistory();
+  renderAll();
+  const { error } = await sb.from('entries').delete().eq('id', id);
+  if(error){ toast('Erro ao excluir. Recarregando…', true); await loadAll(); renderAll(); }
+  else{ toast('Lançamento excluído.'); }
 }
 
-document.getElementById('tetoInput').addEventListener('change', (ev)=>{
+document.getElementById('tetoInput').addEventListener('change', async (ev)=>{
   const v = Number(ev.target.value)||0;
   data.income[currentMonth] = v;
-  persist();
-  render();
-  renderHistory();
+  renderAll();
+  const { error } = await sb.from('monthly_income').upsert({ mes: currentMonth, teto: v, updated_at: new Date().toISOString() });
+  if(error){ toast('Erro ao salvar o teto.', true); }
 });
 
+/* ================= Modal ================= */
 function openModal(){
   editingId = null;
   document.getElementById('sheetTitle').textContent = 'Novo lançamento';
@@ -774,7 +982,7 @@ document.getElementById('dataInput').addEventListener('change', (ev)=>{
   }
 });
 
-function saveEntry(){
+async function saveEntry(){
   const desc = document.getElementById('descInput').value.trim();
   const valor = Number(document.getElementById('valorInput').value);
   const dataCompra = document.getElementById('dataInput').value;
@@ -783,44 +991,41 @@ function saveEntry(){
   const tag = document.getElementById('tagInput').value.trim();
   const mesFatura = formTipo==='cartao' ? document.getElementById('faturaInput').value : dataCompra.slice(0,7);
 
-  if(editingId){
-    const idx = data.entries.findIndex(x=>x.id===editingId);
-    if(idx>-1){
-      data.entries[idx] = {
-        ...data.entries[idx],
-        tipo: formTipo, categoria: formCategoria, descricao: desc,
-        valor: valor, tag: tag, dataCompra: dataCompra, mesFatura: mesFatura
-      };
+  const btn = document.getElementById('saveBtnLabel');
+  btn.disabled = true;
+
+  const payload = {
+    tipo: formTipo, categoria: formCategoria, descricao: desc,
+    valor: valor, tag: tag || null, data_compra: dataCompra, mes_fatura: mesFatura
+  };
+
+  try{
+    if(editingId){
+      payload.updated_at = new Date().toISOString();
+      const { data: rows, error } = await sb.from('entries').update(payload).eq('id', editingId).select();
+      if(error) throw error;
+      const idx = data.entries.findIndex(x=>x.id===editingId);
+      if(idx>-1 && rows && rows[0]) data.entries[idx] = rowToEntry(rows[0]);
+      toast('Edição salva.');
+    }else{
+      payload.criado_por = nomeDe(currentUser && currentUser.email);
+      const { data: rows, error } = await sb.from('entries').insert(payload).select();
+      if(error) throw error;
+      if(rows && rows[0]) data.entries.push(rowToEntry(rows[0]));
+      toast('Lançamento salvo.');
     }
-    persist();
     closeModal();
     currentMonth = currentView==='fatura' ? mesFatura : dataCompra.slice(0,7);
-    render();
-    renderReports();
-    renderHistory();
-    return;
+    renderAll();
+  }catch(e){
+    console.error(e);
+    toast('Erro ao salvar. Verifique a internet e tente de novo.', true);
+  }finally{
+    btn.disabled = false;
   }
-
-  const entry = {
-    id: Date.now().toString(36)+Math.random().toString(36).slice(2,7),
-    tipo: formTipo,
-    categoria: formCategoria,
-    descricao: desc,
-    valor: valor,
-    tag: tag,
-    dataCompra: dataCompra,
-    mesFatura: mesFatura
-  };
-  data.entries.push(entry);
-  persist();
-  closeModal();
-  currentMonth = currentView==='fatura' ? entry.mesFatura : entry.dataCompra.slice(0,7);
-  render();
-  renderReports();
-  renderHistory();
 }
 
-/* ---- Histórico mensal ---- */
+/* ================= Histórico mensal ================= */
 function renderHistory(){
   const anchor = monthKey(new Date());
   const months = [];
@@ -848,6 +1053,7 @@ function renderHistory(){
   document.getElementById('historyBody').innerHTML = rows.join('');
 }
 
+/* ================= CSV: exportar / importar ================= */
 function exportCsv(){
   const header = ['data_compra','mes_fatura','tipo','categoria','tag','descricao','valor'];
   const lines = [header.join(';')];
@@ -874,12 +1080,57 @@ function exportCsv(){
   URL.revokeObjectURL(url);
 }
 
-(function init(){
-  loadData();
-  render();
-  renderReports();
-  renderHistory();
-})();
+async function importCsv(ev){
+  const file = ev.target.files && ev.target.files[0];
+  ev.target.value = ''; // permite reimportar o mesmo arquivo
+  if(!file) return;
+  const text = (await file.text()).replace(/^﻿/, '');
+  const lines = text.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
+  if(lines.length < 2){ toast('CSV vazio ou sem dados.', true); return; }
+
+  const header = lines[0].toLowerCase().split(';').map(h=>h.trim());
+  const col = (name)=> header.indexOf(name);
+  const iData = col('data_compra'), iFat = col('mes_fatura'), iTipo = col('tipo'),
+        iCat = col('categoria'), iTag = col('tag'), iDesc = col('descricao'), iVal = col('valor');
+  if(iData<0 || iTipo<0 || iCat<0 || iVal<0){
+    toast('CSV inválido: use o mesmo formato do exportar.', true); return;
+  }
+
+  const rows = [];
+  const problemas = [];
+  for(let i=1; i<lines.length; i++){
+    const p = lines[i].split(';');
+    const dataCompra = (p[iData]||'').trim();
+    const tipo = (p[iTipo]||'').trim().toLowerCase();
+    const categoria = (p[iCat]||'').trim().toLowerCase();
+    const valor = Number(String(p[iVal]||'').trim().replace(',','.'));
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(dataCompra) || !['debito','cartao'].includes(tipo)
+       || !['fixo','variavel'].includes(categoria) || !valor || valor<=0){
+      problemas.push(i+1);
+      continue;
+    }
+    const mesFatura = (iFat>=0 && (p[iFat]||'').trim()) ? p[iFat].trim() : dataCompra.slice(0,7);
+    rows.push({
+      tipo, categoria, valor,
+      descricao: iDesc>=0 ? (p[iDesc]||'').trim() : '',
+      tag: iTag>=0 && (p[iTag]||'').trim() ? p[iTag].trim() : null,
+      data_compra: dataCompra,
+      mes_fatura: mesFatura,
+      criado_por: nomeDe(currentUser && currentUser.email) + ' (import)'
+    });
+  }
+
+  if(rows.length===0){ toast('Nenhuma linha válida no CSV.', true); return; }
+  const ok = confirm(`Importar ${rows.length} lançamento(s)?` + (problemas.length ? `\n(${problemas.length} linha(s) inválida(s) serão ignoradas: ${problemas.slice(0,8).join(', ')}${problemas.length>8?'…':''})` : ''));
+  if(!ok) return;
+
+  toast('Importando…');
+  const { error } = await sb.from('entries').insert(rows);
+  if(error){ console.error(error); toast('Erro ao importar CSV.', true); return; }
+  await loadAll();
+  renderAll();
+  toast(`${rows.length} lançamento(s) importado(s).`);
+}
 </script>
 </body>
 </html>
