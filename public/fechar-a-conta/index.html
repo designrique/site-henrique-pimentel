@@ -936,8 +936,9 @@ function openModal(){
   setTipo('debito');
   setCategoria('variavel');
   document.getElementById('overlay').classList.add('show');
-  document.getElementById('dataInput').value = new Date().toISOString().slice(0,10);
-  document.getElementById('faturaInput').value = defaultFaturaMonth(new Date().toISOString().slice(0,10));
+  const hoje = toKey(new Date()); // data local, não UTC
+  document.getElementById('dataInput').value = hoje;
+  document.getElementById('faturaInput').value = defaultFaturaMonth(hoje);
 }
 function editEntry(id){
   const e = data.entries.find(x=>x.id===id);
@@ -989,7 +990,11 @@ async function saveEntry(){
   if(!valor || valor<=0){ alert('Informe um valor válido.'); return; }
   if(!dataCompra){ alert('Informe a data da compra.'); return; }
   const tag = document.getElementById('tagInput').value.trim();
-  const mesFatura = formTipo==='cartao' ? document.getElementById('faturaInput').value : dataCompra.slice(0,7);
+  let mesFatura = dataCompra.slice(0,7);
+  if(formTipo==='cartao'){
+    const mf = document.getElementById('faturaInput').value;
+    mesFatura = /^\d{4}-\d{2}$/.test(mf) ? mf : defaultFaturaMonth(dataCompra);
+  }
 
   const btn = document.getElementById('saveBtnLabel');
   btn.disabled = true;
@@ -1109,7 +1114,8 @@ async function importCsv(ev){
       problemas.push(i+1);
       continue;
     }
-    const mesFatura = (iFat>=0 && (p[iFat]||'').trim()) ? p[iFat].trim() : dataCompra.slice(0,7);
+    const mfRaw = iFat>=0 ? (p[iFat]||'').trim() : '';
+    const mesFatura = /^\d{4}-\d{2}$/.test(mfRaw) ? mfRaw : dataCompra.slice(0,7);
     rows.push({
       tipo, categoria, valor,
       descricao: iDesc>=0 ? (p[iDesc]||'').trim() : '',
