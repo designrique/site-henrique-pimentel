@@ -58,6 +58,12 @@ Código autoral. Stack: Next.js 16 · React 19 · Tailwind 4 · Supabase (self-h
 - [x] Proteção contra SSRF nos webhooks de saída (https + bloqueio de hosts internos)
 - [x] Guia de deploy self-hosted (DEPLOY.md)
 
+## ✅ Deploy Cloudflare Workers (OpenNext)
+- [x] Adaptador @opennextjs/cloudflare + wrangler.jsonc (nodejs_compat)
+- [x] Next atualizado para 16.2.12 (compatível com OpenNext)
+- [x] Scripts cf:preview / cf:deploy / cf:typegen; build workerd validado
+- [x] DEPLOY.md reescrito para Cloudflare + notas do Supabase self-hosted (HTTPS)
+
 ## ⏳ Evoluções futuras
 - [ ] Timeline unificada (conversa + histórico do cliente)
 - [ ] Etiquetas e campos personalizados no CRM

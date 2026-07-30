@@ -9,3 +9,11 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+// Habilita o contexto Cloudflare (getCloudflareContext) durante `next dev`.
+// Só roda em desenvolvimento; não afeta o build de produção do Next.
+if (process.env.NODE_ENV === "development") {
+  void import("@opennextjs/cloudflare")
+    .then(({ initOpenNextCloudflareForDev }) => initOpenNextCloudflareForDev())
+    .catch(() => {});
+}
