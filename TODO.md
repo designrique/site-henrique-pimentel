@@ -77,6 +77,12 @@ Código autoral. Stack: Next.js 16 · React 19 · Tailwind 4 · Supabase (self-h
 - [x] Respostas rápidas / templates (gestão + seletor no compositor)
 - [x] Log de entregas de webhook + reenvio manual
 - [x] Painel enriquecido (mensagens 7d, por canal, atrasadas, ganhos×perdidos)
+
+## ✅ Automação e exportação
+- [x] Configurações da organização (org_settings) + página /atendimento/configuracoes
+- [x] Fila / atribuição automática ao atendente menos ocupado
+- [x] Horário de atendimento + auto-resposta fora do expediente
+- [x] Exportação CSV (contatos, conversas, negócios) no painel
 - [ ] Log de entregas de webhook (retentativas)
 - [ ] Mídia em Instagram/Telegram
 - [ ] Conectores nativos prontos (Zapier/n8n)

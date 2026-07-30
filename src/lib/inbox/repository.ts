@@ -21,7 +21,7 @@ export interface InboxRepository {
   appendOutbound(conversationId: string, text: string, agentId: string): Promise<Message | null>;
   ingestInbound(
     inbound: InboundMessage,
-  ): Promise<{ conversation: Conversation; message: Message }>;
+  ): Promise<{ conversation: Conversation; message: Message; created: boolean }>;
   setStatus(conversationId: string, status: ConversationStatus): Promise<ConversationView | null>;
   markRead(conversationId: string): Promise<void>;
   listAgents(): Promise<Agent[]>;

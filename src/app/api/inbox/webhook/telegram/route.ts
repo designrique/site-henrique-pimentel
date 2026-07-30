@@ -5,6 +5,7 @@ import { isSupabaseConfigured } from "@/lib/supabase/server";
 import { createSupabaseAdminClient, resolveOrgByChannelConfig } from "@/lib/supabase/admin";
 import { parseTelegramUpdate } from "@/lib/inbox/channels/telegram";
 import { dispatchEvent } from "@/lib/integrations/webhooks";
+import { runInboundAutomation } from "@/lib/inbox/automation";
 
 export const dynamic = "force-dynamic";
 
@@ -33,7 +34,8 @@ export async function POST(request: Request) {
 
     const repo = createSupabaseRepository(admin, route.organizationId, "system");
     for (const msg of inbound) {
-      const { conversation } = await repo.ingestInbound(msg);
+      const { conversation, created } = await repo.ingestInbound(msg);
+      await runInboundAutomation(admin, route.organizationId, conversation, msg.contactHandle, created);
       await dispatchEvent(route.organizationId, "message.received", {
         conversation_id: conversation.id,
         channel: msg.channel,

@@ -6,6 +6,7 @@ import { createSupabaseAdminClient, resolveOrgByChannel } from "@/lib/supabase/a
 import { parseInstagramWebhook, verifyInstagramWebhook } from "@/lib/inbox/channels/instagram";
 import { verifyMetaSignature } from "@/lib/inbox/channels/whatsapp";
 import { dispatchEvent } from "@/lib/integrations/webhooks";
+import { runInboundAutomation } from "@/lib/inbox/automation";
 
 export const dynamic = "force-dynamic";
 
@@ -65,7 +66,8 @@ export async function POST(request: Request) {
         continue;
       }
       const repo = createSupabaseRepository(admin, route.organizationId, "system");
-      const { conversation } = await repo.ingestInbound(msg);
+      const { conversation, created } = await repo.ingestInbound(msg);
+      await runInboundAutomation(admin, route.organizationId, conversation, msg.contactHandle, created);
       await dispatchEvent(route.organizationId, "message.received", {
         conversation_id: conversation.id,
         channel: msg.channel,

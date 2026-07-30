@@ -240,6 +240,7 @@ export const inMemoryRepository: InboxRepository = {
     let conv = Array.from(d.conversations.values()).find(
       (c) => c.contactId === contact!.id && c.status !== "closed",
     );
+    const created = !conv;
     if (!conv) {
       conv = {
         id: makeId(d, "cv"),
@@ -273,7 +274,7 @@ export const inMemoryRepository: InboxRepository = {
     conv.unreadCount += 1;
     if (conv.status === "closed") conv.status = "open";
 
-    return { conversation: conv, message };
+    return { conversation: conv, message, created };
   },
 
   async setStatus(conversationId, status) {

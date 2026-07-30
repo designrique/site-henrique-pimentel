@@ -49,6 +49,25 @@ export function DashboardClient({ demo }: { demo: boolean }) {
         <h1 className="text-lg font-semibold">Painel</h1>
       </div>
 
+      {!demo && (
+        <div className="mt-3 flex flex-wrap gap-2">
+          <span className="text-xs text-[color:var(--text-tertiary)] self-center">Exportar CSV:</span>
+          {[
+            { type: "contacts", label: "Contatos" },
+            { type: "conversations", label: "Conversas" },
+            { type: "deals", label: "Negócios" },
+          ].map((x) => (
+            <a
+              key={x.type}
+              href={`/api/crm/export?type=${x.type}`}
+              className="rounded-lg border border-[color:var(--border-default)] px-2.5 py-1 text-xs font-medium hover:bg-[color:var(--bg-subtle)]"
+            >
+              {x.label}
+            </a>
+          ))}
+        </div>
+      )}
+
       {demo ? (
         <p className="mt-4 rounded-lg border border-[color:var(--border-default)] bg-[color:var(--bg-subtle)] px-3 py-2 text-xs text-[color:var(--text-secondary)]">
           Modo demo: o painel exibe métricas com o Supabase configurado.

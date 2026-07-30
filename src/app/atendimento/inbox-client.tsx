@@ -244,6 +244,7 @@ export function InboxClient({ session }: { session: InboxSession }) {
             <a href="/atendimento/respostas" className="hover:underline">Respostas</a>
             <a href="/atendimento/integracoes" className="hover:underline">Integrações</a>
             <a href="/atendimento/canais" className="hover:underline">Canais</a>
+            <a href="/atendimento/configuracoes" className="hover:underline">Config</a>
           </nav>
           {!session.demo && <NotificationBell />}
           <span className="text-xs text-[color:var(--text-secondary)]">

@@ -266,6 +266,7 @@ export function createSupabaseRepository(
         .maybeSingle();
 
       let conversationRow = existing;
+      const isNewConversation = !conversationRow;
       if (!conversationRow) {
         const { data: created, error: convErr } = await supabase
           .from("conversations")
@@ -310,7 +311,7 @@ export function createSupabaseRepository(
         lastMessageAt: message.created_at,
         lastMessagePreview: inbound.text,
       };
-      return { conversation, message: mapMessage(message as MessageRow) };
+      return { conversation, message: mapMessage(message as MessageRow), created: isNewConversation };
     },
 
     async setStatus(conversationId, status) {
