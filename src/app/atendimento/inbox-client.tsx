@@ -1,12 +1,19 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { signOut } from "@/app/login/actions";
 import type {
   Channel,
   ConversationStatus,
   ConversationView,
   Message,
 } from "@/lib/inbox/types";
+
+export interface InboxSession {
+  userName: string;
+  orgName: string;
+  demo: boolean;
+}
 
 const CHANNEL_LABEL: Record<Channel, string> = {
   whatsapp: "WhatsApp",
@@ -55,7 +62,7 @@ function Avatar({ initials, channel }: { initials: string; channel: Channel }) {
   );
 }
 
-export function InboxClient() {
+export function InboxClient({ session }: { session: InboxSession }) {
   const [conversations, setConversations] = useState<ConversationView[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -154,7 +161,35 @@ export function InboxClient() {
   }
 
   return (
-    <div className="grid h-[calc(100vh-4rem)] grid-cols-1 md:grid-cols-[340px_1fr] xl:grid-cols-[340px_1fr_280px]">
+    <div className="flex h-screen flex-col">
+      {/* Barra superior — organização, usuário e sair */}
+      <div className="flex h-12 shrink-0 items-center justify-between border-b border-[color:var(--border-default)] bg-[color:var(--bg-primary)] px-4">
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-semibold">{session.orgName || "hpchat"}</span>
+          {session.demo && (
+            <span className="rounded-full bg-[color:var(--warning)]/15 px-2 py-0.5 text-[10px] font-medium text-[color:var(--warning)]">
+              demo
+            </span>
+          )}
+        </div>
+        <div className="flex items-center gap-3">
+          <span className="text-xs text-[color:var(--text-secondary)]">
+            {session.userName}
+          </span>
+          {!session.demo && (
+            <form action={signOut}>
+              <button
+                type="submit"
+                className="rounded-lg border border-[color:var(--border-default)] px-2.5 py-1 text-xs font-medium hover:bg-[color:var(--bg-subtle)]"
+              >
+                Sair
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
+
+      <div className="grid min-h-0 flex-1 grid-cols-1 md:grid-cols-[340px_1fr] xl:grid-cols-[340px_1fr_280px]">
       {/* Coluna 1 — lista de conversas */}
       <aside className="flex min-h-0 flex-col border-r border-[color:var(--border-default)]">
         <div className="border-b border-[color:var(--border-default)] p-4">
@@ -379,6 +414,7 @@ export function InboxClient() {
           )}
         </aside>
       )}
+      </div>
     </div>
   );
 }
