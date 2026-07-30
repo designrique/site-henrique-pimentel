@@ -55,10 +55,61 @@ Sem `WHATSAPP_VERIFY_TOKEN`, a verificação aceita `dev-verify-token` (só dev)
    `WHATSAPP_VERIFY_TOKEN`. A Meta fará um `GET` de verificação.
 3. Assine o campo `messages`. Mensagens recebidas passam a cair no Inbox.
 
+## SaaS multi-tenant (Supabase self-hosted)
+
+O sistema evolui para um SaaS: várias organizações (tenants), cada uma com seus
+usuários e dados isolados. A persistência fica numa instância **Supabase
+self-hosted** (Postgres + Auth + RLS + Realtime).
+
+### Camadas
+
+```
+src/lib/inbox/repository.ts     Interface async + getInboxRepository() (seletor)
+src/lib/inbox/store.ts          Implementação em memória (demo/dev, sem banco)
+src/lib/inbox/store.supabase.ts Implementação Supabase (produção, por tenant)
+src/lib/supabase/{client,server,middleware}.ts   Wiring do Supabase (@supabase/ssr)
+supabase/migrations/            Schema SQL (aplicar na sua instância)
+```
+
+`getInboxRepository()` escolhe o backend por ambiente: sem Supabase → memória;
+com Supabase + usuário autenticado + organização → repositório do tenant.
+
+### Migrações
+
+Aplique na sua instância self-hosted, em ordem:
+
+```bash
+psql "$SUPABASE_DB_URL" -f supabase/migrations/0001_core.sql
+psql "$SUPABASE_DB_URL" -f supabase/migrations/0002_inbox.sql
+# ou, com Supabase CLI apontando para a instância: supabase db push
+```
+
+- `0001_core.sql` — perfis, organizações, membros, papéis, RLS e helpers.
+- `0002_inbox.sql` — canais, contatos, conversas, mensagens (tudo com RLS por org).
+
+### Variáveis de ambiente (Supabase self-hosted)
+
+No `.env.local` (não versionado):
+
+```bash
+# URL pública da sua instância Supabase self-hosted
+NEXT_PUBLIC_SUPABASE_URL=https://supabase.seu-dominio.com
+
+# Chave anônima (anon) da instância
+NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+```
+
+Sem essas variáveis, o app roda em **modo demo** (repositório em memória),
+útil para desenvolvimento sem banco.
+
 ## Próximos passos sugeridos
 
-- Persistência real (Supabase/Postgres) implementando `InboxRepository`.
-- Autenticação/sessão de agentes (a tela é interna e vem com `noindex`).
-- Suporte a mídia (imagem, áudio, documento) no parser e na UI.
-- Tempo real via WebSocket/SSE no lugar do polling de 5s.
+- **Auth/onboarding**: login e criação de organização (o schema e o seletor já
+  esperam por isso; a UI entra na próxima fase).
+- **Webhook multi-tenant**: resolver a organização pelo canal (`channels.external_id`)
+  usando service-role, já que a Meta chama sem sessão de usuário.
+- **CRM**: contatos/empresas/funil ligados às conversas.
+- **Tempo real** via Supabase Realtime no lugar do polling de 5s.
+- **Suporte a mídia** (imagem, áudio, documento) no parser e na UI.
+- **Framework de integrações** plug-and-play (API keys + webhooks + conectores).
 - Adaptadores de Instagram e Telegram, seguindo o padrão de `channels/whatsapp.ts`.

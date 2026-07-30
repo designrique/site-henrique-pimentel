@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { inboxRepository } from "@/lib/inbox/store";
+import { getInboxRepository } from "@/lib/inbox/repository";
 import { parseInboundWebhook, verifyWebhook } from "@/lib/inbox/channels/whatsapp";
 
 export const dynamic = "force-dynamic";
@@ -25,8 +25,9 @@ export async function POST(request: Request) {
   }
 
   const inbound = parseInboundWebhook(body);
+  const repo = await getInboxRepository();
   for (const message of inbound) {
-    inboxRepository.ingestInbound(message);
+    await repo.ingestInbound(message);
   }
 
   // A Meta reenvia o evento se não receber 200 rapidamente.

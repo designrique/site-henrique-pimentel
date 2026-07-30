@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { inboxRepository } from "@/lib/inbox/store";
+import { getInboxRepository } from "@/lib/inbox/repository";
 import { sendWhatsAppText } from "@/lib/inbox/channels/whatsapp";
 
 export const dynamic = "force-dynamic";
@@ -10,15 +10,17 @@ interface Ctx {
 
 export async function GET(_request: Request, { params }: Ctx) {
   const { id } = await params;
-  if (!inboxRepository.getConversation(id)) {
+  const repo = await getInboxRepository();
+  if (!(await repo.getConversation(id))) {
     return NextResponse.json({ error: "Conversa não encontrada" }, { status: 404 });
   }
-  return NextResponse.json({ messages: inboxRepository.listMessages(id) });
+  return NextResponse.json({ messages: await repo.listMessages(id) });
 }
 
 export async function POST(request: Request, { params }: Ctx) {
   const { id } = await params;
-  const conversation = inboxRepository.getConversation(id);
+  const repo = await getInboxRepository();
+  const conversation = await repo.getConversation(id);
   if (!conversation) {
     return NextResponse.json({ error: "Conversa não encontrada" }, { status: 404 });
   }
@@ -32,7 +34,7 @@ export async function POST(request: Request, { params }: Ctx) {
   }
 
   const agentId = body?.agentId ?? "ag_hp";
-  const message = inboxRepository.appendOutbound(id, text, agentId);
+  const message = await repo.appendOutbound(id, text, agentId);
   if (!message) {
     return NextResponse.json({ error: "Falha ao registrar mensagem" }, { status: 500 });
   }

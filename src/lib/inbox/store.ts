@@ -7,22 +7,11 @@ import type {
   Agent,
   Contact,
   Conversation,
-  ConversationFilter,
   ConversationView,
   InboundMessage,
   Message,
 } from "./types";
-
-export interface InboxRepository {
-  listConversations(filter?: ConversationFilter): ConversationView[];
-  getConversation(id: string): ConversationView | null;
-  listMessages(conversationId: string): Message[];
-  appendOutbound(conversationId: string, text: string, agentId: string): Message | null;
-  ingestInbound(inbound: InboundMessage): { conversation: Conversation; message: Message };
-  setStatus(conversationId: string, status: Conversation["status"]): ConversationView | null;
-  markRead(conversationId: string): void;
-  listAgents(): Agent[];
-}
+import type { InboxRepository } from "./repository";
 
 interface Db {
   agents: Map<string, Agent>;
@@ -178,8 +167,8 @@ function toView(conv: Conversation): ConversationView {
   };
 }
 
-export const inboxRepository: InboxRepository = {
-  listConversations(filter) {
+export const inMemoryRepository: InboxRepository = {
+  async listConversations(filter) {
     const d = db();
     let list = Array.from(d.conversations.values());
     if (filter?.status) list = list.filter((c) => c.status === filter.status);
@@ -200,16 +189,16 @@ export const inboxRepository: InboxRepository = {
       .map(toView);
   },
 
-  getConversation(id) {
+  async getConversation(id) {
     const conv = db().conversations.get(id);
     return conv ? toView(conv) : null;
   },
 
-  listMessages(conversationId) {
+  async listMessages(conversationId) {
     return db().messages.get(conversationId) ?? [];
   },
 
-  appendOutbound(conversationId, text, agentId) {
+  async appendOutbound(conversationId, text, agentId) {
     const d = db();
     const conv = d.conversations.get(conversationId);
     if (!conv) return null;
@@ -230,7 +219,7 @@ export const inboxRepository: InboxRepository = {
     return message;
   },
 
-  ingestInbound(inbound) {
+  async ingestInbound(inbound) {
     const d = db();
     // Reusa contato pelo handle+canal; senão cria.
     let contact = Array.from(d.contacts.values()).find(
@@ -286,19 +275,19 @@ export const inboxRepository: InboxRepository = {
     return { conversation: conv, message };
   },
 
-  setStatus(conversationId, status) {
+  async setStatus(conversationId, status) {
     const conv = db().conversations.get(conversationId);
     if (!conv) return null;
     conv.status = status;
     return toView(conv);
   },
 
-  markRead(conversationId) {
+  async markRead(conversationId) {
     const conv = db().conversations.get(conversationId);
     if (conv) conv.unreadCount = 0;
   },
 
-  listAgents() {
+  async listAgents() {
     return Array.from(db().agents.values());
   },
 };

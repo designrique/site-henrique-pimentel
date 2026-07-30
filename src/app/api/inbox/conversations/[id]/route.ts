@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { inboxRepository } from "@/lib/inbox/store";
+import { getInboxRepository } from "@/lib/inbox/repository";
 import type { ConversationStatus } from "@/lib/inbox/types";
 
 export const dynamic = "force-dynamic";
@@ -10,12 +10,13 @@ interface Ctx {
 
 export async function GET(_request: Request, { params }: Ctx) {
   const { id } = await params;
-  const conversation = inboxRepository.getConversation(id);
+  const repo = await getInboxRepository();
+  const conversation = await repo.getConversation(id);
   if (!conversation) {
     return NextResponse.json({ error: "Conversa não encontrada" }, { status: 404 });
   }
-  inboxRepository.markRead(id);
-  const messages = inboxRepository.listMessages(id);
+  await repo.markRead(id);
+  const messages = await repo.listMessages(id);
   return NextResponse.json({ conversation, messages });
 }
 
@@ -29,7 +30,8 @@ export async function PATCH(request: Request, { params }: Ctx) {
     return NextResponse.json({ error: "status inválido" }, { status: 400 });
   }
 
-  const conversation = inboxRepository.setStatus(id, body.status);
+  const repo = await getInboxRepository();
+  const conversation = await repo.setStatus(id, body.status);
   if (!conversation) {
     return NextResponse.json({ error: "Conversa não encontrada" }, { status: 404 });
   }
