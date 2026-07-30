@@ -9,7 +9,16 @@ interface Contact {
   channel: string;
   email: string | null;
   notes: string | null;
+  tags: string[] | null;
+  custom_fields: Record<string, unknown> | null;
   company: { id: string; name: string } | null;
+}
+interface FieldDef {
+  id: string;
+  label: string;
+  key: string;
+  type: "text" | "number" | "date" | "select";
+  options: string[];
 }
 interface Conversation {
   id: string;
@@ -57,9 +66,13 @@ export function ClientProfile({ contactId, demo }: { contactId: string; demo: bo
   const [deals, setDeals] = useState<Deal[]>([]);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [timeline, setTimeline] = useState<TimelineItem[]>([]);
+  const [fields, setFields] = useState<FieldDef[]>([]);
   const [notFound, setNotFound] = useState(false);
   const [email, setEmail] = useState("");
   const [notes, setNotes] = useState("");
+  const [tags, setTags] = useState<string[]>([]);
+  const [tagInput, setTagInput] = useState("");
+  const [custom, setCustom] = useState<Record<string, string>>({});
   const [saved, setSaved] = useState(false);
 
   const load = useCallback(async () => {
@@ -74,9 +87,13 @@ export function ClientProfile({ contactId, demo }: { contactId: string; demo: bo
     setConversations(data.conversations ?? []);
     setDeals(data.deals ?? []);
     setTasks(data.tasks ?? []);
+    setFields(data.fields ?? []);
     setTimeline(data.timeline ?? []);
     setEmail(data.contact?.email ?? "");
     setNotes(data.contact?.notes ?? "");
+    setTags(data.contact?.tags ?? []);
+    const cf = (data.contact?.custom_fields ?? {}) as Record<string, unknown>;
+    setCustom(Object.fromEntries(Object.entries(cf).map(([k, v]) => [k, String(v ?? "")])));
   }, [contactId]);
 
   useEffect(() => {
@@ -87,10 +104,16 @@ export function ClientProfile({ contactId, demo }: { contactId: string; demo: bo
     await fetch(`/api/crm/contacts/${contactId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, notes }),
+      body: JSON.stringify({ email, notes, tags, customFields: custom }),
     });
     setSaved(true);
     setTimeout(() => setSaved(false), 1500);
+  }
+
+  function addTag() {
+    const t = tagInput.trim();
+    if (t && !tags.includes(t)) setTags([...tags, t]);
+    setTagInput("");
   }
 
   if (demo) {
@@ -194,6 +217,80 @@ export function ClientProfile({ contactId, demo }: { contactId: string; demo: bo
                 className="w-full resize-none rounded-lg border border-[color:var(--border-default)] bg-[color:var(--bg-subtle)] px-3 py-2 text-sm outline-none focus:border-[color:var(--accent-primary)]"
               />
             </label>
+
+            {/* Etiquetas */}
+            <div className="mt-3">
+              <span className="mb-1 block text-xs text-[color:var(--text-tertiary)]">Etiquetas</span>
+              <div className="flex flex-wrap gap-1.5">
+                {tags.map((t) => (
+                  <span
+                    key={t}
+                    className="inline-flex items-center gap-1 rounded-full bg-[color:var(--bg-muted)] px-2 py-0.5 text-xs text-[color:var(--text-secondary)]"
+                  >
+                    {t}
+                    <button
+                      onClick={() => setTags(tags.filter((x) => x !== t))}
+                      className="text-[color:var(--text-tertiary)] hover:text-[color:var(--error)]"
+                      aria-label={`Remover ${t}`}
+                    >
+                      ×
+                    </button>
+                  </span>
+                ))}
+              </div>
+              <input
+                value={tagInput}
+                onChange={(e) => setTagInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    addTag();
+                  }
+                }}
+                placeholder="Adicionar etiqueta + Enter"
+                className="mt-2 h-8 w-full rounded-lg border border-[color:var(--border-default)] bg-[color:var(--bg-subtle)] px-2.5 text-xs outline-none focus:border-[color:var(--accent-primary)]"
+              />
+            </div>
+
+            {/* Campos personalizados */}
+            {fields.length > 0 && (
+              <div className="mt-4 space-y-2 border-t border-[color:var(--border-default)] pt-3">
+                {fields.map((f) => (
+                  <label key={f.id} className="block">
+                    <span className="mb-1 block text-xs text-[color:var(--text-tertiary)]">
+                      {f.label}
+                    </span>
+                    {f.type === "select" ? (
+                      <select
+                        value={custom[f.key] ?? ""}
+                        onChange={(e) => setCustom({ ...custom, [f.key]: e.target.value })}
+                        className="h-9 w-full rounded-lg border border-[color:var(--border-default)] bg-[color:var(--bg-subtle)] px-2 text-sm"
+                      >
+                        <option value="">—</option>
+                        {f.options.map((o) => (
+                          <option key={o} value={o}>{o}</option>
+                        ))}
+                      </select>
+                    ) : (
+                      <input
+                        type={f.type === "number" ? "number" : f.type === "date" ? "date" : "text"}
+                        value={custom[f.key] ?? ""}
+                        onChange={(e) => setCustom({ ...custom, [f.key]: e.target.value })}
+                        className="h-9 w-full rounded-lg border border-[color:var(--border-default)] bg-[color:var(--bg-subtle)] px-3 text-sm outline-none focus:border-[color:var(--accent-primary)]"
+                      />
+                    )}
+                  </label>
+                ))}
+              </div>
+            )}
+
+            <a
+              href="/atendimento/campos"
+              className="mt-3 block text-center text-xs text-[color:var(--accent-text)] underline"
+            >
+              Gerenciar campos personalizados
+            </a>
+
             <button
               onClick={save}
               className="mt-2 h-9 w-full rounded-lg bg-[color:var(--accent-primary)] text-sm font-medium text-white hover:bg-[color:var(--accent-hover)]"

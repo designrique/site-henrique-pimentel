@@ -68,8 +68,10 @@ Código autoral. Stack: Next.js 16 · React 19 · Tailwind 4 · Supabase (self-h
 - [x] Timeline unificada (ficha do cliente: conversas + negócios + tarefas + histórico)
 - [x] Workers Builds (CI) documentado para deploy automático
 
-## ⏳ Evoluções futuras
-- [ ] Etiquetas e campos personalizados no CRM
+## ✅ Etiquetas e campos personalizados
+- [x] Etiquetas (tags) por contato, editáveis na ficha do cliente
+- [x] Campos personalizados por organização (texto/número/data/lista)
+- [x] Página de gestão de campos (/atendimento/campos)
 - [ ] Log de entregas de webhook (retentativas)
 - [ ] Mídia em Instagram/Telegram
 - [ ] Conectores nativos prontos (Zapier/n8n)

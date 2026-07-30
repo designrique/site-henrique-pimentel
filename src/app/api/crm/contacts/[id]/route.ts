@@ -20,32 +20,40 @@ export async function GET(_request: Request, { params }: Ctx) {
 
   const { data: contact } = await supabase
     .from("contacts")
-    .select("id, name, handle, channel, email, notes, company:companies(id, name)")
+    .select(
+      "id, name, handle, channel, email, notes, tags, custom_fields, company:companies(id, name)",
+    )
     .eq("organization_id", orgId)
     .eq("id", id)
     .maybeSingle();
   if (!contact) return NextResponse.json({ error: "não encontrado" }, { status: 404 });
 
-  const [{ data: conversations }, { data: deals }, { data: tasks }] = await Promise.all([
-    supabase
-      .from("conversations")
-      .select("id, channel, status, last_message_at, last_message_preview")
-      .eq("organization_id", orgId)
-      .eq("contact_id", id)
-      .order("last_message_at", { ascending: false }),
-    supabase
-      .from("deals")
-      .select("id, title, value, currency, stage:pipeline_stages(name)")
-      .eq("organization_id", orgId)
-      .eq("contact_id", id)
-      .order("updated_at", { ascending: false }),
-    supabase
-      .from("tasks")
-      .select("id, title, status, due_at")
-      .eq("organization_id", orgId)
-      .eq("contact_id", id)
-      .order("created_at", { ascending: false }),
-  ]);
+  const [{ data: conversations }, { data: deals }, { data: tasks }, { data: fields }] =
+    await Promise.all([
+      supabase
+        .from("conversations")
+        .select("id, channel, status, last_message_at, last_message_preview")
+        .eq("organization_id", orgId)
+        .eq("contact_id", id)
+        .order("last_message_at", { ascending: false }),
+      supabase
+        .from("deals")
+        .select("id, title, value, currency, stage:pipeline_stages(name)")
+        .eq("organization_id", orgId)
+        .eq("contact_id", id)
+        .order("updated_at", { ascending: false }),
+      supabase
+        .from("tasks")
+        .select("id, title, status, due_at")
+        .eq("organization_id", orgId)
+        .eq("contact_id", id)
+        .order("created_at", { ascending: false }),
+      supabase
+        .from("custom_field_definitions")
+        .select("id, label, key, type, options")
+        .eq("organization_id", orgId)
+        .order("position", { ascending: true }),
+    ]);
 
   // Timeline: mensagens das conversas do contato (mais recentes primeiro).
   const conversationIds = (conversations ?? []).map((c) => c.id);
@@ -66,6 +74,7 @@ export async function GET(_request: Request, { params }: Ctx) {
     conversations: conversations ?? [],
     deals: deals ?? [],
     tasks: tasks ?? [],
+    fields: fields ?? [],
     timeline,
   });
 }
@@ -79,20 +88,31 @@ export async function PATCH(request: Request, { params }: Ctx) {
   }
 
   const body = (await request.json().catch(() => null)) as
-    | { email?: string; notes?: string }
+    | {
+        email?: string;
+        notes?: string;
+        tags?: string[];
+        customFields?: Record<string, unknown>;
+      }
     | null;
   if (!body) return NextResponse.json({ error: "payload inválido" }, { status: 400 });
 
   const update: Record<string, unknown> = {};
   if (body.email !== undefined) update.email = body.email || null;
   if (body.notes !== undefined) update.notes = body.notes;
+  if (body.tags !== undefined) {
+    update.tags = body.tags.map((t) => t.trim()).filter(Boolean).slice(0, 20);
+  }
+  if (body.customFields !== undefined && body.customFields !== null) {
+    update.custom_fields = body.customFields;
+  }
 
   const { data, error } = await ctx.supabase
     .from("contacts")
     .update(update)
     .eq("organization_id", ctx.orgId)
     .eq("id", id)
-    .select("id, email, notes")
+    .select("id, email, notes, tags, custom_fields")
     .maybeSingle();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   if (!data) return NextResponse.json({ error: "não encontrado" }, { status: 404 });
