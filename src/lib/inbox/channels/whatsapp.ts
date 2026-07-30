@@ -3,7 +3,7 @@
 // ambiente não estiverem configuradas, o envio opera em modo simulado (útil em
 // dev e para demonstração), sem quebrar o fluxo.
 
-import type { InboundMessage } from "../types";
+import type { InboundMessage, MediaKind } from "../types";
 
 const GRAPH_VERSION = "v21.0";
 
@@ -40,6 +40,13 @@ export function verifyWebhook(params: URLSearchParams): { ok: boolean; challenge
   return { ok: false };
 }
 
+interface WhatsAppMedia {
+  id?: string;
+  mime_type?: string;
+  caption?: string;
+  filename?: string;
+}
+
 // Shape parcial do payload de webhook da Cloud API — só o que consumimos.
 interface WhatsAppWebhookBody {
   entry?: Array<{
@@ -53,6 +60,11 @@ interface WhatsAppWebhookBody {
           timestamp?: string;
           type?: string;
           text?: { body?: string };
+          image?: WhatsAppMedia;
+          audio?: WhatsAppMedia;
+          video?: WhatsAppMedia;
+          document?: WhatsAppMedia;
+          sticker?: WhatsAppMedia;
         }>;
       };
     }>;
@@ -72,11 +84,34 @@ export function parseInboundWebhook(body: unknown): InboundMessage[] {
       const channelExternalId = value.metadata?.phone_number_id;
 
       for (const msg of value.messages) {
-        // Só tratamos texto aqui; mídia/áudio ficam para uma iteração futura.
-        if (msg.type && msg.type !== "text") continue;
-        const text = msg.text?.body;
         const from = msg.from;
-        if (!text || !from) continue;
+        if (!from) continue;
+
+        // Texto puro ou legenda da mídia.
+        let text = msg.text?.body ?? "";
+        let media: InboundMessage["media"];
+
+        const mediaMap: Array<[MediaKind, WhatsAppMedia | undefined]> = [
+          ["image", msg.image],
+          ["audio", msg.audio],
+          ["video", msg.video],
+          ["document", msg.document],
+          ["sticker", msg.sticker],
+        ];
+        for (const [kind, m] of mediaMap) {
+          if (!m) continue;
+          media = {
+            kind,
+            externalId: m.id,
+            mimeType: m.mime_type,
+            filename: m.filename,
+          };
+          if (m.caption) text = m.caption;
+          break;
+        }
+
+        // Ignora tipos sem texto nem mídia (ex.: eventos de sistema).
+        if (!text && !media) continue;
 
         out.push({
           channel: "whatsapp",
@@ -88,6 +123,7 @@ export function parseInboundWebhook(body: unknown): InboundMessage[] {
             ? new Date(Number(msg.timestamp) * 1000).toISOString()
             : undefined,
           channelExternalId,
+          media,
         });
       }
     }
@@ -154,5 +190,44 @@ export async function sendWhatsAppText(
     return { ok: true, simulated: false, externalId: data.messages?.[0]?.id };
   } catch (err) {
     return { ok: false, simulated: false, error: String(err) };
+  }
+}
+
+export interface MediaDownload {
+  ok: boolean;
+  contentType?: string;
+  body?: ArrayBuffer;
+  error?: string;
+}
+
+/**
+ * Baixa a mídia do WhatsApp em dois passos: resolve a URL pelo media id e
+ * depois busca o binário (ambos exigem o token). Usado pelo proxy de mídia.
+ */
+export async function fetchWhatsAppMedia(
+  mediaId: string,
+  creds: WhatsAppCredentials,
+): Promise<MediaDownload> {
+  const token = creds.token || readEnv().token;
+  if (!token) return { ok: false, error: "sem token" };
+
+  try {
+    const metaRes = await fetch(`https://graph.facebook.com/${GRAPH_VERSION}/${mediaId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (!metaRes.ok) return { ok: false, error: `meta HTTP ${metaRes.status}` };
+    const meta = (await metaRes.json()) as { url?: string; mime_type?: string };
+    if (!meta.url) return { ok: false, error: "url ausente" };
+
+    const binRes = await fetch(meta.url, { headers: { Authorization: `Bearer ${token}` } });
+    if (!binRes.ok) return { ok: false, error: `bin HTTP ${binRes.status}` };
+
+    return {
+      ok: true,
+      contentType: meta.mime_type || binRes.headers.get("content-type") || "application/octet-stream",
+      body: await binRes.arrayBuffer(),
+    };
+  } catch (err) {
+    return { ok: false, error: String(err) };
   }
 }

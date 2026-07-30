@@ -23,12 +23,13 @@ Código autoral. Stack: Next.js 16 · React 19 · Tailwind 4 · Supabase (self-h
 - [x] Proteger `/atendimento` por sessão e organização; sign-out
 - [x] Exibir usuário/organização na UI
 
-## 🔄 Fase 3 — Canais em produção  (em andamento)
+## ✅ Fase 3 — Canais em produção
 - [x] Webhook multi-tenant: resolver org por `channels.external_id` (service-role)
-- [x] Cadastro de canais (conectar número de WhatsApp por organização)
+- [x] Cadastro de canais (conectar WhatsApp/Instagram/Telegram por organização)
 - [x] Envio com credenciais por canal (fallback nas variáveis de ambiente)
-- [ ] Suporte a mídia (imagem, áudio, documento)
-- [ ] Adaptadores de Instagram e Telegram
+- [x] Suporte a mídia do WhatsApp (parser, storage, proxy de download, UI)
+- [x] Adaptador de Telegram (webhook por secret + envio via Bot API)
+- [x] Adaptador de Instagram (webhook por conta + envio via Graph API)
 
 ## ⏳ Fase 4 — CRM
 - [ ] Contatos e empresas

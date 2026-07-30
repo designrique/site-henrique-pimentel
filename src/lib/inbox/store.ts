@@ -265,6 +265,7 @@ export const inMemoryRepository: InboxRepository = {
       status: "delivered",
       author: contact.name,
       externalId: inbound.externalId,
+      media: inbound.media,
     };
     d.messages.get(conv.id)!.push(message);
     conv.lastMessageAt = message.at;

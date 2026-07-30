@@ -9,6 +9,16 @@ export type MessageDirection = "in" | "out";
 
 export type MessageStatus = "queued" | "sent" | "delivered" | "read" | "failed";
 
+export type MediaKind = "image" | "audio" | "video" | "document" | "sticker";
+
+export interface MediaAttachment {
+  kind: MediaKind;
+  /** Id da mídia no provedor (baixado sob demanda via proxy). */
+  externalId?: string;
+  mimeType?: string;
+  filename?: string;
+}
+
 export interface Agent {
   id: string;
   name: string;
@@ -36,6 +46,8 @@ export interface Message {
   author: string;
   /** ID da mensagem no provedor externo (ex.: wamid do WhatsApp). */
   externalId?: string;
+  /** Anexo de mídia, quando a mensagem não é só texto. */
+  media?: MediaAttachment;
 }
 
 export interface Conversation {
@@ -72,4 +84,6 @@ export interface InboundMessage {
   at?: string;
   /** Id do canal no provedor (ex.: phone_number_id) — roteia para o tenant. */
   channelExternalId?: string;
+  /** Anexo de mídia, quando a mensagem recebida não é só texto. */
+  media?: MediaAttachment;
 }

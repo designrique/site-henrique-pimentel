@@ -62,6 +62,48 @@ function Avatar({ initials, channel }: { initials: string; channel: Channel }) {
   );
 }
 
+const MEDIA_LABEL: Record<string, string> = {
+  image: "Imagem",
+  audio: "Áudio",
+  video: "Vídeo",
+  document: "Documento",
+  sticker: "Figurinha",
+};
+
+function MediaBlock({ message }: { message: Message }) {
+  const media = message.media!;
+  const src = media.externalId ? `/api/inbox/media/${media.externalId}` : null;
+  const label = MEDIA_LABEL[media.kind] ?? "Anexo";
+
+  if (src && (media.kind === "image" || media.kind === "sticker")) {
+    // eslint-disable-next-line @next/next/no-img-element
+    return (
+      <img
+        src={src}
+        alt={media.filename ?? label}
+        className="mb-1 max-h-64 w-full rounded-lg object-cover"
+      />
+    );
+  }
+  if (src && media.kind === "audio") {
+    return <audio controls src={src} className="mb-1 w-56" />;
+  }
+  if (src && media.kind === "video") {
+    return <video controls src={src} className="mb-1 max-h-64 w-full rounded-lg" />;
+  }
+  // Documento ou fallback: chip com link de download.
+  return (
+    <a
+      href={src ?? "#"}
+      target="_blank"
+      rel="noreferrer"
+      className="mb-1 flex items-center gap-2 rounded-lg bg-black/5 px-2.5 py-2 text-xs underline"
+    >
+      📎 {media.filename ?? label}
+    </a>
+  );
+}
+
 export function InboxClient({ session }: { session: InboxSession }) {
   const [conversations, setConversations] = useState<ConversationView[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -327,7 +369,8 @@ export function InboxClient({ session }: { session: InboxSession }) {
                         : "rounded-bl-sm bg-[color:var(--bg-primary)] text-[color:var(--text-primary)]"
                     }`}
                   >
-                    <p className="whitespace-pre-wrap break-words">{m.text}</p>
+                    {m.media && <MediaBlock message={m} />}
+                    {m.text && <p className="whitespace-pre-wrap break-words">{m.text}</p>}
                     <span
                       className={`mt-1 block text-right text-[10px] ${
                         m.direction === "out"

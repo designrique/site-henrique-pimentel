@@ -1,42 +1,43 @@
 import { NextResponse } from "next/server";
 import { getInboxRepository } from "@/lib/inbox/repository";
-import { sendWhatsAppText, type WhatsAppCredentials } from "@/lib/inbox/channels/whatsapp";
+import { deliverMessage, type ChannelConfig } from "@/lib/inbox/channels/deliver";
 import { createSupabaseServerClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import { resolveCurrentOrg } from "@/lib/inbox/store.supabase";
+import type { Channel } from "@/lib/inbox/types";
 
 export const dynamic = "force-dynamic";
 
-/** Busca as credenciais do canal WhatsApp ativo da organização atual. */
-async function whatsAppCredentials(): Promise<WhatsAppCredentials | undefined> {
-  if (!isSupabaseConfigured()) return undefined;
+interface Ctx {
+  params: Promise<{ id: string }>;
+}
+
+/** Config (credenciais) do canal ativo do tipo pedido, na organização atual. */
+async function channelConfig(type: Channel): Promise<ChannelConfig> {
+  if (!isSupabaseConfigured()) return {};
   const supabase = await createSupabaseServerClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) return undefined;
+  if (!user) return {};
   const orgId = await resolveCurrentOrg(supabase, user.id);
-  if (!orgId) return undefined;
+  if (!orgId) return {};
 
   const { data } = await supabase
     .from("channels")
     .select("external_id, config")
     .eq("organization_id", orgId)
-    .eq("type", "whatsapp")
+    .eq("type", type)
     .eq("is_active", true)
     .order("created_at", { ascending: true })
     .limit(1)
     .maybeSingle();
-  if (!data) return undefined;
+  if (!data) return {};
 
-  const config = (data.config as { token?: string; phone_number_id?: string }) ?? {};
+  const config = (data.config as ChannelConfig) ?? {};
   return {
-    token: config.token,
-    phoneNumberId: config.phone_number_id || (data.external_id as string | null) || undefined,
+    ...config,
+    phone_number_id: config.phone_number_id || (data.external_id as string | null) || undefined,
   };
-}
-
-interface Ctx {
-  params: Promise<{ id: string }>;
 }
 
 export async function GET(_request: Request, { params }: Ctx) {
@@ -70,19 +71,12 @@ export async function POST(request: Request, { params }: Ctx) {
     return NextResponse.json({ error: "Falha ao registrar mensagem" }, { status: 500 });
   }
 
-  // Entrega no canal. Hoje só WhatsApp tem envio real; demais canais ficam
-  // registrados localmente até ganharem seus adaptadores.
-  let delivery: { simulated: boolean; error?: string } = { simulated: true };
-  if (conversation.channel === "whatsapp") {
-    const creds = await whatsAppCredentials();
-    const result = await sendWhatsAppText(conversation.contact.handle, text, creds);
-    delivery = { simulated: result.simulated, error: result.error };
-    if (!result.ok) {
-      return NextResponse.json(
-        { message, delivery: { simulated: false, error: result.error } },
-        { status: 502 },
-      );
-    }
+  // Entrega no canal, com as credenciais da organização.
+  const config = await channelConfig(conversation.channel);
+  const result = await deliverMessage(conversation.channel, conversation.contact.handle, text, config);
+  const delivery = { simulated: result.simulated, error: result.error };
+  if (!result.ok) {
+    return NextResponse.json({ message, delivery }, { status: 502 });
   }
 
   return NextResponse.json({ message, delivery });

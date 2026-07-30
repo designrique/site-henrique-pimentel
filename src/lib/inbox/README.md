@@ -105,9 +105,34 @@ SUPABASE_SERVICE_ROLE_KEY=...
 ```
 
 Sem `NEXT_PUBLIC_*`, o app roda em **modo demo** (repositório em memória).
-As credenciais do WhatsApp podem ficar **por canal** (cadastradas em
-`/atendimento/canais`, gravadas em `channels.config`); as variáveis
-`WHATSAPP_*` servem como fallback global.
+As credenciais de cada canal ficam **por organização** (cadastradas em
+`/atendimento/canais`, gravadas em `channels.config`); as variáveis de
+ambiente abaixo servem como fallback global.
+
+```bash
+# WhatsApp Cloud API (fallback global)
+WHATSAPP_TOKEN=
+WHATSAPP_PHONE_NUMBER_ID=
+WHATSAPP_VERIFY_TOKEN=dev-verify-token
+
+# Telegram Bot API (fallback global)
+TELEGRAM_BOT_TOKEN=
+
+# Instagram Messaging / Graph API (fallback global)
+INSTAGRAM_TOKEN=
+INSTAGRAM_VERIFY_TOKEN=dev-verify-token
+```
+
+### Canais e webhooks
+
+| Canal | Webhook (POST) | Roteamento por tenant |
+|-------|----------------|-----------------------|
+| WhatsApp  | `/api/inbox/webhook/whatsapp`  | `phone_number_id` → `channels.external_id` |
+| Instagram | `/api/inbox/webhook/instagram` | `entry.id` (conta IG) → `channels.external_id` |
+| Telegram  | `/api/inbox/webhook/telegram`  | header `X-Telegram-Bot-Api-Secret-Token` → `channels.config.secret` |
+
+Mídia recebida do WhatsApp é baixada sob demanda pelo proxy autenticado
+`/api/inbox/media/[mediaId]`, usando o token do canal da organização.
 
 ## Próximos passos sugeridos
 

@@ -25,9 +25,11 @@ export function ChannelsClient() {
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
 
+  const [type, setType] = useState<"whatsapp" | "instagram" | "telegram">("whatsapp");
   const [name, setName] = useState("");
   const [externalId, setExternalId] = useState("");
   const [token, setToken] = useState("");
+  const [secret, setSecret] = useState("");
 
   const load = useCallback(async () => {
     const res = await fetch("/api/inbox/channels", { cache: "no-store" });
@@ -50,13 +52,14 @@ export function ChannelsClient() {
     const res = await fetch("/api/inbox/channels", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ type: "whatsapp", name, externalId, token }),
+      body: JSON.stringify({ type, name, externalId, token, secret }),
     });
 
     if (res.ok) {
       setName("");
       setExternalId("");
       setToken("");
+      setSecret("");
       await load();
     } else {
       const data = await res.json().catch(() => ({}));
@@ -91,10 +94,48 @@ export function ChannelsClient() {
         onSubmit={addChannel}
         className="mt-6 space-y-3 rounded-xl border border-[color:var(--border-default)] p-4"
       >
-        <h2 className="text-sm font-semibold">Conectar WhatsApp</h2>
+        <h2 className="text-sm font-semibold">Conectar canal</h2>
+
+        <label className="block">
+          <span className="mb-1 block text-sm font-medium">Tipo de canal</span>
+          <div className="flex gap-2">
+            {(["whatsapp", "instagram", "telegram"] as const).map((t) => (
+              <button
+                key={t}
+                type="button"
+                onClick={() => setType(t)}
+                className={`rounded-lg border px-3 py-1.5 text-xs font-medium capitalize ${
+                  type === t
+                    ? "border-transparent bg-[color:var(--accent-primary)] text-white"
+                    : "border-[color:var(--border-default)] hover:bg-[color:var(--bg-subtle)]"
+                }`}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
+        </label>
+
         <Field label="Nome (identificação interna)" value={name} onChange={setName} placeholder="Ex.: Atendimento principal" />
-        <Field label="Phone Number ID (Meta)" value={externalId} onChange={setExternalId} placeholder="Ex.: 123456789012345" />
-        <Field label="Token de acesso (WhatsApp Cloud API)" value={token} onChange={setToken} type="password" placeholder="Token do app da Meta" />
+
+        {type === "whatsapp" && (
+          <>
+            <Field label="Phone Number ID (Meta)" value={externalId} onChange={setExternalId} placeholder="Ex.: 123456789012345" />
+            <Field label="Token de acesso (WhatsApp Cloud API)" value={token} onChange={setToken} type="password" placeholder="Token do app da Meta" />
+          </>
+        )}
+        {type === "instagram" && (
+          <>
+            <Field label="Instagram Account ID" value={externalId} onChange={setExternalId} placeholder="Id da conta IG do negócio" />
+            <Field label="Token de acesso (Graph API)" value={token} onChange={setToken} type="password" placeholder="Token do app da Meta" />
+          </>
+        )}
+        {type === "telegram" && (
+          <>
+            <Field label="Token do bot (BotFather)" value={token} onChange={setToken} type="password" placeholder="123456:ABC-DEF..." />
+            <Field label="Secret do webhook" value={secret} onChange={setSecret} placeholder="Uma senha que você define (roteia os recebidos)" />
+          </>
+        )}
 
         {error && (
           <p className="rounded-lg bg-[color:var(--bg-muted)] px-3 py-2 text-sm text-[color:var(--error)]">

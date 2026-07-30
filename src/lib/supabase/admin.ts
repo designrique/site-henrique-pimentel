@@ -36,3 +36,29 @@ export async function resolveOrgByChannel(
     config: (data.config as Record<string, unknown>) ?? {},
   };
 }
+
+/**
+ * Resolve o canal por uma chave dentro de `config` (jsonb) — usado quando o
+ * provedor não manda um external_id no payload (ex.: Telegram, que roteamos
+ * pelo secret token do webhook).
+ */
+export async function resolveOrgByChannelConfig(
+  admin: SupabaseClient,
+  type: string,
+  key: string,
+  value: string,
+): Promise<{ organizationId: string; channelId: string; config: Record<string, unknown> } | null> {
+  const { data } = await admin
+    .from("channels")
+    .select("id, organization_id, config")
+    .eq("type", type)
+    .eq("is_active", true)
+    .filter(`config->>${key}`, "eq", value)
+    .maybeSingle();
+  if (!data) return null;
+  return {
+    organizationId: data.organization_id as string,
+    channelId: data.id as string,
+    config: (data.config as Record<string, unknown>) ?? {},
+  };
+}

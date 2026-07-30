@@ -11,6 +11,7 @@ import type {
   Conversation,
   ConversationStatus,
   ConversationView,
+  MediaKind,
   Message,
 } from "./types";
 
@@ -56,6 +57,10 @@ interface MessageRow {
   author: string;
   external_id: string | null;
   created_at: string;
+  media_kind: MediaKind | null;
+  media_external_id: string | null;
+  media_mime: string | null;
+  media_filename: string | null;
 }
 
 function mapMessage(row: MessageRow): Message {
@@ -68,6 +73,14 @@ function mapMessage(row: MessageRow): Message {
     status: row.status,
     author: row.author,
     externalId: row.external_id ?? undefined,
+    media: row.media_kind
+      ? {
+          kind: row.media_kind,
+          externalId: row.media_external_id ?? undefined,
+          mimeType: row.media_mime ?? undefined,
+          filename: row.media_filename ?? undefined,
+        }
+      : undefined,
   };
 }
 
@@ -263,6 +276,10 @@ export function createSupabaseRepository(
           status: "delivered",
           author: contact.name,
           external_id: inbound.externalId ?? null,
+          media_kind: inbound.media?.kind ?? null,
+          media_external_id: inbound.media?.externalId ?? null,
+          media_mime: inbound.media?.mimeType ?? null,
+          media_filename: inbound.media?.filename ?? null,
         })
         .select("*")
         .single();

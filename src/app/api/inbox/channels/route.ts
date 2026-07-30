@@ -48,6 +48,7 @@ export async function POST(request: Request) {
     name?: string;
     externalId?: string;
     token?: string;
+    secret?: string;
   } | null;
 
   const type = body?.type as Channel | undefined;
@@ -59,11 +60,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "nome obrigatório" }, { status: 400 });
   }
 
-  // Credenciais do canal ficam em config (jsonb). Para WhatsApp, guardamos o
-  // token e o phone_number_id (external_id roteia os webhooks recebidos).
+  // Credenciais do canal ficam em config (jsonb):
+  // - WhatsApp: token + phone_number_id (external_id roteia os recebidos)
+  // - Instagram: token + ig account id (external_id roteia os recebidos)
+  // - Telegram: token do bot + secret (roteia os recebidos pelo header)
   const config: Record<string, unknown> = {};
   if (body?.token) config.token = body.token;
   if (body?.externalId) config.phone_number_id = body.externalId;
+  if (body?.secret) config.secret = body.secret;
 
   const { data, error } = await ctx.supabase
     .from("channels")
