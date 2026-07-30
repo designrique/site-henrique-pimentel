@@ -121,6 +121,13 @@ TELEGRAM_BOT_TOKEN=
 # Instagram Messaging / Graph API (fallback global)
 INSTAGRAM_TOKEN=
 INSTAGRAM_VERIFY_TOKEN=dev-verify-token
+
+# Notificações por e-mail (Resend via API; sem chave → simulado)
+RESEND_API_KEY=
+EMAIL_FROM=hpchat <no-reply@seu-dominio.com>
+
+# URL pública do app (usada nos links dos e-mails de notificação)
+NEXT_PUBLIC_APP_URL=https://app.seu-dominio.com
 ```
 
 ### Canais e webhooks

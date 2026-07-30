@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { signOut } from "@/app/login/actions";
+import { NotificationBell } from "@/components/inbox/notification-bell";
 import type {
   Channel,
   ConversationStatus,
@@ -215,12 +216,12 @@ export function InboxClient({ session }: { session: InboxSession }) {
           )}
         </div>
         <div className="flex items-center gap-3">
-          <a
-            href="/atendimento/canais"
-            className="text-xs font-medium text-[color:var(--accent-text)] hover:underline"
-          >
-            Canais
-          </a>
+          <nav className="flex items-center gap-3 text-xs font-medium text-[color:var(--accent-text)]">
+            <a href="/atendimento/crm" className="hover:underline">CRM</a>
+            <a href="/atendimento/tarefas" className="hover:underline">Tarefas</a>
+            <a href="/atendimento/canais" className="hover:underline">Canais</a>
+          </nav>
+          {!session.demo && <NotificationBell />}
           <span className="text-xs text-[color:var(--text-secondary)]">
             {session.userName}
           </span>

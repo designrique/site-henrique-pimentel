@@ -31,11 +31,13 @@ Código autoral. Stack: Next.js 16 · React 19 · Tailwind 4 · Supabase (self-h
 - [x] Adaptador de Telegram (webhook por secret + envio via Bot API)
 - [x] Adaptador de Instagram (webhook por conta + envio via Graph API)
 
-## ⏳ Fase 4 — CRM
-- [ ] Contatos e empresas
-- [ ] Funil/negócios (pipeline)
-- [ ] Notas, etiquetas, campos personalizados
-- [ ] Timeline unificada (conversa + CRM)
+## ✅ Fase 4 — CRM
+- [x] Contatos e empresas (schema; contatos estendidos com email/empresa/notas)
+- [x] Funil/negócios (pipeline) — kanban com arrastar-e-soltar
+- [x] Tarefas por atendente e cliente (criar, atribuir, concluir)
+- [x] Notificações por UI (sino + contagem) e e-mail (provider por fetch)
+- [ ] Notas, etiquetas, campos personalizados (evolução futura)
+- [ ] Timeline unificada (conversa + CRM) (evolução futura)
 
 ## ⏳ Fase 5 — Integrações plug-and-play
 - [ ] Chaves de API por organização
