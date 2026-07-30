@@ -29,6 +29,8 @@ psql "$SUPABASE_DB_URL" -f supabase/migrations/0002_inbox.sql
 psql "$SUPABASE_DB_URL" -f supabase/migrations/0003_media.sql
 psql "$SUPABASE_DB_URL" -f supabase/migrations/0004_crm.sql
 psql "$SUPABASE_DB_URL" -f supabase/migrations/0005_integrations.sql
+psql "$SUPABASE_DB_URL" -f supabase/migrations/0006_crm_fields.sql
+psql "$SUPABASE_DB_URL" -f supabase/migrations/0007_extras.sql
 ```
 
 Confirme que o **Realtime** está habilitado (as migrações já publicam as
