@@ -94,6 +94,33 @@ personalizado** (configure em *Workers → Custom Domains*). Em CI, use
 
 ---
 
+## 5.1. Deploy automático com Workers Builds (CI)
+
+Para publicar a cada `git push`, use o **Workers Builds** (CI nativo da
+Cloudflare) em vez de rodar `cf:deploy` da sua máquina.
+
+1. No painel: **Workers & Pages → Create → Connect to Git** e selecione o
+   repositório (`designrique/hpchat`) e a branch (ex.: `main`).
+2. Configure os comandos:
+   - **Build command:** `pnpm cf:deploy`
+     (roda `opennextjs-cloudflare build && … deploy`)
+   - **Deploy command:** deixe vazio — o `cf:deploy` já publica.
+   - **Root directory:** `/`
+3. Em **Build variables and secrets**, adicione:
+   - **Variáveis** (build): `NEXT_PUBLIC_SUPABASE_URL`,
+     `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `NEXT_PUBLIC_APP_URL`.
+     São embutidas no bundle — precisam estar presentes **no build**.
+   - **Secrets** (runtime): `SUPABASE_SERVICE_ROLE_KEY`,
+     `WHATSAPP_APP_SECRET`, `INSTAGRAM_APP_SECRET`, `RESEND_API_KEY` e os
+     tokens de canal que usar como fallback global.
+4. Salve. A partir daí, cada push na branch dispara build + deploy.
+
+> As variáveis `NEXT_PUBLIC_*` precisam estar **também** disponíveis no
+> ambiente de build (não só como secrets de runtime), senão os valores saem
+> vazios no bundle do navegador.
+
+---
+
 ## 6. Supabase self-hosted — HTTPS obrigatório
 
 A instância precisa responder por **HTTPS com certificado válido**, e não por

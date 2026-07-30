@@ -435,6 +435,14 @@ export function InboxClient({ session }: { session: InboxSession }) {
             <p className="text-xs text-[color:var(--text-tertiary)]">
               {active.contact.handle}
             </p>
+            {!session.demo && (
+              <a
+                href={`/atendimento/clientes/${active.contact.id}`}
+                className="mt-3 inline-block rounded-lg border border-[color:var(--border-default)] px-3 py-1.5 text-xs font-medium hover:bg-[color:var(--bg-subtle)]"
+              >
+                Ver ficha do cliente
+              </a>
+            )}
           </div>
 
           <dl className="mt-6 space-y-3 text-sm">
