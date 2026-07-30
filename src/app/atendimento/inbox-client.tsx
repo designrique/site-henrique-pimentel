@@ -173,6 +173,12 @@ export function InboxClient({ session }: { session: InboxSession }) {
           )}
         </div>
         <div className="flex items-center gap-3">
+          <a
+            href="/atendimento/canais"
+            className="text-xs font-medium text-[color:var(--accent-text)] hover:underline"
+          >
+            Canais
+          </a>
           <span className="text-xs text-[color:var(--text-secondary)]">
             {session.userName}
           </span>

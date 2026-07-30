@@ -97,10 +97,17 @@ NEXT_PUBLIC_SUPABASE_URL=https://supabase.seu-dominio.com
 
 # Chave anônima (anon) da instância
 NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+
+# Service-role key (SOMENTE servidor) — usada pelo webhook do WhatsApp, que a
+# Meta chama sem sessão de usuário, para rotear a mensagem ao tenant correto.
+# NUNCA exponha ao navegador.
+SUPABASE_SERVICE_ROLE_KEY=...
 ```
 
-Sem essas variáveis, o app roda em **modo demo** (repositório em memória),
-útil para desenvolvimento sem banco.
+Sem `NEXT_PUBLIC_*`, o app roda em **modo demo** (repositório em memória).
+As credenciais do WhatsApp podem ficar **por canal** (cadastradas em
+`/atendimento/canais`, gravadas em `channels.config`); as variáveis
+`WHATSAPP_*` servem como fallback global.
 
 ## Próximos passos sugeridos
 

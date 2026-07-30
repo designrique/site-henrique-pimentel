@@ -45,6 +45,7 @@ interface WhatsAppWebhookBody {
   entry?: Array<{
     changes?: Array<{
       value?: {
+        metadata?: { phone_number_id?: string; display_phone_number?: string };
         contacts?: Array<{ profile?: { name?: string }; wa_id?: string }>;
         messages?: Array<{
           from?: string;
@@ -68,6 +69,7 @@ export function parseInboundWebhook(body: unknown): InboundMessage[] {
       const value = change.value;
       if (!value?.messages) continue;
       const profileName = value.contacts?.[0]?.profile?.name ?? "";
+      const channelExternalId = value.metadata?.phone_number_id;
 
       for (const msg of value.messages) {
         // Só tratamos texto aqui; mídia/áudio ficam para uma iteração futura.
@@ -85,6 +87,7 @@ export function parseInboundWebhook(body: unknown): InboundMessage[] {
           at: msg.timestamp
             ? new Date(Number(msg.timestamp) * 1000).toISOString()
             : undefined,
+          channelExternalId,
         });
       }
     }
@@ -100,12 +103,26 @@ export interface SendResult {
   error?: string;
 }
 
+export interface WhatsAppCredentials {
+  token?: string;
+  phoneNumberId?: string;
+}
+
 /**
- * Envia uma mensagem de texto pelo WhatsApp. Sem credenciais configuradas,
- * retorna sucesso simulado para não travar o fluxo de atendimento.
+ * Envia uma mensagem de texto pelo WhatsApp. Usa as credenciais do canal
+ * (multi-tenant) quando fornecidas; senão cai nas variáveis de ambiente. Sem
+ * nenhuma credencial, retorna sucesso simulado para não travar o atendimento.
  */
-export async function sendWhatsAppText(to: string, text: string): Promise<SendResult> {
-  const env = readEnv();
+export async function sendWhatsAppText(
+  to: string,
+  text: string,
+  creds?: WhatsAppCredentials,
+): Promise<SendResult> {
+  const fallback = readEnv();
+  const env = {
+    token: creds?.token || fallback.token,
+    phoneNumberId: creds?.phoneNumberId || fallback.phoneNumberId,
+  };
   if (!env.token || !env.phoneNumberId) {
     return { ok: true, simulated: true };
   }

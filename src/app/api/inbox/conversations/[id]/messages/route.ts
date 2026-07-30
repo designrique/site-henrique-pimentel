@@ -1,8 +1,39 @@
 import { NextResponse } from "next/server";
 import { getInboxRepository } from "@/lib/inbox/repository";
-import { sendWhatsAppText } from "@/lib/inbox/channels/whatsapp";
+import { sendWhatsAppText, type WhatsAppCredentials } from "@/lib/inbox/channels/whatsapp";
+import { createSupabaseServerClient, isSupabaseConfigured } from "@/lib/supabase/server";
+import { resolveCurrentOrg } from "@/lib/inbox/store.supabase";
 
 export const dynamic = "force-dynamic";
+
+/** Busca as credenciais do canal WhatsApp ativo da organização atual. */
+async function whatsAppCredentials(): Promise<WhatsAppCredentials | undefined> {
+  if (!isSupabaseConfigured()) return undefined;
+  const supabase = await createSupabaseServerClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return undefined;
+  const orgId = await resolveCurrentOrg(supabase, user.id);
+  if (!orgId) return undefined;
+
+  const { data } = await supabase
+    .from("channels")
+    .select("external_id, config")
+    .eq("organization_id", orgId)
+    .eq("type", "whatsapp")
+    .eq("is_active", true)
+    .order("created_at", { ascending: true })
+    .limit(1)
+    .maybeSingle();
+  if (!data) return undefined;
+
+  const config = (data.config as { token?: string; phone_number_id?: string }) ?? {};
+  return {
+    token: config.token,
+    phoneNumberId: config.phone_number_id || (data.external_id as string | null) || undefined,
+  };
+}
 
 interface Ctx {
   params: Promise<{ id: string }>;
@@ -43,7 +74,8 @@ export async function POST(request: Request, { params }: Ctx) {
   // registrados localmente até ganharem seus adaptadores.
   let delivery: { simulated: boolean; error?: string } = { simulated: true };
   if (conversation.channel === "whatsapp") {
-    const result = await sendWhatsAppText(conversation.contact.handle, text);
+    const creds = await whatsAppCredentials();
+    const result = await sendWhatsAppText(conversation.contact.handle, text, creds);
     delivery = { simulated: result.simulated, error: result.error };
     if (!result.ok) {
       return NextResponse.json(

@@ -70,4 +70,6 @@ export interface InboundMessage {
   text: string;
   externalId?: string;
   at?: string;
+  /** Id do canal no provedor (ex.: phone_number_id) — roteia para o tenant. */
+  channelExternalId?: string;
 }
