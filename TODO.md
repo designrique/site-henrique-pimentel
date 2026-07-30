@@ -39,10 +39,13 @@ Código autoral. Stack: Next.js 16 · React 19 · Tailwind 4 · Supabase (self-h
 - [ ] Notas, etiquetas, campos personalizados (evolução futura)
 - [ ] Timeline unificada (conversa + CRM) (evolução futura)
 
-## ⏳ Fase 5 — Integrações plug-and-play
-- [ ] Chaves de API por organização
-- [ ] Webhooks de saída (eventos → sistemas externos)
-- [ ] Framework de conectores + primeiros conectores nativos
+## ✅ Fase 5 — Integrações plug-and-play
+- [x] Chaves de API por organização (hash; valor mostrado uma vez; revogação)
+- [x] API pública v1 (`/api/v1/conversations`, `/api/v1/messages`)
+- [x] Webhooks de saída assinados (HMAC-SHA256) por evento
+- [x] Eventos: message.received, message.sent, deal.stage_changed, task.created
+- [x] UI de integrações (chaves + webhooks)
+- [ ] Conectores nativos prontos (ex.: Zapier/n8n templates) — evolução futura
 
 ## ⏳ Fase 6 — Tempo real e polimento
 - [ ] Supabase Realtime no lugar do polling

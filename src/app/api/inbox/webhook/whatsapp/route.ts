@@ -4,6 +4,7 @@ import { createSupabaseRepository } from "@/lib/inbox/store.supabase";
 import { isSupabaseConfigured } from "@/lib/supabase/server";
 import { createSupabaseAdminClient, resolveOrgByChannel } from "@/lib/supabase/admin";
 import { parseInboundWebhook, verifyWebhook } from "@/lib/inbox/channels/whatsapp";
+import { dispatchEvent } from "@/lib/integrations/webhooks";
 import type { InboundMessage } from "@/lib/inbox/types";
 
 export const dynamic = "force-dynamic";
@@ -51,7 +52,13 @@ export async function POST(request: Request) {
         continue;
       }
       const repo = createSupabaseRepository(admin, route.organizationId, "system");
-      await repo.ingestInbound(msg);
+      const { conversation } = await repo.ingestInbound(msg);
+      await dispatchEvent(route.organizationId, "message.received", {
+        conversation_id: conversation.id,
+        channel: msg.channel,
+        text: msg.text,
+        contact_handle: msg.contactHandle,
+      });
       ingested += 1;
     }
   } else {

@@ -219,6 +219,7 @@ export function InboxClient({ session }: { session: InboxSession }) {
           <nav className="flex items-center gap-3 text-xs font-medium text-[color:var(--accent-text)]">
             <a href="/atendimento/crm" className="hover:underline">CRM</a>
             <a href="/atendimento/tarefas" className="hover:underline">Tarefas</a>
+            <a href="/atendimento/integracoes" className="hover:underline">Integrações</a>
             <a href="/atendimento/canais" className="hover:underline">Canais</a>
           </nav>
           {!session.demo && <NotificationBell />}

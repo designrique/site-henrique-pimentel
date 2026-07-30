@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { requireOrgContext, orgErrorStatus } from "@/lib/supabase/org";
 import { notifyUser } from "@/lib/notifications/notify";
+import { dispatchEvent } from "@/lib/integrations/webhooks";
 
 export const dynamic = "force-dynamic";
 
@@ -77,6 +78,13 @@ export async function POST(request: Request) {
       link: "/atendimento/tarefas",
     });
   }
+
+  await dispatchEvent(ctx.orgId, "task.created", {
+    task_id: data.id,
+    title,
+    assignee_id: body?.assigneeId ?? null,
+    contact_id: body?.contactId ?? null,
+  });
 
   return NextResponse.json({ task: data }, { status: 201 });
 }

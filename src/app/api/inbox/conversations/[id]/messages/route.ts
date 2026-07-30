@@ -3,6 +3,7 @@ import { getInboxRepository } from "@/lib/inbox/repository";
 import { deliverMessage, type ChannelConfig } from "@/lib/inbox/channels/deliver";
 import { createSupabaseServerClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import { resolveCurrentOrg } from "@/lib/inbox/store.supabase";
+import { dispatchEvent } from "@/lib/integrations/webhooks";
 import type { Channel } from "@/lib/inbox/types";
 
 export const dynamic = "force-dynamic";
@@ -11,16 +12,18 @@ interface Ctx {
   params: Promise<{ id: string }>;
 }
 
-/** Config (credenciais) do canal ativo do tipo pedido, na organização atual. */
-async function channelConfig(type: Channel): Promise<ChannelConfig> {
-  if (!isSupabaseConfigured()) return {};
+/** Config do canal ativo + organização atual (para credenciais e eventos). */
+async function channelContext(
+  type: Channel,
+): Promise<{ config: ChannelConfig; orgId: string | null }> {
+  if (!isSupabaseConfigured()) return { config: {}, orgId: null };
   const supabase = await createSupabaseServerClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) return {};
+  if (!user) return { config: {}, orgId: null };
   const orgId = await resolveCurrentOrg(supabase, user.id);
-  if (!orgId) return {};
+  if (!orgId) return { config: {}, orgId: null };
 
   const { data } = await supabase
     .from("channels")
@@ -31,12 +34,15 @@ async function channelConfig(type: Channel): Promise<ChannelConfig> {
     .order("created_at", { ascending: true })
     .limit(1)
     .maybeSingle();
-  if (!data) return {};
+  if (!data) return { config: {}, orgId };
 
   const config = (data.config as ChannelConfig) ?? {};
   return {
-    ...config,
-    phone_number_id: config.phone_number_id || (data.external_id as string | null) || undefined,
+    config: {
+      ...config,
+      phone_number_id: config.phone_number_id || (data.external_id as string | null) || undefined,
+    },
+    orgId,
   };
 }
 
@@ -72,9 +78,19 @@ export async function POST(request: Request, { params }: Ctx) {
   }
 
   // Entrega no canal, com as credenciais da organização.
-  const config = await channelConfig(conversation.channel);
+  const { config, orgId } = await channelContext(conversation.channel);
   const result = await deliverMessage(conversation.channel, conversation.contact.handle, text, config);
   const delivery = { simulated: result.simulated, error: result.error };
+
+  if (orgId) {
+    await dispatchEvent(orgId, "message.sent", {
+      conversation_id: id,
+      channel: conversation.channel,
+      text,
+      via: "ui",
+    });
+  }
+
   if (!result.ok) {
     return NextResponse.json({ message, delivery }, { status: 502 });
   }

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { requireOrgContext, orgErrorStatus } from "@/lib/supabase/org";
+import { dispatchEvent } from "@/lib/integrations/webhooks";
 
 export const dynamic = "force-dynamic";
 
@@ -42,6 +43,13 @@ export async function PATCH(request: Request, { params }: Ctx) {
     .maybeSingle();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   if (!data) return NextResponse.json({ error: "não encontrado" }, { status: 404 });
+
+  if (body.stageId !== undefined) {
+    await dispatchEvent(ctx.orgId, "deal.stage_changed", {
+      deal_id: id,
+      stage_id: body.stageId,
+    });
+  }
 
   return NextResponse.json({ deal: data });
 }

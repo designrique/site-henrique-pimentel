@@ -141,6 +141,32 @@ NEXT_PUBLIC_APP_URL=https://app.seu-dominio.com
 Mídia recebida do WhatsApp é baixada sob demanda pelo proxy autenticado
 `/api/inbox/media/[mediaId]`, usando o token do canal da organização.
 
+## Integrações (API pública + webhooks de saída)
+
+Gerenciadas por organização em `/atendimento/integracoes`.
+
+### API pública v1 — autenticada por chave
+
+Cabeçalho: `Authorization: Bearer <chave>` (ou `X-API-Key: <chave>`).
+As chaves são guardadas apenas como hash; o valor completo aparece só na criação.
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| GET  | `/api/v1/conversations` | Lista conversas (`?status=&channel=`) |
+| GET  | `/api/v1/messages?conversationId=` | Lista mensagens de uma conversa |
+| POST | `/api/v1/messages` | Envia resposta `{ conversationId, text }` |
+
+### Webhooks de saída
+
+Eventos são entregues via POST, assinados com `X-HPChat-Signature: sha256=<hmac>`
+(HMAC-SHA256 do corpo usando o `secret` do endpoint). Um endpoint sem eventos
+selecionados recebe todos. Eventos disponíveis:
+
+- `message.received` — mensagem recebida em qualquer canal
+- `message.sent` — resposta enviada (UI ou API)
+- `deal.stage_changed` — negócio movido no kanban
+- `task.created` — tarefa criada
+
 ## Próximos passos sugeridos
 
 - **Auth/onboarding**: login e criação de organização (o schema e o seletor já
