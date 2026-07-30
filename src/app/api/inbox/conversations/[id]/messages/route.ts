@@ -12,9 +12,14 @@ interface Ctx {
   params: Promise<{ id: string }>;
 }
 
-/** Config do canal ativo + organização atual (para credenciais e eventos). */
+/**
+ * Config do canal da conversa + organização atual. Usa o canal EXATO em que a
+ * conversa entrou (channelId); só cai no canal mais antigo do tipo como
+ * fallback para conversas antigas sem vínculo.
+ */
 async function channelContext(
   type: Channel,
+  channelId?: string | null,
 ): Promise<{ config: ChannelConfig; orgId: string | null }> {
   if (!isSupabaseConfigured()) return { config: {}, orgId: null };
   const supabase = await createSupabaseServerClient();
@@ -25,15 +30,17 @@ async function channelContext(
   const orgId = await resolveCurrentOrg(supabase, user.id);
   if (!orgId) return { config: {}, orgId: null };
 
-  const { data } = await supabase
+  let query = supabase
     .from("channels")
     .select("external_id, config")
-    .eq("organization_id", orgId)
-    .eq("type", type)
-    .eq("is_active", true)
-    .order("created_at", { ascending: true })
-    .limit(1)
-    .maybeSingle();
+    .eq("organization_id", orgId);
+  if (channelId) {
+    query = query.eq("id", channelId);
+  } else {
+    query = query.eq("type", type).eq("is_active", true).order("created_at", { ascending: true });
+  }
+
+  const { data } = await query.limit(1).maybeSingle();
   if (!data) return { config: {}, orgId };
 
   const config = (data.config as ChannelConfig) ?? {};
@@ -77,8 +84,8 @@ export async function POST(request: Request, { params }: Ctx) {
     return NextResponse.json({ error: "Falha ao registrar mensagem" }, { status: 500 });
   }
 
-  // Entrega no canal, com as credenciais da organização.
-  const { config, orgId } = await channelContext(conversation.channel);
+  // Entrega no canal EXATO da conversa, com as credenciais da organização.
+  const { config, orgId } = await channelContext(conversation.channel, conversation.channelId);
   const result = await deliverMessage(conversation.channel, conversation.contact.handle, text, config);
   const delivery = { simulated: result.simulated, error: result.error };
 

@@ -12,16 +12,15 @@ async function channelConfig(
   admin: SupabaseClient,
   orgId: string,
   type: Channel,
+  channelId?: string | null,
 ): Promise<ChannelConfig> {
-  const { data } = await admin
-    .from("channels")
-    .select("external_id, config")
-    .eq("organization_id", orgId)
-    .eq("type", type)
-    .eq("is_active", true)
-    .order("created_at", { ascending: true })
-    .limit(1)
-    .maybeSingle();
+  let query = admin.from("channels").select("external_id, config").eq("organization_id", orgId);
+  if (channelId) {
+    query = query.eq("id", channelId);
+  } else {
+    query = query.eq("type", type).eq("is_active", true).order("created_at", { ascending: true });
+  }
+  const { data } = await query.limit(1).maybeSingle();
   if (!data) return {};
   const config = (data.config as ChannelConfig) ?? {};
   return {
@@ -67,7 +66,7 @@ export async function POST(request: Request) {
   }
 
   const message = await repo.appendOutbound(conversationId, text, "api");
-  const config = await channelConfig(auth.admin, auth.orgId, conversation.channel);
+  const config = await channelConfig(auth.admin, auth.orgId, conversation.channel, conversation.channelId);
   const result = await deliverMessage(conversation.channel, conversation.contact.handle, text, config);
 
   await dispatchEvent(auth.orgId, "message.sent", {

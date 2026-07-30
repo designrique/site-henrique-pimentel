@@ -52,6 +52,20 @@ export async function POST(request: Request) {
   const title = body?.title?.trim();
   if (!title) return NextResponse.json({ error: "título obrigatório" }, { status: 400 });
 
+  // (P2) O responsável precisa ser membro da organização — evita atribuir e
+  // notificar (via service-role) um usuário de fora do tenant.
+  if (body?.assigneeId) {
+    const { data: member } = await ctx.supabase
+      .from("organization_members")
+      .select("user_id")
+      .eq("organization_id", ctx.orgId)
+      .eq("user_id", body.assigneeId)
+      .maybeSingle();
+    if (!member) {
+      return NextResponse.json({ error: "responsável não é membro da organização" }, { status: 400 });
+    }
+  }
+
   const { data, error } = await ctx.supabase
     .from("tasks")
     .insert({

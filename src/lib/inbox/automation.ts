@@ -93,7 +93,7 @@ async function pickLeastLoadedAgent(
   return [...load.entries()].sort((a, b) => a[1] - b[1])[0]?.[0] ?? null;
 }
 
-async function channelConfig(
+async function channelConfigByType(
   admin: SupabaseClient,
   orgId: string,
   type: Channel,
@@ -142,6 +142,7 @@ export async function runInboundAutomation(
   conversation: Conversation,
   contactHandle: string,
   isNew: boolean,
+  channelConfig?: ChannelConfig,
 ): Promise<void> {
   const settings = await getSettings(admin, orgId);
   if (!settings) return;
@@ -171,7 +172,9 @@ export async function runInboundAutomation(
     if (isNew || !(await alreadyRepliedRecently(admin, orgId, conversation.id))) {
       const repo = createSupabaseRepository(admin, orgId, "system");
       await repo.appendOutbound(conversation.id, settings.away_message, "system");
-      const config = await channelConfig(admin, orgId, conversation.channel);
+      // Usa as credenciais do canal exato da conversa (o que recebeu a msg).
+      const config =
+        channelConfig ?? (await channelConfigByType(admin, orgId, conversation.channel));
       await deliverMessage(conversation.channel, contactHandle, settings.away_message, config);
     }
   }

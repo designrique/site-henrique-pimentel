@@ -221,6 +221,21 @@ export const inMemoryRepository: InboxRepository = {
 
   async ingestInbound(inbound) {
     const d = db();
+    // Idempotência: se já temos essa mensagem do provedor, ignora (reenvio).
+    if (inbound.externalId) {
+      for (const [convId, list] of d.messages) {
+        const existing = list.find((m) => m.externalId === inbound.externalId);
+        if (existing) {
+          return {
+            conversation: toView(d.conversations.get(convId)!),
+            message: existing,
+            created: false,
+            duplicate: true,
+          };
+        }
+      }
+    }
+
     // Reusa contato pelo handle+canal; senão cria.
     let contact = Array.from(d.contacts.values()).find(
       (c) => c.handle === inbound.contactHandle && c.channel === inbound.channel,
@@ -246,6 +261,7 @@ export const inMemoryRepository: InboxRepository = {
         id: makeId(d, "cv"),
         contactId: contact.id,
         channel: inbound.channel,
+        channelId: inbound.channelId ?? null,
         status: "open",
         assigneeId: null,
         tags: [],

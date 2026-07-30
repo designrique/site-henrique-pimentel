@@ -65,9 +65,14 @@ export async function POST(request: Request) {
         skipped += 1;
         continue;
       }
+      msg.channelId = route.channelId;
       const repo = createSupabaseRepository(admin, route.organizationId, "system");
-      const { conversation, created } = await repo.ingestInbound(msg);
-      await runInboundAutomation(admin, route.organizationId, conversation, msg.contactHandle, created);
+      const { conversation, created, duplicate } = await repo.ingestInbound(msg);
+      if (duplicate) {
+        skipped += 1;
+        continue;
+      }
+      await runInboundAutomation(admin, route.organizationId, conversation, msg.contactHandle, created, route.config);
       await dispatchEvent(route.organizationId, "message.received", {
         conversation_id: conversation.id,
         channel: msg.channel,

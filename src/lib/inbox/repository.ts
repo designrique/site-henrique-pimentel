@@ -21,7 +21,13 @@ export interface InboxRepository {
   appendOutbound(conversationId: string, text: string, agentId: string): Promise<Message | null>;
   ingestInbound(
     inbound: InboundMessage,
-  ): Promise<{ conversation: Conversation; message: Message; created: boolean }>;
+  ): Promise<{
+    conversation: Conversation;
+    message: Message;
+    created: boolean;
+    /** true quando a mensagem já existia (reenvio do provedor) e foi ignorada. */
+    duplicate?: boolean;
+  }>;
   setStatus(conversationId: string, status: ConversationStatus): Promise<ConversationView | null>;
   markRead(conversationId: string): Promise<void>;
   listAgents(): Promise<Agent[]>;

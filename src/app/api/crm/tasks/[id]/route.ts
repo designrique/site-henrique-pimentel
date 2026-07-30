@@ -23,6 +23,19 @@ export async function PATCH(request: Request, { params }: Ctx) {
   } | null;
   if (!body) return NextResponse.json({ error: "payload inválido" }, { status: 400 });
 
+  // (P2) Só permite atribuir a um membro da organização.
+  if (body.assigneeId) {
+    const { data: member } = await ctx.supabase
+      .from("organization_members")
+      .select("user_id")
+      .eq("organization_id", ctx.orgId)
+      .eq("user_id", body.assigneeId)
+      .maybeSingle();
+    if (!member) {
+      return NextResponse.json({ error: "responsável não é membro da organização" }, { status: 400 });
+    }
+  }
+
   const update: Record<string, unknown> = {};
   if (body.status) {
     update.status = body.status;

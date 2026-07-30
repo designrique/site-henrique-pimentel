@@ -94,6 +94,7 @@ interface ConversationRow {
   id: string;
   contact_id: string;
   channel: Channel;
+  channel_id: string | null;
   status: ConversationStatus;
   assignee_id: string | null;
   tags: string[];
@@ -136,6 +137,7 @@ export function createSupabaseRepository(
       id: row.id,
       contactId: row.contact_id,
       channel: row.channel,
+      channelId: row.channel_id,
       status: row.status,
       assigneeId: row.assignee_id,
       tags: row.tags ?? [],
@@ -238,6 +240,27 @@ export function createSupabaseRepository(
     },
 
     async ingestInbound(inbound) {
+      // (P1) Idempotência: se já recebemos essa mensagem do provedor, ignora
+      // para não duplicar, não re-bumpar o não-lido nem reprocessar automações.
+      if (inbound.externalId) {
+        const { data: dup } = await supabase
+          .from("messages")
+          .select("*")
+          .eq("organization_id", orgId)
+          .eq("external_id", inbound.externalId)
+          .limit(1)
+          .maybeSingle();
+        if (dup) {
+          const conv = await this.getConversation((dup as MessageRow).conversation_id);
+          return {
+            conversation: conv!,
+            message: mapMessage(dup as MessageRow),
+            created: false,
+            duplicate: true,
+          };
+        }
+      }
+
       // Upsert do contato (idempotente por org+canal+handle).
       const { data: contact, error: cErr } = await supabase
         .from("contacts")
@@ -274,11 +297,20 @@ export function createSupabaseRepository(
             organization_id: orgId,
             contact_id: contact.id,
             channel: inbound.channel,
+            channel_id: inbound.channelId ?? null,
           })
           .select("*")
           .single();
         if (convErr) throw convErr;
         conversationRow = created;
+      } else if (inbound.channelId && !conversationRow.channel_id) {
+        // Preenche o canal na conversa existente que ainda não o tinha.
+        await supabase
+          .from("conversations")
+          .update({ channel_id: inbound.channelId })
+          .eq("organization_id", orgId)
+          .eq("id", conversationRow.id);
+        conversationRow.channel_id = inbound.channelId;
       }
 
       const { data: message, error: mErr } = await supabase
@@ -298,12 +330,30 @@ export function createSupabaseRepository(
         })
         .select("*")
         .single();
-      if (mErr) throw mErr;
+      if (mErr) {
+        // Corrida com outra entrega do mesmo evento: o índice único barra o
+        // duplicado. Trata como duplicado em vez de erro.
+        if ((mErr as { code?: string }).code === "23505" && inbound.externalId) {
+          const { data: dup } = await supabase
+            .from("messages")
+            .select("*")
+            .eq("organization_id", orgId)
+            .eq("external_id", inbound.externalId)
+            .limit(1)
+            .maybeSingle();
+          if (dup) {
+            const conv = await this.getConversation((dup as MessageRow).conversation_id);
+            return { conversation: conv!, message: mapMessage(dup as MessageRow), created: false, duplicate: true };
+          }
+        }
+        throw mErr;
+      }
 
       const conversation: Conversation = {
         id: conversationRow.id,
         contactId: contact.id,
         channel: inbound.channel,
+        channelId: conversationRow.channel_id,
         status: conversationRow.status,
         assigneeId: conversationRow.assignee_id,
         tags: conversationRow.tags ?? [],

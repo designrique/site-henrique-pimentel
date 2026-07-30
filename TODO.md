@@ -78,6 +78,11 @@ Código autoral. Stack: Next.js 16 · React 19 · Tailwind 4 · Supabase (self-h
 - [x] Log de entregas de webhook + reenvio manual
 - [x] Painel enriquecido (mensagens 7d, por canal, atrasadas, ganhos×perdidos)
 
+## ✅ Correções da revisão do PR #2
+- [x] Idempotência de mensagens recebidas (índice único por external_id + dedup)
+- [x] Vínculo do canal exato na conversa (respostas com as credenciais certas)
+- [x] Validação de responsável como membro da organização (tarefas)
+
 ## ✅ Automação e exportação
 - [x] Configurações da organização (org_settings) + página /atendimento/configuracoes
 - [x] Fila / atribuição automática ao atendente menos ocupado

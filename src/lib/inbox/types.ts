@@ -54,6 +54,8 @@ export interface Conversation {
   id: string;
   contactId: string;
   channel: Channel;
+  /** Canal exato (linha em channels) em que a conversa entrou, para respostas. */
+  channelId?: string | null;
   status: ConversationStatus;
   assigneeId: string | null;
   tags: string[];
@@ -84,6 +86,8 @@ export interface InboundMessage {
   at?: string;
   /** Id do canal no provedor (ex.: phone_number_id) — roteia para o tenant. */
   channelExternalId?: string;
+  /** Id interno do canal (channels.id) resolvido no webhook, para vincular à conversa. */
+  channelId?: string;
   /** Anexo de mídia, quando a mensagem recebida não é só texto. */
   media?: MediaAttachment;
 }

@@ -33,17 +33,25 @@ export async function POST(request: Request) {
     if (!route) return NextResponse.json({ received: inbound.length, skipped: inbound.length });
 
     const repo = createSupabaseRepository(admin, route.organizationId, "system");
+    let ingested = 0;
+    let skipped = 0;
     for (const msg of inbound) {
-      const { conversation, created } = await repo.ingestInbound(msg);
-      await runInboundAutomation(admin, route.organizationId, conversation, msg.contactHandle, created);
+      msg.channelId = route.channelId;
+      const { conversation, created, duplicate } = await repo.ingestInbound(msg);
+      if (duplicate) {
+        skipped += 1;
+        continue;
+      }
+      await runInboundAutomation(admin, route.organizationId, conversation, msg.contactHandle, created, route.config);
       await dispatchEvent(route.organizationId, "message.received", {
         conversation_id: conversation.id,
         channel: msg.channel,
         text: msg.text,
         contact_handle: msg.contactHandle,
       });
+      ingested += 1;
     }
-    return NextResponse.json({ received: inbound.length, ingested: inbound.length });
+    return NextResponse.json({ received: inbound.length, ingested, skipped });
   }
 
   for (const msg of inbound) await inMemoryRepository.ingestInbound(msg);
