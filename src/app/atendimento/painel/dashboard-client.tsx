@@ -5,10 +5,21 @@ import { useRealtime } from "@/lib/supabase/realtime";
 
 interface Metrics {
   conversations: { open: number; pending: number; closed: number; total: number };
-  tasks: { open: number; done: number };
+  tasks: { open: number; done: number; overdue: number };
+  messages7d: { in: number; out: number; total: number };
+  byChannel: Record<string, number>;
   pipeline: Array<{ stage: string; count: number; value: number }>;
   pipelineTotal: number;
+  won: { count: number; value: number };
+  lost: { count: number; value: number };
 }
+
+const CHANNEL_LABEL: Record<string, string> = {
+  whatsapp: "WhatsApp",
+  instagram: "Instagram",
+  telegram: "Telegram",
+  webchat: "Web",
+};
 
 const money = (v: number) =>
   new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(v);
@@ -52,6 +63,48 @@ export function DashboardClient({ demo }: { demo: boolean }) {
             <Stat label="Pendentes" value={m.conversations.pending} />
             <Stat label="Resolvidas" value={m.conversations.closed} />
             <Stat label="Tarefas abertas" value={m.tasks.open} />
+          </div>
+
+          {/* Mensagens (7 dias) e tarefas atrasadas */}
+          <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <Stat label="Recebidas (7d)" value={m.messages7d.in} />
+            <Stat label="Enviadas (7d)" value={m.messages7d.out} />
+            <Stat
+              label="Tarefas atrasadas"
+              value={m.tasks.overdue}
+              accent={m.tasks.overdue > 0}
+            />
+            <Stat label="Tarefas concluídas" value={m.tasks.done} />
+          </div>
+
+          {/* Ganhos x Perdidos e conversas por canal */}
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="rounded-xl border border-[color:var(--border-default)] p-4">
+              <h2 className="mb-3 text-sm font-semibold">Ganhos × Perdidos</h2>
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-[color:var(--success)]">
+                  Ganhos: {m.won.count} · {money(m.won.value)}
+                </span>
+                <span className="text-[color:var(--error)]">
+                  Perdidos: {m.lost.count} · {money(m.lost.value)}
+                </span>
+              </div>
+            </div>
+            <div className="rounded-xl border border-[color:var(--border-default)] p-4">
+              <h2 className="mb-3 text-sm font-semibold">Conversas por canal</h2>
+              {Object.keys(m.byChannel).length === 0 ? (
+                <p className="text-sm text-[color:var(--text-tertiary)]">Sem conversas.</p>
+              ) : (
+                <ul className="space-y-1 text-sm">
+                  {Object.entries(m.byChannel).map(([ch, n]) => (
+                    <li key={ch} className="flex justify-between">
+                      <span>{CHANNEL_LABEL[ch] ?? ch}</span>
+                      <span className="font-medium">{n}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
 
           {/* Pipeline */}

@@ -114,6 +114,8 @@ export function InboxClient({ session }: { session: InboxSession }) {
   const [search, setSearch] = useState("");
   const [draft, setDraft] = useState("");
   const [sending, setSending] = useState(false);
+  const [templates, setTemplates] = useState<Array<{ id: string; title: string; shortcut: string; body: string }>>([]);
+  const [showTemplates, setShowTemplates] = useState(false);
   const threadEndRef = useRef<HTMLDivElement>(null);
 
   const active = conversations.find((c) => c.id === activeId) ?? null;
@@ -170,6 +172,20 @@ export function InboxClient({ session }: { session: InboxSession }) {
     threadEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  // Respostas rápidas (templates) da organização.
+  useEffect(() => {
+    if (session.demo) return;
+    fetch("/api/crm/templates", { cache: "no-store" })
+      .then((r) => r.json())
+      .then((d) => setTemplates(d.templates ?? []))
+      .catch(() => {});
+  }, [session.demo]);
+
+  function insertTemplate(body: string) {
+    setDraft((d) => (d ? `${d} ${body}` : body));
+    setShowTemplates(false);
+  }
+
   async function sendMessage() {
     const text = draft.trim();
     if (!text || !activeId || sending) return;
@@ -225,6 +241,7 @@ export function InboxClient({ session }: { session: InboxSession }) {
             <a href="/atendimento/painel" className="hover:underline">Painel</a>
             <a href="/atendimento/crm" className="hover:underline">CRM</a>
             <a href="/atendimento/tarefas" className="hover:underline">Tarefas</a>
+            <a href="/atendimento/respostas" className="hover:underline">Respostas</a>
             <a href="/atendimento/integracoes" className="hover:underline">Integrações</a>
             <a href="/atendimento/canais" className="hover:underline">Canais</a>
           </nav>
@@ -418,9 +435,46 @@ export function InboxClient({ session }: { session: InboxSession }) {
                   Enviar
                 </button>
               </div>
-              <p className="mt-1.5 px-1 text-[11px] text-[color:var(--text-tertiary)]">
-                Enter envia · Shift+Enter quebra linha
-              </p>
+              <div className="mt-1.5 flex items-center justify-between px-1">
+                <p className="text-[11px] text-[color:var(--text-tertiary)]">
+                  Enter envia · Shift+Enter quebra linha
+                </p>
+                {!session.demo && templates.length > 0 && (
+                  <div className="relative">
+                    <button
+                      type="button"
+                      onClick={() => setShowTemplates((v) => !v)}
+                      className="text-[11px] font-medium text-[color:var(--accent-text)] hover:underline"
+                    >
+                      Respostas rápidas
+                    </button>
+                    {showTemplates && (
+                      <div className="absolute bottom-6 right-0 z-40 max-h-64 w-72 overflow-y-auto rounded-xl border border-[color:var(--border-default)] bg-[color:var(--bg-primary)] shadow-lg">
+                        {templates.map((t) => (
+                          <button
+                            key={t.id}
+                            type="button"
+                            onClick={() => insertTemplate(t.body)}
+                            className="block w-full border-b border-[color:var(--border-default)] px-3 py-2 text-left hover:bg-[color:var(--bg-subtle)]"
+                          >
+                            <p className="text-xs font-medium">
+                              {t.title}
+                              {t.shortcut && (
+                                <span className="ml-1.5 text-[10px] text-[color:var(--text-tertiary)]">
+                                  /{t.shortcut}
+                                </span>
+                              )}
+                            </p>
+                            <p className="mt-0.5 line-clamp-2 text-[11px] text-[color:var(--text-secondary)]">
+                              {t.body}
+                            </p>
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
             </footer>
           </>
         )}

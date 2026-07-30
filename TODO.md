@@ -72,6 +72,11 @@ Código autoral. Stack: Next.js 16 · React 19 · Tailwind 4 · Supabase (self-h
 - [x] Etiquetas (tags) por contato, editáveis na ficha do cliente
 - [x] Campos personalizados por organização (texto/número/data/lista)
 - [x] Página de gestão de campos (/atendimento/campos)
+
+## ✅ Extras
+- [x] Respostas rápidas / templates (gestão + seletor no compositor)
+- [x] Log de entregas de webhook + reenvio manual
+- [x] Painel enriquecido (mensagens 7d, por canal, atrasadas, ganhos×perdidos)
 - [ ] Log de entregas de webhook (retentativas)
 - [ ] Mídia em Instagram/Telegram
 - [ ] Conectores nativos prontos (Zapier/n8n)

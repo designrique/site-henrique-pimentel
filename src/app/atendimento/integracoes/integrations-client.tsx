@@ -17,10 +17,20 @@ interface Webhook {
   events: string[];
   is_active: boolean;
 }
+interface Delivery {
+  id: string;
+  event: string;
+  status: "success" | "failed";
+  attempts: number;
+  response_code: number | null;
+  error: string | null;
+  created_at: string;
+}
 
 export function IntegrationsClient({ demo }: { demo: boolean }) {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const [webhooks, setWebhooks] = useState<Webhook[]>([]);
+  const [deliveries, setDeliveries] = useState<Delivery[]>([]);
   const [events, setEvents] = useState<string[]>([]);
   const [newKeyName, setNewKeyName] = useState("");
   const [revealed, setRevealed] = useState<string | null>(null);
@@ -28,14 +38,21 @@ export function IntegrationsClient({ demo }: { demo: boolean }) {
   const [selEvents, setSelEvents] = useState<string[]>([]);
 
   const load = useCallback(async () => {
-    const [k, w] = await Promise.all([
+    const [k, w, d] = await Promise.all([
       fetch("/api/integrations/keys", { cache: "no-store" }).then((r) => r.json()),
       fetch("/api/integrations/webhooks", { cache: "no-store" }).then((r) => r.json()),
+      fetch("/api/integrations/deliveries", { cache: "no-store" }).then((r) => r.json()),
     ]);
     setKeys(k.keys ?? []);
     setWebhooks(w.webhooks ?? []);
     setEvents(w.events ?? []);
+    setDeliveries(d.deliveries ?? []);
   }, []);
+
+  async function retryDelivery(id: string) {
+    await fetch(`/api/integrations/deliveries/${id}/retry`, { method: "POST" });
+    await load();
+  }
 
   useEffect(() => {
     load();
@@ -216,6 +233,47 @@ export function IntegrationsClient({ demo }: { demo: boolean }) {
               </div>
             </li>
           ))}
+        </ul>
+      </section>
+
+      {/* Log de entregas */}
+      <section className="mt-10">
+        <h2 className="text-sm font-semibold">Entregas recentes</h2>
+        <p className="mt-1 text-xs text-[color:var(--text-secondary)]">
+          Últimas tentativas de entrega. Reenvie manualmente as que falharam.
+        </p>
+        <ul className="mt-3 divide-y divide-[color:var(--border-default)] rounded-xl border border-[color:var(--border-default)]">
+          {deliveries.length === 0 ? (
+            <li className="p-3 text-sm text-[color:var(--text-tertiary)]">Nenhuma entrega ainda.</li>
+          ) : (
+            deliveries.map((d) => (
+              <li key={d.id} className="flex items-center justify-between gap-3 p-3">
+                <div className="min-w-0">
+                  <p className="text-sm">
+                    <span
+                      className={`mr-2 inline-block size-2 rounded-full ${
+                        d.status === "success" ? "bg-[color:var(--success)]" : "bg-[color:var(--error)]"
+                      }`}
+                      aria-hidden
+                    />
+                    <span className="font-medium">{d.event}</span>
+                    <span className="ml-2 text-xs text-[color:var(--text-tertiary)]">
+                      {d.response_code ? `HTTP ${d.response_code}` : d.error ?? ""}
+                      {d.attempts > 1 ? ` · ${d.attempts} tentativas` : ""}
+                    </span>
+                  </p>
+                </div>
+                {d.status === "failed" && (
+                  <button
+                    onClick={() => retryDelivery(d.id)}
+                    className="shrink-0 rounded-lg border border-[color:var(--border-default)] px-2.5 py-1 text-xs font-medium hover:bg-[color:var(--bg-subtle)]"
+                  >
+                    Reenviar
+                  </button>
+                )}
+              </li>
+            ))
+          )}
         </ul>
       </section>
     </div>
