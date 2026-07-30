@@ -47,7 +47,7 @@ Código autoral. Stack: Next.js 16 · React 19 · Tailwind 4 · Supabase (self-h
 - [x] UI de integrações (chaves + webhooks)
 - [ ] Conectores nativos prontos (ex.: Zapier/n8n templates) — evolução futura
 
-## ⏳ Fase 6 — Tempo real e polimento
-- [ ] Supabase Realtime no lugar do polling
-- [ ] Notificações
-- [ ] Relatórios/dashboard
+## ✅ Fase 6 — Tempo real e polimento
+- [x] Supabase Realtime no inbox (conversas + mensagens) com fallback de polling
+- [x] Notificações ao vivo (sino via Realtime)
+- [x] Painel de métricas (/atendimento/painel): conversas, tarefas e funil

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useRealtime } from "@/lib/supabase/realtime";
 
 interface Notification {
   id: string;
@@ -28,9 +29,12 @@ export function NotificationBell() {
 
   useEffect(() => {
     load();
-    const t = setInterval(load, 15000);
+    const t = setInterval(load, 60000); // fallback lento
     return () => clearInterval(t);
   }, [load]);
+
+  // Novas notificações chegam ao vivo.
+  useRealtime(["notifications"], load, true);
 
   // Fecha ao clicar fora.
   useEffect(() => {

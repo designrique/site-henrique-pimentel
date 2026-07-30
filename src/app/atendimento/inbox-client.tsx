@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { signOut } from "@/app/login/actions";
 import { NotificationBell } from "@/components/inbox/notification-bell";
+import { useRealtime } from "@/lib/supabase/realtime";
 import type {
   Channel,
   ConversationStatus,
@@ -152,14 +153,18 @@ export function InboxClient({ session }: { session: InboxSession }) {
     else setMessages([]);
   }, [activeId, loadMessages]);
 
-  // Polling leve: novas mensagens recebidas via webhook aparecem sozinhas.
-  useEffect(() => {
-    const t = setInterval(() => {
-      loadConversations();
-      if (activeId) loadMessages(activeId);
-    }, 5000);
-    return () => clearInterval(t);
+  // Atualização ao vivo via Supabase Realtime (quando configurado).
+  const refresh = useCallback(() => {
+    loadConversations();
+    if (activeId) loadMessages(activeId);
   }, [loadConversations, loadMessages, activeId]);
+  useRealtime(["messages", "conversations"], refresh, !session.demo);
+
+  // Fallback por polling (mais lento) — cobre o modo demo e falhas de socket.
+  useEffect(() => {
+    const t = setInterval(refresh, session.demo ? 5000 : 30000);
+    return () => clearInterval(t);
+  }, [refresh, session.demo]);
 
   useEffect(() => {
     threadEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -217,6 +222,7 @@ export function InboxClient({ session }: { session: InboxSession }) {
         </div>
         <div className="flex items-center gap-3">
           <nav className="flex items-center gap-3 text-xs font-medium text-[color:var(--accent-text)]">
+            <a href="/atendimento/painel" className="hover:underline">Painel</a>
             <a href="/atendimento/crm" className="hover:underline">CRM</a>
             <a href="/atendimento/tarefas" className="hover:underline">Tarefas</a>
             <a href="/atendimento/integracoes" className="hover:underline">Integrações</a>
