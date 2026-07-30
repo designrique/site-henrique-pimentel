@@ -11,5 +11,14 @@
   },
   "observability": {
     "enabled": true
-  }
+  },
+  // Domínio personalizado de produção. Requer que a zona
+  // loteriaencruzilhada.com.br esteja na mesma conta Cloudflare — o Wrangler
+  // provisiona o domínio e o TLS automaticamente no deploy.
+  "routes": [
+    {
+      "pattern": "chat.loteriaencruzilhada.com.br",
+      "custom_domain": true
+    }
+  ]
 }
