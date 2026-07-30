@@ -167,12 +167,55 @@ curl "https://api.telegram.org/bot<TOKEN>/setWebhook" \
 
 ---
 
-## 8. Checklist de produção
+## 8. Publicar em chat.loteriaencruzilhada.com.br (passo a passo)
 
-- [ ] Migrações `0001`→`0005` aplicadas.
+O `wrangler.jsonc` já traz o custom domain `chat.loteriaencruzilhada.com.br`.
+No deploy, o Wrangler provisiona o domínio e o TLS — **desde que a zona
+`loteriaencruzilhada.com.br` esteja na mesma conta Cloudflare**.
+
+1. **Supabase por HTTPS.** Publique a instância (IP `31.x.x.x`) atrás de um
+   subdomínio com TLS, ex.: `https://supabase.loteriaencruzilhada.com.br`
+   (registro DNS *proxied* na Cloudflare + SSL/TLS *Full (strict)*). Ajuste
+   `API_EXTERNAL_URL` / `SUPABASE_PUBLIC_URL` e libere o domínio do app nas
+   origens de Auth.
+
+2. **Migrações** `0001`→`0008` aplicadas na instância (§2).
+
+3. **Login e variáveis:**
+   ```bash
+   wrangler login
+
+   export NEXT_PUBLIC_SUPABASE_URL="https://supabase.loteriaencruzilhada.com.br"
+   export NEXT_PUBLIC_SUPABASE_ANON_KEY="<anon key>"
+   export NEXT_PUBLIC_APP_URL="https://chat.loteriaencruzilhada.com.br"
+
+   wrangler secret put SUPABASE_SERVICE_ROLE_KEY
+   wrangler secret put WHATSAPP_APP_SECRET      # se usar WhatsApp
+   wrangler secret put INSTAGRAM_APP_SECRET     # se usar Instagram
+   wrangler secret put RESEND_API_KEY           # se usar e-mail
+   ```
+
+4. **Deploy:**
+   ```bash
+   pnpm cf:deploy
+   ```
+   O app fica em `https://chat.loteriaencruzilhada.com.br`.
+
+5. **Webhooks dos canais** apontando para o domínio (§7), por exemplo:
+   `https://chat.loteriaencruzilhada.com.br/api/inbox/webhook/whatsapp`.
+
+> Se a zona ainda **não** estiver na Cloudflare, remova o bloco `routes` do
+> `wrangler.jsonc` para publicar em `hpchat.<subdominio>.workers.dev` primeiro,
+> e adicione o custom domain depois (Workers → Custom Domains).
+
+---
+
+## 9. Checklist de produção
+
+- [ ] Migrações `0001`→`0008` aplicadas.
 - [ ] Supabase servido por **HTTPS** (domínio + TLS), não por `http://<IP>`.
 - [ ] `NEXT_PUBLIC_*` definidas no **build**; segredos via `wrangler secret`.
 - [ ] `nodejs_compat` ativo (já no `wrangler.jsonc`).
 - [ ] `WHATSAPP_APP_SECRET` / `INSTAGRAM_APP_SECRET` configurados.
 - [ ] Realtime habilitado e origens de Auth liberadas para o domínio do app.
-- [ ] Domínio personalizado apontado para o Worker (opcional, recomendado).
+- [ ] Zona `loteriaencruzilhada.com.br` na conta Cloudflare (custom domain).
