@@ -114,13 +114,18 @@ ambiente abaixo servem como fallback global.
 WHATSAPP_TOKEN=
 WHATSAPP_PHONE_NUMBER_ID=
 WHATSAPP_VERIFY_TOKEN=dev-verify-token
+# App Secret da Meta — valida a assinatura X-Hub-Signature-256 dos webhooks.
+# Fortemente recomendado em produção; sem ele, os webhooks não são verificados.
+WHATSAPP_APP_SECRET=
 
-# Telegram Bot API (fallback global)
+# Telegram Bot API (fallback global). A entrada é autenticada pelo secret do
+# webhook cadastrado por canal (config.secret).
 TELEGRAM_BOT_TOKEN=
 
 # Instagram Messaging / Graph API (fallback global)
 INSTAGRAM_TOKEN=
 INSTAGRAM_VERIFY_TOKEN=dev-verify-token
+INSTAGRAM_APP_SECRET=
 
 # Notificações por e-mail (Resend via API; sem chave → simulado)
 RESEND_API_KEY=

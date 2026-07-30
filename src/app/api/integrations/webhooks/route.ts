@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { randomBytes } from "node:crypto";
 import { requireOrgContext, orgErrorStatus } from "@/lib/supabase/org";
+import { isSafeWebhookUrl } from "@/lib/integrations/webhooks";
 
 export const dynamic = "force-dynamic";
 
@@ -40,8 +41,11 @@ export async function POST(request: Request) {
   } | null;
 
   const url = body?.url?.trim();
-  if (!url || !/^https?:\/\//i.test(url)) {
-    return NextResponse.json({ error: "URL inválida" }, { status: 400 });
+  if (!url || !isSafeWebhookUrl(url)) {
+    return NextResponse.json(
+      { error: "URL inválida: use https e um endereço público" },
+      { status: 400 },
+    );
   }
   const events = (body?.events ?? []).filter((e) => VALID_EVENTS.includes(e));
 

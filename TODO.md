@@ -51,3 +51,16 @@ Código autoral. Stack: Next.js 16 · React 19 · Tailwind 4 · Supabase (self-h
 - [x] Supabase Realtime no inbox (conversas + mensagens) com fallback de polling
 - [x] Notificações ao vivo (sino via Realtime)
 - [x] Painel de métricas (/atendimento/painel): conversas, tarefas e funil
+
+## ✅ Revisão de segurança
+- [x] Correção do appendOutbound (id não-UUID em fluxos de API/sistema)
+- [x] Verificação de assinatura Meta (X-Hub-Signature-256) nos webhooks WA/IG
+- [x] Proteção contra SSRF nos webhooks de saída (https + bloqueio de hosts internos)
+- [x] Guia de deploy self-hosted (DEPLOY.md)
+
+## ⏳ Evoluções futuras
+- [ ] Timeline unificada (conversa + histórico do cliente)
+- [ ] Etiquetas e campos personalizados no CRM
+- [ ] Log de entregas de webhook (retentativas)
+- [ ] Mídia em Instagram/Telegram
+- [ ] Conectores nativos prontos (Zapier/n8n)

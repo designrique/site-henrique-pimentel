@@ -3,9 +3,33 @@
 // ambiente não estiverem configuradas, o envio opera em modo simulado (útil em
 // dev e para demonstração), sem quebrar o fluxo.
 
+import { createHmac, timingSafeEqual } from "node:crypto";
 import type { InboundMessage, MediaKind } from "../types";
 
 const GRAPH_VERSION = "v21.0";
+
+/**
+ * Verifica a assinatura X-Hub-Signature-256 da Meta (WhatsApp e Instagram
+ * compartilham o mesmo esquema): HMAC-SHA256 do corpo cru com o App Secret.
+ *
+ * Regras: se `appSecret` não estiver configurado, retorna `true` (não há como
+ * verificar — recomenda-se fortemente configurar em produção). Se estiver
+ * configurado, exige uma assinatura válida.
+ */
+export function verifyMetaSignature(
+  rawBody: string,
+  signatureHeader: string | null,
+  appSecret: string | undefined,
+): boolean {
+  if (!appSecret) return true; // sem segredo configurado: não bloqueia (dev)
+  if (!signatureHeader?.startsWith("sha256=")) return false;
+
+  const expected = createHmac("sha256", appSecret).update(rawBody).digest("hex");
+  const received = signatureHeader.slice("sha256=".length);
+  const a = Buffer.from(expected, "hex");
+  const b = Buffer.from(received, "hex");
+  return a.length === b.length && timingSafeEqual(a, b);
+}
 
 interface WhatsAppEnv {
   token: string;

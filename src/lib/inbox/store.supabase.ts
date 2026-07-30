@@ -18,6 +18,12 @@ import type {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Db = SupabaseClient<any, "public", any>;
 
+const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+function isUuid(v: string): boolean {
+  return UUID_RE.test(v);
+}
+
 function initials(name: string): string {
   return (
     name
@@ -201,11 +207,19 @@ export function createSupabaseRepository(
     },
 
     async appendOutbound(conversationId, text) {
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("full_name")
-        .eq("id", userId)
-        .maybeSingle();
+      // userId pode ser um marcador não-UUID em fluxos sem sessão ("api",
+      // "system"). Só consultamos o perfil quando é um UUID de verdade.
+      let author = "Agente";
+      if (isUuid(userId)) {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("full_name")
+          .eq("id", userId)
+          .maybeSingle();
+        if (profile?.full_name) author = profile.full_name as string;
+      } else if (userId === "api") {
+        author = "API";
+      }
 
       const { data, error } = await supabase
         .from("messages")
@@ -215,7 +229,7 @@ export function createSupabaseRepository(
           direction: "out",
           text,
           status: "sent",
-          author: (profile?.full_name as string) || "Agente",
+          author,
         })
         .select("*")
         .single();

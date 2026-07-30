@@ -3,7 +3,11 @@ import { inMemoryRepository } from "@/lib/inbox/store";
 import { createSupabaseRepository } from "@/lib/inbox/store.supabase";
 import { isSupabaseConfigured } from "@/lib/supabase/server";
 import { createSupabaseAdminClient, resolveOrgByChannel } from "@/lib/supabase/admin";
-import { parseInboundWebhook, verifyWebhook } from "@/lib/inbox/channels/whatsapp";
+import {
+  parseInboundWebhook,
+  verifyWebhook,
+  verifyMetaSignature,
+} from "@/lib/inbox/channels/whatsapp";
 import { dispatchEvent } from "@/lib/integrations/webhooks";
 import type { InboundMessage } from "@/lib/inbox/types";
 
@@ -24,8 +28,22 @@ export function GET(request: Request) {
 
 // POST: recebe eventos e roteia cada mensagem para a organização dona do canal.
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => null);
-  if (!body) {
+  // Corpo cru para validar a assinatura antes de agir sobre o conteúdo.
+  const raw = await request.text();
+  if (
+    !verifyMetaSignature(
+      raw,
+      request.headers.get("x-hub-signature-256"),
+      process.env.WHATSAPP_APP_SECRET,
+    )
+  ) {
+    return NextResponse.json({ error: "assinatura inválida" }, { status: 401 });
+  }
+
+  let body: unknown = null;
+  try {
+    body = JSON.parse(raw);
+  } catch {
     return NextResponse.json({ error: "payload inválido" }, { status: 400 });
   }
 
