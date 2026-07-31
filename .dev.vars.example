@@ -1,0 +1,28 @@
+# Exemplo de variáveis para o preview local na Cloudflare (opennextjs-cloudflare
+# preview). Copie para `.dev.vars` (não versionado) e preencha.
+#
+# Em produção, defina os SEGREDOS com `wrangler secret put <NOME>` e as
+# variáveis públicas (NEXT_PUBLIC_*) no build (Workers Builds ou no comando de
+# build), pois são embutidas no bundle em tempo de compilação.
+
+# Supabase self-hosted (use HTTPS — ver nota no DEPLOY.md)
+NEXT_PUBLIC_SUPABASE_URL=https://supabase.seu-dominio.com
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+
+# URL pública do app (links dos e-mails de notificação)
+NEXT_PUBLIC_APP_URL=https://hpchat.seu-dominio.com
+
+# Canais (opcionais; podem ficar por organização na UI)
+WHATSAPP_TOKEN=
+WHATSAPP_PHONE_NUMBER_ID=
+WHATSAPP_VERIFY_TOKEN=dev-verify-token
+WHATSAPP_APP_SECRET=
+TELEGRAM_BOT_TOKEN=
+INSTAGRAM_TOKEN=
+INSTAGRAM_VERIFY_TOKEN=dev-verify-token
+INSTAGRAM_APP_SECRET=
+
+# E-mail (opcional)
+RESEND_API_KEY=
+EMAIL_FROM=hpchat <no-reply@seu-dominio.com>
