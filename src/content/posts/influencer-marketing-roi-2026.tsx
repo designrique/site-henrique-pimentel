@@ -10,6 +10,10 @@ const post: PostEntry = {
     category: "Marketing Digital",
     publishedDate: "2026-08-12",
     readingTime: "3 min",
+    heroImage: {
+      url: "/news/influencer-marketing-roi-2026.webp",
+      alt: "Criador de conteúdo gravando com ring light e smartphone",
+    },
     news: true,
     source: {
       name: "Sprout Social",

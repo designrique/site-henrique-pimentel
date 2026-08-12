@@ -10,6 +10,10 @@ const post: PostEntry = {
     category: "Marketing Digital",
     publishedDate: "2026-08-12",
     readingTime: "3 min",
+    heroImage: {
+      url: "/news/video-curto-maior-roi-2026.webp",
+      alt: "Produção de vídeo curto com smartphone em gimbal no estúdio",
+    },
     news: true,
     source: {
       name: "Sprout Social",

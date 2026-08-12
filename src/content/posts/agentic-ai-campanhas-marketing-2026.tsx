@@ -10,6 +10,10 @@ const post: PostEntry = {
     category: "Marketing Digital",
     publishedDate: "2026-08-12",
     readingTime: "2 min",
+    heroImage: {
+      url: "/news/agentic-ai-campanhas-marketing-2026.webp",
+      alt: "Agente de IA automatizando campanhas de marketing em painel digital",
+    },
     news: true,
     source: {
       name: "AdCellerant — Digital Marketing Trends 2026",

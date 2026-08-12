@@ -10,6 +10,10 @@ const post: PostEntry = {
     category: "Marketing Digital",
     publishedDate: "2026-08-12",
     readingTime: "3 min",
+    heroImage: {
+      url: "/news/conteudo-humano-vence-ai-slop-2026.webp",
+      alt: "Mão escrevendo em caderno ao lado do notebook, conteúdo humano",
+    },
     news: true,
     source: {
       name: "Coalition Technologies",

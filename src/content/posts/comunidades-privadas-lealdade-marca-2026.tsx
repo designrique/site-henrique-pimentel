@@ -10,6 +10,10 @@ const post: PostEntry = {
     category: "Marketing Digital",
     publishedDate: "2026-08-12",
     readingTime: "3 min",
+    heroImage: {
+      url: "/news/comunidades-privadas-lealdade-marca-2026.webp",
+      alt: "Comunidade privada no celular construindo lealdade de marca",
+    },
     news: true,
     source: {
       name: "Coalition Technologies",

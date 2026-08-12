@@ -10,6 +10,10 @@ const post: PostEntry = {
     category: "Marketing Digital",
     publishedDate: "2026-08-12",
     readingTime: "3 min",
+    heroImage: {
+      url: "/news/consistencia-ponto-de-vista-social-2026.webp",
+      alt: "Mesa de trabalho com estratégia de publicação consistente no social",
+    },
     news: true,
     source: {
       name: "Jusb Media",

@@ -10,6 +10,10 @@ const post: PostEntry = {
     category: "Marketing Digital",
     publishedDate: "2026-08-12",
     readingTime: "3 min",
+    heroImage: {
+      url: "/news/social-seo-novo-topo-funil-2026.webp",
+      alt: "Lupa sobre tela de analytics de perfil social",
+    },
     news: true,
     source: {
       name: "Coalition Technologies",

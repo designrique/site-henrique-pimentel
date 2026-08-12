@@ -17,8 +17,8 @@ const post: PostEntry = {
       url: "https://sproutsocial.com/insights/social-media-statistics/",
     },
     heroImage: {
-      url: "/news/hero-workspace-recife.webp",
-      alt: "Espaço de trabalho em Recife, luz natural, com computadores — manchete do portal de notícias",
+      url: "/news/social-search-ultrapassa-google-2026.webp",
+      alt: "Pessoa buscando produtos em feed social no smartphone",
     },
     seo: {
       metaTitle:
