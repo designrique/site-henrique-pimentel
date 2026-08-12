@@ -16,8 +16,16 @@ import socialSearchUltrapassaGoogle from "./social-search-ultrapassa-google-2026
 import agenticAiCampanhasMarketing from "./agentic-ai-campanhas-marketing-2026";
 import influencerMarketingRoi from "./influencer-marketing-roi-2026";
 import comunidadesPrivadasLealdade from "./comunidades-privadas-lealdade-marca-2026";
+import videoCurtoMaiorRoi from "./video-curto-maior-roi-2026";
+import conteudoHumanoVenceAiSlop from "./conteudo-humano-vence-ai-slop-2026";
+import socialSeoNovoTopoFunil from "./social-seo-novo-topo-funil-2026";
+import consistenciaPontoDeVista from "./consistencia-ponto-de-vista-social-2026";
 
 export const postRegistry: PostEntry[] = [
+  videoCurtoMaiorRoi,
+  conteudoHumanoVenceAiSlop,
+  socialSeoNovoTopoFunil,
+  consistenciaPontoDeVista,
   agenticAiCampanhasMarketing,
   influencerMarketingRoi,
   comunidadesPrivadasLealdade,
