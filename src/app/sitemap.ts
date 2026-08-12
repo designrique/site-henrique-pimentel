@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getPosts } from "@/lib/posts";
+import { getPosts, getNewsPosts } from "@/lib/posts";
 
 export const dynamic = "force-static";
 
@@ -57,6 +57,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    {
+      url: `${BASE_URL}/noticias/`,
+      lastModified,
+      changeFrequency: "daily",
+      priority: 0.8,
+    },
   ];
 
   const posts = await getPosts();
@@ -67,5 +73,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...postRoutes];
+  const news = await getNewsPosts();
+  const newsRoutes: MetadataRoute.Sitemap = news.map((p) => ({
+    url: `${BASE_URL}/noticias/${p.slug}/`,
+    lastModified: new Date(p.publishedDate),
+    changeFrequency: "weekly",
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...postRoutes, ...newsRoutes];
 }

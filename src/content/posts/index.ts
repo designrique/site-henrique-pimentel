@@ -12,8 +12,10 @@ import atendenteIaWhatsApp24h from "./atendente-ia-whatsapp-24h";
 import captacaoAutomaticaClientes from "./captacao-automatica-clientes";
 import siteAtivoCaptacao from "./site-ativo-captacao";
 import comoAparecerNoChatgpt from "./como-aparecer-no-chatgpt";
+import socialSearchUltrapassaGoogle from "./social-search-ultrapassa-google-2026";
 
 export const postRegistry: PostEntry[] = [
+  socialSearchUltrapassaGoogle,
   comoAparecerNoChatgpt,
   frameworkGeoExtracaoIa,
   atendenteIaWhatsApp24h,

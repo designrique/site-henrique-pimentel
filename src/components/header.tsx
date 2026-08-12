@@ -9,6 +9,7 @@ const navItems = [
   { href: "/sobre", label: "Sobre" },
   { href: "/servicos/consultoria-ia", label: "Consultoria de IA" },
   { href: "/cases", label: "Cases" },
+  { href: "/noticias", label: "Notícias" },
   { href: "/blog", label: "Blog" },
   { href: "/medcitado", label: "MedCitado", badge: "medico" as const },
   { href: "/contato", label: "Contato" },

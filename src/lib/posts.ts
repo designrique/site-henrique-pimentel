@@ -10,6 +10,8 @@ export interface PostMeta {
   readingTime: string;
   featured?: boolean;
   draft?: boolean;
+  news?: boolean;
+  source?: { name: string; url: string };
   author?: string;
   heroImage?: {
     url: string;
@@ -33,7 +35,14 @@ import { postRegistry } from "@/content/posts";
 export async function getPosts(): Promise<PostMeta[]> {
   return postRegistry
     .map((p) => p.meta)
-    .filter((m) => !m.draft)
+    .filter((m) => !m.draft && !m.news)
+    .sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
+}
+
+export async function getNewsPosts(): Promise<PostMeta[]> {
+  return postRegistry
+    .map((p) => p.meta)
+    .filter((m) => !m.draft && m.news)
     .sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
 }
 

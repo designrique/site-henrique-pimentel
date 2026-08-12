@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { CtaBlock } from "@/components/sections/cta-block";
 import {
-  getPosts,
+  getNewsPosts,
   getPostBySlug,
   formatPostDate,
 } from "@/lib/posts";
@@ -16,8 +16,8 @@ interface PageProps {
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const posts = await getPosts();
-  return posts.map((p) => ({ slug: p.slug }));
+  const news = await getNewsPosts();
+  return news.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -25,10 +25,10 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const entry = await getPostBySlug(slug);
-  if (!entry) return { title: "Post não encontrado" };
+  if (!entry) return { title: "Notícia não encontrada" };
 
   const { meta } = entry;
-  const url = `https://henriquepimentel.com.br/blog/${slug}`;
+  const url = `https://henriquepimentel.com.br/noticias/${slug}`;
   const title = meta.seo?.metaTitle ?? `${meta.title} | Henrique Pimentel`;
   const description = meta.seo?.metaDescription ?? meta.teaser;
   const heroUrl = meta.heroImage?.url;
@@ -60,20 +60,16 @@ export async function generateMetadata({
   };
 }
 
-export default async function PostPage({ params }: PageProps) {
+export default async function NewsArticlePage({ params }: PageProps) {
   const { slug } = await params;
   const entry = await getPostBySlug(slug);
-  if (!entry || entry.meta.news) notFound();
+  if (!entry || !entry.meta.news) notFound();
 
   const { meta, Content } = entry;
-  const isMedicado = meta.categoryTone === "vertical";
-  const accent = isMedicado
-    ? "var(--vertical-medico-primary)"
-    : "var(--accent-primary)";
 
-  const articleSchema = {
+  const newsSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "NewsArticle",
     headline: meta.title,
     description: meta.teaser,
     image: meta.heroImage?.url,
@@ -91,32 +87,40 @@ export default async function PostPage({ params }: PageProps) {
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://henriquepimentel.com.br/blog/${meta.slug}`,
+      "@id": `https://henriquepimentel.com.br/noticias/${meta.slug}`,
     },
     articleSection: meta.category,
     inLanguage: "pt-BR",
+    ...(meta.source
+      ? {
+          mentions: [
+            {
+              "@type": "Thing",
+              name: meta.source.name,
+              url: meta.source.url,
+            },
+          ],
+        }
+      : {}),
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(newsSchema) }}
       />
       <article>
         <header className="relative border-b border-[color:var(--border-default)]">
           <Container className="pt-12 pb-10 sm:pt-20 sm:pb-14">
             <div className="mx-auto max-w-2xl">
               <Link
-                href="/blog"
+                href="/noticias"
                 className="inline-flex items-center gap-1 text-sm text-[color:var(--text-tertiary)] hover:text-[color:var(--text-primary)] transition-colors"
               >
-                ← Todos os posts
+                ← Todas as notícias
               </Link>
-              <p
-                className="mt-6 font-mono text-xs uppercase tracking-[0.08em]"
-                style={{ color: accent }}
-              >
+              <p className="mt-6 font-mono text-xs uppercase tracking-[0.08em] text-[color:var(--accent-primary)]">
                 {meta.category}
               </p>
               <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.02em] text-[color:var(--text-primary)] leading-[1.1]">
@@ -129,10 +133,17 @@ export default async function PostPage({ params }: PageProps) {
                 <span>{formatPostDate(meta.publishedDate)}</span>
                 <span aria-hidden="true">·</span>
                 <span>{meta.readingTime}</span>
-                {meta.author && (
+                {meta.source && (
                   <>
                     <span aria-hidden="true">·</span>
-                    <span>{meta.author}</span>
+                    <a
+                      href={meta.source.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:text-[color:var(--text-primary)] transition-colors"
+                    >
+                      Fonte: {meta.source.name}
+                    </a>
                   </>
                 )}
               </div>
@@ -150,24 +161,6 @@ export default async function PostPage({ params }: PageProps) {
                     loading="eager"
                   />
                 </div>
-                {meta.heroImage.credit && (
-                  <p className="mt-2 text-center font-mono text-xs text-[color:var(--text-tertiary)]">
-                    Foto:{" "}
-                    {meta.heroImage.credit.url ? (
-                      <a
-                        href={meta.heroImage.credit.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline hover:text-[color:var(--text-primary)]"
-                      >
-                        {meta.heroImage.credit.name}
-                      </a>
-                    ) : (
-                      meta.heroImage.credit.name
-                    )}{" "}
-                    · Unsplash
-                  </p>
-                )}
               </div>
             </div>
           )}
@@ -187,13 +180,13 @@ export default async function PostPage({ params }: PageProps) {
                   Compartilhe
                 </p>
                 <p className="mt-1 text-sm text-[color:var(--text-primary)]">
-                  Se foi útil, mande pra quem precisa ver.
+                  Achou útil? Mande pra quem precisa ver.
                 </p>
               </div>
               <div className="flex gap-3">
                 <a
                   href={`https://wa.me/?text=${encodeURIComponent(
-                    `${meta.title} — https://henriquepimentel.com.br/blog/${meta.slug}`
+                    `${meta.title} — https://henriquepimentel.com.br/noticias/${meta.slug}`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -203,7 +196,7 @@ export default async function PostPage({ params }: PageProps) {
                 </a>
                 <a
                   href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-                    `https://henriquepimentel.com.br/blog/${meta.slug}`
+                    `https://henriquepimentel.com.br/noticias/${meta.slug}`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -218,7 +211,7 @@ export default async function PostPage({ params }: PageProps) {
       </article>
 
       <CtaBlock
-        title="Quer aplicar isso no seu caso?"
+        title="Quer aplicar isso no seu negócio?"
         subtitle="Agende um diagnóstico de 30 minutos. Sem pitch, sem proposta empurrada — só entender se faz sentido continuar."
         primary={{ label: "Agendar diagnóstico", href: "/contato" }}
         secondary={{
