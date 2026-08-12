@@ -109,6 +109,31 @@ html {
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 8px 24px -12px rgba(15, 23, 42, 0.08);
 }
 
+/* Acessibilidade: alto contraste (aplicado no wrapper do artigo) */
+.a11y-high-contrast {
+  --bg-primary: #ffffff;
+  --bg-subtle: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #000000;
+  --text-tertiary: #1f2937;
+  --border-default: #000000;
+  --accent-primary: #0000cc;
+  --accent-hover: #0000ee;
+  --accent-text: #000099;
+  --accent-subtle-bg: #e6e6ff;
+}
+.a11y-high-contrast p,
+.a11y-high-contrast li,
+.a11y-high-contrast a,
+.a11y-high-contrast blockquote,
+.a11y-high-contrast h2,
+.a11y-high-contrast h3 {
+  text-shadow: none;
+}
+.a11y-high-contrast .prose-post a {
+  text-decoration-thickness: 2px;
+}
+
 /* Shimmer for image placeholders */
 @keyframes shimmer {
   0% { background-position: -200% 0; }

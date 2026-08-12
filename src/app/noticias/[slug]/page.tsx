@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { CtaBlock } from "@/components/sections/cta-block";
+import { AccessibilityToolbar } from "@/components/news/accessibility-toolbar";
 import {
   getNewsPosts,
   getPostBySlug,
@@ -66,6 +67,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
   if (!entry || !entry.meta.news) notFound();
 
   const { meta, Content } = entry;
+  const related = (await getNewsPosts()).filter((p) => p.slug !== slug).slice(0, 5);
 
   const newsSchema = {
     "@context": "https://schema.org",
@@ -168,7 +170,44 @@ export default async function NewsArticlePage({ params }: PageProps) {
 
         <section>
           <Container className="py-12 sm:py-16">
-            {Content ? <Content /> : null}
+            <div className="grid gap-12 lg:grid-cols-12">
+              <div className="lg:col-span-8">
+                <AccessibilityToolbar>
+                  {Content ? <Content /> : null}
+                </AccessibilityToolbar>
+              </div>
+
+              <aside className="lg:col-span-4 space-y-6 lg:sticky lg:top-24 self-start">
+                <div className="rounded-xl border border-[color:var(--border-default)] bg-[color:var(--bg-primary)] p-6">
+                  <h3 className="text-xs font-semibold uppercase tracking-[0.08em] text-[color:var(--text-tertiary)]">
+                    Mais recentes
+                  </h3>
+                  <ul className="mt-4 space-y-3">
+                    {related.map((p, i) => (
+                      <li key={p.slug}>
+                        <Link
+                          href={`/noticias/${p.slug}`}
+                          className="group flex gap-3"
+                        >
+                          <span className="font-mono text-xs text-[color:var(--text-tertiary)] pt-0.5">
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
+                          <span className="text-sm font-medium leading-snug text-[color:var(--text-secondary)] group-hover:text-[color:var(--accent-primary)] transition-colors">
+                            {p.title}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href="/noticias"
+                    className="mt-5 inline-block text-sm font-medium text-[color:var(--accent-primary)] hover:underline"
+                  >
+                    Todas as notícias →
+                  </Link>
+                </div>
+              </aside>
+            </div>
           </Container>
         </section>
 
