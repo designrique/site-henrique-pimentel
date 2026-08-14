@@ -20,7 +20,7 @@ const post: PostEntry = {
       alt: "Duas telas lado a lado: lista de resultados de busca e painel de resposta de IA",
     },
     seo: {
-      metaTitle: "SEO otimiza cliques, GEO otimiza citações",
+      metaTitle: "SEO otimiza cliques, GEO otimiza citações — entenda",
       metaDescription:
         "A frase que resume a mudança: SEO otimiza cliques, GEO otimiza citações. SEO te coloca na lista; GEO te torna a resposta que a IA cita.",
       metaKeywords:

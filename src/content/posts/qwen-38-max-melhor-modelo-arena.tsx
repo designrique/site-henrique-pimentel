@@ -20,7 +20,7 @@ const post: PostEntry = {
       alt: "Laboratório moderno de pesquisa em IA com telas mostrando rankings",
     },
     seo: {
-      metaTitle: "Qwen 3.8 Max supera Claude Opus 5 em arena",
+      metaTitle: "Qwen 3.8 Max supera Claude Opus 5 em leaderboard de arena",
       metaDescription:
         "Qwen 3.8 Max (2,4T parâmetros, Alibaba) foi ranqueado como melhor modelo geral em leaderboard estilo arena, à frente do Claude Opus 5 da Anthropic.",
       metaKeywords:

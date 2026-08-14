@@ -20,7 +20,7 @@ const post: PostEntry = {
       alt: "Pilha de newsletters e revistas sobre mesa ao lado de notebook e café",
     },
     seo: {
-      metaTitle: "Top 5 newsletters de IA em 2026 no Substack",
+      metaTitle: "Top 5 newsletters de IA em 2026 no Substack: ranking",
       metaDescription:
         "The Rundown AI (~1M assinantes), One Useful Thing (Ethan Mollick), AI Supremacy, There's An AI For That (2,5M) e TLDR AI lideram o Substack de IA em 2026.",
       metaKeywords:

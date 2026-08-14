@@ -20,7 +20,7 @@ const post: PostEntry = {
       alt: "Terminal de desenvolvedor com blocos de código e JSON-LD na tela",
     },
     seo: {
-      metaTitle: "E-GEO: toolkit open-source de otimização para IA",
+      metaTitle: "E-GEO: toolkit open-source de otimização para motores de IA",
       metaDescription:
         "E-GEO é um toolkit open-source de GEO/AEO: CLI Python + skills de Claude Code para analisar, simular ranking, reescrever e gerar JSON-LD para IA.",
       metaKeywords:

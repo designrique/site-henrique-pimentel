@@ -20,7 +20,7 @@ const post: PostEntry = {
       alt: "Pessoa carimbando documento em escritório europeu moderno com luz natural",
     },
     seo: {
-      metaTitle: "UE exigirá rótulo de conteúdo gerado por IA",
+      metaTitle: "UE vai exigir rótulo de conteúdo gerado por IA: o que muda",
       metaDescription:
         "Regras da União Europeia vão exigir rótulo em conteúdo realista gerado por IA. Comunidade de SEO vê vitória para quem produz conteúdo original.",
       metaKeywords:

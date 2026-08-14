@@ -20,7 +20,7 @@ const post: PostEntry = {
       alt: "Código open-source em terminal com texto verde e mãos no teclado",
     },
     seo: {
-      metaTitle: "DeepSeek V4 Pro: 80,6% no SWE-bench por 37x menos",
+      metaTitle: "DeepSeek V4 Pro: 80,6% no SWE-bench por 37x menos caro",
       metaDescription:
         "DeepSeek V4 Pro (MIT) marca 80,6% no SWE-bench Verified por ~US$ 0,27/US$ 1,10 por milhão de tokens — ~37x mais barato que Claude Fable 5.",
       metaKeywords:

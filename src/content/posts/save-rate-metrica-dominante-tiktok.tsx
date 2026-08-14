@@ -20,7 +20,7 @@ const post: PostEntry = {
       alt: "Smartphone na mão mostrando vídeo com ícone de salvar, pessoa guardando tutorial",
     },
     seo: {
-      metaTitle: "Save rate: a métrica que domina o TikTok em 2026",
+      metaTitle: "Save rate: a métrica que domina o TikTok em 2026 — veja",
       metaDescription:
         "Tutorial de plugins gratuitos da Anthropic bateu 96% de save rate no TikTok (19,2 mil saves em 313 mil plays). Save rate virou o sinal nº 1 do algoritmo.",
       metaKeywords:

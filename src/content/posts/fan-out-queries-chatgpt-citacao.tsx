@@ -20,7 +20,7 @@ const post: PostEntry = {
       alt: "Visualização abstrata de interface de chat ramificando em bolhas de busca",
     },
     seo: {
-      metaTitle: "Como o ChatGPT escolhe o que citar: estudo de 1,4 mi de prompts",
+      metaTitle: "Como o ChatGPT cita sites: estudo de 1,4 mi de prompts",
       metaDescription:
         "Análise de 1,4 milhão de prompts do ChatGPT: URL, título e H1 alinhados às fan-out queries internas são o fator nº 1 para ser citado pela IA.",
       metaKeywords:

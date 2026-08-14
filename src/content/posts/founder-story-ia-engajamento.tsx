@@ -22,7 +22,7 @@ const post: PostEntry = {
     seo: {
       metaTitle: "Founder story com IA: 173 mil comentários em um reel",
       metaDescription:
-        "Manthan Jethwani contou que construiu o negócio inteiro em volta da IA: 5,4M views, 147K likes e 173K comentários. Storytelling de transformação pessoal gera conversa.",
+        "Manthan Jethwani construiu o negócio inteiro em volta da IA: 5,4M views, 147K likes e 173K comentários em um reel. Storytelling de transformação gera conversa.",
       metaKeywords:
         "founder story, storytelling IA, engajamento Instagram, negócio com IA, Manthan Jethwani, reel viral",
     },

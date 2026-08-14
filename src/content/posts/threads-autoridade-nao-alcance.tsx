@@ -20,7 +20,7 @@ const post: PostEntry = {
       alt: "Smartphone mostrando fio de respostas formando corrente, pessoa lendo com atenção",
     },
     seo: {
-      metaTitle: "Threads premia autoridade: 697 respostas num post",
+      metaTitle: "Threads premia autoridade: 697 respostas em um post de IA",
       metaDescription:
         "Rowan Cheung (213 mil seguidores) teve 697 respostas num post de IA no Threads. Reply velocity, não likes, define alcance na plataforma da Meta.",
       metaKeywords:
