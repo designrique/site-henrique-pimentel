@@ -20,8 +20,52 @@ import videoCurtoMaiorRoi from "./video-curto-maior-roi-2026";
 import conteudoHumanoVenceAiSlop from "./conteudo-humano-vence-ai-slop-2026";
 import socialSeoNovoTopoFunil from "./social-seo-novo-topo-funil-2026";
 import consistenciaPontoDeVista from "./consistencia-ponto-de-vista-social-2026";
+import searchConsoleRelatorioGenerativeAi from "./search-console-relatorio-generative-ai";
+import mencaoMarcaFator1IaOverviews from "./mencao-marca-fator-1-ia-overviews";
+import trafegoLlmConverte6xGoogle from "./trafego-llm-converte-6x-google";
+import fanOutQueriesChatgptCitacao from "./fan-out-queries-chatgpt-citacao";
+import eGeoToolkitOpenSource from "./e-geo-toolkit-open-source";
+import ueRotuloConteudoIa from "./ue-rotulo-conteudo-ia";
+import seoSubstituidoPorTrafegoIa from "./seo-substituido-por-trafego-ia";
+import seoOtimizaCliquesGeoCitacoes from "./seo-otimiza-cliques-geo-citacoes";
+import minimaxM25MelhorCustoBeneficio from "./minimax-m25-melhor-custo-beneficio";
+import deepseekV4Pro37xMaisBarato from "./deepseek-v4-pro-37x-mais-barato";
+import qwen38MaxMelhorModeloArena from "./qwen-38-max-melhor-modelo-arena";
+import gpt55LideraTerminalBench from "./gpt-55-lidera-terminal-bench";
+import gemini35FlashFlagshipBarato from "./gemini-35-flash-flagship-barato";
+import lancamentosModelosIaSemana from "./lancamentos-modelos-ia-semana";
+import saveRateMetricaDominanteTiktok from "./save-rate-metrica-dominante-tiktok";
+import commentBaitEntregaRealLeads from "./comment-bait-entrega-real-leads";
+import founderStoryIaEngajamento from "./founder-story-ia-engajamento";
+import agenciaVsConsultorIa from "./agencia-vs-consultor-ia";
+import operadorSoloAgentesIaViraliza from "./operador-solo-agentes-ia-viraliza";
+import threadsAutoridadeNaoAlcance from "./threads-autoridade-nao-alcance";
+import claudeCodeEcossistemaQuente from "./claude-code-ecossistema-quente";
+import top5NewslettersIa from "./top-5-newsletters-ia";
 
 export const postRegistry: PostEntry[] = [
+  searchConsoleRelatorioGenerativeAi,
+  mencaoMarcaFator1IaOverviews,
+  trafegoLlmConverte6xGoogle,
+  fanOutQueriesChatgptCitacao,
+  eGeoToolkitOpenSource,
+  ueRotuloConteudoIa,
+  seoSubstituidoPorTrafegoIa,
+  seoOtimizaCliquesGeoCitacoes,
+  minimaxM25MelhorCustoBeneficio,
+  deepseekV4Pro37xMaisBarato,
+  qwen38MaxMelhorModeloArena,
+  gpt55LideraTerminalBench,
+  gemini35FlashFlagshipBarato,
+  lancamentosModelosIaSemana,
+  saveRateMetricaDominanteTiktok,
+  commentBaitEntregaRealLeads,
+  founderStoryIaEngajamento,
+  agenciaVsConsultorIa,
+  operadorSoloAgentesIaViraliza,
+  threadsAutoridadeNaoAlcance,
+  claudeCodeEcossistemaQuente,
+  top5NewslettersIa,
   videoCurtoMaiorRoi,
   conteudoHumanoVenceAiSlop,
   socialSeoNovoTopoFunil,
