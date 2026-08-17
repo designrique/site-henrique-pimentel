@@ -59,8 +59,10 @@ import operadorSoloAgentesIaViraliza from "./operador-solo-agentes-ia-viraliza";
 import threadsAutoridadeNaoAlcance from "./threads-autoridade-nao-alcance";
 import claudeCodeEcossistemaQuente from "./claude-code-ecossistema-quente";
 import top5NewslettersIa from "./top-5-newsletters-ia";
+import rankingDeputadosProjetosPernambuco from "./ranking-deputados-projetos-pernambuco";
 
 export const postRegistry: PostEntry[] = [
+  rankingDeputadosProjetosPernambuco,
   agentSkillsEngenhariaAgentes,
   needleModelo14mbDispositivos,
   tencentdbAgentMemoryEquipe,
