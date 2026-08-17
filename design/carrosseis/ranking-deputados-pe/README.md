@@ -28,34 +28,42 @@ lockup de `src/components/logo.tsx` e `public/signature.svg`.
 
 **Indicador de progresso:** 10 segmentos no rodapé, preenchidos até o slide atual.
 
-## Roteiro (v2 — otimizado para retenção)
+## Roteiro (v3 — eixo: engenharia de IA, não jornalismo de dados)
+
+O ranking é a **demo**, não o produto. A tese que o carrossel defende é: *dado público brasileiro já
+é legível por máquina, e quem modela o contexto certo responde perguntas que ninguém conseguia
+responder.* Quem assina é engenheiro/consultor de IA — não repórter.
 
 | # | Função | Headline |
 |---|---|---|
-| 1 | Gancho (beat) | 10.832 proposições — "eu li a ementa de todas" |
-| 2 | Promessa / abre o loop | "No fim, você sabe quem propôs — e quem só apareceu" |
-| 3 | Vilão (beat) | "Em ano eleitoral, todo mundo fala. Ninguém mede." |
-| 4 | O corte | "Requerimento de sessão solene não é projeto" |
-| 5 | O achado (beat) | "PE é o estado da seca. Água quase não aparece." |
+| 1 | Gancho (beat) | 10.832 proposições — **"eu não li nenhuma; construí um agente que leu todas"** |
+| 2 | Vilão | "Em ano eleitoral, todo mundo fala. Ninguém mede." |
+| 3 | Reframe (beat, retrato) | **"Não sou jornalista. Sou engenheiro de IA."** |
+| 4 | O pipeline | "41 APIs viram 1 pergunta respondível" — o trabalho foi modelar contexto |
+| 5 | O critério | **"IA sem critério é chute rápido"** — filtro publicado junto com o resultado |
 | 6 | Payoff federais | ranking com números |
 | 7 | Payoff estaduais | "propor muito ≠ acertar o alvo" |
-| 8 | Prova concreta | 3 projetos fora do noticiário |
-| 9 | Método + ressalva | 41 APIs, 1 agente de IA, quantidade ≠ qualidade |
+| 8 | O achado (beat) | "PE é o estado da seca. Água quase não aparece." |
+| 9 | A ponte | "Troca 'deputado' por qualquer base pública" — licitação, jurisprudência, prontuário |
 | 10 | CTA (beat) | salvar, comentar, link + assinatura |
 
-Decisões do roteiro:
-- O gancho abre com número + ação pessoal ("eu li"), não com meta-explicação de método.
-- O slide 2 abre um loop explícito, que só fecha nos slides 6–7 (payoff do ranking).
-- O bloco técnico (MCP Brasil / 41 APIs) saiu do meio do carrossel para o slide 9: no meio ele
-  derruba retenção, no fim funciona como prova de método para quem já está engajado.
-- O slide 5 é o pico emocional e o mais "printável" — é o achado que o artigo registra
-  (infraestrutura hídrica e logística escassas no estado da Transposição).
-- A ressalva "quantidade não é qualidade" aparece **antes** do CTA: antecipa a crítica número 1
-  dos comentários em vez de deixá-la abrir a discussão.
+Decisões:
+
+- **O gancho é a inversão.** "Eu li 10.832 ementas" é heroico e falso; "construí um agente que leu"
+  é verdadeiro, mais impressionante e diz exatamente o que ele faz da vida.
+- **O slide 3 é o eixo.** Retrato + declaração de ofício. Sem ele o carrossel vira jornalismo de
+  dados anônimo e o autor some da peça.
+- **Método é conteúdo, não rodapé.** Os slides 4 e 5 (pipeline e critério) ficam *antes* do payoff
+  porque são a competência sendo demonstrada. "Critério explícito" é o argumento que separa
+  sistema de IA de chute automatizado — e é o que o cliente compra.
+- **O slide 9 é a conversão.** Troca o sujeito do problema e o leitor se enxerga: mesma tubulação
+  para edital, jurisprudência, concorrência, prontuário, catálogo.
+- **Ressalva antes do CTA.** "Quantidade não é qualidade" aparece no slide 6, antecipando a
+  crítica número 1 dos comentários em vez de deixá-la abrir a discussão.
 
 ⚠️ O slide 10 promete resposta individual ("comenta o nome do seu deputado que eu respondo com o
-número dele"). É um bom gatilho de comentário, mas **é um compromisso** — só publique se for
-responder. Alternativa sem compromisso: "Comenta o nome do seu deputado."
+número dele"). É o melhor gatilho de comentário da peça, mas **é um compromisso** — só publique se
+for responder. Alternativa sem compromisso: "Comenta o nome do seu deputado."
 
 ## Precisão dos dados
 
@@ -73,9 +81,14 @@ Duas afirmações do briefing original foram **removidas por não existirem no a
 "90% era ruído" e os pesos numéricos por tema ("×3 / ×2"). O artigo descreve peso maior para
 proposições que citam PE, sem publicar a escala.
 
-## b-roll nos slides beat
+## b-roll e retrato
 
-Slides 1, 3, 5 e 10 já têm a camada `.layer.broll` pronta. Sem imagem, o fundo generativo
+Slides beat: **1, 3, 8 e 10**. O slide 3 já vem com o retrato de `public/foto-henrique.webp`
+embutido em base64 (banda superior de 756px, máscara de dissolução, dessaturado e escurecido para
+o texto respirar). Trate-o como o slide "cara do autor" — trocar por uma foto melhor é o upgrade de
+maior retorno da peça.
+
+Os slides 1, 8 e 10 têm a camada `.layer.broll` pronta e vazia: sem imagem, o fundo generativo
 (gradiente + malha + motivo da ponte + grão) segura sozinho. Para usar foto:
 
 1. coloque o arquivo em `broll/` (ex.: `broll/01.jpg`);
@@ -88,3 +101,5 @@ Slides 1, 3, 5 e 10 já têm a camada `.layer.broll` pronta. Sem imagem, o fundo
 3. `node render.mjs`.
 
 Mantenha a opacidade entre `.32` e `.48` — acima disso o texto perde contraste sobre o navy.
+Para deixar o HTML autocontido (como o slide 3 está), embuta a imagem em base64 em vez do caminho
+relativo.
