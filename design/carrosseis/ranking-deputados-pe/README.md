@@ -88,11 +88,23 @@ embutido em base64, full-bleed com scrim progressivo abrindo espaço pro texto e
 Trate-o como o slide "cara do autor" — trocar por uma foto melhor é o upgrade de maior retorno
 da peça.
 
-⚠️ **Atenção à proporção ao trocar a foto.** `foto-henrique.webp` é retrato **840×1050**;
-`foto-henrique.jpeg` é um recorte diferente, paisagem **1376×768**. Ao usar uma foto nova, confira
-a proporção real antes de ajustar o enquadramento — dimensionar pelo arquivo errado espreme a
-imagem. Retrato (4:5 ou mais alto) funciona full-bleed; paisagem pede faixa no topo com máscara
-de dissolução.
+### Escala do retrato
+
+O canvas 3:4 (0,75) é mais estreito que a foto 4:5 (0,80), então `background-size: cover` deixaria
+o autor pequeno demais no quadro. A regra usa **`background-size: auto 113%`** — 1,55× sobre o
+original, render de 1302×1627 — com `background-position: center top`. O excedente sai pelas
+laterais (111px por lado) e pelo rodapé, onde o scrim já cobre.
+
+Referência para reenquadrar: topo da cabeça a ~183px, queixo a ~868px, exatamente onde o scrim
+fecha e o texto começa. Subir muito além de 113% empurra o queixo para dentro do headline.
+
+**Nunca passe dois valores em `background-size`** (`100% 100%`) — isso sim distorce a imagem.
+Um valor com `auto` preserva a proporção sempre.
+
+⚠️ **Confira a proporção ao trocar a foto.** `foto-henrique.webp` é retrato **840×1050**;
+`foto-henrique.jpeg` é um recorte diferente, paisagem **1376×768**. Dimensionar pelo arquivo
+errado quebra o enquadramento. Retrato vai full-bleed com a escala acima; paisagem pede faixa no
+topo com máscara de dissolução.
 
 Os slides 1, 8 e 10 têm a camada `.layer.broll` pronta e vazia: sem imagem, o fundo generativo
 (gradiente + malha + motivo da ponte + grão) segura sozinho. Para usar foto:

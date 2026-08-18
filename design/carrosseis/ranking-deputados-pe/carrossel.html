@@ -334,10 +334,13 @@ h1 .clay{color:var(--clay)}
   font-family:var(--f-support);font-weight:600;font-size:28px;color:var(--cream)}
 
 /* ---------- Slide com retrato ---------- */
-/* foto-henrique.webp e retrato 840x1050: entra full-bleed (recorte lateral de
-   36px de cada lado) com scrim progressivo abrindo espaco pro texto embaixo. */
+/* foto-henrique.webp e retrato 840x1050. O canvas 3:4 e mais estreito que a foto
+   4:5, entao cover deixaria o autor pequeno demais no quadro: a escala sobe para
+   113% da altura (1.55x sobre o original) e o recorte sai pelas laterais e pelo
+   rodape, onde o scrim ja cobre. A proporcao e preservada — nunca use dois valores
+   em background-size aqui, isso sim espremeria a imagem. */
 .slide.photo .layer.broll{inset:0;height:auto;opacity:1;
-  background-size:cover;background-position:center top;background-repeat:no-repeat;
+  background-size:auto 113%;background-position:center top;background-repeat:no-repeat;
   filter:saturate(.55) contrast(1.06);
   -webkit-mask-image:none;mask-image:none}
 .slide.photo .layer.wash{background:
