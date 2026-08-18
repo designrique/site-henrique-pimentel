@@ -99,8 +99,16 @@ properties no `.slide.photo` controlam tudo:
 --photo-head-y: 118px;    /* topo da cabeça no arquivo original */
 ```
 
-O `background-size` usa um único valor (`auto calc(1050px * var(--photo-scale))`), então a
-proporção é preservada por construção. O excedente sai pelas laterais e pelo rodapé — e se a
+As duas dimensões do `background-size` são escritas explicitamente a partir dos 840×1050
+originais, multiplicadas pelo **mesmo** fator — largura e altura crescem juntas, sem depender
+do `auto`:
+
+```css
+background-size: calc(840px * var(--photo-scale)) calc(1050px * var(--photo-scale));
+```
+
+Em 1,62 o navegador resolve para `1360.8px 1701px` — fator 1,6200 nas duas dimensões, proporção
+0,8000 idêntica à do arquivo original. O excedente sai pelas laterais e pelo rodapé — e se a
 imagem faltar embaixo, tudo bem: o scrim fecha em navy a partir de 60% da altura.
 
 Onde o rosto termina, por escala (`442px × escala + 60`):

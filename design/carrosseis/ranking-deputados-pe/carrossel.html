@@ -337,14 +337,17 @@ h1 .clay{color:var(--clay)}
 /* foto-henrique.webp e retrato 840x1050. A escala e proporcional (um unico valor
    + auto) e ancorada pelo ROSTO, nao pela borda: --photo-scale amplia o original
    e --photo-head-top diz a que altura o topo da cabeca deve pousar. O excedente
-   sai pelas laterais e pelo rodape; se a imagem faltar embaixo, o scrim cobre. */
+   sai pelas laterais e pelo rodape; se a imagem faltar embaixo, o scrim cobre.
+   As duas dimensoes do background-size sao escritas explicitamente a partir dos
+   840x1050 originais, multiplicadas pelo MESMO fator — largura e altura crescem
+   juntas, sem depender de auto. */
 .slide.photo{
   --photo-scale:1.62;      /* multiplicador sobre os 840x1050 originais */
   --photo-head-top:60px;   /* onde o topo da cabeca pousa no canvas */
   --photo-head-y:118px;    /* topo da cabeca no arquivo original */
 }
 .slide.photo .layer.broll{inset:0;height:auto;opacity:1;
-  background-size:auto calc(1050px * var(--photo-scale));
+  background-size:calc(840px * var(--photo-scale)) calc(1050px * var(--photo-scale));
   background-position:center calc(var(--photo-head-top) - var(--photo-head-y) * var(--photo-scale));
   background-repeat:no-repeat;
   filter:saturate(.55) contrast(1.06);
