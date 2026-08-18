@@ -334,20 +334,26 @@ h1 .clay{color:var(--clay)}
   font-family:var(--f-support);font-weight:600;font-size:28px;color:var(--cream)}
 
 /* ---------- Slide com retrato ---------- */
-/* foto-henrique.webp e retrato 840x1050. O canvas 3:4 e mais estreito que a foto
-   4:5, entao cover deixaria o autor pequeno demais no quadro: a escala sobe para
-   113% da altura (1.55x sobre o original) e o recorte sai pelas laterais e pelo
-   rodape, onde o scrim ja cobre. A proporcao e preservada — nunca use dois valores
-   em background-size aqui, isso sim espremeria a imagem. */
+/* foto-henrique.webp e retrato 840x1050. A escala e proporcional (um unico valor
+   + auto) e ancorada pelo ROSTO, nao pela borda: --photo-scale amplia o original
+   e --photo-head-top diz a que altura o topo da cabeca deve pousar. O excedente
+   sai pelas laterais e pelo rodape; se a imagem faltar embaixo, o scrim cobre. */
+.slide.photo{
+  --photo-scale:1.62;      /* multiplicador sobre os 840x1050 originais */
+  --photo-head-top:60px;   /* onde o topo da cabeca pousa no canvas */
+  --photo-head-y:118px;    /* topo da cabeca no arquivo original */
+}
 .slide.photo .layer.broll{inset:0;height:auto;opacity:1;
-  background-size:auto 113%;background-position:center top;background-repeat:no-repeat;
+  background-size:auto calc(1050px * var(--photo-scale));
+  background-position:center calc(var(--photo-head-top) - var(--photo-head-y) * var(--photo-scale));
+  background-repeat:no-repeat;
   filter:saturate(.55) contrast(1.06);
   -webkit-mask-image:none;mask-image:none}
 .slide.photo .layer.wash{background:
   linear-gradient(180deg,
-    rgba(4,23,59,.44) 0%,
-    rgba(4,23,59,.24) 24%,
-    rgba(7,35,89,.60) 44%,
+    rgba(4,23,59,.30) 0%,
+    rgba(4,23,59,.20) 26%,
+    rgba(7,35,89,.58) 46%,
     rgba(4,23,59,.93) 60%,
     var(--navy-deep) 78%)}
 

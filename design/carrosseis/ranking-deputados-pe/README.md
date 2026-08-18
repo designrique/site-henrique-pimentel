@@ -90,16 +90,29 @@ da peça.
 
 ### Escala do retrato
 
-O canvas 3:4 (0,75) é mais estreito que a foto 4:5 (0,80), então `background-size: cover` deixaria
-o autor pequeno demais no quadro. A regra usa **`background-size: auto 113%`** — 1,55× sobre o
-original, render de 1302×1627 — com `background-position: center top`. O excedente sai pelas
-laterais (111px por lado) e pelo rodapé, onde o scrim já cobre.
+A escala é **proporcional e ancorada pelo rosto**, não pela borda do canvas. Dois custom
+properties no `.slide.photo` controlam tudo:
 
-Referência para reenquadrar: topo da cabeça a ~183px, queixo a ~868px, exatamente onde o scrim
-fecha e o texto começa. Subir muito além de 113% empurra o queixo para dentro do headline.
+```css
+--photo-scale: 1.62;      /* multiplicador sobre os 840×1050 originais */
+--photo-head-top: 60px;   /* onde o topo da cabeça pousa no canvas */
+--photo-head-y: 118px;    /* topo da cabeça no arquivo original */
+```
 
-**Nunca passe dois valores em `background-size`** (`100% 100%`) — isso sim distorce a imagem.
-Um valor com `auto` preserva a proporção sempre.
+O `background-size` usa um único valor (`auto calc(1050px * var(--photo-scale))`), então a
+proporção é preservada por construção. O excedente sai pelas laterais e pelo rodapé — e se a
+imagem faltar embaixo, tudo bem: o scrim fecha em navy a partir de 60% da altura.
+
+Onde o rosto termina, por escala (`442px × escala + 60`):
+
+| `--photo-scale` | rosto termina em | corte lateral |
+|---|---|---|
+| 1,45 | 701px | 51px/lado |
+| **1,62** (atual) | 776px | 141px/lado |
+| 1,80 | 856px | 216px/lado |
+
+O texto começa em ~870px. **1,80 é o teto** — acima disso o queixo entra no headline. Para ir
+além, encurte o parágrafo de apoio para 2 linhas, o que libera ~50px.
 
 ⚠️ **Confira a proporção ao trocar a foto.** `foto-henrique.webp` é retrato **840×1050**;
 `foto-henrique.jpeg` é um recorte diferente, paisagem **1376×768**. Dimensionar pelo arquivo
