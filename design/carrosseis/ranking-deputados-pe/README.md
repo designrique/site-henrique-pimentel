@@ -84,9 +84,15 @@ proposições que citam PE, sem publicar a escala.
 ## b-roll e retrato
 
 Slides beat: **1, 3, 8 e 10**. O slide 3 já vem com o retrato de `public/foto-henrique.webp`
-embutido em base64 (banda superior de 756px, máscara de dissolução, dessaturado e escurecido para
-o texto respirar). Trate-o como o slide "cara do autor" — trocar por uma foto melhor é o upgrade de
-maior retorno da peça.
+embutido em base64, full-bleed com scrim progressivo abrindo espaço pro texto embaixo.
+Trate-o como o slide "cara do autor" — trocar por uma foto melhor é o upgrade de maior retorno
+da peça.
+
+⚠️ **Atenção à proporção ao trocar a foto.** `foto-henrique.webp` é retrato **840×1050**;
+`foto-henrique.jpeg` é um recorte diferente, paisagem **1376×768**. Ao usar uma foto nova, confira
+a proporção real antes de ajustar o enquadramento — dimensionar pelo arquivo errado espreme a
+imagem. Retrato (4:5 ou mais alto) funciona full-bleed; paisagem pede faixa no topo com máscara
+de dissolução.
 
 Os slides 1, 8 e 10 têm a camada `.layer.broll` pronta e vazia: sem imagem, o fundo generativo
 (gradiente + malha + motivo da ponte + grão) segura sozinho. Para usar foto:
