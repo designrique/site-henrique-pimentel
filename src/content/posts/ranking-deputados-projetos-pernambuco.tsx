@@ -11,7 +11,7 @@ const post: PostEntry = {
     category: "Dados Abertos",
     publishedDate: "2026-08-17",
     readingTime: "11 min",
-    featured: false,
+    featured: true,
     author: "Henrique Pimentel",
     heroImage: {
       url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Congresso_Nacional_-_Brasilia_%2814911373813%29.jpg/1920px-Congresso_Nacional_-_Brasilia_%2814911373813%29.jpg",

@@ -1,0 +1,114 @@
+/* Henrique Pimentel — Design Tokens
+   Fonte da verdade: DESIGN.md (seção 2 e 3).
+   Importar este arquivo em qualquer projeto da marca. */
+
+:root {
+  /* === Cor — Núcleo (da logo) === */
+  --navy-900: #04122E;   /* canvas profundo */
+  --navy-800: #072359;   /* base da marca */
+  --navy-700: #0A3A7A;   /* superfícies elevadas */
+  --cream:    #EDE7DA;   /* creme quente — o H sobre navy */
+  --cyan-500: #05F2F2;   /* O PONTO — acento pontual, sparing */
+  --cyan-700: #067E86;   /* ciano para texto/ícone em fundo claro (AA) */
+
+  /* === Cor — Camada humana (quente) === */
+  --clay-500: #D97757;
+  --clay-600: #BD5D3A;
+  --oat:      #FAF9F5;   /* off-white morno */
+  --ivory:    #F4EFE7;   /* papel editorial */
+  --warm-ink: #141413;   /* quase-preto quente (nunca #000) */
+
+  /* === Cor — CTA === */
+  --rosa-500: #F22E62;
+  --rosa-600: #C71B49;
+
+  /* === Cor — Neutros (viés navy) === */
+  --white:     #F4F7FB;
+  --grey-300:  #C3CEDE;
+  --grey-500:  #8A9BB8;
+  --grey-700:  #3A4A66;
+  --ink:       #0A1B33;
+
+  /* === Cor — Semânticos === */
+  --success: #12B886;
+  --warning: #E8A317;
+  --danger:  #E5484D;
+
+  /* === Tokens semânticos — TEMA CLARO (default) === */
+  --bg:         var(--oat);
+  --surface:    #FFFFFF;
+  --text:       var(--warm-ink);
+  --text-muted: var(--grey-700);
+  --accent:     var(--cyan-700);
+  --node:       var(--cyan-500);
+  --cta:        var(--rosa-600);
+  --border:     var(--grey-300);
+
+  /* === Tipografia === */
+  --font-display: "Jost", "Segoe UI", system-ui, sans-serif;
+  --font-serif:   "Fraunces", "Newsreader", Georgia, serif;
+  --font-body:    "Raleway", "Segoe UI", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+
+  /* === Espaçamento (base 4px) === */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-6:  24px;
+  --sp-8:  32px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+
+  /* === Forma === */
+  --radius:      14px;
+  --radius-sm:   10px;
+  --radius-pill: 999px;
+  --stroke:      1.5px;
+
+  /* === Motion === */
+  --ease: cubic-bezier(.2, .6, .2, 1);
+  --dur:  240ms;
+}
+
+/* === Tema escuro === */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:         var(--navy-900);
+    --surface:    var(--navy-800);
+    --text:       var(--cream);
+    --text-muted: var(--grey-500);
+    --accent:     var(--cyan-500);
+    --node:       var(--cyan-500);
+    --cta:        var(--rosa-500);
+    --border:     #16305C;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:         var(--navy-900);
+  --surface:    var(--navy-800);
+  --text:       var(--cream);
+  --text-muted: var(--grey-500);
+  --accent:     var(--cyan-500);
+  --node:       var(--cyan-500);
+  --cta:        var(--rosa-500);
+  --border:     #16305C;
+}
+:root[data-theme="light"] {
+  --bg:         var(--oat);
+  --surface:    #FFFFFF;
+  --text:       var(--warm-ink);
+  --text-muted: var(--grey-700);
+  --accent:     var(--cyan-700);
+  --node:       var(--cyan-500);
+  --cta:        var(--rosa-600);
+  --border:     var(--grey-300);
+}
+
+/* === reduced-motion === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    transition-duration: .001ms !important;
+  }
+}

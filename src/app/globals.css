@@ -1,72 +1,27 @@
-@import "tailwindcss";
-
-/* Brand tokens — fonte: docs/brand.md
-   Master Brand: Henrique Pimentel — Consultor de Tecnologia em IA
-   Acento: azul-cobalto Stripe (#1E40AF) */
-
-:root {
-  /* Base neutra (light mode) */
-  --bg-primary: #FFFFFF;
-  --bg-subtle: #FAFAF9;
-  --bg-muted: #F5F5F4;
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-tertiary: #94A3B8;
-  --border-default: #E2E8F0;
-
-  /* Acento Master (azul-cobalto Stripe) */
-  --accent-primary: #1E40AF;
-  --accent-hover: #1D4ED8;
-  --accent-text: #1E3A8A;
-  --accent-subtle-bg: #DBEAFE;
-
-  /* Acento Vertical Medica (MedCitado) — Teal-700, saturacao calibrada < 80% */
-  --vertical-medico-primary: #0F766E;
-  --vertical-medico-subtle-bg: #CCFBF1;
-  --vertical-medico-text: #134E4A;
-
-  /* Estados */
-  --success: #0F766E;
-  --warning: #B45309;
-  --error: #B91C1C;
-  --info: #1E40AF;
-}
-
-.dark {
-  --bg-primary: #0A0A0A;
-  --bg-subtle: #171717;
-  --bg-muted: #262626;
-  --text-primary: #FAFAF9;
-  --text-secondary: #A1A1AA;
-  --text-tertiary: #71717A;
-  --border-default: #27272A;
-  --accent-primary: #3B82F6;
-  --accent-hover: #60A5FA;
-  --accent-text: #DBEAFE;
-  --accent-subtle-bg: #1E3A8A;
-  --vertical-medico-primary: #14B8A6;
-  --vertical-medico-subtle-bg: #134E4A;
-  --vertical-medico-text: #CCFBF1;
-}
+@import "../styles/tokens.css";
 
 /* Tailwind v4 @theme: mapeia tokens para classes Tailwind */
 @theme inline {
-  --color-bg-primary: var(--bg-primary);
-  --color-bg-subtle: var(--bg-subtle);
-  --color-bg-muted: var(--bg-muted);
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-text-tertiary: var(--text-tertiary);
-  --color-border-default: var(--border-default);
-  --color-accent: var(--accent-primary);
-  --color-accent-hover: var(--accent-hover);
-  --color-accent-text: var(--accent-text);
-  --color-accent-subtle-bg: var(--accent-subtle-bg);
-  --color-vertical-medico: var(--vertical-medico-primary);
-  --color-vertical-medico-bg: var(--vertical-medico-subtle-bg);
+  --color-bg-primary: var(--oat);
+  --color-bg-subtle: var(--navy-900);
+  --color-bg-muted: var(--navy-800);
+  --color-text-primary: var(--warm-ink);
+  --color-text-secondary: var(--grey-700);
+  --color-text-tertiary: var(--grey-500);
+  --color-border-default: var(--grey-300);
+  --color-accent: var(--cyan-700);
+  --color-accent-hover: var(--cyan-500);
+  --color-accent-text: var(--cyan-500);
+  --color-accent-subtle-bg: var(--cyan-500);
+  --color-vertical-medico-primary: var(--vertical-medico-primary);
+  --color-vertical-medico-subtle-bg: var(--vertical-medico-subtle-bg);
   --color-vertical-medico-text: var(--vertical-medico-text);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--danger);
+  --color-info: var(--accent);
 
-  /* Fontes (variaveis injetadas pelo next/font no layout.tsx) */
+/* Fontes (variaveis injetadas pelo next/font no layout.tsx) */
   --font-sans: var(--font-geist), system-ui, -apple-system, sans-serif;
   --font-serif: var(--font-fraunces), Georgia, serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
