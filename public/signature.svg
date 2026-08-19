@@ -1,11 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 64" fill="none" role="img" aria-label="Henrique Pimentel — Consultor de Tecnologia em IA">
-  <!-- Monograma HP. -->
-  <rect x="0" y="0" width="64" height="64" rx="12" fill="#0F172A"/>
-  <text x="32" y="44" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="700" font-size="28" letter-spacing="-0.84" fill="#FFFFFF" text-anchor="middle">HP.</text>
-
-  <!-- Nome -->
-  <text x="80" y="30" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="700" font-size="22" letter-spacing="-0.44" fill="#0F172A">Henrique Pimentel.</text>
-
-  <!-- Tagline -->
-  <text x="80" y="50" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="500" font-size="13" letter-spacing="0" fill="#475569">Consultor de Tecnologia em IA</text>
+  <!-- Marca H-ponte (navy) + nome + tagline. Lockup horizontal sobre fundo claro. -->
+  <g transform="translate(2 3) scale(0.58)">
+    <g fill="none" stroke="#072359" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M38 34 V70"/>
+      <path d="M62 34 V70"/>
+      <path d="M25 54 Q50 46 75 54"/>
+    </g>
+    <circle cx="50" cy="42" r="2.8" fill="#05F2F2"/>
+  </g>
+  <text x="76" y="30" font-family="Jost, Inter, system-ui, -apple-system, sans-serif" font-weight="700" font-size="22" letter-spacing="-0.44" fill="#072359">Henrique Pimentel.</text>
+  <text x="76" y="50" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="500" font-size="13" letter-spacing="0" fill="#3A4A66">Consultor de Tecnologia em IA</text>
 </svg>

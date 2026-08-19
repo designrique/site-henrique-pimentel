@@ -1,0 +1,10 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Henrique Pimentel">
+  <title>Henrique Pimentel — marca (H-ponte)</title>
+  <!-- Traço herda a cor do contexto via currentColor (navy no claro, creme no escuro). O ponto é sempre ciano. -->
+  <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M38 34 V70"/>
+    <path d="M62 34 V70"/>
+    <path d="M25 54 Q50 46 75 54"/>
+  </g>
+  <circle cx="50" cy="42" r="2.8" fill="#05F2F2"/>
+</svg>
