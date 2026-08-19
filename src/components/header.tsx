@@ -31,10 +31,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-[color:var(--border-default)] bg-[color:var(--bg-primary)]/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        {/* Site logo - using Henrique Pimentel's final logo */}
-        <Link href="/" className="inline-flex items-center hover:opacity-80 transition-opacity" aria-label="Henrique Pimentel — Página inicial">
-          <img src="/logos/henrique-pimentel.png" alt="Henrique Pimentel" className="h-10 w-[120px]" />
-        </Link>
+        {/* Marca H-ponte vetorial (transparente, theme-aware) — ver logo.tsx */}
+        <Logo variant="signature" href="/" />
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-0.5 sm:gap-2">
