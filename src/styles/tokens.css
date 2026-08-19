@@ -64,11 +64,11 @@
   --vertical-medico-subtle-bg: rgba(15, 118, 110, 0.14);
   --vertical-medico-text:      #0F766E;
 
-  /* === Tipografia === */
-  --font-display: "Jost", "Segoe UI", system-ui, sans-serif;
-  --font-serif:   "Fraunces", "Newsreader", Georgia, serif;
-  --font-body:    "Raleway", "Segoe UI", system-ui, sans-serif;
-  --font-mono:    "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+  /* === Tipografia (referencia as variaveis injetadas pelo next/font) === */
+  --font-display: var(--font-jost), "Segoe UI", system-ui, sans-serif;
+  --font-serif:   var(--font-fraunces), "Newsreader", Georgia, serif;
+  --font-body:    var(--font-raleway), "Segoe UI", system-ui, sans-serif;
+  --font-mono:    var(--font-jetbrains-mono), "SF Mono", ui-monospace, monospace;
 
   /* === Espaçamento (base 4px) === */
   --sp-1:  4px;

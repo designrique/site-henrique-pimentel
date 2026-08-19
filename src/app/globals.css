@@ -28,8 +28,10 @@
   --color-error: var(--danger);
   --color-info: var(--accent);
 
-/* Fontes (variaveis injetadas pelo next/font no layout.tsx) */
-  --font-sans: var(--font-geist), system-ui, -apple-system, sans-serif;
+/* Fontes (variaveis injetadas pelo next/font no layout.tsx).
+   Marca: corpo Raleway, display/titulos Jost, serif Fraunces (DESIGN.md sec 3). */
+  --font-sans: var(--font-raleway), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-jost), var(--font-raleway), system-ui, sans-serif;
   --font-serif: var(--font-fraunces), Georgia, serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
@@ -42,6 +44,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+/* Titulos em Jost (display, marca). A emphasis serif (.font-serif) e qualquer
+   utilitario de fonte por classe vencem por especificidade. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
 }
 
 /* Selecao com acento */
