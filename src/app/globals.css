@@ -1,4 +1,11 @@
+@import "tailwindcss";
 @import "../styles/tokens.css";
+
+/* Fonte de conteudo explicita: a auto-deteccao do Tailwind v4 falha no build
+   do Coolify (container) e o refactor de tokens havia removido o @import
+   "tailwindcss" — juntos deixavam o site sem NENHUM utilitario. Restaurar o
+   import + declarar @source garante o CSS completo em qualquer ambiente. */
+@source "../../src";
 
 /* Tailwind v4 @theme: mapeia tokens para classes Tailwind */
 @theme inline {

@@ -44,6 +44,26 @@
   --cta:        var(--rosa-600);
   --border:     var(--grey-300);
 
+  /* === Aliases semânticos (nomes usados pelos componentes) ===
+     Os componentes referenciam --bg-primary, --text-primary, etc.
+     Aqui eles apontam para os tokens de marca acima. Onde referenciam
+     tokens que já trocam por tema (--bg, --text, --accent...), o alias
+     herda a troca automaticamente sob .dark. */
+  --bg-primary:   var(--bg);
+  --bg-subtle:    var(--surface);
+  --bg-muted:     var(--ivory);
+  --text-primary:   var(--text);
+  --text-secondary: var(--text-muted);
+  --text-tertiary:  var(--grey-500);
+  --border-default: var(--border);
+  --accent-primary:   var(--cyan-700);   /* AA como fundo de botão c/ texto branco */
+  --accent-hover:     var(--navy-700);
+  --accent-text:      var(--accent);
+  --accent-subtle-bg: rgba(5, 242, 242, 0.14);
+  --vertical-medico-primary:   #0F766E;
+  --vertical-medico-subtle-bg: rgba(15, 118, 110, 0.14);
+  --vertical-medico-text:      #0F766E;
+
   /* === Tipografia === */
   --font-display: "Jost", "Segoe UI", system-ui, sans-serif;
   --font-serif:   "Fraunces", "Newsreader", Georgia, serif;
@@ -71,20 +91,10 @@
   --dur:  240ms;
 }
 
-/* === Tema escuro === */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg:         var(--navy-900);
-    --surface:    var(--navy-800);
-    --text:       var(--cream);
-    --text-muted: var(--grey-500);
-    --accent:     var(--cyan-500);
-    --node:       var(--cyan-500);
-    --cta:        var(--rosa-500);
-    --border:     #16305C;
-  }
-}
-:root[data-theme="dark"] {
+/* === Tema escuro — via classe .dark (next-themes attribute="class") ===
+   Sobrescreve só os tokens curtos; os aliases longos (--bg-primary, etc.)
+   referenciam estes e trocam junto. */
+.dark {
   --bg:         var(--navy-900);
   --surface:    var(--navy-800);
   --text:       var(--cream);
@@ -93,16 +103,9 @@
   --node:       var(--cyan-500);
   --cta:        var(--rosa-500);
   --border:     #16305C;
-}
-:root[data-theme="light"] {
-  --bg:         var(--oat);
-  --surface:    #FFFFFF;
-  --text:       var(--warm-ink);
-  --text-muted: var(--grey-700);
-  --accent:     var(--cyan-700);
-  --node:       var(--cyan-500);
-  --cta:        var(--rosa-600);
-  --border:     var(--grey-300);
+  /* aliases longos com valor fixo que precisam de ajuste no escuro */
+  --bg-muted:      var(--navy-700);
+  --accent-text:   var(--cyan-500);
 }
 
 /* === reduced-motion === */
