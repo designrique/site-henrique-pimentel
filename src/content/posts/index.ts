@@ -1,6 +1,17 @@
 import type { PostEntry } from "@/lib/posts";
 
 import agentSkillsEngenhariaAgentes from "./agent-skills-engenharia-agentes";
+import googlePreferredSourcesAiOverviews from "./google-preferred-sources-ai-overviews";
+import zeroClick68BuscasEua from "./zero-click-68-buscas-eua";
+import llmsTxtV2CrawlersNaoLeem from "./llms-txt-v2-crawlers-nao-leem";
+import geoNumeros2026AiOverviews from "./geo-numeros-2026-ai-overviews";
+import paperGeoPrincetonCitacoes40 from "./paper-geo-princeton-citacoes-40";
+import ferramentasAiVisibilityPrecos from "./ferramentas-ai-visibility-precos";
+import seoAeoMesmoConteudoCasoReal from "./seo-aeo-mesmo-conteudo-caso-real";
+import regra10xCustoModelosCodigo from "./regra-10x-custo-modelos-codigo";
+import glm52MelhorOpenWeightCodigo from "./glm-52-melhor-open-weight-codigo";
+import incomeTransparencyConsultorIa1600 from "./income-transparency-consultor-ia-1600";
+import contentEngineeringPitchVendaIa from "./content-engineering-pitch-venda-ia";
 import needleModelo14mbDispositivos from "./needle-modelo-14mb-dispositivos";
 import tencentdbAgentMemoryEquipe from "./tencentdb-agent-memory-equipe";
 import semanticaGraphNativeContextoIa from "./semantica-graph-native-contexto-ia";
@@ -62,6 +73,17 @@ import top5NewslettersIa from "./top-5-newsletters-ia";
 import rankingDeputadosProjetosPernambuco from "./ranking-deputados-projetos-pernambuco";
 
 export const postRegistry: PostEntry[] = [
+  contentEngineeringPitchVendaIa,
+  incomeTransparencyConsultorIa1600,
+  glm52MelhorOpenWeightCodigo,
+  regra10xCustoModelosCodigo,
+  seoAeoMesmoConteudoCasoReal,
+  ferramentasAiVisibilityPrecos,
+  paperGeoPrincetonCitacoes40,
+  geoNumeros2026AiOverviews,
+  llmsTxtV2CrawlersNaoLeem,
+  zeroClick68BuscasEua,
+  googlePreferredSourcesAiOverviews,
   rankingDeputadosProjetosPernambuco,
   agentSkillsEngenhariaAgentes,
   needleModelo14mbDispositivos,

@@ -1,6 +1,6 @@
 {
-  "last_sync_commit": "110a861e20c72040948632f840b1362f7b073b1f",
-  "total_pages": 54,
+  "last_sync_commit": "ad23d4e4d8762b6480dde741db392b2723de8564",
+  "total_pages": 63,
   "provider": "openrouter",
   "model": "anthropic/claude-sonnet-4.6",
   "docs_enabled": true,
@@ -31,18 +31,18 @@
   },
   "knowledge_graph": {
     "version": "1.0.0",
-    "node_count": 715,
+    "node_count": 740,
     "layer_count": 5,
     "tour_steps": 12,
     "has_summaries": true,
-    "fingerprint": "15a2583630e4d4e8"
+    "fingerprint": "a703171c0c96eb8d"
   },
   "store_format_version": 1,
-  "written_by_version": "0.43.0",
+  "written_by_version": "0.45.0",
   "config_fingerprint": "e3bf174296190a312437cfc058ddb787980f19534513538adf6dca22259a581a",
   "docs_mode": "llm",
-  "last_full_rescore_at": 1786696479.0,
-  "health_analyzer_version": 1,
-  "last_docs_commit": "110a861e20c72040948632f840b1362f7b073b1f",
+  "last_full_rescore_at": 1787143406.0,
+  "health_analyzer_version": 5,
+  "last_docs_commit": "ad23d4e4d8762b6480dde741db392b2723de8564",
   "renderer_fingerprint": "86dad22a253142b3657f0ba46bfbf33c73308ea93e8c60c0a57fdeeceb484028:453722034ea88df494b7d45eb59526c4a5a067e85219449dcde1e65c9b07f550"
 }
