@@ -68,6 +68,8 @@ export default async function NewsArticlePage({ params }: PageProps) {
 
   const { meta, Content } = entry;
   const related = (await getNewsPosts()).filter((p) => p.slug !== slug).slice(0, 5);
+  const shareUrl = `https://henriquepimentel.com.br/noticias/${meta.slug}?utm_source=whatsapp&utm_medium=share&utm_campaign=${meta.slug}&v=${meta.publishedDate}`;
+  const whatsappText = `${meta.title}\n\n${meta.teaser}\n\n${shareUrl}`;
 
   const newsSchema = {
     "@context": "https://schema.org",
@@ -224,9 +226,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
               </div>
               <div className="flex gap-3">
                 <a
-                  href={`https://wa.me/?text=${encodeURIComponent(
-                    `${meta.title} — https://henriquepimentel.com.br/noticias/${meta.slug}`
-                  )}`}
+                  href={`https://wa.me/?text=${encodeURIComponent(whatsappText)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-10 items-center rounded-[10px] border border-[color:var(--border-default)] bg-[color:var(--bg-primary)] px-4 text-sm font-medium text-[color:var(--text-primary)] hover:border-[color:var(--accent-primary)] transition-colors"
