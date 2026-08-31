@@ -1,5 +1,18 @@
 import type { PostEntry } from "@/lib/posts";
 
+import marketplacesSkillsAgentesTrending from "./marketplaces-skills-agentes-trending";
+import openhumanMemoriaLocalAgentes from "./openhuman-memoria-local-agentes";
+import scientificAgentSkills from "./scientific-agent-skills";
+import aiJobSearchCandidaturaLocal from "./ai-job-search-candidatura-local";
+import awesomeGptImage2PromptCode from "./awesome-gpt-image-2-prompt-code";
+import archifyDiagramasArquiteturaAgentes from "./archify-diagramas-arquitetura-agentes";
+import googleAiModeReservaViagens from "./google-ai-mode-reserva-viagens";
+import comandosVsPromptsEdicaoImagemChatgpt from "./comandos-vs-prompts-edicao-imagem-chatgpt";
+import debateRedditIaDestroiTalentos from "./debate-reddit-ia-destroi-talentos";
+import glm53750bSuperaKimiK3 from "./glm-53-750b-supera-kimi-k3";
+import deepseekV4ProSaiPreviewPrecoSobe from "./deepseek-v4-pro-sai-preview-preco-sobe";
+import gemini37FlashAgenteCoding from "./gemini-37-flash-agente-coding";
+import nvidiaCompraHuggingFace129bi from "./nvidia-compra-hugging-face-129bi";
 import agentSkillsEngenhariaAgentes from "./agent-skills-engenharia-agentes";
 import googlePreferredSourcesAiOverviews from "./google-preferred-sources-ai-overviews";
 import zeroClick68BuscasEua from "./zero-click-68-buscas-eua";
@@ -73,6 +86,19 @@ import top5NewslettersIa from "./top-5-newsletters-ia";
 import rankingDeputadosProjetosPernambuco from "./ranking-deputados-projetos-pernambuco";
 
 export const postRegistry: PostEntry[] = [
+  nvidiaCompraHuggingFace129bi,
+  gemini37FlashAgenteCoding,
+  deepseekV4ProSaiPreviewPrecoSobe,
+  glm53750bSuperaKimiK3,
+  debateRedditIaDestroiTalentos,
+  comandosVsPromptsEdicaoImagemChatgpt,
+  googleAiModeReservaViagens,
+  archifyDiagramasArquiteturaAgentes,
+  awesomeGptImage2PromptCode,
+  aiJobSearchCandidaturaLocal,
+  scientificAgentSkills,
+  openhumanMemoriaLocalAgentes,
+  marketplacesSkillsAgentesTrending,
   contentEngineeringPitchVendaIa,
   incomeTransparencyConsultorIa1600,
   glm52MelhorOpenWeightCodigo,

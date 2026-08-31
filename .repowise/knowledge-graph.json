@@ -4,7 +4,7 @@
   "project": {
     "name": "site-henrique-pimentel",
     "is_monorepo": false,
-    "total_files": 125,
+    "total_files": 136,
     "entry_points": [],
     "tech_stack": [
       {
@@ -43,10 +43,10 @@
       "filePath": ".claude/CLAUDE.md",
       "language": "markdown",
       "symbolCount": 0,
-      "lineCount": 105,
+      "lineCount": 111,
       "complexity": "moderate",
-      "pagerank": 0.002858,
-      "communityId": 8,
+      "pagerank": 0.002609,
+      "communityId": 11,
       "tags": [],
       "summary": "Repository instructions and context for AI coding agents.",
       "primaryOwner": "root"
@@ -59,8 +59,8 @@
       "symbolCount": 0,
       "lineCount": 7,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 9,
+      "pagerank": 0.002609,
+      "communityId": 12,
       "tags": [
         "config",
         "low_signal_summary"
@@ -75,8 +75,8 @@
       "symbolCount": 0,
       "lineCount": 62,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 10,
+      "pagerank": 0.002609,
+      "communityId": 13,
       "tags": [],
       "summary": "Project overview and entry point for new readers."
     },
@@ -88,8 +88,8 @@
       "symbolCount": 0,
       "lineCount": 92,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 11,
+      "pagerank": 0.002609,
+      "communityId": 14,
       "tags": [
         "low_signal_summary"
       ],
@@ -103,8 +103,8 @@
       "symbolCount": 1,
       "lineCount": 11,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 5,
+      "pagerank": 0.002609,
+      "communityId": 7,
       "tags": [],
       "summary": "Application module eslint.config."
     },
@@ -116,11 +116,10 @@
       "symbolCount": 1,
       "lineCount": 3,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 1,
+      "pagerank": 0.002609,
+      "communityId": 4,
       "tags": [],
-      "summary": "Application module next.config (1 symbols).",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Application module next.config (1 symbols)."
     },
     {
       "id": "file:package.json",
@@ -130,8 +129,8 @@
       "symbolCount": 0,
       "lineCount": 15,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 12,
+      "pagerank": 0.002609,
+      "communityId": 15,
       "tags": [
         "config"
       ],
@@ -145,14 +144,13 @@
       "symbolCount": 0,
       "lineCount": 1,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 13,
+      "pagerank": 0.002609,
+      "communityId": 16,
       "tags": [
         "config",
         "low_signal_summary"
       ],
-      "summary": "Configuration file: pnpm-workspace.yaml.",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Configuration file: pnpm-workspace.yaml."
     },
     {
       "id": "file:postcss.config.mjs",
@@ -162,8 +160,8 @@
       "symbolCount": 1,
       "lineCount": 2,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 14,
+      "pagerank": 0.002609,
+      "communityId": 17,
       "tags": [],
       "summary": "Application module postcss.config (1 symbols)."
     },
@@ -175,8 +173,8 @@
       "symbolCount": 0,
       "lineCount": 1199,
       "complexity": "complex",
-      "pagerank": 0.002858,
-      "communityId": 6,
+      "pagerank": 0.002609,
+      "communityId": 9,
       "tags": [],
       "summary": "Re-export barrel for fechar-a-conta/."
     },
@@ -188,8 +186,8 @@
       "symbolCount": 644,
       "lineCount": 5270,
       "complexity": "complex",
-      "pagerank": 0.005288,
-      "communityId": 6,
+      "pagerank": 0.004827,
+      "communityId": 9,
       "tags": [],
       "summary": "Application module supabase defining t, n, r."
     },
@@ -201,11 +199,10 @@
       "symbolCount": 16,
       "lineCount": 116,
       "complexity": "complex",
-      "pagerank": 0.002858,
-      "communityId": 15,
+      "pagerank": 0.002609,
+      "communityId": 18,
       "tags": [],
-      "summary": "Docs & Tooling module coleta_proposicoes_pe defining get_json, get_xml, alepe_xml_to_list.",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Docs & Tooling module coleta_proposicoes_pe defining get_json, get_xml, alepe_xml_to_list."
     },
     {
       "id": "file:src/app/baseline-geo/baseline-geo-client.tsx",
@@ -215,8 +212,8 @@
       "symbolCount": 4,
       "lineCount": 314,
       "complexity": "moderate",
-      "pagerank": 0.003668,
-      "communityId": 1,
+      "pagerank": 0.003348,
+      "communityId": 3,
       "tags": [],
       "summary": "Application module baseline-geo-client defining BaselineGeoClient, Field."
     },
@@ -228,8 +225,8 @@
       "symbolCount": 2,
       "lineCount": 4,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 4,
+      "pagerank": 0.002609,
+      "communityId": 6,
       "tags": [],
       "summary": "Application module route defining GET."
     },
@@ -241,8 +238,8 @@
       "symbolCount": 2,
       "lineCount": 13,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 1,
+      "pagerank": 0.002609,
+      "communityId": 3,
       "tags": [],
       "summary": "Application module page defining BaselineGeoPage."
     },
@@ -254,8 +251,8 @@
       "symbolCount": 4,
       "lineCount": 12,
       "complexity": "moderate",
-      "pagerank": 0.002858,
-      "communityId": 4,
+      "pagerank": 0.002609,
+      "communityId": 6,
       "tags": [],
       "summary": "Application module route defining generateStaticParams, GET."
     },
@@ -267,8 +264,8 @@
       "symbolCount": 5,
       "lineCount": 211,
       "complexity": "moderate",
-      "pagerank": 0.002858,
-      "communityId": 1,
+      "pagerank": 0.002609,
+      "communityId": 4,
       "tags": [],
       "summary": "Application module page defining PageProps, generateStaticParams, generateMetadata."
     },
@@ -280,8 +277,8 @@
       "symbolCount": 2,
       "lineCount": 4,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 4,
+      "pagerank": 0.002609,
+      "communityId": 6,
       "tags": [],
       "summary": "Application module route defining GET."
     },
@@ -293,11 +290,10 @@
       "symbolCount": 4,
       "lineCount": 244,
       "complexity": "moderate",
-      "pagerank": 0.002858,
-      "communityId": 1,
+      "pagerank": 0.002609,
+      "communityId": 5,
       "tags": [],
-      "summary": "Application module page defining BlogPage, PostRow, CategoryBadge.",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Application module page defining BlogPage, PostRow, CategoryBadge."
     },
     {
       "id": "file:src/app/cases/index.md/route.ts",
@@ -307,8 +303,8 @@
       "symbolCount": 2,
       "lineCount": 4,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 4,
+      "pagerank": 0.002609,
+      "communityId": 6,
       "tags": [],
       "summary": "Application module route defining GET."
     },
@@ -320,8 +316,8 @@
       "symbolCount": 5,
       "lineCount": 199,
       "complexity": "moderate",
-      "pagerank": 0.002858,
-      "communityId": 1,
+      "pagerank": 0.002609,
+      "communityId": 4,
       "tags": [],
       "summary": "Application module page defining Case, CasesPage."
     },
@@ -333,8 +329,8 @@
       "symbolCount": 2,
       "lineCount": 4,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 4,
+      "pagerank": 0.002609,
+      "communityId": 6,
       "tags": [],
       "summary": "Application module route defining GET."
     },
@@ -346,8 +342,8 @@
       "symbolCount": 6,
       "lineCount": 270,
       "complexity": "moderate",
-      "pagerank": 0.002858,
-      "communityId": 1,
+      "pagerank": 0.002609,
+      "communityId": 8,
       "tags": [],
       "summary": "Application module page defining ContatoPage, Field, DirectCard."
     },
@@ -359,8 +355,8 @@
       "symbolCount": 2,
       "lineCount": 4,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 4,
+      "pagerank": 0.002609,
+      "communityId": 6,
       "tags": [],
       "summary": "Application module route defining GET."
     },
@@ -369,13 +365,14 @@
       "type": "file",
       "filePath": "src/app/layout.tsx",
       "language": "typescript",
-      "symbolCount": 7,
-      "lineCount": 296,
+      "symbolCount": 8,
+      "lineCount": 299,
       "complexity": "moderate",
-      "pagerank": 0.002858,
-      "communityId": 3,
+      "pagerank": 0.002609,
+      "communityId": 5,
       "tags": [],
-      "summary": "Application module layout defining RootLayout."
+      "summary": "Application module layout defining RootLayout.",
+      "primaryOwner": "Henrique Pimentel"
     },
     {
       "id": "file:src/app/medcitado/index.md/route.ts",
@@ -385,8 +382,8 @@
       "symbolCount": 2,
       "lineCount": 4,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 4,
+      "pagerank": 0.002609,
+      "communityId": 6,
       "tags": [],
       "summary": "Application module route defining GET."
     },
@@ -398,8 +395,8 @@
       "symbolCount": 3,
       "lineCount": 257,
       "complexity": "moderate",
-      "pagerank": 0.002858,
-      "communityId": 1,
+      "pagerank": 0.002609,
+      "communityId": 4,
       "tags": [],
       "summary": "Application module page defining MedCitadoPage."
     },
@@ -411,8 +408,8 @@
       "symbolCount": 5,
       "lineCount": 251,
       "complexity": "moderate",
-      "pagerank": 0.002858,
-      "communityId": 1,
+      "pagerank": 0.002609,
+      "communityId": 4,
       "tags": [],
       "summary": "Application module page defining PageProps, generateStaticParams, generateMetadata."
     },
@@ -424,8 +421,8 @@
       "symbolCount": 6,
       "lineCount": 222,
       "complexity": "moderate",
-      "pagerank": 0.002858,
-      "communityId": 1,
+      "pagerank": 0.002609,
+      "communityId": 4,
       "tags": [],
       "summary": "Application module page defining NewsPage, FeaturedNews, NewsRow."
     },
@@ -437,11 +434,10 @@
       "symbolCount": 1,
       "lineCount": 19,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 1,
+      "pagerank": 0.002609,
+      "communityId": 2,
       "tags": [],
-      "summary": "Application module page defining Home.",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Application module page defining Home."
     },
     {
       "id": "file:src/app/servicos/consultoria-ia/page.tsx",
@@ -451,8 +447,8 @@
       "symbolCount": 4,
       "lineCount": 223,
       "complexity": "moderate",
-      "pagerank": 0.002858,
-      "communityId": 1,
+      "pagerank": 0.002609,
+      "communityId": 4,
       "tags": [],
       "summary": "Application module page defining ConsultoriaIaPage."
     },
@@ -464,8 +460,8 @@
       "symbolCount": 3,
       "lineCount": 50,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 2,
+      "pagerank": 0.002609,
+      "communityId": 0,
       "tags": [],
       "summary": "Application module sitemap defining sitemap."
     },
@@ -477,8 +473,8 @@
       "symbolCount": 2,
       "lineCount": 4,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 4,
+      "pagerank": 0.002609,
+      "communityId": 6,
       "tags": [],
       "summary": "Application module route defining GET."
     },
@@ -490,8 +486,8 @@
       "symbolCount": 4,
       "lineCount": 185,
       "complexity": "moderate",
-      "pagerank": 0.002858,
-      "communityId": 1,
+      "pagerank": 0.002609,
+      "communityId": 4,
       "tags": [],
       "summary": "Application module page defining SobrePage."
     },
@@ -503,8 +499,8 @@
       "symbolCount": 6,
       "lineCount": 75,
       "complexity": "moderate",
-      "pagerank": 0.094601,
-      "communityId": 0,
+      "pagerank": 0.100751,
+      "communityId": 1,
       "tags": [],
       "summary": "UI module prose defining PostProse, H2, H3."
     },
@@ -516,7 +512,7 @@
       "symbolCount": 1,
       "lineCount": 7,
       "complexity": "simple",
-      "pagerank": 0.003263,
+      "pagerank": 0.002979,
       "communityId": 3,
       "tags": [],
       "summary": "UI module breadcrumb-injector defining BreadcrumbInjector."
@@ -529,7 +525,7 @@
       "symbolCount": 6,
       "lineCount": 40,
       "complexity": "moderate",
-      "pagerank": 0.004245,
+      "pagerank": 0.003875,
       "communityId": 3,
       "tags": [],
       "summary": "UI module breadcrumb-jsonld defining BreadcrumbItem, BreadcrumbJsonLdProps, BreadcrumbJsonLd."
@@ -542,8 +538,8 @@
       "symbolCount": 1,
       "lineCount": 81,
       "complexity": "simple",
-      "pagerank": 0.003263,
-      "communityId": 3,
+      "pagerank": 0.002979,
+      "communityId": 5,
       "tags": [],
       "summary": "UI module footer defining Footer."
     },
@@ -553,10 +549,10 @@
       "filePath": "src/components/header.tsx",
       "language": "typescript",
       "symbolCount": 2,
-      "lineCount": 150,
+      "lineCount": 145,
       "complexity": "moderate",
-      "pagerank": 0.003263,
-      "communityId": 3,
+      "pagerank": 0.002979,
+      "communityId": 5,
       "tags": [],
       "summary": "UI module header defining Header.",
       "primaryOwner": "Henrique Pimentel"
@@ -569,11 +565,10 @@
       "symbolCount": 4,
       "lineCount": 61,
       "complexity": "moderate",
-      "pagerank": 0.004642,
-      "communityId": 3,
+      "pagerank": 0.004237,
+      "communityId": 5,
       "tags": [],
-      "summary": "UI module logo defining LogoProps, Logo.",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "UI module logo defining LogoProps, Logo."
     },
     {
       "id": "file:src/components/news/accessibility-toolbar.tsx",
@@ -583,8 +578,8 @@
       "symbolCount": 4,
       "lineCount": 82,
       "complexity": "moderate",
-      "pagerank": 0.003205,
-      "communityId": 1,
+      "pagerank": 0.002926,
+      "communityId": 3,
       "tags": [],
       "summary": "UI module accessibility-toolbar defining AccessibilityToolbar."
     },
@@ -596,8 +591,8 @@
       "symbolCount": 2,
       "lineCount": 27,
       "complexity": "simple",
-      "pagerank": 0.003128,
-      "communityId": 1,
+      "pagerank": 0.002856,
+      "communityId": 2,
       "tags": [],
       "summary": "UI module about-statement defining AboutStatementProps, AboutStatement."
     },
@@ -609,8 +604,8 @@
       "symbolCount": 4,
       "lineCount": 85,
       "complexity": "moderate",
-      "pagerank": 0.003128,
-      "communityId": 1,
+      "pagerank": 0.002856,
+      "communityId": 2,
       "tags": [],
       "summary": "UI module cases-strip defining Case, CasesStripProps, CasesStrip."
     },
@@ -622,8 +617,8 @@
       "symbolCount": 6,
       "lineCount": 107,
       "complexity": "moderate",
-      "pagerank": 0.003128,
-      "communityId": 1,
+      "pagerank": 0.002856,
+      "communityId": 2,
       "tags": [],
       "summary": "UI module comparison defining Comparison, ComparisonColumn, CheckIcon."
     },
@@ -635,8 +630,8 @@
       "symbolCount": 2,
       "lineCount": 41,
       "complexity": "simple",
-      "pagerank": 0.006391,
-      "communityId": 1,
+      "pagerank": 0.005833,
+      "communityId": 4,
       "tags": [],
       "summary": "UI module cta-block defining CtaBlockProps, CtaBlock."
     },
@@ -648,8 +643,8 @@
       "symbolCount": 5,
       "lineCount": 122,
       "complexity": "moderate",
-      "pagerank": 0.003614,
-      "communityId": 1,
+      "pagerank": 0.003299,
+      "communityId": 8,
       "tags": [],
       "summary": "UI module faqs defining FAQ, FAQsProps, FAQs."
     },
@@ -661,11 +656,10 @@
       "symbolCount": 1,
       "lineCount": 46,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 1,
+      "pagerank": 0.002609,
+      "communityId": 5,
       "tags": [],
-      "summary": "UI module featured-post defining FeaturedPost.",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "UI module featured-post defining FeaturedPost."
     },
     {
       "id": "file:src/components/sections/hero.tsx",
@@ -675,8 +669,8 @@
       "symbolCount": 2,
       "lineCount": 137,
       "complexity": "moderate",
-      "pagerank": 0.004222,
-      "communityId": 1,
+      "pagerank": 0.003853,
+      "communityId": 2,
       "tags": [],
       "summary": "UI module hero defining HeroProps, Hero."
     },
@@ -688,8 +682,8 @@
       "symbolCount": 5,
       "lineCount": 106,
       "complexity": "moderate",
-      "pagerank": 0.003128,
-      "communityId": 1,
+      "pagerank": 0.002856,
+      "communityId": 2,
       "tags": [],
       "summary": "UI module services defining Service, ServicesProps, Services."
     },
@@ -701,8 +695,8 @@
       "symbolCount": 5,
       "lineCount": 97,
       "complexity": "moderate",
-      "pagerank": 0.003128,
-      "communityId": 1,
+      "pagerank": 0.002856,
+      "communityId": 2,
       "tags": [],
       "summary": "UI module trusted-by defining Brand, TrustedByProps, TrustedBy."
     },
@@ -714,8 +708,8 @@
       "symbolCount": 4,
       "lineCount": 58,
       "complexity": "moderate",
-      "pagerank": 0.003128,
-      "communityId": 1,
+      "pagerank": 0.002856,
+      "communityId": 2,
       "tags": [],
       "summary": "UI module why-stats defining Stat, WhyStatsProps, WhyStats."
     },
@@ -727,7 +721,7 @@
       "symbolCount": 2,
       "lineCount": 8,
       "complexity": "simple",
-      "pagerank": 0.003263,
+      "pagerank": 0.002979,
       "communityId": 3,
       "tags": [],
       "summary": "UI module theme-provider defining ThemeProvider."
@@ -740,7 +734,7 @@
       "symbolCount": 1,
       "lineCount": 45,
       "complexity": "simple",
-      "pagerank": 0.003255,
+      "pagerank": 0.002971,
       "communityId": 3,
       "tags": [],
       "summary": "UI module theme-toggle defining ThemeToggle."
@@ -753,8 +747,8 @@
       "symbolCount": 4,
       "lineCount": 48,
       "complexity": "moderate",
-      "pagerank": 0.003456,
-      "communityId": 1,
+      "pagerank": 0.003155,
+      "communityId": 2,
       "tags": [],
       "summary": "UI module brand-ticker defining TickerItem, BrandTickerProps, BrandTicker."
     },
@@ -766,8 +760,8 @@
       "symbolCount": 10,
       "lineCount": 47,
       "complexity": "moderate",
-      "pagerank": 0.006659,
-      "communityId": 1,
+      "pagerank": 0.006078,
+      "communityId": 8,
       "tags": [],
       "summary": "UI module button defining BaseProps, getClasses, ButtonProps."
     },
@@ -779,11 +773,10 @@
       "symbolCount": 1,
       "lineCount": 12,
       "complexity": "simple",
-      "pagerank": 0.004154,
-      "communityId": 1,
+      "pagerank": 0.003792,
+      "communityId": 5,
       "tags": [],
-      "summary": "UI module category-badge defining CategoryBadge.",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "UI module category-badge defining CategoryBadge."
     },
     {
       "id": "file:src/components/ui/container.tsx",
@@ -793,8 +786,8 @@
       "symbolCount": 3,
       "lineCount": 13,
       "complexity": "simple",
-      "pagerank": 0.019979,
-      "communityId": 1,
+      "pagerank": 0.018234,
+      "communityId": 4,
       "tags": [],
       "summary": "UI module container defining ContainerProps, Container."
     },
@@ -806,8 +799,8 @@
       "symbolCount": 2,
       "lineCount": 25,
       "complexity": "simple",
-      "pagerank": 0.003456,
-      "communityId": 1,
+      "pagerank": 0.003155,
+      "communityId": 3,
       "tags": [],
       "summary": "UI module eyebrow-badge defining EyebrowBadgeProps, EyebrowBadge."
     },
@@ -819,11 +812,10 @@
       "symbolCount": 7,
       "lineCount": 120,
       "complexity": "moderate",
-      "pagerank": 0.003456,
-      "communityId": 1,
+      "pagerank": 0.003155,
+      "communityId": 2,
       "tags": [],
-      "summary": "UI module hero-proof-visual defining FloatingCardProps, FloatingCard, HeroProofVisualProps.",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "UI module hero-proof-visual defining FloatingCardProps, FloatingCard, HeroProofVisualProps."
     },
     {
       "id": "file:src/components/ui/reveal.tsx",
@@ -833,8 +825,8 @@
       "symbolCount": 6,
       "lineCount": 38,
       "complexity": "moderate",
-      "pagerank": 0.009218,
-      "communityId": 1,
+      "pagerank": 0.008413,
+      "communityId": 2,
       "tags": [],
       "summary": "UI module reveal defining RevealProps, Reveal, StaggerProps."
     },
@@ -846,8 +838,8 @@
       "symbolCount": 1,
       "lineCount": 11,
       "complexity": "simple",
-      "pagerank": 0.021081,
-      "communityId": 4,
+      "pagerank": 0.01924,
+      "communityId": 6,
       "tags": [],
       "summary": "Application module handler defining mirrorResponse."
     },
@@ -859,8 +851,8 @@
       "symbolCount": 13,
       "lineCount": 397,
       "complexity": "moderate",
-      "pagerank": 0.020778,
-      "communityId": 4,
+      "pagerank": 0.018966,
+      "communityId": 6,
       "tags": [],
       "summary": "Application module index defining Mirror, today, frontmatter."
     },
@@ -872,7 +864,7 @@
       "symbolCount": 1,
       "lineCount": 93,
       "complexity": "simple",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
       "summary": "Application module agencia-vs-consultor-ia (1 symbols)."
@@ -885,11 +877,10 @@
       "symbolCount": 1,
       "lineCount": 89,
       "complexity": "simple",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
-      "summary": "Application module agent-skills-engenharia-agentes (1 symbols).",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Application module agent-skills-engenharia-agentes (1 symbols)."
     },
     {
       "id": "file:src/content/posts/agentic-ai-campanhas-marketing-2026.tsx",
@@ -899,8 +890,8 @@
       "symbolCount": 1,
       "lineCount": 102,
       "complexity": "moderate",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
       "summary": "Application module agentic-ai-campanhas-marketing-2026 (1 symbols)."
     },
@@ -912,11 +903,10 @@
       "symbolCount": 1,
       "lineCount": 89,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 0,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
-      "summary": "Application module amd-nvidia-us5bi-labs-ia (1 symbols).",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Application module amd-nvidia-us5bi-labs-ia (1 symbols)."
     },
     {
       "id": "file:src/content/posts/amie-ia-consultas-clinicas-video.tsx",
@@ -926,11 +916,10 @@
       "symbolCount": 1,
       "lineCount": 88,
       "complexity": "simple",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
-      "summary": "Application module amie-ia-consultas-clinicas-video (1 symbols).",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Application module amie-ia-consultas-clinicas-video (1 symbols)."
     },
     {
       "id": "file:src/content/posts/anthropic-marca-dagua-c2pa-claude.tsx",
@@ -940,11 +929,10 @@
       "symbolCount": 1,
       "lineCount": 94,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 0,
       "tags": [],
-      "summary": "Application module anthropic-marca-dagua-c2pa-claude (1 symbols).",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Application module anthropic-marca-dagua-c2pa-claude (1 symbols)."
     },
     {
       "id": "file:src/content/posts/apple-modelo-ia-china-alibaba.tsx",
@@ -954,11 +942,10 @@
       "symbolCount": 1,
       "lineCount": 89,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 0,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
-      "summary": "Application module apple-modelo-ia-china-alibaba (1 symbols).",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Application module apple-modelo-ia-china-alibaba (1 symbols)."
     },
     {
       "id": "file:src/content/posts/atendente-ia-whatsapp-24h.tsx",
@@ -968,7 +955,7 @@
       "symbolCount": 1,
       "lineCount": 305,
       "complexity": "moderate",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
       "summary": "Application module atendente-ia-whatsapp-24h (1 symbols)."
@@ -981,8 +968,8 @@
       "symbolCount": 1,
       "lineCount": 430,
       "complexity": "moderate",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
       "summary": "Application module baseline-fatima (1 symbols)."
     },
@@ -994,7 +981,7 @@
       "symbolCount": 1,
       "lineCount": 254,
       "complexity": "moderate",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
       "summary": "Application module captacao-automatica-clientes (1 symbols)."
@@ -1007,8 +994,8 @@
       "symbolCount": 1,
       "lineCount": 245,
       "complexity": "moderate",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 0,
       "tags": [],
       "summary": "Application module chatgpt-decide-citar (1 symbols)."
     },
@@ -1020,8 +1007,8 @@
       "symbolCount": 1,
       "lineCount": 96,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 0,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
       "summary": "Application module claude-code-ecossistema-quente (1 symbols)."
     },
@@ -1033,11 +1020,10 @@
       "symbolCount": 1,
       "lineCount": 91,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 0,
       "tags": [],
-      "summary": "Application module claude-fable5-swebench-opus5-contexto (1 symbols).",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Application module claude-fable5-swebench-opus5-contexto (1 symbols)."
     },
     {
       "id": "file:src/content/posts/comment-bait-entrega-real-leads.tsx",
@@ -1047,7 +1033,7 @@
       "symbolCount": 1,
       "lineCount": 100,
       "complexity": "moderate",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
       "summary": "Application module comment-bait-entrega-real-leads (1 symbols)."
@@ -1060,8 +1046,8 @@
       "symbolCount": 1,
       "lineCount": 192,
       "complexity": "moderate",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 0,
       "tags": [],
       "summary": "Application module como-aparecer-no-chatgpt (1 symbols)."
     },
@@ -1073,7 +1059,7 @@
       "symbolCount": 1,
       "lineCount": 111,
       "complexity": "moderate",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
       "summary": "Application module comunidades-privadas-lealdade-marca-2026 (1 symbols)."
@@ -1086,10 +1072,24 @@
       "symbolCount": 1,
       "lineCount": 94,
       "complexity": "simple",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
       "summary": "Application module consistencia-ponto-de-vista-social-2026 (1 symbols)."
+    },
+    {
+      "id": "file:src/content/posts/content-engineering-pitch-venda-ia.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/content-engineering-pitch-venda-ia.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 87,
+      "complexity": "simple",
+      "pagerank": 0.003253,
+      "communityId": 0,
+      "tags": [],
+      "summary": "Application module content-engineering-pitch-venda-ia (1 symbols).",
+      "primaryOwner": "Henrique Pimentel"
     },
     {
       "id": "file:src/content/posts/conteudo-humano-vence-ai-slop-2026.tsx",
@@ -1099,8 +1099,8 @@
       "symbolCount": 1,
       "lineCount": 98,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 0,
       "tags": [],
       "summary": "Application module conteudo-humano-vence-ai-slop-2026 (1 symbols)."
     },
@@ -1112,8 +1112,8 @@
       "symbolCount": 1,
       "lineCount": 95,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
       "summary": "Application module deepseek-v4-pro-37x-mais-barato (1 symbols)."
     },
@@ -1125,8 +1125,8 @@
       "symbolCount": 1,
       "lineCount": 93,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 0,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
       "summary": "Application module e-geo-toolkit-open-source (1 symbols)."
     },
@@ -1138,10 +1138,24 @@
       "symbolCount": 1,
       "lineCount": 89,
       "complexity": "simple",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
       "summary": "Application module fan-out-queries-chatgpt-citacao (1 symbols)."
+    },
+    {
+      "id": "file:src/content/posts/ferramentas-ai-visibility-precos.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/ferramentas-ai-visibility-precos.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 88,
+      "complexity": "simple",
+      "pagerank": 0.003253,
+      "communityId": 0,
+      "tags": [],
+      "summary": "Application module ferramentas-ai-visibility-precos (1 symbols).",
+      "primaryOwner": "Henrique Pimentel"
     },
     {
       "id": "file:src/content/posts/founder-story-ia-engajamento.tsx",
@@ -1151,8 +1165,8 @@
       "symbolCount": 1,
       "lineCount": 95,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 0,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
       "summary": "Application module founder-story-ia-engajamento (1 symbols)."
     },
@@ -1164,8 +1178,8 @@
       "symbolCount": 1,
       "lineCount": 411,
       "complexity": "moderate",
-      "pagerank": 0.003597,
-      "communityId": 0,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
       "summary": "Application module framework-geo-extracao-ia (1 symbols)."
     },
@@ -1177,8 +1191,8 @@
       "symbolCount": 1,
       "lineCount": 24,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 0,
       "tags": [],
       "summary": "Application module geist-vs-inter (1 symbols)."
     },
@@ -1190,10 +1204,38 @@
       "symbolCount": 1,
       "lineCount": 100,
       "complexity": "moderate",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
       "summary": "Application module gemini-35-flash-flagship-barato (1 symbols)."
+    },
+    {
+      "id": "file:src/content/posts/geo-numeros-2026-ai-overviews.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/geo-numeros-2026-ai-overviews.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 83,
+      "complexity": "simple",
+      "pagerank": 0.003253,
+      "communityId": 1,
+      "tags": [],
+      "summary": "Application module geo-numeros-2026-ai-overviews (1 symbols).",
+      "primaryOwner": "Henrique Pimentel"
+    },
+    {
+      "id": "file:src/content/posts/glm-52-melhor-open-weight-codigo.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/glm-52-melhor-open-weight-codigo.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 87,
+      "complexity": "simple",
+      "pagerank": 0.003253,
+      "communityId": 0,
+      "tags": [],
+      "summary": "Application module glm-52-melhor-open-weight-codigo (1 symbols).",
+      "primaryOwner": "Henrique Pimentel"
     },
     {
       "id": "file:src/content/posts/google-ads-analytics-novidades-ia.tsx",
@@ -1203,10 +1245,23 @@
       "symbolCount": 1,
       "lineCount": 85,
       "complexity": "simple",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
+      "communityId": 1,
+      "tags": [],
+      "summary": "Application module google-ads-analytics-novidades-ia (1 symbols)."
+    },
+    {
+      "id": "file:src/content/posts/google-preferred-sources-ai-overviews.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/google-preferred-sources-ai-overviews.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 81,
+      "complexity": "simple",
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
-      "summary": "Application module google-ads-analytics-novidades-ia (1 symbols).",
+      "summary": "Application module google-preferred-sources-ai-overviews (1 symbols).",
       "primaryOwner": "Henrique Pimentel"
     },
     {
@@ -1217,10 +1272,24 @@
       "symbolCount": 1,
       "lineCount": 94,
       "complexity": "simple",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
       "summary": "Application module gpt-55-lidera-terminal-bench (1 symbols)."
+    },
+    {
+      "id": "file:src/content/posts/income-transparency-consultor-ia-1600.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/income-transparency-consultor-ia-1600.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 84,
+      "complexity": "simple",
+      "pagerank": 0.003253,
+      "communityId": 0,
+      "tags": [],
+      "summary": "Application module income-transparency-consultor-ia-1600 (1 symbols).",
+      "primaryOwner": "Henrique Pimentel"
     },
     {
       "id": "file:src/content/posts/index.ts",
@@ -1228,9 +1297,9 @@
       "filePath": "src/content/posts/index.ts",
       "language": "typescript",
       "symbolCount": 1,
-      "lineCount": 154,
+      "lineCount": 184,
       "complexity": "moderate",
-      "pagerank": 0.053046,
+      "pagerank": 0.054536,
       "communityId": 0,
       "tags": [],
       "summary": "Re-export barrel for posts/.",
@@ -1244,7 +1313,7 @@
       "symbolCount": 1,
       "lineCount": 111,
       "complexity": "moderate",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
       "summary": "Application module influencer-marketing-roi-2026 (1 symbols)."
@@ -1257,8 +1326,8 @@
       "symbolCount": 1,
       "lineCount": 25,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 0,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
       "summary": "Application module iptables-docker-bridge-fix (1 symbols)."
     },
@@ -1270,11 +1339,10 @@
       "symbolCount": 1,
       "lineCount": 94,
       "complexity": "simple",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
-      "summary": "Application module kimi-k3-open-weight-28t (1 symbols).",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Application module kimi-k3-open-weight-28t (1 symbols)."
     },
     {
       "id": "file:src/content/posts/lancamentos-modelos-ia-semana.tsx",
@@ -1284,10 +1352,24 @@
       "symbolCount": 1,
       "lineCount": 96,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 0,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
       "summary": "Application module lancamentos-modelos-ia-semana (1 symbols)."
+    },
+    {
+      "id": "file:src/content/posts/llms-txt-v2-crawlers-nao-leem.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/llms-txt-v2-crawlers-nao-leem.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 92,
+      "complexity": "simple",
+      "pagerank": 0.003253,
+      "communityId": 1,
+      "tags": [],
+      "summary": "Application module llms-txt-v2-crawlers-nao-leem (1 symbols).",
+      "primaryOwner": "Henrique Pimentel"
     },
     {
       "id": "file:src/content/posts/managed-agents-gemini-api-36-flash.tsx",
@@ -1297,11 +1379,10 @@
       "symbolCount": 1,
       "lineCount": 87,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 0,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
-      "summary": "Application module managed-agents-gemini-api-36-flash (1 symbols).",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Application module managed-agents-gemini-api-36-flash (1 symbols)."
     },
     {
       "id": "file:src/content/posts/mencao-marca-fator-1-ia-overviews.tsx",
@@ -1311,8 +1392,8 @@
       "symbolCount": 1,
       "lineCount": 89,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 0,
       "tags": [],
       "summary": "Application module mencao-marca-fator-1-ia-overviews (1 symbols)."
     },
@@ -1324,8 +1405,8 @@
       "symbolCount": 1,
       "lineCount": 92,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 0,
       "tags": [],
       "summary": "Application module minimax-m25-melhor-custo-beneficio (1 symbols)."
     },
@@ -1337,11 +1418,10 @@
       "symbolCount": 1,
       "lineCount": 87,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 0,
       "tags": [],
-      "summary": "Application module needle-modelo-14mb-dispositivos (1 symbols).",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Application module needle-modelo-14mb-dispositivos (1 symbols)."
     },
     {
       "id": "file:src/content/posts/nytx-debate-escrever-com-ia.tsx",
@@ -1351,11 +1431,10 @@
       "symbolCount": 1,
       "lineCount": 94,
       "complexity": "simple",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
-      "summary": "Application module nytx-debate-escrever-com-ia (1 symbols).",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Application module nytx-debate-escrever-com-ia (1 symbols)."
     },
     {
       "id": "file:src/content/posts/o-que-e-geo-medicos.tsx",
@@ -1365,8 +1444,8 @@
       "symbolCount": 1,
       "lineCount": 309,
       "complexity": "moderate",
-      "pagerank": 0.003597,
-      "communityId": 0,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
       "summary": "Application module o-que-e-geo-medicos (1 symbols)."
     },
@@ -1378,11 +1457,10 @@
       "symbolCount": 1,
       "lineCount": 89,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 0,
       "tags": [],
-      "summary": "Application module openai-gpt-56-luna-corte-preco (1 symbols).",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Application module openai-gpt-56-luna-corte-preco (1 symbols)."
     },
     {
       "id": "file:src/content/posts/operador-solo-agentes-ia-viraliza.tsx",
@@ -1392,10 +1470,24 @@
       "symbolCount": 1,
       "lineCount": 94,
       "complexity": "simple",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
       "summary": "Application module operador-solo-agentes-ia-viraliza (1 symbols)."
+    },
+    {
+      "id": "file:src/content/posts/paper-geo-princeton-citacoes-40.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/paper-geo-princeton-citacoes-40.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 85,
+      "complexity": "simple",
+      "pagerank": 0.003253,
+      "communityId": 0,
+      "tags": [],
+      "summary": "Application module paper-geo-princeton-citacoes-40 (1 symbols).",
+      "primaryOwner": "Henrique Pimentel"
     },
     {
       "id": "file:src/content/posts/postgres-swarm-supabase.tsx",
@@ -1405,8 +1497,8 @@
       "symbolCount": 1,
       "lineCount": 27,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 0,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
       "summary": "Application module postgres-swarm-supabase (1 symbols)."
     },
@@ -1418,11 +1510,10 @@
       "symbolCount": 1,
       "lineCount": 89,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 0,
       "tags": [],
-      "summary": "Application module prime-agent-codigo-self-improving (1 symbols).",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Application module prime-agent-codigo-self-improving (1 symbols)."
     },
     {
       "id": "file:src/content/posts/qwen-38-max-melhor-modelo-arena.tsx",
@@ -1432,8 +1523,8 @@
       "symbolCount": 1,
       "lineCount": 92,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 0,
       "tags": [],
       "summary": "Application module qwen-38-max-melhor-modelo-arena (1 symbols)."
     },
@@ -1445,10 +1536,23 @@
       "symbolCount": 1,
       "lineCount": 343,
       "complexity": "moderate",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 0,
       "tags": [],
-      "summary": "Application module ranking-deputados-projetos-pernambuco (1 symbols).",
+      "summary": "Application module ranking-deputados-projetos-pernambuco (1 symbols)."
+    },
+    {
+      "id": "file:src/content/posts/regra-10x-custo-modelos-codigo.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/regra-10x-custo-modelos-codigo.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 88,
+      "complexity": "simple",
+      "pagerank": 0.003253,
+      "communityId": 0,
+      "tags": [],
+      "summary": "Application module regra-10x-custo-modelos-codigo (1 symbols).",
       "primaryOwner": "Henrique Pimentel"
     },
     {
@@ -1459,8 +1563,8 @@
       "symbolCount": 1,
       "lineCount": 97,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 0,
       "tags": [],
       "summary": "Application module save-rate-metrica-dominante-tiktok (1 symbols)."
     },
@@ -1472,8 +1576,8 @@
       "symbolCount": 1,
       "lineCount": 93,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 0,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
       "summary": "Application module search-console-relatorio-generative-ai (1 symbols)."
     },
@@ -1485,10 +1589,23 @@
       "symbolCount": 1,
       "lineCount": 84,
       "complexity": "simple",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
+      "communityId": 1,
+      "tags": [],
+      "summary": "Application module semantica-graph-native-contexto-ia (1 symbols)."
+    },
+    {
+      "id": "file:src/content/posts/seo-aeo-mesmo-conteudo-caso-real.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/seo-aeo-mesmo-conteudo-caso-real.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 82,
+      "complexity": "simple",
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
-      "summary": "Application module semantica-graph-native-contexto-ia (1 symbols).",
+      "summary": "Application module seo-aeo-mesmo-conteudo-caso-real (1 symbols).",
       "primaryOwner": "Henrique Pimentel"
     },
     {
@@ -1499,7 +1616,7 @@
       "symbolCount": 1,
       "lineCount": 95,
       "complexity": "simple",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
       "summary": "Application module seo-otimiza-cliques-geo-citacoes (1 symbols)."
@@ -1512,7 +1629,7 @@
       "symbolCount": 1,
       "lineCount": 95,
       "complexity": "simple",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
       "summary": "Application module seo-substituido-por-trafego-ia (1 symbols)."
@@ -1525,11 +1642,10 @@
       "symbolCount": 1,
       "lineCount": 87,
       "complexity": "simple",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
-      "summary": "Application module sheets-canvas-dashboard-prompt (1 symbols).",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Application module sheets-canvas-dashboard-prompt (1 symbols)."
     },
     {
       "id": "file:src/content/posts/site-ativo-captacao.tsx",
@@ -1539,8 +1655,8 @@
       "symbolCount": 1,
       "lineCount": 273,
       "complexity": "moderate",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
       "summary": "Application module site-ativo-captacao (1 symbols)."
     },
@@ -1552,8 +1668,8 @@
       "symbolCount": 1,
       "lineCount": 48,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 0,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
       "summary": "Application module site-cfm-safe-nextjs (1 symbols)."
     },
@@ -1565,7 +1681,7 @@
       "symbolCount": 1,
       "lineCount": 125,
       "complexity": "moderate",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
       "summary": "Application module social-search-ultrapassa-google-2026 (1 symbols)."
@@ -1578,7 +1694,7 @@
       "symbolCount": 1,
       "lineCount": 93,
       "complexity": "simple",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
       "summary": "Application module social-seo-novo-topo-funil-2026 (1 symbols)."
@@ -1591,11 +1707,10 @@
       "symbolCount": 1,
       "lineCount": 90,
       "complexity": "simple",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
-      "summary": "Application module tencentdb-agent-memory-equipe (1 symbols).",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Application module tencentdb-agent-memory-equipe (1 symbols)."
     },
     {
       "id": "file:src/content/posts/threads-autoridade-nao-alcance.tsx",
@@ -1605,7 +1720,7 @@
       "symbolCount": 1,
       "lineCount": 93,
       "complexity": "simple",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
       "summary": "Application module threads-autoridade-nao-alcance (1 symbols)."
@@ -1618,8 +1733,8 @@
       "symbolCount": 1,
       "lineCount": 101,
       "complexity": "moderate",
-      "pagerank": 0.003597,
-      "communityId": 0,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
       "summary": "Application module top-5-newsletters-ia (1 symbols)."
     },
@@ -1631,7 +1746,7 @@
       "symbolCount": 1,
       "lineCount": 97,
       "complexity": "simple",
-      "pagerank": 0.003597,
+      "pagerank": 0.003253,
       "communityId": 0,
       "tags": [],
       "summary": "Application module trafego-llm-converte-6x-google (1 symbols)."
@@ -1644,8 +1759,8 @@
       "symbolCount": 1,
       "lineCount": 100,
       "complexity": "moderate",
-      "pagerank": 0.003597,
-      "communityId": 2,
+      "pagerank": 0.003253,
+      "communityId": 0,
       "tags": [],
       "summary": "Application module ue-rotulo-conteudo-ia (1 symbols)."
     },
@@ -1657,11 +1772,10 @@
       "symbolCount": 1,
       "lineCount": 89,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 0,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
-      "summary": "Application module vibe-coding-curso-google-353-mil (1 symbols).",
-      "primaryOwner": "Henrique Pimentel"
+      "summary": "Application module vibe-coding-curso-google-353-mil (1 symbols)."
     },
     {
       "id": "file:src/content/posts/video-curto-maior-roi-2026.tsx",
@@ -1671,10 +1785,24 @@
       "symbolCount": 1,
       "lineCount": 91,
       "complexity": "simple",
-      "pagerank": 0.003597,
-      "communityId": 0,
+      "pagerank": 0.003253,
+      "communityId": 1,
       "tags": [],
       "summary": "Application module video-curto-maior-roi-2026 (1 symbols)."
+    },
+    {
+      "id": "file:src/content/posts/zero-click-68-buscas-eua.tsx",
+      "type": "file",
+      "filePath": "src/content/posts/zero-click-68-buscas-eua.tsx",
+      "language": "typescript",
+      "symbolCount": 1,
+      "lineCount": 77,
+      "complexity": "simple",
+      "pagerank": 0.003253,
+      "communityId": 0,
+      "tags": [],
+      "summary": "Application module zero-click-68-buscas-eua (1 symbols).",
+      "primaryOwner": "Henrique Pimentel"
     },
     {
       "id": "file:src/lib/posts.ts",
@@ -1684,8 +1812,8 @@
       "symbolCount": 7,
       "lineCount": 41,
       "complexity": "moderate",
-      "pagerank": 0.118084,
-      "communityId": 2,
+      "pagerank": 0.122156,
+      "communityId": 0,
       "tags": [],
       "summary": "Service module posts defining PostMeta, PostEntry, getPosts."
     },
@@ -1697,8 +1825,8 @@
       "symbolCount": 0,
       "lineCount": 17,
       "complexity": "simple",
-      "pagerank": 0.002858,
-      "communityId": 7,
+      "pagerank": 0.002609,
+      "communityId": 10,
       "tags": [
         "config"
       ],
@@ -7078,6 +7206,24 @@
       "summary": ""
     },
     {
+      "id": "function:src/components/sections/faqs.tsx:Accordion",
+      "type": "function",
+      "filePath": "src/components/sections/faqs.tsx",
+      "name": "Accordion",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:src/components/sections/faqs.tsx:FAQs",
+      "type": "function",
+      "filePath": "src/components/sections/faqs.tsx",
+      "name": "FAQs",
+      "language": "typescript",
+      "tags": [],
+      "summary": ""
+    },
+    {
       "id": "function:src/components/sections/hero.tsx:Hero",
       "type": "function",
       "filePath": "src/components/sections/hero.tsx",
@@ -12177,6 +12323,20 @@
       "weight": 1.0
     },
     {
+      "source": "file:src/components/sections/faqs.tsx",
+      "target": "function:src/components/sections/faqs.tsx:Accordion",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/sections/faqs.tsx",
+      "target": "function:src/components/sections/faqs.tsx:FAQs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
       "source": "file:src/components/sections/featured-post.tsx",
       "target": "file:external:next/link",
       "type": "imports",
@@ -12730,6 +12890,20 @@
       "weight": 1.0
     },
     {
+      "source": "file:src/content/posts/content-engineering-pitch-venda-ia.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/content-engineering-pitch-venda-ia.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
       "source": "file:src/content/posts/conteudo-humano-vence-ai-slop-2026.tsx",
       "target": "file:src/components/blog/prose.tsx",
       "type": "imports",
@@ -12780,6 +12954,20 @@
     },
     {
       "source": "file:src/content/posts/fan-out-queries-chatgpt-citacao.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/ferramentas-ai-visibility-precos.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/ferramentas-ai-visibility-precos.tsx",
       "target": "file:src/lib/posts.ts",
       "type": "imports",
       "direction": "forward",
@@ -12842,6 +13030,34 @@
       "weight": 1.0
     },
     {
+      "source": "file:src/content/posts/geo-numeros-2026-ai-overviews.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/geo-numeros-2026-ai-overviews.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/glm-52-melhor-open-weight-codigo.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/glm-52-melhor-open-weight-codigo.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
       "source": "file:src/content/posts/google-ads-analytics-novidades-ia.tsx",
       "target": "file:src/components/blog/prose.tsx",
       "type": "imports",
@@ -12856,6 +13072,20 @@
       "weight": 1.0
     },
     {
+      "source": "file:src/content/posts/google-preferred-sources-ai-overviews.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/google-preferred-sources-ai-overviews.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
       "source": "file:src/content/posts/gpt-55-lidera-terminal-bench.tsx",
       "target": "file:src/components/blog/prose.tsx",
       "type": "imports",
@@ -12864,6 +13094,20 @@
     },
     {
       "source": "file:src/content/posts/gpt-55-lidera-terminal-bench.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/income-transparency-consultor-ia-1600.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/income-transparency-consultor-ia-1600.tsx",
       "target": "file:src/lib/posts.ts",
       "type": "imports",
       "direction": "forward",
@@ -12990,6 +13234,13 @@
     },
     {
       "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/content-engineering-pitch-venda-ia.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
       "target": "file:src/content/posts/conteudo-humano-vence-ai-slop-2026.tsx",
       "type": "imports",
       "direction": "forward",
@@ -13012,6 +13263,13 @@
     {
       "source": "file:src/content/posts/index.ts",
       "target": "file:src/content/posts/fan-out-queries-chatgpt-citacao.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/ferramentas-ai-visibility-precos.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 1.0
@@ -13046,6 +13304,20 @@
     },
     {
       "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/geo-numeros-2026-ai-overviews.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/glm-52-melhor-open-weight-codigo.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
       "target": "file:src/content/posts/google-ads-analytics-novidades-ia.tsx",
       "type": "imports",
       "direction": "forward",
@@ -13053,7 +13325,21 @@
     },
     {
       "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/google-preferred-sources-ai-overviews.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
       "target": "file:src/content/posts/gpt-55-lidera-terminal-bench.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/income-transparency-consultor-ia-1600.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 1.0
@@ -13082,6 +13368,13 @@
     {
       "source": "file:src/content/posts/index.ts",
       "target": "file:src/content/posts/lancamentos-modelos-ia-semana.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/llms-txt-v2-crawlers-nao-leem.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 1.0
@@ -13144,6 +13437,13 @@
     },
     {
       "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/paper-geo-princeton-citacoes-40.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
       "target": "file:src/content/posts/postgres-swarm-supabase.tsx",
       "type": "imports",
       "direction": "forward",
@@ -13172,6 +13472,13 @@
     },
     {
       "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/regra-10x-custo-modelos-codigo.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
       "target": "file:src/content/posts/save-rate-metrica-dominante-tiktok.tsx",
       "type": "imports",
       "direction": "forward",
@@ -13187,6 +13494,13 @@
     {
       "source": "file:src/content/posts/index.ts",
       "target": "file:src/content/posts/semantica-graph-native-contexto-ia.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/seo-aeo-mesmo-conteudo-caso-real.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 1.0
@@ -13291,6 +13605,13 @@
     },
     {
       "source": "file:src/content/posts/index.ts",
+      "target": "file:src/content/posts/zero-click-68-buscas-eua.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/index.ts",
       "target": "file:src/lib/posts.ts",
       "type": "imports",
       "direction": "forward",
@@ -13347,6 +13668,20 @@
     },
     {
       "source": "file:src/content/posts/lancamentos-modelos-ia-semana.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/llms-txt-v2-crawlers-nao-leem.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/llms-txt-v2-crawlers-nao-leem.tsx",
       "target": "file:src/lib/posts.ts",
       "type": "imports",
       "direction": "forward",
@@ -13465,6 +13800,20 @@
       "weight": 1.0
     },
     {
+      "source": "file:src/content/posts/paper-geo-princeton-citacoes-40.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/paper-geo-princeton-citacoes-40.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
       "source": "file:src/content/posts/postgres-swarm-supabase.tsx",
       "target": "file:src/components/blog/prose.tsx",
       "type": "imports",
@@ -13521,6 +13870,20 @@
       "weight": 1.0
     },
     {
+      "source": "file:src/content/posts/regra-10x-custo-modelos-codigo.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/regra-10x-custo-modelos-codigo.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
       "source": "file:src/content/posts/save-rate-metrica-dominante-tiktok.tsx",
       "target": "file:src/components/blog/prose.tsx",
       "type": "imports",
@@ -13557,6 +13920,20 @@
     },
     {
       "source": "file:src/content/posts/semantica-graph-native-contexto-ia.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/seo-aeo-mesmo-conteudo-caso-real.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/seo-aeo-mesmo-conteudo-caso-real.tsx",
       "target": "file:src/lib/posts.ts",
       "type": "imports",
       "direction": "forward",
@@ -13753,6 +14130,20 @@
     },
     {
       "source": "file:src/content/posts/video-curto-maior-roi-2026.tsx",
+      "target": "file:src/lib/posts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/zero-click-68-buscas-eua.tsx",
+      "target": "file:src/components/blog/prose.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/content/posts/zero-click-68-buscas-eua.tsx",
       "target": "file:src/lib/posts.ts",
       "type": "imports",
       "direction": "forward",
@@ -13872,21 +14263,28 @@
         "file:src/content/posts/como-aparecer-no-chatgpt.tsx",
         "file:src/content/posts/comunidades-privadas-lealdade-marca-2026.tsx",
         "file:src/content/posts/consistencia-ponto-de-vista-social-2026.tsx",
+        "file:src/content/posts/content-engineering-pitch-venda-ia.tsx",
         "file:src/content/posts/conteudo-humano-vence-ai-slop-2026.tsx",
         "file:src/content/posts/deepseek-v4-pro-37x-mais-barato.tsx",
         "file:src/content/posts/e-geo-toolkit-open-source.tsx",
         "file:src/content/posts/fan-out-queries-chatgpt-citacao.tsx",
+        "file:src/content/posts/ferramentas-ai-visibility-precos.tsx",
         "file:src/content/posts/founder-story-ia-engajamento.tsx",
         "file:src/content/posts/framework-geo-extracao-ia.tsx",
         "file:src/content/posts/geist-vs-inter.tsx",
         "file:src/content/posts/gemini-35-flash-flagship-barato.tsx",
+        "file:src/content/posts/geo-numeros-2026-ai-overviews.tsx",
+        "file:src/content/posts/glm-52-melhor-open-weight-codigo.tsx",
         "file:src/content/posts/google-ads-analytics-novidades-ia.tsx",
+        "file:src/content/posts/google-preferred-sources-ai-overviews.tsx",
         "file:src/content/posts/gpt-55-lidera-terminal-bench.tsx",
+        "file:src/content/posts/income-transparency-consultor-ia-1600.tsx",
         "file:src/content/posts/index.ts",
         "file:src/content/posts/influencer-marketing-roi-2026.tsx",
         "file:src/content/posts/iptables-docker-bridge-fix.tsx",
         "file:src/content/posts/kimi-k3-open-weight-28t.tsx",
         "file:src/content/posts/lancamentos-modelos-ia-semana.tsx",
+        "file:src/content/posts/llms-txt-v2-crawlers-nao-leem.tsx",
         "file:src/content/posts/managed-agents-gemini-api-36-flash.tsx",
         "file:src/content/posts/mencao-marca-fator-1-ia-overviews.tsx",
         "file:src/content/posts/minimax-m25-melhor-custo-beneficio.tsx",
@@ -13895,13 +14293,16 @@
         "file:src/content/posts/o-que-e-geo-medicos.tsx",
         "file:src/content/posts/openai-gpt-56-luna-corte-preco.tsx",
         "file:src/content/posts/operador-solo-agentes-ia-viraliza.tsx",
+        "file:src/content/posts/paper-geo-princeton-citacoes-40.tsx",
         "file:src/content/posts/postgres-swarm-supabase.tsx",
         "file:src/content/posts/prime-agent-codigo-self-improving.tsx",
         "file:src/content/posts/qwen-38-max-melhor-modelo-arena.tsx",
         "file:src/content/posts/ranking-deputados-projetos-pernambuco.tsx",
+        "file:src/content/posts/regra-10x-custo-modelos-codigo.tsx",
         "file:src/content/posts/save-rate-metrica-dominante-tiktok.tsx",
         "file:src/content/posts/search-console-relatorio-generative-ai.tsx",
         "file:src/content/posts/semantica-graph-native-contexto-ia.tsx",
+        "file:src/content/posts/seo-aeo-mesmo-conteudo-caso-real.tsx",
         "file:src/content/posts/seo-otimiza-cliques-geo-citacoes.tsx",
         "file:src/content/posts/seo-substituido-por-trafego-ia.tsx",
         "file:src/content/posts/sheets-canvas-dashboard-prompt.tsx",
@@ -13916,6 +14317,7 @@
         "file:src/content/posts/ue-rotulo-conteudo-ia.tsx",
         "file:src/content/posts/vibe-coding-curso-google-353-mil.tsx",
         "file:src/content/posts/video-curto-maior-roi-2026.tsx",
+        "file:src/content/posts/zero-click-68-buscas-eua.tsx",
         "file:tsconfig.json"
       ],
       "display_order": 0,
@@ -13988,21 +14390,28 @@
             "file:src/content/posts/como-aparecer-no-chatgpt.tsx",
             "file:src/content/posts/comunidades-privadas-lealdade-marca-2026.tsx",
             "file:src/content/posts/consistencia-ponto-de-vista-social-2026.tsx",
+            "file:src/content/posts/content-engineering-pitch-venda-ia.tsx",
             "file:src/content/posts/conteudo-humano-vence-ai-slop-2026.tsx",
             "file:src/content/posts/deepseek-v4-pro-37x-mais-barato.tsx",
             "file:src/content/posts/e-geo-toolkit-open-source.tsx",
             "file:src/content/posts/fan-out-queries-chatgpt-citacao.tsx",
+            "file:src/content/posts/ferramentas-ai-visibility-precos.tsx",
             "file:src/content/posts/founder-story-ia-engajamento.tsx",
             "file:src/content/posts/framework-geo-extracao-ia.tsx",
             "file:src/content/posts/geist-vs-inter.tsx",
             "file:src/content/posts/gemini-35-flash-flagship-barato.tsx",
+            "file:src/content/posts/geo-numeros-2026-ai-overviews.tsx",
+            "file:src/content/posts/glm-52-melhor-open-weight-codigo.tsx",
             "file:src/content/posts/google-ads-analytics-novidades-ia.tsx",
+            "file:src/content/posts/google-preferred-sources-ai-overviews.tsx",
             "file:src/content/posts/gpt-55-lidera-terminal-bench.tsx",
+            "file:src/content/posts/income-transparency-consultor-ia-1600.tsx",
             "file:src/content/posts/index.ts",
             "file:src/content/posts/influencer-marketing-roi-2026.tsx",
             "file:src/content/posts/iptables-docker-bridge-fix.tsx",
             "file:src/content/posts/kimi-k3-open-weight-28t.tsx",
             "file:src/content/posts/lancamentos-modelos-ia-semana.tsx",
+            "file:src/content/posts/llms-txt-v2-crawlers-nao-leem.tsx",
             "file:src/content/posts/managed-agents-gemini-api-36-flash.tsx",
             "file:src/content/posts/mencao-marca-fator-1-ia-overviews.tsx",
             "file:src/content/posts/minimax-m25-melhor-custo-beneficio.tsx",
@@ -14011,13 +14420,16 @@
             "file:src/content/posts/o-que-e-geo-medicos.tsx",
             "file:src/content/posts/openai-gpt-56-luna-corte-preco.tsx",
             "file:src/content/posts/operador-solo-agentes-ia-viraliza.tsx",
+            "file:src/content/posts/paper-geo-princeton-citacoes-40.tsx",
             "file:src/content/posts/postgres-swarm-supabase.tsx",
             "file:src/content/posts/prime-agent-codigo-self-improving.tsx",
             "file:src/content/posts/qwen-38-max-melhor-modelo-arena.tsx",
             "file:src/content/posts/ranking-deputados-projetos-pernambuco.tsx",
+            "file:src/content/posts/regra-10x-custo-modelos-codigo.tsx",
             "file:src/content/posts/save-rate-metrica-dominante-tiktok.tsx",
             "file:src/content/posts/search-console-relatorio-generative-ai.tsx",
             "file:src/content/posts/semantica-graph-native-contexto-ia.tsx",
+            "file:src/content/posts/seo-aeo-mesmo-conteudo-caso-real.tsx",
             "file:src/content/posts/seo-otimiza-cliques-geo-citacoes.tsx",
             "file:src/content/posts/seo-substituido-por-trafego-ia.tsx",
             "file:src/content/posts/sheets-canvas-dashboard-prompt.tsx",
@@ -14031,7 +14443,8 @@
             "file:src/content/posts/trafego-llm-converte-6x-google.tsx",
             "file:src/content/posts/ue-rotulo-conteudo-ia.tsx",
             "file:src/content/posts/vibe-coding-curso-google-353-mil.tsx",
-            "file:src/content/posts/video-curto-maior-roi-2026.tsx"
+            "file:src/content/posts/video-curto-maior-roi-2026.tsx",
+            "file:src/content/posts/zero-click-68-buscas-eua.tsx"
           ]
         }
       ]
@@ -14282,21 +14695,28 @@
         "file:src/content/posts/como-aparecer-no-chatgpt.tsx",
         "file:src/content/posts/comunidades-privadas-lealdade-marca-2026.tsx",
         "file:src/content/posts/consistencia-ponto-de-vista-social-2026.tsx",
+        "file:src/content/posts/content-engineering-pitch-venda-ia.tsx",
         "file:src/content/posts/conteudo-humano-vence-ai-slop-2026.tsx",
         "file:src/content/posts/deepseek-v4-pro-37x-mais-barato.tsx",
         "file:src/content/posts/e-geo-toolkit-open-source.tsx",
         "file:src/content/posts/fan-out-queries-chatgpt-citacao.tsx",
+        "file:src/content/posts/ferramentas-ai-visibility-precos.tsx",
         "file:src/content/posts/founder-story-ia-engajamento.tsx",
         "file:src/content/posts/framework-geo-extracao-ia.tsx",
         "file:src/content/posts/geist-vs-inter.tsx",
         "file:src/content/posts/gemini-35-flash-flagship-barato.tsx",
+        "file:src/content/posts/geo-numeros-2026-ai-overviews.tsx",
+        "file:src/content/posts/glm-52-melhor-open-weight-codigo.tsx",
         "file:src/content/posts/google-ads-analytics-novidades-ia.tsx",
+        "file:src/content/posts/google-preferred-sources-ai-overviews.tsx",
         "file:src/content/posts/gpt-55-lidera-terminal-bench.tsx",
+        "file:src/content/posts/income-transparency-consultor-ia-1600.tsx",
         "file:src/content/posts/index.ts",
         "file:src/content/posts/influencer-marketing-roi-2026.tsx",
         "file:src/content/posts/iptables-docker-bridge-fix.tsx",
         "file:src/content/posts/kimi-k3-open-weight-28t.tsx",
         "file:src/content/posts/lancamentos-modelos-ia-semana.tsx",
+        "file:src/content/posts/llms-txt-v2-crawlers-nao-leem.tsx",
         "file:src/content/posts/managed-agents-gemini-api-36-flash.tsx",
         "file:src/content/posts/mencao-marca-fator-1-ia-overviews.tsx",
         "file:src/content/posts/minimax-m25-melhor-custo-beneficio.tsx",
@@ -14305,13 +14725,16 @@
         "file:src/content/posts/o-que-e-geo-medicos.tsx",
         "file:src/content/posts/openai-gpt-56-luna-corte-preco.tsx",
         "file:src/content/posts/operador-solo-agentes-ia-viraliza.tsx",
+        "file:src/content/posts/paper-geo-princeton-citacoes-40.tsx",
         "file:src/content/posts/postgres-swarm-supabase.tsx",
         "file:src/content/posts/prime-agent-codigo-self-improving.tsx",
         "file:src/content/posts/qwen-38-max-melhor-modelo-arena.tsx",
         "file:src/content/posts/ranking-deputados-projetos-pernambuco.tsx",
+        "file:src/content/posts/regra-10x-custo-modelos-codigo.tsx",
         "file:src/content/posts/save-rate-metrica-dominante-tiktok.tsx",
         "file:src/content/posts/search-console-relatorio-generative-ai.tsx",
         "file:src/content/posts/semantica-graph-native-contexto-ia.tsx",
+        "file:src/content/posts/seo-aeo-mesmo-conteudo-caso-real.tsx",
         "file:src/content/posts/seo-otimiza-cliques-geo-citacoes.tsx",
         "file:src/content/posts/seo-substituido-por-trafego-ia.tsx",
         "file:src/content/posts/sheets-canvas-dashboard-prompt.tsx",
@@ -14326,6 +14749,7 @@
         "file:src/content/posts/ue-rotulo-conteudo-ia.tsx",
         "file:src/content/posts/vibe-coding-curso-google-353-mil.tsx",
         "file:src/content/posts/video-curto-maior-roi-2026.tsx",
+        "file:src/content/posts/zero-click-68-buscas-eua.tsx",
         "file:tsconfig.json"
       ],
       "wholeLayer": true,
