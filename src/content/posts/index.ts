@@ -1,5 +1,10 @@
 import type { PostEntry } from "@/lib/posts";
 
+import buscaMulticanalEstrategia2026 from "./busca-multicanal-estrategia-2026";
+import descobertaProdutoIaSuperaBusca from "./descoberta-produto-ia-supera-busca";
+import metaAdsMaisCaroNaoPior from "./meta-ads-mais-caro-nao-pior";
+import coldEmailVivoSoComPrecisao from "./cold-email-vivo-so-com-precisao";
+import webinarCanalB2bSubestimado from "./webinar-canal-b2b-subestimado";
 import marketplacesSkillsAgentesTrending from "./marketplaces-skills-agentes-trending";
 import openhumanMemoriaLocalAgentes from "./openhuman-memoria-local-agentes";
 import scientificAgentSkills from "./scientific-agent-skills";
@@ -86,6 +91,11 @@ import top5NewslettersIa from "./top-5-newsletters-ia";
 import rankingDeputadosProjetosPernambuco from "./ranking-deputados-projetos-pernambuco";
 
 export const postRegistry: PostEntry[] = [
+  buscaMulticanalEstrategia2026,
+  descobertaProdutoIaSuperaBusca,
+  metaAdsMaisCaroNaoPior,
+  coldEmailVivoSoComPrecisao,
+  webinarCanalB2bSubestimado,
   nvidiaCompraHuggingFace129bi,
   gemini37FlashAgenteCoding,
   deepseekV4ProSaiPreviewPrecoSobe,
