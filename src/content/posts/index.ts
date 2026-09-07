@@ -89,8 +89,36 @@ import threadsAutoridadeNaoAlcance from "./threads-autoridade-nao-alcance";
 import claudeCodeEcossistemaQuente from "./claude-code-ecossistema-quente";
 import top5NewslettersIa from "./top-5-newsletters-ia";
 import rankingDeputadosProjetosPernambuco from "./ranking-deputados-projetos-pernambuco";
+import claudeFable51LideraTerminalBenchCorteCache from "./claude-fable-51-lidera-terminal-bench-corte-cache";
+import deepseekV4Pro964Swebench010 from "./deepseek-v4-pro-964-swebench-0-10";
+import gpt56SolEmpataOpus5MetadePreco from "./gpt-56-sol-empata-opus5-metade-preco";
+import gpt6AstraGemini38FlashMuseSparkLancamentos from "./gpt6-astra-gemini-38-flash-muse-spark-lancamentos";
+import glm53LideraSegurancaCodigoAberto from "./glm-53-lidera-seguranca-codigo-aberto";
+import muellerNadaEspecialAiSearch from "./mueller-nada-especial-ai-search";
+import aiOverviewsConvergemAiMode from "./ai-overviews-convergem-ai-mode";
+import thinkTankFakeEnvenenaRespostasIa from "./think-tank-fake-envenena-respostas-ia";
+import ownYourStackAutomacaoSubstituiRevenda from "./own-your-stack-automacao-substitui-revenda";
+import commentBaitIroniaDesgaste from "./comment-bait-ironia-desgaste";
+import gemini38FlashCyberFairwind from "./gemini-38-flash-cyber-fairwind";
+import googlePicsWorkspaceEdicaoImagem from "./google-pics-workspace-edicao-imagem";
+import voicestudioAlternativaLocalElevenlabs from "./voicestudio-alternativa-local-elevenlabs";
+import minimindTreinarLlmLocal2h from "./minimind-treinar-llm-local-2h";
 
 export const postRegistry: PostEntry[] = [
+  gemini38FlashCyberFairwind,
+  googlePicsWorkspaceEdicaoImagem,
+  voicestudioAlternativaLocalElevenlabs,
+  minimindTreinarLlmLocal2h,
+  commentBaitIroniaDesgaste,
+  ownYourStackAutomacaoSubstituiRevenda,
+  thinkTankFakeEnvenenaRespostasIa,
+  aiOverviewsConvergemAiMode,
+  muellerNadaEspecialAiSearch,
+  glm53LideraSegurancaCodigoAberto,
+  gpt6AstraGemini38FlashMuseSparkLancamentos,
+  gpt56SolEmpataOpus5MetadePreco,
+  deepseekV4Pro964Swebench010,
+  claudeFable51LideraTerminalBenchCorteCache,
   buscaMulticanalEstrategia2026,
   descobertaProdutoIaSuperaBusca,
   metaAdsMaisCaroNaoPior,
