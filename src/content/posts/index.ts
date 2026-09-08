@@ -103,8 +103,22 @@ import gemini38FlashCyberFairwind from "./gemini-38-flash-cyber-fairwind";
 import googlePicsWorkspaceEdicaoImagem from "./google-pics-workspace-edicao-imagem";
 import voicestudioAlternativaLocalElevenlabs from "./voicestudio-alternativa-local-elevenlabs";
 import minimindTreinarLlmLocal2h from "./minimind-treinar-llm-local-2h";
+import instagramRotuloIaLimitaAlcance from "./instagram-rotulo-ia-limita-alcance";
+import instagramTrocarAudioPostPublicado from "./instagram-trocar-audio-post-publicado";
+import tiktokMonetizacaoDiretaCriadores from "./tiktok-monetizacao-direta-criadores";
+import tiktokAntiDeepfakeCriadores from "./tiktok-anti-deepfake-criadores";
+import threadsCommunities500mUsuarios from "./threads-communities-500m-usuarios";
+import threadsControlePrivadoFeedAlgoritmo from "./threads-controle-privado-feed-algoritmo";
+import precosInfluenciaBolhaEstourando from "./precos-influencia-bolha-estourando";
 
 export const postRegistry: PostEntry[] = [
+  instagramRotuloIaLimitaAlcance,
+  instagramTrocarAudioPostPublicado,
+  tiktokMonetizacaoDiretaCriadores,
+  tiktokAntiDeepfakeCriadores,
+  threadsCommunities500mUsuarios,
+  threadsControlePrivadoFeedAlgoritmo,
+  precosInfluenciaBolhaEstourando,
   gemini38FlashCyberFairwind,
   googlePicsWorkspaceEdicaoImagem,
   voicestudioAlternativaLocalElevenlabs,
