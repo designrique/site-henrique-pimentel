@@ -10,7 +10,7 @@ import {
 export const metadata: Metadata = {
   title: "Notícias — IA, mercado e tecnologia",
   description:
-    "Novidades de inteligência artificial, marketing digital, SEO/GEO e tecnologia, curadas a partir de pesquisa semanal. Sem hype, com fonte.",
+    "Análises práticas sobre IA, marketing digital, SEO/GEO e vendas para acompanhar mudanças que afetam negócios e profissionais.",
 };
 
 export default async function NewsPage() {
@@ -40,10 +40,10 @@ export default async function NewsPage() {
             , com fonte.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[color:var(--text-secondary)]">
-            O que mudou na semana em inteligência artificial, marketing
-            digital, SEO/GEO e vendas — curado de pesquisa contínua, com
-            link para a fonte original. Atualizado conforme os relatórios
-            são publicados.
+            Análises práticas sobre inteligência artificial, marketing digital,
+            SEO/GEO e vendas. A ideia é simples: separar o que realmente
+            mudou, explicar por que importa e mostrar o impacto no trabalho e
+            nos negócios, sempre com links para as fontes originais.
           </p>
         </Container>
       </section>
