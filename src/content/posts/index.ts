@@ -1,5 +1,11 @@
 import type { PostEntry } from "@/lib/posts";
 
+import chatgptAdsCanalPublicidade2026 from "./chatgpt-ads-canal-publicidade-2026";
+import loopMarketingSubstituiFunil2026 from "./loop-marketing-substitui-funil-2026";
+import algoritmoInstagram2026SinaisFortes from "./algoritmo-instagram-2026-sinais-fortes";
+import agentesIaTimeMarketing36 from "./agentes-ia-time-marketing-36";
+import communityLedGrowthCanalAquisicao from "./community-led-growth-canal-aquisicao";
+
 import buscaMulticanalEstrategia2026 from "./busca-multicanal-estrategia-2026";
 import descobertaProdutoIaSuperaBusca from "./descoberta-produto-ia-supera-busca";
 import metaAdsMaisCaroNaoPior from "./meta-ads-mais-caro-nao-pior";
@@ -112,6 +118,11 @@ import threadsControlePrivadoFeedAlgoritmo from "./threads-controle-privado-feed
 import precosInfluenciaBolhaEstourando from "./precos-influencia-bolha-estourando";
 
 export const postRegistry: PostEntry[] = [
+  chatgptAdsCanalPublicidade2026,
+  loopMarketingSubstituiFunil2026,
+  algoritmoInstagram2026SinaisFortes,
+  agentesIaTimeMarketing36,
+  communityLedGrowthCanalAquisicao,
   instagramRotuloIaLimitaAlcance,
   instagramTrocarAudioPostPublicado,
   tiktokMonetizacaoDiretaCriadores,
