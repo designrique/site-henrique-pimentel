@@ -1,6 +1,28 @@
 import type { PostEntry } from "@/lib/posts";
 
+import pesquisadorAnthropicSaidaAlertaIa from "./pesquisador-anthropic-saida-alerta-ia";
+import amodeiPedeDesacelerarModelosIa from "./amodei-pede-desacelerar-modelos-ia";
+import agentesIaNegociosReaisFaturasFalsas from "./agentes-ia-negocios-reais-faturas-falsas";
+import openaiAgenteRougeTentouHackear from "./openai-agente-rouge-tentou-hackear";
+import realSweBenchmarkCodigoEnterprise from "./real-swe-benchmark-codigo-enterprise";
+import finraIaOrganismoNormas from "./finra-ia-organismo-normas";
+import iaCancroColorretalTomografia from "./ia-cancro-colorretal-tomografia";
+import mestreGoVenceKatago from "./mestre-go-vence-katago";
+
+import estudoAhrefsGeoFrescorConteudo from "./estudo-ahrefs-geo-frescor-conteudo";
+import estruturaConteudoFaqCitacoesIa37 from "./estrutura-conteudo-faq-citacoes-ia-37";
+import conteudoMarkdownTokenEfficientCrawlersIa from "./conteudo-markdown-token-efficient-crawlers-ia";
+import carreiraSeoEraIaDebateReddit from "./carreira-seo-era-ia-debate-reddit";
+import contentEngineUmaPessoaVozHumana from "./content-engine-uma-pessoa-voz-humana";
+import newsletterPostProvaBrewton200k from "./newsletter-post-prova-brewton-200k";
+import agentesIaHeadcountVendasB2b from "./agentes-ia-headcount-vendas-b2b";
 import chatgptAdsCanalPublicidade2026 from "./chatgpt-ads-canal-publicidade-2026";
+import pontoCegoClienteViraPropostaEnterprise from "./ponto-cego-cliente-vira-proposta-enterprise";
+import geoB2bVendorsCitadosMemoriaChatgpt from "./geo-b2b-vendors-citados-memoria-chatgpt";
+import linear100mArrNrr177AgentesIa from "./linear-100m-arr-nrr-177-agentes-ia";
+import trialGateCartaoConverteMaisQueSignupLivre from "./trial-gate-cartao-converte-mais-que-signup-livre";
+import zeroA500kArrEquipeDeDois from "./zero-a-500k-arr-equipe-de-dois";
+import mil500MarcasD2cMvp8Horas from "./1500-marcas-d2c-mvp-8-horas-outcome-over-product";
 import loopMarketingSubstituiFunil2026 from "./loop-marketing-substitui-funil-2026";
 import algoritmoInstagram2026SinaisFortes from "./algoritmo-instagram-2026-sinais-fortes";
 import agentesIaTimeMarketing36 from "./agentes-ia-time-marketing-36";
@@ -118,6 +140,27 @@ import threadsControlePrivadoFeedAlgoritmo from "./threads-controle-privado-feed
 import precosInfluenciaBolhaEstourando from "./precos-influencia-bolha-estourando";
 
 export const postRegistry: PostEntry[] = [
+  pesquisadorAnthropicSaidaAlertaIa,
+  amodeiPedeDesacelerarModelosIa,
+  agentesIaNegociosReaisFaturasFalsas,
+  openaiAgenteRougeTentouHackear,
+  realSweBenchmarkCodigoEnterprise,
+  finraIaOrganismoNormas,
+  iaCancroColorretalTomografia,
+  mestreGoVenceKatago,
+  estudoAhrefsGeoFrescorConteudo,
+  estruturaConteudoFaqCitacoesIa37,
+  conteudoMarkdownTokenEfficientCrawlersIa,
+  carreiraSeoEraIaDebateReddit,
+  contentEngineUmaPessoaVozHumana,
+  newsletterPostProvaBrewton200k,
+  agentesIaHeadcountVendasB2b,
+  pontoCegoClienteViraPropostaEnterprise,
+  geoB2bVendorsCitadosMemoriaChatgpt,
+  linear100mArrNrr177AgentesIa,
+  trialGateCartaoConverteMaisQueSignupLivre,
+  zeroA500kArrEquipeDeDois,
+  mil500MarcasD2cMvp8Horas,
   chatgptAdsCanalPublicidade2026,
   loopMarketingSubstituiFunil2026,
   algoritmoInstagram2026SinaisFortes,
