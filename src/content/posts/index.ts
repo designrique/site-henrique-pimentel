@@ -139,7 +139,20 @@ import threadsCommunities500mUsuarios from "./threads-communities-500m-usuarios"
 import threadsControlePrivadoFeedAlgoritmo from "./threads-controle-privado-feed-algoritmo";
 import precosInfluenciaBolhaEstourando from "./precos-influencia-bolha-estourando";
 
+import tiktokRpmColapsoCriadores from "./tiktok-rpm-colapso-criadores";
+import instagramBonusesFotosCarrosseis from "./instagram-bonuses-fotos-carrosseis";
+import threadsAnalyticsIaAlcanceSeguidores from "./threads-analytics-ia-alcance-seguidores";
+import tendenciasInstagramSetembro2026 from "./tendencias-instagram-setembro-2026";
+import tiktokShopBoostExposicaoVideoCompreavel from "./tiktok-shop-boost-exposicao-video-compreavel";
+import instagramControleAlgoritmoUsuario from "./instagram-controle-algoritmo-usuario";
+
 export const postRegistry: PostEntry[] = [
+  tiktokRpmColapsoCriadores,
+  instagramBonusesFotosCarrosseis,
+  threadsAnalyticsIaAlcanceSeguidores,
+  tendenciasInstagramSetembro2026,
+  tiktokShopBoostExposicaoVideoCompreavel,
+  instagramControleAlgoritmoUsuario,
   pesquisadorAnthropicSaidaAlertaIa,
   amodeiPedeDesacelerarModelosIa,
   agentesIaNegociosReaisFaturasFalsas,
