@@ -121,6 +121,7 @@ import claudeFable51LideraTerminalBenchCorteCache from "./claude-fable-51-lidera
 import deepseekV4Pro964Swebench010 from "./deepseek-v4-pro-964-swebench-0-10";
 import gpt56SolEmpataOpus5MetadePreco from "./gpt-56-sol-empata-opus5-metade-preco";
 import gpt6AstraGemini38FlashMuseSparkLancamentos from "./gpt6-astra-gemini-38-flash-muse-spark-lancamentos";
+import metaMuseAgentePessoalAutonomo from "./meta-muse-agente-pessoal-autonomo";
 import glm53LideraSegurancaCodigoAberto from "./glm-53-lidera-seguranca-codigo-aberto";
 import muellerNadaEspecialAiSearch from "./mueller-nada-especial-ai-search";
 import aiOverviewsConvergemAiMode from "./ai-overviews-convergem-ai-mode";
@@ -197,6 +198,7 @@ export const postRegistry: PostEntry[] = [
   muellerNadaEspecialAiSearch,
   glm53LideraSegurancaCodigoAberto,
   gpt6AstraGemini38FlashMuseSparkLancamentos,
+  metaMuseAgentePessoalAutonomo,
   gpt56SolEmpataOpus5MetadePreco,
   deepseekV4Pro964Swebench010,
   claudeFable51LideraTerminalBenchCorteCache,
