@@ -1,5 +1,10 @@
 import type { PostEntry } from "@/lib/posts";
 
+import gemini4ArgonModeloFronteira from "./gemini-4-argon-modelo-fronteira";
+import googleAgentesIaEmpresas from "./google-agentes-ia-empresas";
+import contextModeReduzSaidaFerramentas from "./context-mode-reduz-saida-ferramentas";
+import hyperframesHtmlVideoAgentes from "./hyperframes-html-video-agentes";
+import iaNaoAssumeResponsabilidadeSocial from "./ia-nao-assume-responsabilidade-social";
 import pesquisadorAnthropicSaidaAlertaIa from "./pesquisador-anthropic-saida-alerta-ia";
 import amodeiPedeDesacelerarModelosIa from "./amodei-pede-desacelerar-modelos-ia";
 import agentesIaNegociosReaisFaturasFalsas from "./agentes-ia-negocios-reais-faturas-falsas";
@@ -148,6 +153,11 @@ import tiktokShopBoostExposicaoVideoCompreavel from "./tiktok-shop-boost-exposic
 import instagramControleAlgoritmoUsuario from "./instagram-controle-algoritmo-usuario";
 
 export const postRegistry: PostEntry[] = [
+  gemini4ArgonModeloFronteira,
+  googleAgentesIaEmpresas,
+  contextModeReduzSaidaFerramentas,
+  hyperframesHtmlVideoAgentes,
+  iaNaoAssumeResponsabilidadeSocial,
   tiktokRpmColapsoCriadores,
   instagramBonusesFotosCarrosseis,
   threadsAnalyticsIaAlcanceSeguidores,
