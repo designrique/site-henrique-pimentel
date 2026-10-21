@@ -264,6 +264,54 @@ Implementações, falhas e aprendizados em texto longo. Posts técnicos sobre IA
 // Mirror Registry
 // ──────────────────────────────────────────────────────────────────────────────
 
+// ponytail: teaser hardcoded aqui de proposito; nao importa o modulo do guia
+// (que traz React) para dentro da rota de espelho estatico.
+const guiaClaudeDesignMirror: Mirror = {
+  path: "/guia-claude-design/",
+  title: "Guia: automatize a geracao de postagens com Claude Design",
+  description:
+    "Guia pratico em pt-BR para transformar uma ideia em lote de postagens com Claude Design: briefing replicavel, identidade visual, geracao em lote, carrossel, refinamento com aprovacao humana, exportacao e QA.",
+  body: `
+# Guia: automatize a geracao de postagens com Claude Design
+
+Guia pratico em pt-BR para transformar uma ideia em lote de postagens com o Claude Design.
+Cobre briefing replicavel, identidade visual aplicada automaticamente, geracao em lote,
+variacoes de carrossel, refinamento com aprovacao humana, exportacao e QA antes de publicar.
+Inclui prompts copiaveis, cadencia de producao, checklist e limites reais da ferramenta.
+
+## O que tem dentro
+
+1. O que e o Claude Design
+2. O que ele nao faz (limites honestos)
+3. Onde ele entra no fluxo de postagens
+4. Pre-requisitos
+5. Passo 1: briefing replicavel
+6. Passo 2: identidade visual e design system
+7. Passo 3: gerar o primeiro lote
+8. Passo 4: refinar com aprovacao humana
+9. Passo 5: variacoes de carrossel
+10. Passo 6: exportar e levar para publicacao
+11. Passo 7: nomear e organizar
+12. Passo 8: QA antes de publicar
+13. Passo 9: agendar (opcional, externo)
+14. Cadencia em lote (calendario)
+15. Checklist final
+16. Limitacoes e o que nao prometemos
+
+## Acesso
+
+O conteudo completo fica em uma area privada, liberada apos cadastro em
+https://henriquepimentel.com.br/guia-claude-design/ (nome, e-mail e WhatsApp).
+Este espelho traz apenas o resumo publico e nao inclui o guia.
+
+## Fontes
+
+- https://www.anthropic.com/news/claude-design-anthropic-labs
+- https://claude.com/product/design
+- https://support.claude.com/en/articles/14604416-get-started-with-claude-design
+`,
+};
+
 const pageMirrors: Mirror[] = [
   homeMirror,
   sobreMirror,
@@ -272,6 +320,7 @@ const pageMirrors: Mirror[] = [
   baselineGeoMirror,
   contatoMirror,
   blogIndexMirror,
+  guiaClaudeDesignMirror,
 ];
 
 export async function getMirrorByPath(path: string): Promise<string | null> {

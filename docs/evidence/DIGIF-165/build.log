@@ -1,0 +1,56 @@
+
+> web@0.1.0 build
+> next build
+
+▲ Next.js 16.2.6 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 23.1s
+  Running TypeScript ...
+  Finished TypeScript in 17.9s ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/43) ...
+  Generating static pages using 5 workers (10/43) 
+  Generating static pages using 5 workers (21/43) 
+  Generating static pages using 5 workers (32/43) 
+✓ Generating static pages using 5 workers (43/43) in 2.6s
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/guia
+├ ○ /baseline-geo
+├ ○ /baseline-geo/index.md
+├ ○ /blog
+├ ● /blog/[slug]
+│ ├ /blog/atendente-ia-whatsapp-24h
+│ ├ /blog/captacao-automatica-clientes
+│ ├ /blog/site-ativo-captacao
+│ └ [+8 more paths]
+├ ● /blog/[slug]/index.md
+│ ├ /blog/atendente-ia-whatsapp-24h/index.md
+│ ├ /blog/captacao-automatica-clientes/index.md
+│ ├ /blog/site-ativo-captacao/index.md
+│ └ [+8 more paths]
+├ ○ /blog/index.md
+├ ○ /cases
+├ ○ /cases/index.md
+├ ○ /contato
+├ ○ /contato/index.md
+├ ○ /guia-claude-design
+├ ƒ /guia-claude-design/conteudo
+├ ○ /guia-claude-design/index.md
+├ ○ /index.md
+├ ○ /medcitado
+├ ○ /medcitado/index.md
+├ ○ /robots.txt
+├ ○ /sitemap.xml
+├ ○ /sobre
+└ ○ /sobre/index.md
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

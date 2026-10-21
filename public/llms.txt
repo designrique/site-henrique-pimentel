@@ -129,3 +129,7 @@ Claims made on this site are anchored to the following authoritative sources:
 - [llms.txt proposal](https://llmstxt.org/): specification for the llms.txt file served at /llms.txt
 - [Next.js documentation](https://nextjs.org/docs): framework used for site implementation
 - [Cloudflare Pages](https://developers.cloudflare.com/pages/): hosting and edge deployment
+
+## Guia gratuito (teaser)
+
+- Guia pratico de automacao da geracao de postagens com Claude Design: briefing replicavel, geracao em lote, variacoes de carrossel, refinamento com aprovacao humana, exportacao e QA antes de publicar. O conteudo completo e liberado apos cadastro em https://henriquepimentel.com.br/guia-claude-design/

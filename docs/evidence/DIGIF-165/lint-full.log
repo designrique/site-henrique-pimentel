@@ -1,0 +1,67 @@
+
+> web@0.1.0 lint
+> eslint
+
+
+/home/orca/orca/workspaces/hp-site/claude-design-guide/src/app/blog/[slug]/page.tsx
+  146:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/home/orca/orca/workspaces/hp-site/claude-design-guide/src/app/blog/page.tsx
+  65:23  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/home/orca/orca/workspaces/hp-site/claude-design-guide/src/components/theme-toggle.tsx
+  10:19  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/home/orca/orca/workspaces/hp-site/claude-design-guide/src/components/theme-toggle.tsx:10:19
+   8 |   const [mounted, setMounted] = useState(false);
+   9 |
+> 10 |   useEffect(() => setMounted(true), []);
+     |                   ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  11 |
+  12 |   const current = mounted ? resolvedTheme ?? theme : "light";
+  13 |   const next = current === "dark" ? "light" : "dark";  react-hooks/set-state-in-effect
+
+/home/orca/orca/workspaces/hp-site/claude-design-guide/src/content/posts/atendente-ia-whatsapp-24h.tsx
+  332:11  error  Do not use an `<a>` element to navigate to `/blog/o-que-e-geo-medicos/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+
+/home/orca/orca/workspaces/hp-site/claude-design-guide/src/content/posts/captacao-automatica-clientes.tsx
+   52:11  error  Do not use an `<a>` element to navigate to `/blog/atendente-ia-whatsapp-24h/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  120:13  error  Do not use an `<a>` element to navigate to `/blog/o-que-e-geo-medicos/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages        @next/next/no-html-link-for-pages
+  131:11  error  Do not use an `<a>` element to navigate to `/blog/site-ativo-captacao/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages        @next/next/no-html-link-for-pages
+  158:13  error  Do not use an `<a>` element to navigate to `/blog/atendente-ia-whatsapp-24h/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  238:13  error  Do not use an `<a>` element to navigate to `/blog/site-ativo-captacao/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages        @next/next/no-html-link-for-pages
+  287:11  error  Do not use an `<a>` element to navigate to `/blog/site-ativo-captacao/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages        @next/next/no-html-link-for-pages
+  291:11  error  Do not use an `<a>` element to navigate to `/blog/atendente-ia-whatsapp-24h/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+
+/home/orca/orca/workspaces/hp-site/claude-design-guide/src/content/posts/chatgpt-decide-citar.tsx
+  2:25  warning  'H3' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/orca/orca/workspaces/hp-site/claude-design-guide/src/content/posts/framework-geo-extracao-ia.tsx
+   57:11  error  Do not use an `<a>` element to navigate to `/blog/baseline-fatima/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages       @next/next/no-html-link-for-pages
+  242:13  error  Do not use an `<a>` element to navigate to `/blog/o-que-e-geo-medicos/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages   @next/next/no-html-link-for-pages
+  248:13  error  Do not use an `<a>` element to navigate to `/blog/chatgpt-decide-citar/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  254:13  error  Do not use an `<a>` element to navigate to `/blog/baseline-fatima/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages       @next/next/no-html-link-for-pages
+
+/home/orca/orca/workspaces/hp-site/claude-design-guide/src/content/posts/o-que-e-geo-medicos.tsx
+    2:25  warning  'H3' is defined but never used                                                                                                                                                   @typescript-eslint/no-unused-vars
+  139:11  error    Do not use an `<a>` element to navigate to `/blog/chatgpt-decide-citar/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  216:11  error    Do not use an `<a>` element to navigate to `/blog/baseline-fatima/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages       @next/next/no-html-link-for-pages
+
+/home/orca/orca/workspaces/hp-site/claude-design-guide/src/content/posts/site-ativo-captacao.tsx
+   59:11  error  Do not use an `<a>` element to navigate to `/blog/framework-geo-extracao-ia/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  135:13  error  Do not use an `<a>` element to navigate to `/blog/framework-geo-extracao-ia/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  208:13  error  Do not use an `<a>` element to navigate to `/blog/atendente-ia-whatsapp-24h/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  258:13  error  Do not use an `<a>` element to navigate to `/blog/site-cfm-safe-nextjs/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages       @next/next/no-html-link-for-pages
+  300:11  error  Do not use an `<a>` element to navigate to `/blog/o-que-e-geo-medicos/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages        @next/next/no-html-link-for-pages
+
+/home/orca/orca/workspaces/hp-site/claude-design-guide/src/content/posts/site-cfm-safe-nextjs.tsx
+  40:11  error  Do not use an `<a>` element to navigate to `/blog/baseline-fatima/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+
+✖ 25 problems (21 errors, 4 warnings)
+

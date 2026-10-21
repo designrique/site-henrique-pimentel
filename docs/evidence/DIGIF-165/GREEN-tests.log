@@ -1,0 +1,158 @@
+
+> web@0.1.0 test
+> node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/*.test.ts
+
+TAP version 13
+# Subtest: normalizeWhatsapp converte numero BR nacional para E164
+ok 1 - normalizeWhatsapp converte numero BR nacional para E164
+  ---
+  duration_ms: 2.118412
+  type: 'test'
+  ...
+# Subtest: normalizeWhatsapp rejeita entradas invalidas
+ok 2 - normalizeWhatsapp rejeita entradas invalidas
+  ---
+  duration_ms: 0.25283
+  type: 'test'
+  ...
+# Subtest: validateLead aceita lead valido e normaliza campos
+ok 3 - validateLead aceita lead valido e normaliza campos
+  ---
+  duration_ms: 0.726242
+  type: 'test'
+  ...
+# Subtest: validateLead rejeita campos invalidos individualmente
+ok 4 - validateLead rejeita campos invalidos individualmente
+  ---
+  duration_ms: 0.91231
+  type: 'test'
+  ...
+# Subtest: validateLead ignora tenant/org vindos do cliente (anti-spoof)
+ok 5 - validateLead ignora tenant/org vindos do cliente (anti-spoof)
+  ---
+  duration_ms: 0.32663
+  type: 'test'
+  ...
+# Subtest: createSession/verifySession faz roundtrip e rejeita adulteracao/expiracao
+ok 6 - createSession/verifySession faz roundtrip e rejeita adulteracao/expiracao
+  ---
+  duration_ms: 1.661746
+  type: 'test'
+  ...
+# Subtest: sessionIsValid exige cookie e secret
+ok 7 - sessionIsValid exige cookie e secret
+  ---
+  duration_ms: 0.394162
+  type: 'test'
+  ...
+# Subtest: buildSetCookie traz flags de seguranca e nao carrega PII
+ok 8 - buildSetCookie traz flags de seguranca e nao carrega PII
+  ---
+  duration_ms: 0.341583
+  type: 'test'
+  ...
+# Subtest: rate limiter bloqueia acima do limite e reseta na janela
+ok 9 - rate limiter bloqueia acima do limite e reseta na janela
+  ---
+  duration_ms: 0.667403
+  type: 'test'
+  ...
+# Subtest: idempotency store guarda e respeita TTL
+ok 10 - idempotency store guarda e respeita TTL
+  ---
+  duration_ms: 1.850038
+  type: 'test'
+  ...
+# Subtest: createCrmAdapter sem configuracao falha fechado
+ok 11 - createCrmAdapter sem configuracao falha fechado
+  ---
+  duration_ms: 0.504979
+  type: 'test'
+  ...
+# Subtest: createCrmAdapter expoe adapter http quando configurado
+ok 12 - createCrmAdapter expoe adapter http quando configurado
+  ---
+  duration_ms: 0.204627
+  type: 'test'
+  ...
+# Subtest: fixture de CRM (TESTE) exige flag explicita e grava arquivo
+ok 13 - fixture de CRM (TESTE) exige flag explicita e grava arquivo
+  ---
+  duration_ms: 45.185783
+  type: 'test'
+  ...
+# Subtest: handleSubmit valido: 200, persiste uma vez, cookie assinado sem PII
+ok 14 - handleSubmit valido: 200, persiste uma vez, cookie assinado sem PII
+  ---
+  duration_ms: 1.119071
+  type: 'test'
+  ...
+# Subtest: handleSubmit invalido: 400, nao persiste, sem cookie
+ok 15 - handleSubmit invalido: 400, nao persiste, sem cookie
+  ---
+  duration_ms: 0.341883
+  type: 'test'
+  ...
+# Subtest: handleSubmit sem secret: 503, falha fechado
+ok 16 - handleSubmit sem secret: 503, falha fechado
+  ---
+  duration_ms: 1.481956
+  type: 'test'
+  ...
+# Subtest: handleSubmit respeita rate limit: 429 sem persistir
+ok 17 - handleSubmit respeita rate limit: 429 sem persistir
+  ---
+  duration_ms: 0.631408
+  type: 'test'
+  ...
+# Subtest: handleSubmit com CRM nao configurado: 502 sem liberar guia
+ok 18 - handleSubmit com CRM nao configurado: 502 sem liberar guia
+  ---
+  duration_ms: 0.197136
+  type: 'test'
+  ...
+# Subtest: handleSubmit com falha upstream: 502 preserva dados e sinaliza retry
+ok 19 - handleSubmit com falha upstream: 502 preserva dados e sinaliza retry
+  ---
+  duration_ms: 0.152309
+  type: 'test'
+  ...
+# Subtest: double submit e idempotente: persiste uma vez, mesmo cookie
+ok 20 - double submit e idempotente: persiste uma vez, mesmo cookie
+  ---
+  duration_ms: 0.891569
+  type: 'test'
+  ...
+# Subtest: payload nao vaza tenant para o adapter (anti-spoof end-to-end)
+ok 21 - payload nao vaza tenant para o adapter (anti-spoof end-to-end)
+  ---
+  duration_ms: 0.390537
+  type: 'test'
+  ...
+# Subtest: idempotency store reserva em andamento e libera no release
+ok 22 - idempotency store reserva em andamento e libera no release
+  ---
+  duration_ms: 0.328263
+  type: 'test'
+  ...
+# Subtest: submit concorrente da mesma chave persiste uma vez
+ok 23 - submit concorrente da mesma chave persiste uma vez
+  ---
+  duration_ms: 0.608925
+  type: 'test'
+  ...
+# Subtest: falha de persistencia libera a reserva para retry
+ok 24 - falha de persistencia libera a reserva para retry
+  ---
+  duration_ms: 0.349123
+  type: 'test'
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 24
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 865.056614
