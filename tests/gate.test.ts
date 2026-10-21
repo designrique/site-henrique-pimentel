@@ -172,7 +172,7 @@ test("createCrmAdapter expoe adapter http quando configurado", () => {
   const a = createCrmAdapter({
     GUIDE_CRM_ENDPOINT: "https://example.com/leads",
     GUIDE_CRM_TOKEN: "tok",
-    GUIDE_CRM_ORG_ID: "org_server",
+    GUIDE_CRM_ORG_ID: "a3e29f94-746c-47c1-be74-e79040e22db0",
   });
   assert.equal(a.name, "http");
 });

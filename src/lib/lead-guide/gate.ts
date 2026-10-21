@@ -6,11 +6,12 @@
  * NAO importar este arquivo em componentes de cliente: ele cuida de persistencia
  * e de sessao (segredo). O guia so e liberado depois de persistir no CRM.
  */
-import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
+import { createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 import { appendFile } from "node:fs/promises";
 
 export const SESSION_COOKIE = "hp_guia_session";
 export const GUIDE_SOURCE = "guia-claude-design";
+export const GUIDE_ORGANIZATION = "a3e29f94-746c-47c1-be74-e79040e22db0";
 
 export interface Lead {
   name: string;
@@ -32,13 +33,13 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 /** Normaliza WhatsApp para E164. BR nacional (10/11 digitos) recebe +55. */
 export function normalizeWhatsapp(input: unknown): string | null {
-  if (typeof input !== "string") return null;
+  if (typeof input !== "string" || !/^\+?[\d\s().-]+$/.test(input.trim())) return null;
   const digits = input.replace(/\D/g, "");
-  if (digits.length < 8) return null;
-  if (digits.length <= 11) return "+55" + digits;
-  if (digits.startsWith("55") && (digits.length === 12 || digits.length === 13)) return "+" + digits;
-  if (digits.length >= 12 && digits.length <= 15) return "+" + digits;
-  return null;
+  const national = digits.startsWith("55") && digits.length >= 12 ? digits.slice(2) : digits;
+  if (digits.length <= 11 || digits.startsWith("55")) {
+    return /^[1-9][1-9](?:[2-5]\d{7}|9\d{8})$/.test(national) ? "+55" + national : null;
+  }
+  return input.trim().startsWith("+") && /^[1-9]\d{7,14}$/.test(digits) ? "+" + digits : null;
 }
 
 /**
@@ -92,13 +93,13 @@ export function verifySession(
   secret: string | undefined,
   now: number = Math.floor(Date.now() / 1000)
 ): SessionPayload | null {
-  if (typeof token !== "string" || !secret) return null;
+  if (typeof token !== "string" || token.length > 1024 || !secret) return null;
   const dot = token.indexOf(".");
   if (dot <= 0) return null;
   const body = token.slice(0, dot);
   const sig = token.slice(dot + 1);
   const expected = hmac(body, secret);
-  if (sig.length !== expected.length) return null;
+  if (!/^[A-Za-z0-9_-]{43}$/.test(sig) || Buffer.byteLength(sig) !== Buffer.byteLength(expected)) return null;
   if (!timingSafeEqual(Buffer.from(sig), Buffer.from(expected))) return null;
   let payload: SessionPayload;
   try {
@@ -108,7 +109,7 @@ export function verifySession(
     return null;
   }
   if (!payload || typeof payload.sid !== "string" || typeof payload.exp !== "number") return null;
-  if (payload.exp <= now) return null;
+  if (!Number.isSafeInteger(payload.exp) || payload.exp <= now) return null;
   return payload;
 }
 
@@ -242,12 +243,14 @@ type Env = Record<string, string | undefined>;
 export function createCrmAdapter(env: Env): CrmAdapter {
   const endpoint = env.GUIDE_CRM_ENDPOINT?.trim();
   const token = env.GUIDE_CRM_TOKEN?.trim();
+  if (env.GUIDE_CRM_ORG_ID && env.GUIDE_CRM_ORG_ID.trim() !== GUIDE_ORGANIZATION) return createUnconfiguredAdapter();
   if (endpoint && token) {
-    const timeoutMs = Number(env.GUIDE_CRM_TIMEOUT_MS ?? "8000") || 8000;
-    return createHttpAdapter(endpoint, token, env.GUIDE_CRM_ORG_ID?.trim() ?? "", timeoutMs);
+    const timeoutMs = Math.min(15000, Math.max(100, Number(env.GUIDE_CRM_TIMEOUT_MS) || 8000));
+    return createHttpAdapter(endpoint, token, GUIDE_ORGANIZATION, timeoutMs);
   }
   // Fixture existe SO para QA local e exige opt-in explicito. Nunca prova CRM real.
   if (
+    env.NODE_ENV !== "production" &&
     env.GUIDE_CRM_MODE === "fixture" &&
     env.GUIDE_CRM_FIXTURE_FILE &&
     env.GUIDE_CRM_ALLOW_FIXTURE === "1"
@@ -269,7 +272,9 @@ function createHttpAdapter(endpoint: string, token: string, orgId: string, timeo
           headers: {
             "content-type": "application/json",
             authorization: "Bearer " + token,
+            "idempotency-key": createHash("sha256").update(JSON.stringify(lead)).digest("hex"),
           },
+          redirect: "error",
           body: JSON.stringify({ source: GUIDE_SOURCE, org_id: orgId, ...lead }),
           signal: ctrl.signal,
         });
@@ -280,14 +285,11 @@ function createHttpAdapter(endpoint: string, token: string, orgId: string, timeo
             retryable: res.status >= 500 || res.status === 429,
           };
         }
-        let id = "lead_" + randomBytes(6).toString("hex");
-        try {
-          const data = await res.json();
-          if (data && typeof data.id === "string") id = data.id;
-        } catch {
-          /* resposta sem JSON: mantem id gerado */
+        const data = await res.json().catch(() => null);
+        if (!data || data.error || data.ok === false || typeof data.id !== "string" || !data.id.trim() || data.organization_id !== orgId) {
+          return { ok: false, error: "crm_unconfirmed", retryable: false };
         }
-        return { ok: true, id };
+        return { ok: true, id: data.id };
       } catch {
         /* timeout, DNS, conexao recusada */
         return { ok: false, error: "crm_unreachable", retryable: true };
@@ -370,8 +372,8 @@ export async function handleSubmit(raw: unknown, deps: SubmitDeps): Promise<Subm
     return { status: 503, body: { error: "server_not_configured" } };
   }
 
-  const idemKey =
-    deps.idempotencyKey ?? "lead:" + validation.value.email + "|" + validation.value.whatsapp;
+  // A chave pública não pode reutilizar a sessão de outro cadastro.
+  const idemKey = createHash("sha256").update(JSON.stringify(validation.value)).digest("hex");
   if (deps.dedupe) {
     const cached = deps.dedupe.get(idemKey, clockMs) as SubmitResult | undefined;
     if (cached) return cached;
@@ -394,4 +396,27 @@ export async function handleSubmit(raw: unknown, deps: SubmitDeps): Promise<Subm
   const result: SubmitResult = { status: 200, body: { ok: true }, setCookie };
   if (deps.dedupe) deps.dedupe.set(idemKey, result, clockMs);
   return result;
+}
+
+/** Interrompe corpos chunked antes de acumular mais que o limite em memória. */
+export async function readRequestBody(req: Request, maxBytes: number): Promise<string> {
+  const reader = req.body?.getReader();
+  if (!reader) return "";
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  try {
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      size += value.byteLength;
+      if (size > maxBytes) {
+        await reader.cancel();
+        throw new Error("payload_too_large");
+      }
+      chunks.push(value);
+    }
+    return new TextDecoder("utf-8", { fatal: true }).decode(Buffer.concat(chunks));
+  } finally {
+    reader.releaseLock();
+  }
 }

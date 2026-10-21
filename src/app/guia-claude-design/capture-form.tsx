@@ -10,24 +10,24 @@ function messageFor(status: number, code: string | undefined): string {
     return "Muitas tentativas em pouco tempo. Espere um minuto e tente de novo.";
   }
   if (status === 400) return "Confira os campos destacados e envie novamente.";
-  if (status === 409) return "Ja estamos processando seu envio. Aguarde um instante.";
+  if (status === 409) return "Já estamos processando seu envio. Aguarde um instante.";
   if (status === 502) {
-    return "Nao consegui registrar seus dados agora. Nada foi perdido. Tente novamente em instantes.";
+    return "Não consegui registrar seus dados agora. Nada foi perdido. Tente novamente em instantes.";
   }
-  if (status === 503) return "O recurso esta indisponivel no momento. Tente mais tarde.";
+  if (status === 503) return "O recurso está indisponivel no momento. Tente mais tarde.";
   if (code === "payload_too_large") return "O envio ficou grande demais. Revise os campos.";
-  return "Nao foi possivel liberar o guia agora. Tente novamente.";
+  return "Não foi possível liberar o guia agora. Tente novamente.";
 }
 
 export function CaptureForm() {
   const router = useRouter();
   const statusRef = useRef<HTMLDivElement>(null);
-  const inFlight = useRef(false); // guarda sincrona: estado do React nao atualiza no mesmo tick
+  const inFlight = useRef(false); // guarda sincrona: estado do React não atualiza no mesmo tick
   const [pending, setPending] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
 
-  // Move o foco para o alerta quando ele aparece (o elemento so existe depois do render).
+  // Move o foco para o alerta quando ele aparece (o elemento só existe depois do render).
   useEffect(() => {
     if (message) statusRef.current?.focus();
   }, [message]);
@@ -70,7 +70,7 @@ export function CaptureForm() {
       if (data.errors) setFieldErrors(data.errors);
       setMessage(messageFor(res.status, data.error));
     } catch {
-      setMessage("Nao consegui enviar agora. Confira sua conexao e tente de novo.");
+      setMessage("Não consegui enviar agora. Confira sua conexão e tente de novo.");
     } finally {
       inFlight.current = false;
       setPending(false);
@@ -82,7 +82,7 @@ export function CaptureForm() {
       onSubmit={onSubmit}
       noValidate
       aria-busy={pending}
-      className="rounded-2xl border border-[color:var(--border-default)] bg-[color:var(--bg-subtle)] p-6 sm:p-8 space-y-5"
+      className="guide-capture rounded-2xl border border-[color:var(--border-default)] bg-[color:var(--bg-subtle)] p-6 sm:p-8 space-y-5"
     >
       <div>
         <h2 className="text-xl font-semibold text-[color:var(--text-primary)]">
@@ -99,7 +99,7 @@ export function CaptureForm() {
           tabIndex={-1}
           role="alert"
           aria-live="assertive"
-          className="rounded-xl border border-[color:var(--error)] bg-[color:var(--bg-primary)] px-4 py-3 text-sm text-[color:var(--error)]"
+          className="rounded-xl border border-[color:var(--guide-error)] bg-[color:var(--bg-primary)] px-4 py-3 text-sm text-[color:var(--guide-error)]"
         >
           {message}
         </div>
@@ -110,6 +110,7 @@ export function CaptureForm() {
           id="name"
           name="name"
           type="text"
+          maxLength={80}
           required
           autoComplete="name"
           aria-invalid={fieldErrors.name ? true : undefined}
@@ -123,6 +124,7 @@ export function CaptureForm() {
           id="email"
           name="email"
           type="email"
+          maxLength={254}
           required
           autoComplete="email"
           aria-invalid={fieldErrors.email ? true : undefined}
@@ -136,6 +138,8 @@ export function CaptureForm() {
           id="whatsapp"
           name="whatsapp"
           type="tel"
+          inputMode="tel"
+          maxLength={24}
           required
           autoComplete="tel"
           placeholder="(81) 99999-8888"
@@ -146,8 +150,8 @@ export function CaptureForm() {
       </Field>
 
       <div className="space-y-3 pt-1">
-        <label className="flex items-start gap-3 text-sm text-[color:var(--text-primary)]">
-          <input type="checkbox" name="consent" required className="mt-1 h-4 w-4" />
+        <label className="flex min-h-11 cursor-pointer items-start gap-3 text-sm text-[color:var(--text-primary)]">
+          <input type="checkbox" name="consent" required aria-invalid={fieldErrors.consent ? true : undefined} aria-describedby={fieldErrors.consent ? "consent-error" : undefined} className="mt-1 h-4 w-4" />
           <span>
             Aceito que meus dados sejam usados para me enviar o guia e para contato sobre este
             assunto.
@@ -155,30 +159,32 @@ export function CaptureForm() {
           </span>
         </label>
         {fieldErrors.consent && (
-          <p id="consent-error" role="alert" className="text-xs text-[color:var(--error)]">
+          <p id="consent-error" role="alert" className="text-xs text-[color:var(--guide-error)]">
             {fieldErrors.consent}
           </p>
         )}
 
-        <label className="flex items-start gap-3 text-sm text-[color:var(--text-secondary)]">
+        <label className="flex min-h-11 cursor-pointer items-start gap-3 text-sm text-[color:var(--text-secondary)]">
           <input type="checkbox" name="marketing" className="mt-1 h-4 w-4" />
-          <span>Quero receber novidades e conteudos por e-mail (opcional, separado do guia).</span>
+          <span>Quero receber novidades e conteúdos por e-mail (opcional, separado do guia).</span>
         </label>
       </div>
 
-      <p className="text-xs text-[color:var(--text-tertiary)]">
+      <p className="text-xs text-[color:var(--text-secondary)]">
         Seus dados ficam comigo. Sem venda da sua lista para terceiros.
       </p>
 
       <button
         type="submit"
         disabled={pending}
-        className="w-full h-12 rounded-[10px] bg-[color:var(--accent-primary)] text-white font-medium hover:bg-[color:var(--accent-hover)] transition-colors disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-primary)] focus-visible:ring-offset-2"
+        className="w-full h-12 cursor-pointer rounded-[10px] bg-[color:var(--guide-action)] text-white font-medium hover:bg-[color:var(--accent-hover)] transition-colors disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-primary)] focus-visible:ring-offset-2"
       >
         {pending ? "Liberando..." : "Liberar o guia"}
       </button>
 
       <style>{`
+        .guide-capture { --guide-error: var(--error); --guide-action: var(--accent-primary); }
+        .dark .guide-capture { --guide-error: #F87171; --guide-action: #2563EB; }
         .input {
           display: block;
           width: 100%;
@@ -188,10 +194,10 @@ export function CaptureForm() {
           border: 1px solid var(--border-default);
           background: var(--bg-primary);
           color: var(--text-primary);
-          font-size: 15px;
+          font-size: 16px;
           font-family: inherit;
         }
-        .input::placeholder { color: var(--text-tertiary); }
+        .input::placeholder { color: var(--text-secondary); }
         .input:focus-visible {
           outline: 2px solid var(--accent-primary);
           outline-offset: 1px;
@@ -222,7 +228,7 @@ function Field({
       </label>
       {children}
       {error && (
-        <p id={`${id}-error`} role="alert" className="text-xs text-[color:var(--error)]">
+        <p id={`${id}-error`} role="alert" className="text-xs text-[color:var(--guide-error)]">
           {error}
         </p>
       )}

@@ -26,7 +26,7 @@ export default async function GuiaConteudoPage() {
           GUIA COMPLETO · ACESSO LIBERADO
         </span>
         <h1 className="mt-4 text-3xl sm:text-4xl font-bold tracking-[-0.03em] text-[color:var(--text-primary)] leading-tight">
-          Automatize a geracao de postagens com Claude Design
+          Automatize a geração de postagens com Claude Design
         </h1>
       </header>
       <GuideContent />

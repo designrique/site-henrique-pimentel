@@ -4,6 +4,7 @@ import {
   createCrmAdapter,
   createRateLimiter,
   createIdempotencyStore,
+  readRequestBody,
 } from "@/lib/lead-guide/gate";
 
 export const runtime = "nodejs";
@@ -32,16 +33,12 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "payload_too_large" }, { status: 413 });
   }
 
-  const raw = await req.text();
-  if (raw.length > MAX_BODY) {
-    return NextResponse.json({ error: "payload_too_large" }, { status: 413 });
-  }
-
   let body: unknown;
   try {
-    body = JSON.parse(raw);
-  } catch {
-    return NextResponse.json({ error: "invalid_json" }, { status: 400 });
+    body = JSON.parse(await readRequestBody(req, MAX_BODY));
+  } catch (error) {
+    const tooLarge = error instanceof Error && error.message === "payload_too_large";
+    return NextResponse.json({ error: tooLarge ? "payload_too_large" : "invalid_json" }, { status: tooLarge ? 413 : 400 });
   }
 
   const result = await handleSubmit(body, {
@@ -50,7 +47,6 @@ export async function POST(req: Request) {
     limiter,
     dedupe,
     requestKey: clientKey(req),
-    idempotencyKey: req.headers.get("idempotency-key") ?? undefined,
     ttlSeconds: 60 * 60 * 24 * 7,
     secure: process.env.NODE_ENV === "production",
   });

@@ -1,0 +1,42 @@
+
+> web@0.1.0 test
+> node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/*.test.ts
+
+✔ normalizeWhatsapp converte numero BR nacional para E164 (2.351647ms)
+✔ normalizeWhatsapp rejeita entradas invalidas (0.295705ms)
+✔ validateLead aceita lead valido e normaliza campos (0.726153ms)
+✔ validateLead rejeita campos invalidos individualmente (0.37881ms)
+✔ validateLead ignora tenant/org vindos do cliente (anti-spoof) (0.27159ms)
+✔ createSession/verifySession faz roundtrip e rejeita adulteracao/expiracao (1.630854ms)
+✔ sessionIsValid exige cookie e secret (1.177812ms)
+✔ buildSetCookie traz flags de seguranca e nao carrega PII (0.625371ms)
+✔ rate limiter bloqueia acima do limite e reseta na janela (0.595516ms)
+✔ idempotency store guarda e respeita TTL (1.456562ms)
+✔ createCrmAdapter sem configuracao falha fechado (0.548967ms)
+✔ createCrmAdapter expoe adapter http quando configurado (1.423651ms)
+✔ fixture de CRM (TESTE) exige flag explicita e grava arquivo (167.173999ms)
+✔ handleSubmit valido: 200, persiste uma vez, cookie assinado sem PII (2.335313ms)
+✔ handleSubmit invalido: 400, nao persiste, sem cookie (0.210416ms)
+✔ handleSubmit sem secret: 503, falha fechado (0.138609ms)
+✔ handleSubmit respeita rate limit: 429 sem persistir (1.03763ms)
+✔ handleSubmit com CRM nao configurado: 502 sem liberar guia (0.2793ms)
+✔ handleSubmit com falha upstream: 502 preserva dados e sinaliza retry (0.160382ms)
+✔ double submit e idempotente: persiste uma vez, mesmo cookie (0.433612ms)
+✔ payload nao vaza tenant para o adapter (anti-spoof end-to-end) (0.336856ms)
+✔ idempotency store reserva em andamento e libera no release (0.190867ms)
+✔ submit concorrente da mesma chave persiste uma vez (0.807085ms)
+✔ falha de persistencia libera a reserva para retry (0.88466ms)
+✔ CRM 2xx sem confirmação ou com org errada não libera sessão (118.042968ms)
+✔ idempotência é vinculada ao cadastro, não à chave escolhida pelo cliente (2.971169ms)
+✔ cookie com assinatura multibyte falha fechado, sem exceção (2.073288ms)
+✔ telefone nacional exige DDD e formato brasileiro válido (0.39288ms)
+✔ produção não habilita fixture nem permite org diferente (0.256816ms)
+✔ corpo chunked é interrompido ao exceder o limite em bytes (6.268972ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 889.012968

@@ -1,0 +1,22 @@
+{
+  "public_h1": "Postagens em lote com Claude Design.",
+  "public_no_private_content": true,
+  "invalid_alert": "Confira os campos destacados e envie novamente.",
+  "invalid_focus": "alert",
+  "unconfigured_status": 502,
+  "unconfigured_cookie_absent": true,
+  "failed_submit_preserves_data": true,
+  "capture_overflow_375": true,
+  "capture_overflow_390": true,
+  "capture_overflow_768": true,
+  "capture_overflow_1024": true,
+  "capture_overflow_1440": true,
+  "private_no_cookie_redirect": true,
+  "private_qa_h1": "Automatize a geração de postagens com Claude Design",
+  "guide_section_count": 17,
+  "private_noindex": "noindex, nofollow, nocache",
+  "guide_mobile_no_overflow": true,
+  "dark_form_background": "rgb(23, 23, 23)",
+  "dark_button_background": "rgb(36, 93, 225)",
+  "browser_exceptions": []
+}

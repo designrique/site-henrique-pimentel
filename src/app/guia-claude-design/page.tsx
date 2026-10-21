@@ -5,7 +5,7 @@ import { guideToc, guideTeaser } from "@/content/guides/claude-design";
 import { CaptureForm } from "./capture-form";
 
 export const metadata: Metadata = {
-  title: "Guia: automatize a geracao de postagens com Claude Design",
+  title: "Guia: automatize a geração de postagens com Claude Design",
   description: guideTeaser,
   robots: { index: true, follow: true },
 };
@@ -23,17 +23,14 @@ export default function GuiaClaudeDesignPage() {
           }}
         />
         <Container className="pt-16 pb-12 sm:pt-24 sm:pb-16">
-          <EyebrowBadge>GUIA PRATICO EM pt-BR</EyebrowBadge>
+          <EyebrowBadge>GUIA PRÁTICO EM pt-BR</EyebrowBadge>
           <h1 className="mt-4 max-w-3xl text-4xl sm:text-5xl md:text-6xl font-bold tracking-[-0.03em] text-[color:var(--text-primary)] leading-[1.05]">
-            Automatize a geracao de{" "}
-            <span className="font-serif italic text-[color:var(--accent-primary)]">postagens</span>{" "}
-            com Claude Design.
+            Postagens em lote com Claude Design.
           </h1>
           <p className="mt-6 max-w-2xl text-lg sm:text-xl leading-relaxed text-[color:var(--text-secondary)]">
-            Um guia pratico para transformar uma ideia em lote de postagens: briefing replicavel,
-            identidade visual aplicada automaticamente, geracao em lote, variacoes de carrossel,
-            refinamento com aprovacao humana, exportacao e QA antes de publicar.
+            Automatize a criação com prompts reutilizáveis, identidade visual consistente e um fluxo de revisão e exportação.
           </p>
+          <a href="#cadastro" className="mt-6 inline-flex min-h-11 items-center font-medium text-[color:var(--accent-primary)] underline underline-offset-4">Liberar o guia</a>
         </Container>
       </section>
 
@@ -46,7 +43,7 @@ export default function GuiaClaudeDesignPage() {
                   O que tem dentro
                 </h2>
                 <p className="mt-3 text-base text-[color:var(--text-secondary)] leading-relaxed">
-                  Dezesseis secoes, com prompts copiaveis e checklists. Preencha o formulario para
+                  Dezesseis seções, com prompts copiáveis e checklists. Preencha o formulário para
                   liberar o acesso.
                 </p>
               </div>
@@ -64,7 +61,7 @@ export default function GuiaClaudeDesignPage() {
               </ol>
             </div>
 
-            <div className="lg:col-span-7">
+            <div id="cadastro" className="order-first scroll-mt-24 lg:order-none lg:col-span-7">
               <CaptureForm />
             </div>
           </div>

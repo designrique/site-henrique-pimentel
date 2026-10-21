@@ -66,7 +66,7 @@ apenas NESTE worktree para habilitar o gate real server-side. `trailingSlash` e
 - Sem bibliotecas novas: validacao/HMAC/hash/rate-limit/dedupe com `node:crypto` e Map.
 - Um arquivo para o nucleo evita resolver alias `@/` no runner nativo do `node --test`.
 - Cookie guarda apenas um `sid` aleatorio + exp (sem PII).
-- `org_id`/tenant vem SEMPRE do servidor (env), nunca do cliente (anti-spoof).
+- `org_id`/tenant é fixo no servidor para Consultoria HP; env divergente falha fechado, nunca vem do cliente.
 - Fixture de CRM so existe para QA local, marcada TESTE, nunca prova CRM real.
 
 ## Tarefas (TDD)

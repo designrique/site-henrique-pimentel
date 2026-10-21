@@ -1,0 +1,155 @@
+
+> web@0.1.0 test
+> node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/*.test.ts
+
+✔ normalizeWhatsapp converte numero BR nacional para E164 (2.027674ms)
+✔ normalizeWhatsapp rejeita entradas invalidas (0.553584ms)
+✔ validateLead aceita lead valido e normaliza campos (0.820455ms)
+✔ validateLead rejeita campos invalidos individualmente (0.407165ms)
+✔ validateLead ignora tenant/org vindos do cliente (anti-spoof) (0.304568ms)
+✔ createSession/verifySession faz roundtrip e rejeita adulteracao/expiracao (3.69814ms)
+✔ sessionIsValid exige cookie e secret (1.13517ms)
+✔ buildSetCookie traz flags de seguranca e nao carrega PII (0.618341ms)
+✔ rate limiter bloqueia acima do limite e reseta na janela (3.561484ms)
+✔ idempotency store guarda e respeita TTL (4.830086ms)
+✔ createCrmAdapter sem configuracao falha fechado (0.643149ms)
+✔ createCrmAdapter expoe adapter http quando configurado (10.014322ms)
+✔ fixture de CRM (TESTE) exige flag explicita e grava arquivo (85.808816ms)
+✔ handleSubmit valido: 200, persiste uma vez, cookie assinado sem PII (3.070674ms)
+✔ handleSubmit invalido: 400, nao persiste, sem cookie (0.305158ms)
+✔ handleSubmit sem secret: 503, falha fechado (0.223316ms)
+✔ handleSubmit respeita rate limit: 429 sem persistir (0.380674ms)
+✔ handleSubmit com CRM nao configurado: 502 sem liberar guia (0.805893ms)
+✔ handleSubmit com falha upstream: 502 preserva dados e sinaliza retry (0.184709ms)
+✔ double submit e idempotente: persiste uma vez, mesmo cookie (0.559973ms)
+✔ payload nao vaza tenant para o adapter (anti-spoof end-to-end) (0.256357ms)
+✔ idempotency store reserva em andamento e libera no release (0.1732ms)
+✔ submit concorrente da mesma chave persiste uma vez (0.441045ms)
+✔ falha de persistencia libera a reserva para retry (0.221785ms)
+✖ CRM 2xx sem confirmação ou com org errada não libera sessão (54.686052ms)
+✖ idempotência é vinculada ao cadastro, não à chave escolhida pelo cliente (1.627632ms)
+✖ cookie com assinatura multibyte falha fechado, sem exceção (2.25137ms)
+✖ telefone nacional exige DDD e formato brasileiro válido (0.700325ms)
+✖ produção não habilita fixture nem permite org diferente (0.494095ms)
+✖ corpo chunked é interrompido ao exceder o limite em bytes (1.160808ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 24
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 565.492529
+
+✖ failing tests:
+
+test at tests/review-regressions.test.ts:11:1
+✖ CRM 2xx sem confirmação ou com org errada não libera sessão (54.686052ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  200 !== 502
+
+      at TestContext.<anonymous> (file:///home/orca/orca/workspaces/hp-site/claude-design-guide/tests/review-regressions.test.ts:17:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 502,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/review-regressions.test.ts:26:1
+✖ idempotência é vinculada ao cadastro, não à chave escolhida pelo cliente (1.627632ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  1 !== 2
+
+      at TestContext.<anonymous> (file:///home/orca/orca/workspaces/hp-site/claude-design-guide/tests/review-regressions.test.ts:31:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/review-regressions.test.ts:36:1
+✖ cookie com assinatura multibyte falha fechado, sem exceção (2.25137ms)
+  RangeError: Input buffers must have the same byte length
+      at verifySession (file:///home/orca/orca/workspaces/hp-site/claude-design-guide/src/lib/lead-guide/gate.ts:102:8)
+      at TestContext.<anonymous> (file:///home/orca/orca/workspaces/hp-site/claude-design-guide/tests/review-regressions.test.ts:37:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    code: 'ERR_CRYPTO_TIMING_SAFE_EQUAL_LENGTH'
+  }
+
+test at tests/review-regressions.test.ts:40:1
+✖ telefone nacional exige DDD e formato brasileiro válido (0.700325ms)
+  AssertionError [ERR_ASSERTION]: 12345678
+  + actual - expected
+
+  + '+5512345678'
+  - null
+
+      at TestContext.<anonymous> (file:///home/orca/orca/workspaces/hp-site/claude-design-guide/tests/review-regressions.test.ts:41:115)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '+5512345678',
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/review-regressions.test.ts:46:1
+✖ produção não habilita fixture nem permite org diferente (0.494095ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'fixture-test'
+  - 'unconfigured'
+
+      at TestContext.<anonymous> (file:///home/orca/orca/workspaces/hp-site/claude-design-guide/tests/review-regressions.test.ts:47:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'fixture-test',
+    expected: 'unconfigured',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/review-regressions.test.ts:51:1
+✖ corpo chunked é interrompido ao exceder o limite em bytes (1.160808ms)
+  TypeError: readRequestBody is not a function
+      at TestContext.<anonymous> (file:///home/orca/orca/workspaces/hp-site/claude-design-guide/tests/review-regressions.test.ts:54:24)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7)

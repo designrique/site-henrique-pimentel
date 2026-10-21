@@ -268,41 +268,41 @@ Implementações, falhas e aprendizados em texto longo. Posts técnicos sobre IA
 // (que traz React) para dentro da rota de espelho estatico.
 const guiaClaudeDesignMirror: Mirror = {
   path: "/guia-claude-design/",
-  title: "Guia: automatize a geracao de postagens com Claude Design",
+  title: "Guia: automatize a geração de postagens com Claude Design",
   description:
-    "Guia pratico em pt-BR para transformar uma ideia em lote de postagens com Claude Design: briefing replicavel, identidade visual, geracao em lote, carrossel, refinamento com aprovacao humana, exportacao e QA.",
+    "Guia prático em pt-BR para transformar uma ideia em lote de postagens com Claude Design: briefing replicável, identidade visual, geração em lote, carrossel, refinamento com aprovação humana, exportação e QA.",
   body: `
-# Guia: automatize a geracao de postagens com Claude Design
+# Guia: automatize a geração de postagens com Claude Design
 
-Guia pratico em pt-BR para transformar uma ideia em lote de postagens com o Claude Design.
-Cobre briefing replicavel, identidade visual aplicada automaticamente, geracao em lote,
-variacoes de carrossel, refinamento com aprovacao humana, exportacao e QA antes de publicar.
-Inclui prompts copiaveis, cadencia de producao, checklist e limites reais da ferramenta.
+Guia prático em pt-BR para transformar uma ideia em lote de postagens com o Claude Design.
+Cobre briefing replicável, identidade visual aplicada automaticamente, geração em lote,
+variações de carrossel, refinamento com aprovação humana, exportação e QA antes de publicar.
+Inclui prompts copiáveis, cadência de producao, checklist e limites reais da ferramenta.
 
 ## O que tem dentro
 
 1. O que e o Claude Design
-2. O que ele nao faz (limites honestos)
+2. O que ele não faz (limites honestos)
 3. Onde ele entra no fluxo de postagens
-4. Pre-requisitos
-5. Passo 1: briefing replicavel
+4. Pré-requisitos
+5. Passo 1: briefing replicável
 6. Passo 2: identidade visual e design system
 7. Passo 3: gerar o primeiro lote
-8. Passo 4: refinar com aprovacao humana
-9. Passo 5: variacoes de carrossel
-10. Passo 6: exportar e levar para publicacao
+8. Passo 4: refinar com aprovação humana
+9. Passo 5: variações de carrossel
+10. Passo 6: exportar e levar para publicação
 11. Passo 7: nomear e organizar
 12. Passo 8: QA antes de publicar
 13. Passo 9: agendar (opcional, externo)
-14. Cadencia em lote (calendario)
+14. Cadência em lote (calendário)
 15. Checklist final
-16. Limitacoes e o que nao prometemos
+16. Limitações e o que não prometemos
 
 ## Acesso
 
-O conteudo completo fica em uma area privada, liberada apos cadastro em
+O conteudo completo fica em uma área privada, liberada após cadastro em
 https://henriquepimentel.com.br/guia-claude-design/ (nome, e-mail e WhatsApp).
-Este espelho traz apenas o resumo publico e nao inclui o guia.
+Este espelho traz apenas o resumo público e não inclui o guia.
 
 ## Fontes
 
