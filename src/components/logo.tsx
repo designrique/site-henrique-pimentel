@@ -9,6 +9,31 @@ interface LogoProps {
   href?: string;
 }
 
+/**
+ * Marca H-ponte (fonte da verdade: hp-brand/assets/svg/mark.svg).
+ * Traço herda a cor do contexto via currentColor (navy no claro, creme/claro no escuro).
+ * O ponto é sempre ciano — o acento pontual da marca.
+ */
+function HpMark({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="20 22 60 60"
+      className={className}
+      fill="none"
+      role="img"
+      aria-label="Henrique Pimentel"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g stroke="currentColor" strokeWidth={5} strokeLinecap="round" strokeLinejoin="round">
+        <path d="M38 34 V70" />
+        <path d="M62 34 V70" />
+        <path d="M25 54 Q50 46 75 54" />
+      </g>
+      <circle cx="50" cy="42" r="3.4" fill="#05F2F2" />
+    </svg>
+  );
+}
+
 export function Logo({ variant = "wordmark", className = "", href }: LogoProps) {
   const inner = (
     <span className={`inline-flex items-center ${className}`}>
@@ -22,16 +47,12 @@ export function Logo({ variant = "wordmark", className = "", href }: LogoProps) 
       )}
 
       {variant === "monogram" && (
-        <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[color:var(--text-primary)] text-[color:var(--bg-primary)] font-bold tracking-tight text-base">
-          HP.
-        </span>
+        <HpMark className="h-10 w-10 text-[color:var(--text-primary)]" />
       )}
 
       {variant === "signature" && (
-        <span className="flex items-center gap-3">
-          <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[color:var(--text-primary)] text-[color:var(--bg-primary)] font-bold tracking-tight text-base">
-            HP.
-          </span>
+        <span className="flex items-center gap-2.5">
+          <HpMark className="h-10 w-10 shrink-0 text-[color:var(--text-primary)]" />
           <span className="hidden sm:flex sm:flex-col leading-tight">
             <span className="text-base font-bold tracking-[-0.02em] text-[color:var(--text-primary)]">
               Henrique Pimentel.

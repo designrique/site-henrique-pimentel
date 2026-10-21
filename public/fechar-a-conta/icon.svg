@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#1B2430"/>
+  <g fill="none" stroke="#FBFAF7" stroke-width="20" stroke-linecap="round">
+    <line x1="128" y1="352" x2="384" y2="352"/>
+    <line x1="128" y1="352" x2="128" y2="312"/>
+    <line x1="192" y1="352" x2="192" y2="328"/>
+    <line x1="256" y1="352" x2="256" y2="312"/>
+    <line x1="320" y1="352" x2="320" y2="328"/>
+    <line x1="384" y1="352" x2="384" y2="312"/>
+  </g>
+  <text x="256" y="248" font-family="Georgia, 'Times New Roman', serif" font-size="200" font-weight="600" fill="#FBFAF7" text-anchor="middle">R$</text>
+</svg>

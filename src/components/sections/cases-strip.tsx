@@ -18,7 +18,7 @@ const defaultCases: Case[] = [
     headline: "Site CFM-safe em produção desde maio/2026, com monitoramento mensal de menções nos 5 motores de IA.",
     metric1: "Next.js + Cloudflare Pages + n8n",
     metric2: "5 motores de IA monitorados",
-    href: "/cases/fatima-knappe",
+    href: "/blog/baseline-fatima",
   },
   {
     client: "Instituto Ariana Borges",

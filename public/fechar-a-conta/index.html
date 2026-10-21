@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#EAEDE7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Fechar a Conta">
+<title>Fechar a Conta</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B2430;
+    --paper:#EAEDE7;
+    --card:#FBFAF7;
+    --positive:#2F6F5E;
+    --positive-soft:#E4EEE9;
+    --warning:#B8862E;
+    --warning-soft:#F3E9D6;
+    --negative:#B4472C;
+    --negative-soft:#F5E3DD;
+    --muted:#767B72;
+    --line:#D7DAD1;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:100px;
+  }
+  .wrap{max-width:520px; margin:0 auto; padding:0 16px;}
+  header{padding:28px 16px 8px; max-width:520px; margin:0 auto;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--muted); margin:0 0 4px;
+  }
+  h1{
+    font-family:'Fraunces',serif; font-weight:600; font-size:28px;
+    margin:0; letter-spacing:-.01em;
+  }
+  .user-row{
+    display:flex; align-items:center; justify-content:space-between; margin-top:8px;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted);
+  }
+  .user-row .sync-dot{
+    display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:5px;
+    background:var(--muted); vertical-align:1px;
+  }
+  .sync-dot.on{background:var(--positive);}
+  .user-row button{
+    background:none; border:none; color:var(--muted); font-family:'IBM Plex Mono',monospace;
+    font-size:11px; cursor:pointer; text-decoration:underline; text-underline-offset:3px; padding:4px;
+  }
+
+  /* Login screen */
+  #loginScreen{max-width:400px; margin:0 auto; padding:12vh 20px 40px; display:none;}
+  #loginScreen.show{display:block;}
+  #loginScreen .eyebrow{text-align:center;}
+  #loginScreen h1{text-align:center; margin-bottom:6px;}
+  #loginScreen .login-sub{
+    text-align:center; font-size:13px; color:var(--muted); margin:0 0 28px;
+    font-family:'Fraunces',serif; font-style:italic;
+  }
+  .login-card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px; padding:22px 18px;
+  }
+  #appScreen{display:none;}
+  #appScreen.show{display:block;}
+
+  /* Loading */
+  .loading-line{
+    text-align:center; font-family:'IBM Plex Mono',monospace; font-size:12px;
+    color:var(--muted); padding:24px 0;
+  }
+
+  /* Toast */
+  #toast{
+    position:fixed; bottom:92px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--ink); color:var(--card); font-size:13px; padding:10px 18px;
+    border-radius:24px; opacity:0; pointer-events:none; transition:all .3s ease; z-index:60;
+    max-width:88vw; text-align:center; font-family:'IBM Plex Mono',monospace;
+  }
+  #toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+  #toast.err{background:var(--negative);}
+
+  /* Month nav */
+  .month-nav{
+    display:flex; align-items:center; justify-content:space-between;
+    margin:20px 0 16px; padding:10px 6px; border-bottom:1px solid var(--line);
+  }
+  .month-nav button{
+    background:none; border:none; font-family:'IBM Plex Mono',monospace;
+    font-size:18px; color:var(--ink); cursor:pointer; padding:6px 10px;
+    border-radius:6px;
+  }
+  .month-nav button:hover{background:var(--card);}
+  .month-label{
+    font-family:'Fraunces',serif; font-size:19px; font-weight:500; text-transform:capitalize;
+  }
+
+  /* Teto input */
+  .teto-row{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin-bottom:18px; padding:14px 16px; background:var(--card);
+    border:1px solid var(--line); border-radius:12px;
+  }
+  .teto-row label{font-size:13px; color:var(--muted); font-weight:500;}
+  .teto-row .cur{font-family:'IBM Plex Mono',monospace; font-size:14px; color:var(--muted); margin-right:2px;}
+  .teto-row input{
+    border:none; background:none; font-family:'IBM Plex Mono',monospace;
+    font-size:18px; font-weight:600; color:var(--ink); text-align:right;
+    width:130px; outline:none;
+  }
+
+  /* Ruler gauge - signature element */
+  .gauge-card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:18px 16px 14px; margin-bottom:14px;
+  }
+  .gauge-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:14px;}
+  .gauge-head .k{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; font-family:'IBM Plex Mono',monospace;}
+  .gauge-head .v{font-family:'Fraunces',serif; font-size:26px; font-weight:600;}
+  .gauge-track{
+    position:relative; height:34px; background:repeating-linear-gradient(
+      to right, var(--line) 0, var(--line) 1px, transparent 1px, transparent calc(10% - 1px)
+    ), var(--paper);
+    border-radius:4px; overflow:hidden; border:1px solid var(--line);
+  }
+  .gauge-fill{
+    position:absolute; top:0; left:0; height:100%; border-radius:3px 0 0 3px;
+    transition:width .4s ease, background .3s ease;
+  }
+  .gauge-marker{
+    position:absolute; top:-2px; bottom:-2px; width:2px; background:var(--ink);
+  }
+  .gauge-ticks{
+    display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace;
+    font-size:10px; color:var(--muted); margin-top:4px; padding:0 1px;
+  }
+  .gauge-foot{
+    display:flex; justify-content:space-between; margin-top:10px;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted);
+  }
+  .gauge-foot .status{font-weight:600;}
+  .status.ok{color:var(--positive);}
+  .status.warn{color:var(--warning);}
+  .status.over{color:var(--negative);}
+
+  /* Stat pair */
+  .stat-pair{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;}
+  .stat{
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:14px;
+  }
+  .stat .k{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px; line-height:1.3;}
+  .stat .v{font-family:'IBM Plex Mono',monospace; font-size:17px; font-weight:600;}
+  .stat .sub{font-size:11px; color:var(--muted); margin-top:4px;}
+
+  /* Breakdown fixo/variavel */
+  .breakdown{
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:14px 16px; margin-bottom:20px;
+  }
+  .breakdown .row{display:flex; justify-content:space-between; align-items:center; font-size:13px; padding:5px 0;}
+  .breakdown .row + .row{border-top:1px solid var(--line);}
+  .breakdown .dot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:7px;}
+  .dot.fixo{background:var(--ink);}
+  .dot.var{background:var(--muted);}
+  .breakdown .val{font-family:'IBM Plex Mono',monospace; font-weight:600;}
+
+  /* Reports card */
+  .reports-card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:16px; margin-bottom:16px;
+  }
+  .reports-title{font-family:'Fraunces',serif; font-size:16px; margin:0 0 12px;}
+  .rep-tabs{display:flex; gap:8px; margin-bottom:14px;}
+  .rep-tabs button{
+    flex:1; padding:8px; border-radius:8px; border:1px solid var(--line); background:var(--paper);
+    font-size:12px; font-weight:600; color:var(--muted); cursor:pointer; text-transform:uppercase;
+    letter-spacing:.04em; font-family:'IBM Plex Mono',monospace;
+  }
+  .rep-tabs button.active{background:var(--ink); color:var(--card); border-color:var(--ink);}
+  .rep-nav{display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;}
+  .rep-nav button{background:none; border:none; font-family:'IBM Plex Mono',monospace; font-size:16px; cursor:pointer; padding:4px 10px; color:var(--ink);}
+  .rep-nav .lbl{font-size:13px; font-weight:600; text-transform:capitalize;}
+  .rep-total{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;}
+  .rep-total .v{font-family:'Fraunces',serif; font-size:22px; font-weight:600;}
+  .rep-teto-row{
+    display:flex; align-items:center; justify-content:space-between; margin:10px 0 14px;
+    padding:10px 12px; background:var(--paper); border-radius:8px; border:1px solid var(--line);
+  }
+  .rep-teto-row label{font-size:11px; color:var(--muted); font-family:'IBM Plex Mono',monospace;}
+  .rep-teto-row input{
+    border:none; background:none; font-family:'IBM Plex Mono',monospace; font-size:14px;
+    font-weight:600; text-align:right; width:100px; outline:none; color:var(--ink);
+  }
+  .rep-saldo{font-size:12px; color:var(--muted); margin-top:-8px; margin-bottom:14px; font-family:'IBM Plex Mono',monospace;}
+  .rep-saldo b{color:var(--ink);}
+  .rep-section-label{font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:12px 0 6px; font-family:'IBM Plex Mono',monospace;}
+  .rep-row{display:flex; justify-content:space-between; font-size:13px; padding:5px 0;}
+  .rep-row + .rep-row{border-top:1px solid var(--line);}
+  .rep-row .val{font-family:'IBM Plex Mono',monospace; font-weight:600;}
+  .rep-empty{font-size:12px; color:var(--muted); font-style:italic; padding:6px 0;}
+
+  /* History table */
+  .history-card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:16px; margin-bottom:16px;
+  }
+  .hist-table{width:100%; border-collapse:collapse;}
+  .hist-table th{
+    font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase;
+    letter-spacing:.04em; color:var(--muted); text-align:right; padding:0 0 8px; font-weight:600;
+  }
+  .hist-table th:first-child{text-align:left;}
+  .hist-table td{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; text-align:right;
+    padding:7px 0; border-top:1px solid var(--line);
+  }
+  .hist-table td:first-child{text-align:left; text-transform:capitalize; font-family:'Inter',sans-serif; font-weight:500; font-size:12.5px;}
+  .hist-table .cur-month{font-weight:700;}
+  .hist-arrow{font-size:11px; margin-left:4px;}
+  .export-btn{
+    width:100%; padding:12px; background:none; color:var(--ink); border:1px dashed var(--line);
+    border-radius:10px; font-size:13px; font-weight:500; cursor:pointer; margin-bottom:10px;
+    font-family:'IBM Plex Mono',monospace;
+  }
+  .export-row{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:24px;}
+  .export-row .export-btn{margin-bottom:0;}
+
+  /* Filter tabs */
+  .tabs{display:flex; gap:6px; margin-bottom:10px; flex-wrap:wrap;}
+  .tab{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:.05em; padding:7px 12px; border-radius:20px; border:1px solid var(--line);
+    background:var(--card); color:var(--muted); cursor:pointer;
+  }
+  .tab.active{background:var(--ink); color:var(--card); border-color:var(--ink);}
+
+  .view-toggle{display:flex; justify-content:flex-end; margin-bottom:12px;}
+  .view-toggle span{font-size:11px; color:var(--muted); font-family:'IBM Plex Mono',monospace; cursor:pointer; padding:4px 8px;}
+  .view-toggle span.active{color:var(--ink); font-weight:600; text-decoration:underline; text-underline-offset:3px;}
+
+  /* Entries list */
+  .day-group{margin-bottom:4px;}
+  .day-label{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted);
+    margin:14px 0 6px; text-transform:uppercase; letter-spacing:.05em;
+  }
+  .entry{
+    display:flex; align-items:center; gap:10px; background:var(--card);
+    border:1px solid var(--line); border-radius:10px; padding:11px 12px; margin-bottom:7px;
+  }
+  .entry .tag{
+    font-size:9px; font-family:'IBM Plex Mono',monospace; padding:2px 6px; border-radius:4px;
+    text-transform:uppercase; letter-spacing:.03em; flex-shrink:0;
+  }
+  .tag.debito{background:var(--positive-soft); color:var(--positive);}
+  .tag.cartao{background:var(--warning-soft); color:var(--warning);}
+  .entry .desc{flex:1; min-width:0;}
+  .entry .desc .t{font-size:14px; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .entry .desc .s{font-size:11px; color:var(--muted); margin-top:1px;}
+  .tag-chip{
+    display:inline-block; font-size:10px; font-family:'IBM Plex Mono',monospace;
+    background:var(--paper); border:1px solid var(--line); color:var(--muted);
+    padding:1px 6px; border-radius:20px; margin-left:6px;
+  }
+  .entry .amt{font-family:'IBM Plex Mono',monospace; font-size:14px; font-weight:600; flex-shrink:0;}
+  .entry .del{background:none; border:none; color:var(--muted); font-size:16px; cursor:pointer; padding:2px 4px; flex-shrink:0;}
+  .empty{text-align:center; color:var(--muted); font-size:13px; padding:40px 20px; font-style:italic; font-family:'Fraunces',serif;}
+
+  /* FAB */
+  .fab{
+    position:fixed; bottom:22px; right:22px; width:56px; height:56px; border-radius:50%;
+    background:var(--ink); color:var(--card); border:none; font-size:26px;
+    box-shadow:0 6px 16px rgba(27,36,48,.3); cursor:pointer; z-index:20;
+  }
+
+  /* Modal */
+  .overlay{
+    position:fixed; inset:0; background:rgba(27,36,48,.45); z-index:30;
+    display:none; align-items:flex-end; justify-content:center;
+  }
+  .overlay.show{display:flex;}
+  .sheet{
+    background:var(--paper); width:100%; max-width:520px; border-radius:18px 18px 0 0;
+    padding:20px 18px 26px; max-height:88vh; overflow-y:auto;
+  }
+  .sheet h2{font-family:'Fraunces',serif; font-size:20px; margin:0 0 16px;}
+  .field{margin-bottom:14px;}
+  .field label{display:block; font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:5px; font-family:'IBM Plex Mono',monospace;}
+  .field input, .field select{
+    width:100%; padding:11px 12px; border:1px solid var(--line); border-radius:8px;
+    background:var(--card); font-family:'Inter',sans-serif; font-size:15px; color:var(--ink); outline:none;
+  }
+  .field input:focus, .field select:focus{border-color:var(--ink);}
+  .seg{display:flex; gap:8px;}
+  .seg button{
+    flex:1; padding:10px; border-radius:8px; border:1px solid var(--line); background:var(--card);
+    font-size:13px; font-weight:500; color:var(--muted); cursor:pointer;
+  }
+  .seg button.active{background:var(--ink); color:var(--card); border-color:var(--ink);}
+  .save-btn{
+    width:100%; padding:14px; background:var(--ink); color:var(--card); border:none;
+    border-radius:10px; font-size:15px; font-weight:600; margin-top:6px; cursor:pointer;
+  }
+  .save-btn:disabled{opacity:.55; cursor:wait;}
+  .cancel-btn{
+    width:100%; padding:10px; background:none; color:var(--muted); border:none;
+    font-size:13px; margin-top:8px; cursor:pointer;
+  }
+  #fieldFatura{display:none;}
+  .login-err{
+    color:var(--negative); font-size:12px; margin-top:10px; display:none;
+    font-family:'IBM Plex Mono',monospace;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TELA DE LOGIN ============ -->
+<div id="loginScreen">
+  <p class="eyebrow">Knappe · Pimentel</p>
+  <h1>Fechar a Conta</h1>
+  <p class="login-sub">o caderninho de gastos da família</p>
+  <div class="login-card">
+    <div class="field">
+      <label>E-mail</label>
+      <input type="email" id="loginEmail" autocomplete="username" placeholder="seu e-mail">
+    </div>
+    <div class="field">
+      <label>Senha</label>
+      <input type="password" id="loginPass" autocomplete="current-password" placeholder="sua senha">
+    </div>
+    <button class="save-btn" id="loginBtn" onclick="doLogin()">Entrar</button>
+    <div class="login-err" id="loginErr"></div>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="appScreen">
+
+<header>
+  <p class="eyebrow">Knappe · Pimentel</p>
+  <h1>Fechar a Conta</h1>
+  <div class="user-row">
+    <span><span class="sync-dot" id="syncDot"></span><span id="userName">—</span></span>
+    <button onclick="doLogout()">sair</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="month-nav">
+    <button onclick="changeMonth(-1)">‹</button>
+    <div class="month-label" id="monthLabel">—</div>
+    <button onclick="changeMonth(1)">›</button>
+  </div>
+
+  <div class="teto-row">
+    <label>Renda do mês (teto)</label>
+    <div>
+      <span class="cur">R$</span><input type="number" id="tetoInput" inputmode="decimal" placeholder="0,00">
+    </div>
+  </div>
+
+  <div class="gauge-card">
+    <div class="gauge-head">
+      <div><div class="k">Saída na fatura (caixa real)</div><div class="v" id="gastoFaturaVal">R$ 0</div></div>
+    </div>
+    <div class="gauge-track">
+      <div class="gauge-fill" id="gaugeFill"></div>
+      <div class="gauge-marker" id="gaugeMarker" style="left:100%"></div>
+    </div>
+    <div class="gauge-ticks"><span>0</span><span>25</span><span>50</span><span>75</span><span>teto</span></div>
+    <div class="gauge-foot">
+      <span>Compra no mês: <b id="gastoCompraVal">R$ 0</b></span>
+      <span class="status" id="statusLabel">—</span>
+    </div>
+  </div>
+
+  <div class="stat-pair">
+    <div class="stat">
+      <div class="k">Saldo caixa</div>
+      <div class="v" id="saldoCaixaVal">R$ 0</div>
+      <div class="sub">teto − fatura do mês</div>
+    </div>
+    <div class="stat">
+      <div class="k">Saldo comportamento</div>
+      <div class="v" id="saldoCompraVal">R$ 0</div>
+      <div class="sub">teto − compras do mês</div>
+    </div>
+  </div>
+
+  <div class="breakdown" id="breakdownBox">
+    <div class="row"><span><span class="dot fixo"></span>Gastos fixos</span><span class="val" id="fixoVal">R$ 0</span></div>
+    <div class="row"><span><span class="dot var"></span>Gastos variáveis</span><span class="val" id="varVal">R$ 0</span></div>
+  </div>
+
+  <div class="breakdown" id="tagBreakdownBox" style="display:none;">
+    <div class="rep-section-label" style="margin-top:0;">Por tag no mês (compras)</div>
+    <div id="tagBreakdownList"></div>
+  </div>
+
+  <div class="reports-card">
+    <div class="reports-title">Relatório de período</div>
+    <div class="rep-tabs">
+      <button id="repDiaBtn" class="active" onclick="setReportPeriod('dia')">Dia</button>
+      <button id="repSemanaBtn" onclick="setReportPeriod('semana')">Semana</button>
+    </div>
+    <div class="rep-nav">
+      <button onclick="repNav(-1)">‹</button>
+      <div class="lbl" id="repLabel">—</div>
+      <button onclick="repNav(1)">›</button>
+    </div>
+    <div class="rep-total">
+      <span style="font-size:12px; color:var(--muted); font-family:'IBM Plex Mono',monospace; text-transform:uppercase;">Gasto no período (compra)</span>
+      <span class="v" id="repTotalVal">R$ 0</span>
+    </div>
+    <div class="rep-teto-row" id="repTetoRow" style="display:none;">
+      <label>Teto semanal (opcional)</label>
+      <div><span class="cur" style="font-size:11px; color:var(--muted); margin-right:2px;">R$</span><input type="number" id="repTetoInput" inputmode="decimal" placeholder="0,00"></div>
+    </div>
+    <div class="rep-saldo" id="repSaldoLine" style="display:none;">Saldo da semana: <b id="repSaldoVal">—</b></div>
+    <div class="rep-section-label" style="margin-top:0;">Fixo × variável</div>
+    <div class="rep-row"><span>Fixo</span><span class="val" id="repFixoVal">R$ 0</span></div>
+    <div class="rep-row"><span>Variável</span><span class="val" id="repVarVal">R$ 0</span></div>
+    <div class="rep-section-label">Por tag</div>
+    <div id="repTagList"></div>
+  </div>
+
+  <div class="history-card">
+    <div class="reports-title">Histórico (últimos 6 meses)</div>
+    <table class="hist-table">
+      <thead>
+        <tr><th>Mês</th><th>Teto</th><th>Fatura</th><th>Saldo</th></tr>
+      </thead>
+      <tbody id="historyBody"></tbody>
+    </table>
+  </div>
+
+  <div class="export-row">
+    <button class="export-btn" onclick="exportCsv()">↓ Exportar .csv</button>
+    <button class="export-btn" onclick="document.getElementById('csvFile').click()">↑ Importar .csv</button>
+  </div>
+  <input type="file" id="csvFile" accept=".csv,text/csv" style="display:none" onchange="importCsv(event)">
+
+  <div class="view-toggle">
+    <span id="vFatura" class="active" onclick="setView('fatura')">ver por fatura</span>
+    <span style="color:var(--line)">&nbsp;|&nbsp;</span>
+    <span id="vCompra" onclick="setView('compra')">ver por compra</span>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-f="todos" onclick="setFilter('todos')">Todos</div>
+    <div class="tab" data-f="fixo" onclick="setFilter('fixo')">Fixos</div>
+    <div class="tab" data-f="variavel" onclick="setFilter('variavel')">Variáveis</div>
+    <div class="tab" data-f="cartao" onclick="setFilter('cartao')">Cartão</div>
+    <div class="tab" data-f="debito" onclick="setFilter('debito')">Débito</div>
+  </div>
+
+  <div id="entriesList"><div class="loading-line">carregando…</div></div>
+
+</div>
+
+<button class="fab" onclick="openModal()">+</button>
+
+<div class="overlay" id="overlay">
+  <div class="sheet">
+    <h2 id="sheetTitle">Novo lançamento</h2>
+    <div class="field">
+      <label>Tipo</label>
+      <div class="seg">
+        <button type="button" id="segDebito" class="active" onclick="setTipo('debito')">Débito</button>
+        <button type="button" id="segCartao" onclick="setTipo('cartao')">Cartão</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>Categoria</label>
+      <div class="seg">
+        <button type="button" id="segVariavel" class="active" onclick="setCategoria('variavel')">Variável</button>
+        <button type="button" id="segFixo" onclick="setCategoria('fixo')">Fixo</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>Descrição</label>
+      <input type="text" id="descInput" placeholder="Ex: Supermercado, plano de saúde...">
+    </div>
+    <div class="field">
+      <label>Valor (R$)</label>
+      <input type="number" id="valorInput" inputmode="decimal" placeholder="0,00">
+    </div>
+    <div class="field">
+      <label>Tag (opcional — lazer, ifood, amazon...)</label>
+      <input type="text" id="tagInput" placeholder="deixe em branco se não quiser categorizar">
+    </div>
+    <div class="field">
+      <label>Data da compra</label>
+      <input type="date" id="dataInput">
+    </div>
+    <div class="field" id="fieldFatura">
+      <label>Mês da fatura (quando cai no cartão)</label>
+      <input type="month" id="faturaInput">
+    </div>
+    <button class="save-btn" id="saveBtnLabel" onclick="saveEntry()">Salvar lançamento</button>
+    <button class="cancel-btn" onclick="closeModal()">Cancelar</button>
+  </div>
+</div>
+
+</div><!-- /appScreen -->
+
+<div id="toast"></div>
+
+<script src="supabase.js"></script>
+<script>
+/* ================= Supabase ================= */
+const SUPABASE_URL = 'https://gjsdsjfkjyuznmlbofbq.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_1UZyjHPsgCpzCXRJqCSJ7A_xEF2LUpm';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const NOMES = {
+  'hdgpimentel@gmail.com': 'Henrique',
+  'fatinhaknappe@gmail.com': 'Fátima'
+};
+function nomeDe(email){
+  if(!email) return '';
+  return NOMES[email.toLowerCase()] || email.split('@')[0];
+}
+
+/* ================= Estado ================= */
+let data = { entries: [], income: {}, weeklyIncome: {} };
+let currentUser = null;
+let currentMonth = monthKey(new Date());
+let currentView = 'fatura';
+let currentFilter = 'todos';
+let formTipo = 'debito';
+let formCategoria = 'variavel';
+let editingId = null;
+
+/* ================= Helpers ================= */
+function monthKey(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0'); }
+function monthLabelText(mk){
+  const [y,m] = mk.split('-').map(Number);
+  const d = new Date(y, m-1, 1);
+  return d.toLocaleDateString('pt-BR', {month:'long', year:'numeric'});
+}
+function fmt(n){
+  return (n||0).toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+}
+function addMonths(mk, delta){
+  let [y,m] = mk.split('-').map(Number);
+  m += delta;
+  while(m>12){m-=12; y++;}
+  while(m<1){m+=12; y--;}
+  return y + '-' + String(m).padStart(2,'0');
+}
+function defaultFaturaMonth(dateStr){
+  if(!dateStr) return currentMonth;
+  const d = new Date(dateStr+'T00:00:00');
+  return monthKey(new Date(d.getFullYear(), d.getMonth()+1, 1));
+}
+function escapeHtml(s){
+  const d = document.createElement('div'); d.textContent = s; return d.innerHTML;
+}
+let toastTimer = null;
+function toast(msg, isErr){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = isErr ? 'show err' : 'show';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>{ t.className=''; }, 3200);
+}
+
+/* ================= Auth ================= */
+async function doLogin(){
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass = document.getElementById('loginPass').value;
+  const errEl = document.getElementById('loginErr');
+  errEl.style.display = 'none';
+  if(!email || !pass){ errEl.textContent='Preencha e-mail e senha.'; errEl.style.display='block'; return; }
+  const btn = document.getElementById('loginBtn');
+  btn.disabled = true; btn.textContent = 'Entrando…';
+  const { error } = await sb.auth.signInWithPassword({ email, password: pass });
+  btn.disabled = false; btn.textContent = 'Entrar';
+  if(error){
+    errEl.textContent = 'Login falhou: e-mail ou senha incorretos.';
+    errEl.style.display = 'block';
+    return;
+  }
+}
+async function doLogout(){
+  await sb.auth.signOut();
+}
+document.getElementById('loginPass').addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
+
+sb.auth.onAuthStateChange((_event, session)=>{
+  if(session && session.user){
+    currentUser = session.user;
+    showApp();
+  }else{
+    currentUser = null;
+    showLogin();
+  }
+});
+
+function showLogin(){
+  document.getElementById('loginScreen').classList.add('show');
+  document.getElementById('appScreen').classList.remove('show');
+  stopRealtime();
+}
+let appStarted = false;
+function showApp(){
+  document.getElementById('loginScreen').classList.remove('show');
+  document.getElementById('appScreen').classList.add('show');
+  document.getElementById('userName').textContent = nomeDe(currentUser.email);
+  loadAll().then(()=>{ renderAll(); });
+  startRealtime();
+  appStarted = true;
+}
+
+/* ================= Dados (Supabase) ================= */
+function rowToEntry(r){
+  return {
+    id: r.id, tipo: r.tipo, categoria: r.categoria,
+    descricao: r.descricao || '', valor: Number(r.valor),
+    tag: r.tag || '', dataCompra: r.data_compra,
+    mesFatura: r.mes_fatura, criadoPor: r.criado_por || ''
+  };
+}
+
+async function loadAll(){
+  try{
+    const [ent, inc, wk] = await Promise.all([
+      sb.from('entries').select('*').order('data_compra', {ascending:false}),
+      sb.from('monthly_income').select('*'),
+      sb.from('weekly_income').select('*')
+    ]);
+    if(ent.error||inc.error||wk.error) throw (ent.error||inc.error||wk.error);
+    data.entries = (ent.data||[]).map(rowToEntry);
+    data.income = {};
+    (inc.data||[]).forEach(r=>{ data.income[r.mes] = Number(r.teto); });
+    data.weeklyIncome = {};
+    (wk.data||[]).forEach(r=>{ data.weeklyIncome[r.semana] = Number(r.teto); });
+  }catch(e){
+    console.error(e);
+    toast('Erro ao carregar dados. Verifique a internet.', true);
+  }
+}
+
+function renderAll(){ render(); renderReports(); renderHistory(); }
+
+/* ---- Realtime: mudanças feitas em outro aparelho aparecem aqui ---- */
+let rtChannel = null;
+let reloadTimer = null;
+function scheduleReload(){
+  clearTimeout(reloadTimer);
+  reloadTimer = setTimeout(async ()=>{ await loadAll(); renderAll(); }, 350);
+}
+function startRealtime(){
+  stopRealtime();
+  rtChannel = sb.channel('familia')
+    .on('postgres_changes', {event:'*', schema:'public', table:'entries'}, scheduleReload)
+    .on('postgres_changes', {event:'*', schema:'public', table:'monthly_income'}, scheduleReload)
+    .on('postgres_changes', {event:'*', schema:'public', table:'weekly_income'}, scheduleReload)
+    .subscribe((status)=>{
+      document.getElementById('syncDot').classList.toggle('on', status==='SUBSCRIBED');
+    });
+}
+function stopRealtime(){
+  if(rtChannel){ sb.removeChannel(rtChannel); rtChannel = null; }
+  document.getElementById('syncDot').classList.remove('on');
+}
+/* Celular volta do bolso → recarrega para pegar o que mudou */
+document.addEventListener('visibilitychange', ()=>{
+  if(document.visibilityState==='visible' && currentUser && appStarted) scheduleReload();
+});
+
+/* ================= Navegação / filtros ================= */
+function changeMonth(delta){
+  currentMonth = addMonths(currentMonth, delta);
+  render();
+}
+function setView(v){
+  currentView = v;
+  document.getElementById('vFatura').classList.toggle('active', v==='fatura');
+  document.getElementById('vCompra').classList.toggle('active', v==='compra');
+  render();
+}
+function setFilter(f){
+  currentFilter = f;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active', t.dataset.f===f));
+  render();
+}
+
+function entriesInFaturaView(mk){
+  return data.entries.filter(e=>{
+    if(e.tipo==='debito') return e.dataCompra.slice(0,7)===mk;
+    return e.mesFatura===mk;
+  });
+}
+function entriesInCompraView(mk){
+  return data.entries.filter(e=> e.dataCompra.slice(0,7)===mk);
+}
+function applyFilter(list){
+  if(currentFilter==='todos') return list;
+  if(currentFilter==='fixo') return list.filter(e=>e.categoria==='fixo');
+  if(currentFilter==='variavel') return list.filter(e=>e.categoria==='variavel');
+  if(currentFilter==='cartao') return list.filter(e=>e.tipo==='cartao');
+  if(currentFilter==='debito') return list.filter(e=>e.tipo==='debito');
+  return list;
+}
+function sum(list){ return list.reduce((a,e)=>a+Number(e.valor),0); }
+
+function tagGroups(list){
+  const map = {};
+  list.forEach(e=>{
+    const key = (e.tag && e.tag.trim()) ? e.tag.trim() : 'Sem tag';
+    map[key] = (map[key]||0) + Number(e.valor);
+  });
+  return Object.entries(map).sort((a,b)=>b[1]-a[1]);
+}
+function renderTagBreakdown(listElId, boxElId, list){
+  const box = document.getElementById(boxElId);
+  const el = document.getElementById(listElId);
+  if(list.length===0){ box.style.display='none'; return; }
+  box.style.display='block';
+  el.innerHTML = tagGroups(list).map(([tag,val])=>
+    `<div class="row"><span>${escapeHtml(tag)}</span><span class="val">${fmt(val)}</span></div>`
+  ).join('');
+}
+
+/* ================= Relatórios (dia/semana) ================= */
+let reportPeriod = 'dia';
+let reportDayKey = toKey(new Date());
+let reportWeekStart = mondayOf(new Date());
+
+function toKey(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function mondayOf(d){ const day=(d.getDay()+6)%7; const m=new Date(d); m.setDate(d.getDate()-day); m.setHours(0,0,0,0); return m; }
+function addDaysToKey(key, delta){
+  const d = new Date(key+'T00:00:00'); d.setDate(d.getDate()+delta); return toKey(d);
+}
+function weekRangeLabel(monday){
+  const sunday = new Date(monday); sunday.setDate(monday.getDate()+6);
+  const opts = {day:'2-digit', month:'short'};
+  return monday.toLocaleDateString('pt-BR',opts) + ' – ' + sunday.toLocaleDateString('pt-BR',opts);
+}
+function weekKey(monday){ return toKey(monday); }
+
+function setReportPeriod(p){
+  reportPeriod = p;
+  document.getElementById('repDiaBtn').classList.toggle('active', p==='dia');
+  document.getElementById('repSemanaBtn').classList.toggle('active', p==='semana');
+  document.getElementById('repTetoRow').style.display = p==='semana' ? 'flex' : 'none';
+  document.getElementById('repSaldoLine').style.display = p==='semana' ? 'block' : 'none';
+  renderReports();
+}
+function repNav(delta){
+  if(reportPeriod==='dia'){
+    reportDayKey = addDaysToKey(reportDayKey, delta);
+  }else{
+    const m = new Date(reportWeekStart); m.setDate(m.getDate()+delta*7); reportWeekStart = m;
+  }
+  renderReports();
+}
+
+function renderReports(){
+  let list, label, wkKey;
+  if(reportPeriod==='dia'){
+    list = data.entries.filter(e=>e.dataCompra===reportDayKey);
+    label = new Date(reportDayKey+'T00:00:00').toLocaleDateString('pt-BR',{weekday:'short', day:'2-digit', month:'short'});
+  }else{
+    const monday = reportWeekStart;
+    const sunday = new Date(monday); sunday.setDate(monday.getDate()+6);
+    const start = toKey(monday), end = toKey(sunday);
+    list = data.entries.filter(e=> e.dataCompra>=start && e.dataCompra<=end);
+    label = weekRangeLabel(monday);
+    wkKey = weekKey(monday);
+  }
+  document.getElementById('repLabel').textContent = label;
+  const total = sum(list);
+  document.getElementById('repTotalVal').textContent = fmt(total);
+
+  if(reportPeriod==='semana'){
+    const tetoSemana = data.weeklyIncome[wkKey];
+    document.getElementById('repTetoInput').value = tetoSemana || '';
+    document.getElementById('repTetoInput').dataset.weekKey = wkKey;
+    if(tetoSemana){
+      const saldo = tetoSemana - total;
+      document.getElementById('repSaldoVal').textContent = fmt(saldo);
+      document.getElementById('repSaldoVal').style.color = saldo<0 ? 'var(--negative)' : 'var(--positive)';
+    }else{
+      document.getElementById('repSaldoVal').textContent = 'defina o teto semanal acima';
+      document.getElementById('repSaldoVal').style.color = 'var(--muted)';
+    }
+  }
+
+  document.getElementById('repFixoVal').textContent = fmt(sum(list.filter(e=>e.categoria==='fixo')));
+  document.getElementById('repVarVal').textContent = fmt(sum(list.filter(e=>e.categoria==='variavel')));
+
+  const tagEl = document.getElementById('repTagList');
+  if(list.length===0){
+    tagEl.innerHTML = '<div class="rep-empty">Nenhum gasto neste período.</div>';
+  }else{
+    tagEl.innerHTML = tagGroups(list).map(([tag,val])=>
+      `<div class="rep-row"><span>${escapeHtml(tag)}</span><span class="val">${fmt(val)}</span></div>`
+    ).join('');
+  }
+}
+
+document.getElementById('repTetoInput').addEventListener('change', async (ev)=>{
+  const wk = ev.target.dataset.weekKey;
+  if(!wk) return;
+  const teto = Number(ev.target.value)||0;
+  data.weeklyIncome[wk] = teto;
+  renderReports();
+  const { error } = await sb.from('weekly_income').upsert({ semana: wk, teto: teto, updated_at: new Date().toISOString() });
+  if(error){ toast('Erro ao salvar teto semanal.', true); }
+});
+
+/* ================= Render principal ================= */
+function render(){
+  document.getElementById('monthLabel').textContent = monthLabelText(currentMonth);
+  const teto = Number(data.income[currentMonth] || 0);
+  document.getElementById('tetoInput').value = teto || '';
+
+  const faturaList = entriesInFaturaView(currentMonth);
+  const compraList = entriesInCompraView(currentMonth);
+  const gastoFatura = sum(faturaList);
+  const gastoCompra = sum(compraList);
+
+  document.getElementById('gastoFaturaVal').textContent = fmt(gastoFatura);
+  document.getElementById('gastoCompraVal').textContent = fmt(gastoCompra);
+
+  const pct = teto>0 ? Math.min(gastoFatura/teto,1)*100 : (gastoFatura>0?100:0);
+  const fill = document.getElementById('gaugeFill');
+  fill.style.width = pct+'%';
+  let statusText, statusClass, fillColor;
+  if(teto<=0){ statusText='defina o teto'; statusClass=''; fillColor='var(--muted)'; }
+  else if(gastoFatura>teto){ statusText='estourou o teto'; statusClass='over'; fillColor='var(--negative)'; }
+  else if(gastoFatura/teto>=0.8){ statusText='perto do teto'; statusClass='warn'; fillColor='var(--warning)'; }
+  else{ statusText='dentro do teto'; statusClass='ok'; fillColor='var(--positive)'; }
+  fill.style.background = fillColor;
+  const statusEl = document.getElementById('statusLabel');
+  statusEl.textContent = statusText;
+  statusEl.className = 'status '+statusClass;
+
+  const saldoCaixa = teto - gastoFatura;
+  const saldoCompra = teto - gastoCompra;
+  const scEl = document.getElementById('saldoCaixaVal');
+  scEl.textContent = fmt(saldoCaixa);
+  scEl.style.color = saldoCaixa<0 ? 'var(--negative)' : 'var(--positive)';
+  const spEl = document.getElementById('saldoCompraVal');
+  spEl.textContent = fmt(saldoCompra);
+  spEl.style.color = saldoCompra<0 ? 'var(--negative)' : 'var(--positive)';
+
+  const fixo = sum(faturaList.filter(e=>e.categoria==='fixo'));
+  const variavel = sum(faturaList.filter(e=>e.categoria==='variavel'));
+  document.getElementById('fixoVal').textContent = fmt(fixo);
+  document.getElementById('varVal').textContent = fmt(variavel);
+
+  renderTagBreakdown('tagBreakdownList', 'tagBreakdownBox', compraList);
+
+  const listSource = currentView==='fatura' ? faturaList : compraList;
+  const filtered = applyFilter(listSource).sort((a,b)=> b.dataCompra.localeCompare(a.dataCompra));
+  renderList(filtered);
+}
+
+function renderList(list){
+  const el = document.getElementById('entriesList');
+  if(list.length===0){
+    el.innerHTML = '<div class="empty">Nenhum lançamento aqui ainda.</div>';
+    return;
+  }
+  let html = '';
+  let lastDate = null;
+  list.forEach(e=>{
+    const dLabel = new Date(e.dataCompra+'T00:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short'});
+    if(dLabel!==lastDate){
+      html += `<div class="day-label">${dLabel}</div>`;
+      lastDate = dLabel;
+    }
+    const tagClass = e.tipo==='cartao' ? 'cartao' : 'debito';
+    const tagText = e.tipo==='cartao' ? 'Cartão' : 'Débito';
+    const porQuem = e.criadoPor ? ` · ${escapeHtml(e.criadoPor)}` : '';
+    const subText = e.tipo==='cartao'
+      ? `Fatura ${monthLabelText(e.mesFatura)} · ${e.categoria==='fixo'?'fixo':'variável'}${porQuem}`
+      : `${e.categoria==='fixo'?'fixo':'variável'}${porQuem}`;
+    const tagChip = e.tag ? `<span class="tag-chip">${escapeHtml(e.tag)}</span>` : '';
+    html += `
+      <div class="entry">
+        <span class="tag ${tagClass}">${tagText}</span>
+        <div class="desc">
+          <div class="t">${escapeHtml(e.descricao||'Sem descrição')}${tagChip}</div>
+          <div class="s">${subText}</div>
+        </div>
+        <div class="amt">${fmt(e.valor)}</div>
+        <button class="del" onclick="editEntry('${e.id}')" title="Editar" style="font-size:14px;">✎</button>
+        <button class="del" onclick="deleteEntry('${e.id}')" title="Excluir">✕</button>
+      </div>`;
+  });
+  el.innerHTML = html;
+}
+
+/* ================= CRUD ================= */
+async function deleteEntry(id){
+  const e = data.entries.find(x=>x.id===id);
+  if(!e) return;
+  const ok = confirm(`Excluir "${e.descricao||'sem descrição'}" — ${fmt(e.valor)}?\n\nEssa ação não pode ser desfeita.`);
+  if(!ok) return;
+  data.entries = data.entries.filter(x=>x.id!==id);
+  renderAll();
+  const { error } = await sb.from('entries').delete().eq('id', id);
+  if(error){ toast('Erro ao excluir. Recarregando…', true); await loadAll(); renderAll(); }
+  else{ toast('Lançamento excluído.'); }
+}
+
+document.getElementById('tetoInput').addEventListener('change', async (ev)=>{
+  const v = Number(ev.target.value)||0;
+  data.income[currentMonth] = v;
+  renderAll();
+  const { error } = await sb.from('monthly_income').upsert({ mes: currentMonth, teto: v, updated_at: new Date().toISOString() });
+  if(error){ toast('Erro ao salvar o teto.', true); }
+});
+
+/* ================= Modal ================= */
+function openModal(){
+  editingId = null;
+  document.getElementById('sheetTitle').textContent = 'Novo lançamento';
+  document.getElementById('saveBtnLabel').textContent = 'Salvar lançamento';
+  setTipo('debito');
+  setCategoria('variavel');
+  document.getElementById('overlay').classList.add('show');
+  const hoje = toKey(new Date()); // data local, não UTC
+  document.getElementById('dataInput').value = hoje;
+  document.getElementById('faturaInput').value = defaultFaturaMonth(hoje);
+}
+function editEntry(id){
+  const e = data.entries.find(x=>x.id===id);
+  if(!e) return;
+  editingId = id;
+  document.getElementById('sheetTitle').textContent = 'Editar lançamento';
+  document.getElementById('saveBtnLabel').textContent = 'Salvar edição';
+  setTipo(e.tipo);
+  setCategoria(e.categoria);
+  document.getElementById('descInput').value = e.descricao || '';
+  document.getElementById('valorInput').value = e.valor;
+  document.getElementById('tagInput').value = e.tag || '';
+  document.getElementById('dataInput').value = e.dataCompra;
+  document.getElementById('faturaInput').value = e.mesFatura;
+  document.getElementById('overlay').classList.add('show');
+}
+function closeModal(){
+  document.getElementById('overlay').classList.remove('show');
+  document.getElementById('descInput').value='';
+  document.getElementById('valorInput').value='';
+  document.getElementById('tagInput').value='';
+  editingId = null;
+}
+document.getElementById('overlay').addEventListener('click', (ev)=>{
+  if(ev.target.id==='overlay') closeModal();
+});
+
+function setTipo(t){
+  formTipo = t;
+  document.getElementById('segDebito').classList.toggle('active', t==='debito');
+  document.getElementById('segCartao').classList.toggle('active', t==='cartao');
+  document.getElementById('fieldFatura').style.display = t==='cartao' ? 'block' : 'none';
+}
+function setCategoria(c){
+  formCategoria = c;
+  document.getElementById('segVariavel').classList.toggle('active', c==='variavel');
+  document.getElementById('segFixo').classList.toggle('active', c==='fixo');
+}
+document.getElementById('dataInput').addEventListener('change', (ev)=>{
+  if(formTipo==='cartao'){
+    document.getElementById('faturaInput').value = defaultFaturaMonth(ev.target.value);
+  }
+});
+
+async function saveEntry(){
+  const desc = document.getElementById('descInput').value.trim();
+  const valor = Number(document.getElementById('valorInput').value);
+  const dataCompra = document.getElementById('dataInput').value;
+  if(!valor || valor<=0){ alert('Informe um valor válido.'); return; }
+  if(!dataCompra){ alert('Informe a data da compra.'); return; }
+  const tag = document.getElementById('tagInput').value.trim();
+  let mesFatura = dataCompra.slice(0,7);
+  if(formTipo==='cartao'){
+    const mf = document.getElementById('faturaInput').value;
+    mesFatura = /^\d{4}-\d{2}$/.test(mf) ? mf : defaultFaturaMonth(dataCompra);
+  }
+
+  const btn = document.getElementById('saveBtnLabel');
+  btn.disabled = true;
+
+  const payload = {
+    tipo: formTipo, categoria: formCategoria, descricao: desc,
+    valor: valor, tag: tag || null, data_compra: dataCompra, mes_fatura: mesFatura
+  };
+
+  try{
+    if(editingId){
+      payload.updated_at = new Date().toISOString();
+      const { data: rows, error } = await sb.from('entries').update(payload).eq('id', editingId).select();
+      if(error) throw error;
+      const idx = data.entries.findIndex(x=>x.id===editingId);
+      if(idx>-1 && rows && rows[0]) data.entries[idx] = rowToEntry(rows[0]);
+      toast('Edição salva.');
+    }else{
+      payload.criado_por = nomeDe(currentUser && currentUser.email);
+      const { data: rows, error } = await sb.from('entries').insert(payload).select();
+      if(error) throw error;
+      if(rows && rows[0]) data.entries.push(rowToEntry(rows[0]));
+      toast('Lançamento salvo.');
+    }
+    closeModal();
+    currentMonth = currentView==='fatura' ? mesFatura : dataCompra.slice(0,7);
+    renderAll();
+  }catch(e){
+    console.error(e);
+    toast('Erro ao salvar. Verifique a internet e tente de novo.', true);
+  }finally{
+    btn.disabled = false;
+  }
+}
+
+/* ================= Histórico mensal ================= */
+function renderHistory(){
+  const anchor = monthKey(new Date());
+  const months = [];
+  for(let i=5; i>=0; i--){ months.push(addMonths(anchor, -i)); }
+  let prevGasto = null;
+  const rows = months.map(mk=>{
+    const teto = Number(data.income[mk] || 0);
+    const gasto = sum(entriesInFaturaView(mk));
+    const saldo = teto - gasto;
+    const isCur = mk===anchor;
+    let arrow = '';
+    if(prevGasto!==null && prevGasto>0){
+      if(gasto>prevGasto) arrow = '<span class="hist-arrow" style="color:var(--negative)">▲</span>';
+      else if(gasto<prevGasto) arrow = '<span class="hist-arrow" style="color:var(--positive)">▼</span>';
+    }
+    prevGasto = gasto;
+    const saldoColor = teto===0 ? 'var(--muted)' : (saldo<0 ? 'var(--negative)' : 'var(--positive)');
+    return `<tr>
+      <td class="${isCur?'cur-month':''}">${monthLabelText(mk).split(' de ')[0]}</td>
+      <td>${teto? fmt(teto) : '—'}</td>
+      <td>${fmt(gasto)}${arrow}</td>
+      <td style="color:${saldoColor}; font-weight:600;">${teto? fmt(saldo) : '—'}</td>
+    </tr>`;
+  });
+  document.getElementById('historyBody').innerHTML = rows.join('');
+}
+
+/* ================= CSV: exportar / importar ================= */
+function exportCsv(){
+  const header = ['data_compra','mes_fatura','tipo','categoria','tag','descricao','valor'];
+  const lines = [header.join(';')];
+  data.entries
+    .slice()
+    .sort((a,b)=>a.dataCompra.localeCompare(b.dataCompra))
+    .forEach(e=>{
+      const row = [
+        e.dataCompra, e.mesFatura, e.tipo, e.categoria,
+        (e.tag||'').replace(/;/g,','), (e.descricao||'').replace(/;/g,','),
+        String(e.valor).replace('.',',')
+      ];
+      lines.push(row.join(';'));
+    });
+  const csv = lines.join('\n');
+  const blob = new Blob(['﻿'+csv], {type:'text/csv;charset=utf-8;'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fechar-a-conta_${monthKey(new Date())}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+async function importCsv(ev){
+  const file = ev.target.files && ev.target.files[0];
+  ev.target.value = ''; // permite reimportar o mesmo arquivo
+  if(!file) return;
+  const text = (await file.text()).replace(/^﻿/, '');
+  const lines = text.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
+  if(lines.length < 2){ toast('CSV vazio ou sem dados.', true); return; }
+
+  const header = lines[0].toLowerCase().split(';').map(h=>h.trim());
+  const col = (name)=> header.indexOf(name);
+  const iData = col('data_compra'), iFat = col('mes_fatura'), iTipo = col('tipo'),
+        iCat = col('categoria'), iTag = col('tag'), iDesc = col('descricao'), iVal = col('valor');
+  if(iData<0 || iTipo<0 || iCat<0 || iVal<0){
+    toast('CSV inválido: use o mesmo formato do exportar.', true); return;
+  }
+
+  const rows = [];
+  const problemas = [];
+  for(let i=1; i<lines.length; i++){
+    const p = lines[i].split(';');
+    const dataCompra = (p[iData]||'').trim();
+    const tipo = (p[iTipo]||'').trim().toLowerCase();
+    const categoria = (p[iCat]||'').trim().toLowerCase();
+    const valor = Number(String(p[iVal]||'').trim().replace(',','.'));
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(dataCompra) || !['debito','cartao'].includes(tipo)
+       || !['fixo','variavel'].includes(categoria) || !valor || valor<=0){
+      problemas.push(i+1);
+      continue;
+    }
+    const mfRaw = iFat>=0 ? (p[iFat]||'').trim() : '';
+    const mesFatura = /^\d{4}-\d{2}$/.test(mfRaw) ? mfRaw : dataCompra.slice(0,7);
+    rows.push({
+      tipo, categoria, valor,
+      descricao: iDesc>=0 ? (p[iDesc]||'').trim() : '',
+      tag: iTag>=0 && (p[iTag]||'').trim() ? p[iTag].trim() : null,
+      data_compra: dataCompra,
+      mes_fatura: mesFatura,
+      criado_por: nomeDe(currentUser && currentUser.email) + ' (import)'
+    });
+  }
+
+  if(rows.length===0){ toast('Nenhuma linha válida no CSV.', true); return; }
+  const ok = confirm(`Importar ${rows.length} lançamento(s)?` + (problemas.length ? `\n(${problemas.length} linha(s) inválida(s) serão ignoradas: ${problemas.slice(0,8).join(', ')}${problemas.length>8?'…':''})` : ''));
+  if(!ok) return;
+
+  toast('Importando…');
+  const { error } = await sb.from('entries').insert(rows);
+  if(error){ console.error(error); toast('Erro ao importar CSV.', true); return; }
+  await loadAll();
+  renderAll();
+  toast(`${rows.length} lançamento(s) importado(s).`);
+}
+</script>
+</body>
+</html>

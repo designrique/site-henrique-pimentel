@@ -183,7 +183,9 @@ const post: PostEntry = {
 
         <p>
           Criei um script (mantenho aberto em{" "}
-          <a href="/tools/geo-baseline">/tools/geo-baseline</a>) que
+          <a href="/baseline-geo">
+              /baseline-geo
+            </a>) que
           roda as 10 buscas-alvo nos 5 motores uma vez por mês e
           gera o relatório de evolução. O custo da rodada mensal é
           aproximadamente R$ 8 em chamadas de API. O retorno é

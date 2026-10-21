@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { CtaBlock } from "@/components/sections/cta-block";
 import {
-  getAllPosts,
+  getPosts,
   getPostBySlug,
   formatPostDate,
 } from "@/lib/posts";
@@ -16,7 +16,7 @@ interface PageProps {
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const posts = await getAllPosts();
+  const posts = await getPosts();
   return posts.map((p) => ({ slug: p.slug }));
 }
 
@@ -63,7 +63,7 @@ export async function generateMetadata({
 export default async function PostPage({ params }: PageProps) {
   const { slug } = await params;
   const entry = await getPostBySlug(slug);
-  if (!entry) notFound();
+  if (!entry || entry.meta.news) notFound();
 
   const { meta, Content } = entry;
   const isMedicado = meta.categoryTone === "vertical";

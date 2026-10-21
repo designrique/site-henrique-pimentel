@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Fraunces, JetBrains_Mono } from "next/font/google";
+import { Raleway, Jost, Fraunces, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { BreadcrumbInjector } from "@/components/breadcrumb-injector";
+import Script from "next/script";
 import "./globals.css";
 
-const geist = Geist({
-  variable: "--font-geist",
+const raleway = Raleway({
+  variable: "--font-raleway",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const jost = Jost({
+  variable: "--font-jost",
   subsets: ["latin"],
   display: "swap",
 });
@@ -345,9 +352,19 @@ export default function RootLayout({
     <html
       lang="pt-BR"
       suppressHydrationWarning
-      className={`${geist.variable} ${fraunces.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${raleway.variable} ${jost.variable} ${fraunces.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-20QT7D8HZD"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-20QT7D8HZD');`}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph) }}

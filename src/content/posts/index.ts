@@ -1,5 +1,84 @@
 import type { PostEntry } from "@/lib/posts";
 
+import gemini4ArgonModeloFronteira from "./gemini-4-argon-modelo-fronteira";
+import googleAgentesIaEmpresas from "./google-agentes-ia-empresas";
+import contextModeReduzSaidaFerramentas from "./context-mode-reduz-saida-ferramentas";
+import hyperframesHtmlVideoAgentes from "./hyperframes-html-video-agentes";
+import iaNaoAssumeResponsabilidadeSocial from "./ia-nao-assume-responsabilidade-social";
+import pesquisadorAnthropicSaidaAlertaIa from "./pesquisador-anthropic-saida-alerta-ia";
+import amodeiPedeDesacelerarModelosIa from "./amodei-pede-desacelerar-modelos-ia";
+import agentesIaNegociosReaisFaturasFalsas from "./agentes-ia-negocios-reais-faturas-falsas";
+import openaiAgenteRougeTentouHackear from "./openai-agente-rouge-tentou-hackear";
+import realSweBenchmarkCodigoEnterprise from "./real-swe-benchmark-codigo-enterprise";
+import finraIaOrganismoNormas from "./finra-ia-organismo-normas";
+import iaCancroColorretalTomografia from "./ia-cancro-colorretal-tomografia";
+import mestreGoVenceKatago from "./mestre-go-vence-katago";
+
+import estudoAhrefsGeoFrescorConteudo from "./estudo-ahrefs-geo-frescor-conteudo";
+import estruturaConteudoFaqCitacoesIa37 from "./estrutura-conteudo-faq-citacoes-ia-37";
+import conteudoMarkdownTokenEfficientCrawlersIa from "./conteudo-markdown-token-efficient-crawlers-ia";
+import carreiraSeoEraIaDebateReddit from "./carreira-seo-era-ia-debate-reddit";
+import contentEngineUmaPessoaVozHumana from "./content-engine-uma-pessoa-voz-humana";
+import newsletterPostProvaBrewton200k from "./newsletter-post-prova-brewton-200k";
+import agentesIaHeadcountVendasB2b from "./agentes-ia-headcount-vendas-b2b";
+import chatgptAdsCanalPublicidade2026 from "./chatgpt-ads-canal-publicidade-2026";
+import pontoCegoClienteViraPropostaEnterprise from "./ponto-cego-cliente-vira-proposta-enterprise";
+import geoB2bVendorsCitadosMemoriaChatgpt from "./geo-b2b-vendors-citados-memoria-chatgpt";
+import linear100mArrNrr177AgentesIa from "./linear-100m-arr-nrr-177-agentes-ia";
+import trialGateCartaoConverteMaisQueSignupLivre from "./trial-gate-cartao-converte-mais-que-signup-livre";
+import zeroA500kArrEquipeDeDois from "./zero-a-500k-arr-equipe-de-dois";
+import mil500MarcasD2cMvp8Horas from "./1500-marcas-d2c-mvp-8-horas-outcome-over-product";
+import loopMarketingSubstituiFunil2026 from "./loop-marketing-substitui-funil-2026";
+import algoritmoInstagram2026SinaisFortes from "./algoritmo-instagram-2026-sinais-fortes";
+import agentesIaTimeMarketing36 from "./agentes-ia-time-marketing-36";
+import communityLedGrowthCanalAquisicao from "./community-led-growth-canal-aquisicao";
+
+import buscaMulticanalEstrategia2026 from "./busca-multicanal-estrategia-2026";
+import descobertaProdutoIaSuperaBusca from "./descoberta-produto-ia-supera-busca";
+import metaAdsMaisCaroNaoPior from "./meta-ads-mais-caro-nao-pior";
+import coldEmailVivoSoComPrecisao from "./cold-email-vivo-so-com-precisao";
+import webinarCanalB2bSubestimado from "./webinar-canal-b2b-subestimado";
+import marketplacesSkillsAgentesTrending from "./marketplaces-skills-agentes-trending";
+import openhumanMemoriaLocalAgentes from "./openhuman-memoria-local-agentes";
+import scientificAgentSkills from "./scientific-agent-skills";
+import aiJobSearchCandidaturaLocal from "./ai-job-search-candidatura-local";
+import awesomeGptImage2PromptCode from "./awesome-gpt-image-2-prompt-code";
+import archifyDiagramasArquiteturaAgentes from "./archify-diagramas-arquitetura-agentes";
+import googleAiModeReservaViagens from "./google-ai-mode-reserva-viagens";
+import comandosVsPromptsEdicaoImagemChatgpt from "./comandos-vs-prompts-edicao-imagem-chatgpt";
+import debateRedditIaDestroiTalentos from "./debate-reddit-ia-destroi-talentos";
+import glm53750bSuperaKimiK3 from "./glm-53-750b-supera-kimi-k3";
+import deepseekV4ProSaiPreviewPrecoSobe from "./deepseek-v4-pro-sai-preview-preco-sobe";
+import gemini37FlashAgenteCoding from "./gemini-37-flash-agente-coding";
+import nvidiaCompraHuggingFace129bi from "./nvidia-compra-hugging-face-129bi";
+import agentSkillsEngenhariaAgentes from "./agent-skills-engenharia-agentes";
+import googlePreferredSourcesAiOverviews from "./google-preferred-sources-ai-overviews";
+import zeroClick68BuscasEua from "./zero-click-68-buscas-eua";
+import llmsTxtV2CrawlersNaoLeem from "./llms-txt-v2-crawlers-nao-leem";
+import geoNumeros2026AiOverviews from "./geo-numeros-2026-ai-overviews";
+import paperGeoPrincetonCitacoes40 from "./paper-geo-princeton-citacoes-40";
+import ferramentasAiVisibilityPrecos from "./ferramentas-ai-visibility-precos";
+import seoAeoMesmoConteudoCasoReal from "./seo-aeo-mesmo-conteudo-caso-real";
+import regra10xCustoModelosCodigo from "./regra-10x-custo-modelos-codigo";
+import glm52MelhorOpenWeightCodigo from "./glm-52-melhor-open-weight-codigo";
+import incomeTransparencyConsultorIa1600 from "./income-transparency-consultor-ia-1600";
+import contentEngineeringPitchVendaIa from "./content-engineering-pitch-venda-ia";
+import needleModelo14mbDispositivos from "./needle-modelo-14mb-dispositivos";
+import tencentdbAgentMemoryEquipe from "./tencentdb-agent-memory-equipe";
+import semanticaGraphNativeContextoIa from "./semantica-graph-native-contexto-ia";
+import primeAgentCodigoSelfImproving from "./prime-agent-codigo-self-improving";
+import vibeCodingCursoGoogle353Mil from "./vibe-coding-curso-google-353-mil";
+import managedAgentsGeminiApi36Flash from "./managed-agents-gemini-api-36-flash";
+import googleAdsAnalyticsNovidadesIa from "./google-ads-analytics-novidades-ia";
+import sheetsCanvasDashboardPrompt from "./sheets-canvas-dashboard-prompt";
+import amieIaConsultasClinicasVideo from "./amie-ia-consultas-clinicas-video";
+import kimiK3OpenWeight28t from "./kimi-k3-open-weight-28t";
+import nytxDebateEscreverComIa from "./nytx-debate-escrever-com-ia";
+import claudeFable5SwebenchOpus5Contexto from "./claude-fable5-swebench-opus5-contexto";
+import amdNvidiaUs5biLabsIa from "./amd-nvidia-us5bi-labs-ia";
+import anthropicMarcaDaguaC2paClaude from "./anthropic-marca-dagua-c2pa-claude";
+import appleModeloIaChinaAlibaba from "./apple-modelo-ia-china-alibaba";
+import openaiGpt56LunaCortePreco from "./openai-gpt-56-luna-corte-preco";
 import oQueEGeoMedicos from "./o-que-e-geo-medicos";
 import chatgptDecideCitar from "./chatgpt-decide-citar";
 import baselineFatima from "./baseline-fatima";
@@ -11,8 +90,206 @@ import frameworkGeoExtracaoIa from "./framework-geo-extracao-ia";
 import atendenteIaWhatsApp24h from "./atendente-ia-whatsapp-24h";
 import captacaoAutomaticaClientes from "./captacao-automatica-clientes";
 import siteAtivoCaptacao from "./site-ativo-captacao";
+import comoAparecerNoChatgpt from "./como-aparecer-no-chatgpt";
+import socialSearchUltrapassaGoogle from "./social-search-ultrapassa-google-2026";
+import agenticAiCampanhasMarketing from "./agentic-ai-campanhas-marketing-2026";
+import influencerMarketingRoi from "./influencer-marketing-roi-2026";
+import comunidadesPrivadasLealdade from "./comunidades-privadas-lealdade-marca-2026";
+import videoCurtoMaiorRoi from "./video-curto-maior-roi-2026";
+import conteudoHumanoVenceAiSlop from "./conteudo-humano-vence-ai-slop-2026";
+import socialSeoNovoTopoFunil from "./social-seo-novo-topo-funil-2026";
+import consistenciaPontoDeVista from "./consistencia-ponto-de-vista-social-2026";
+import searchConsoleRelatorioGenerativeAi from "./search-console-relatorio-generative-ai";
+import mencaoMarcaFator1IaOverviews from "./mencao-marca-fator-1-ia-overviews";
+import trafegoLlmConverte6xGoogle from "./trafego-llm-converte-6x-google";
+import fanOutQueriesChatgptCitacao from "./fan-out-queries-chatgpt-citacao";
+import eGeoToolkitOpenSource from "./e-geo-toolkit-open-source";
+import ueRotuloConteudoIa from "./ue-rotulo-conteudo-ia";
+import seoSubstituidoPorTrafegoIa from "./seo-substituido-por-trafego-ia";
+import seoOtimizaCliquesGeoCitacoes from "./seo-otimiza-cliques-geo-citacoes";
+import minimaxM25MelhorCustoBeneficio from "./minimax-m25-melhor-custo-beneficio";
+import deepseekV4Pro37xMaisBarato from "./deepseek-v4-pro-37x-mais-barato";
+import qwen38MaxMelhorModeloArena from "./qwen-38-max-melhor-modelo-arena";
+import gpt55LideraTerminalBench from "./gpt-55-lidera-terminal-bench";
+import gemini35FlashFlagshipBarato from "./gemini-35-flash-flagship-barato";
+import lancamentosModelosIaSemana from "./lancamentos-modelos-ia-semana";
+import saveRateMetricaDominanteTiktok from "./save-rate-metrica-dominante-tiktok";
+import commentBaitEntregaRealLeads from "./comment-bait-entrega-real-leads";
+import founderStoryIaEngajamento from "./founder-story-ia-engajamento";
+import agenciaVsConsultorIa from "./agencia-vs-consultor-ia";
+import operadorSoloAgentesIaViraliza from "./operador-solo-agentes-ia-viraliza";
+import threadsAutoridadeNaoAlcance from "./threads-autoridade-nao-alcance";
+import claudeCodeEcossistemaQuente from "./claude-code-ecossistema-quente";
+import top5NewslettersIa from "./top-5-newsletters-ia";
+import rankingDeputadosProjetosPernambuco from "./ranking-deputados-projetos-pernambuco";
+import claudeFable51LideraTerminalBenchCorteCache from "./claude-fable-51-lidera-terminal-bench-corte-cache";
+import deepseekV4Pro964Swebench010 from "./deepseek-v4-pro-964-swebench-0-10";
+import gpt56SolEmpataOpus5MetadePreco from "./gpt-56-sol-empata-opus5-metade-preco";
+import gpt6AstraGemini38FlashMuseSparkLancamentos from "./gpt6-astra-gemini-38-flash-muse-spark-lancamentos";
+import metaMuseAgentePessoalAutonomo from "./meta-muse-agente-pessoal-autonomo";
+import glm53LideraSegurancaCodigoAberto from "./glm-53-lidera-seguranca-codigo-aberto";
+import muellerNadaEspecialAiSearch from "./mueller-nada-especial-ai-search";
+import aiOverviewsConvergemAiMode from "./ai-overviews-convergem-ai-mode";
+import thinkTankFakeEnvenenaRespostasIa from "./think-tank-fake-envenena-respostas-ia";
+import ownYourStackAutomacaoSubstituiRevenda from "./own-your-stack-automacao-substitui-revenda";
+import commentBaitIroniaDesgaste from "./comment-bait-ironia-desgaste";
+import gemini38FlashCyberFairwind from "./gemini-38-flash-cyber-fairwind";
+import googlePicsWorkspaceEdicaoImagem from "./google-pics-workspace-edicao-imagem";
+import voicestudioAlternativaLocalElevenlabs from "./voicestudio-alternativa-local-elevenlabs";
+import minimindTreinarLlmLocal2h from "./minimind-treinar-llm-local-2h";
+import instagramRotuloIaLimitaAlcance from "./instagram-rotulo-ia-limita-alcance";
+import instagramTrocarAudioPostPublicado from "./instagram-trocar-audio-post-publicado";
+import tiktokMonetizacaoDiretaCriadores from "./tiktok-monetizacao-direta-criadores";
+import tiktokAntiDeepfakeCriadores from "./tiktok-anti-deepfake-criadores";
+import threadsCommunities500mUsuarios from "./threads-communities-500m-usuarios";
+import threadsControlePrivadoFeedAlgoritmo from "./threads-controle-privado-feed-algoritmo";
+import precosInfluenciaBolhaEstourando from "./precos-influencia-bolha-estourando";
+
+import tiktokRpmColapsoCriadores from "./tiktok-rpm-colapso-criadores";
+import instagramBonusesFotosCarrosseis from "./instagram-bonuses-fotos-carrosseis";
+import threadsAnalyticsIaAlcanceSeguidores from "./threads-analytics-ia-alcance-seguidores";
+import tendenciasInstagramSetembro2026 from "./tendencias-instagram-setembro-2026";
+import tiktokShopBoostExposicaoVideoCompreavel from "./tiktok-shop-boost-exposicao-video-compreavel";
+import instagramControleAlgoritmoUsuario from "./instagram-controle-algoritmo-usuario";
 
 export const postRegistry: PostEntry[] = [
+  gemini4ArgonModeloFronteira,
+  googleAgentesIaEmpresas,
+  contextModeReduzSaidaFerramentas,
+  hyperframesHtmlVideoAgentes,
+  iaNaoAssumeResponsabilidadeSocial,
+  tiktokRpmColapsoCriadores,
+  instagramBonusesFotosCarrosseis,
+  threadsAnalyticsIaAlcanceSeguidores,
+  tendenciasInstagramSetembro2026,
+  tiktokShopBoostExposicaoVideoCompreavel,
+  instagramControleAlgoritmoUsuario,
+  pesquisadorAnthropicSaidaAlertaIa,
+  amodeiPedeDesacelerarModelosIa,
+  agentesIaNegociosReaisFaturasFalsas,
+  openaiAgenteRougeTentouHackear,
+  realSweBenchmarkCodigoEnterprise,
+  finraIaOrganismoNormas,
+  iaCancroColorretalTomografia,
+  mestreGoVenceKatago,
+  estudoAhrefsGeoFrescorConteudo,
+  estruturaConteudoFaqCitacoesIa37,
+  conteudoMarkdownTokenEfficientCrawlersIa,
+  carreiraSeoEraIaDebateReddit,
+  contentEngineUmaPessoaVozHumana,
+  newsletterPostProvaBrewton200k,
+  agentesIaHeadcountVendasB2b,
+  pontoCegoClienteViraPropostaEnterprise,
+  geoB2bVendorsCitadosMemoriaChatgpt,
+  linear100mArrNrr177AgentesIa,
+  trialGateCartaoConverteMaisQueSignupLivre,
+  zeroA500kArrEquipeDeDois,
+  mil500MarcasD2cMvp8Horas,
+  chatgptAdsCanalPublicidade2026,
+  loopMarketingSubstituiFunil2026,
+  algoritmoInstagram2026SinaisFortes,
+  agentesIaTimeMarketing36,
+  communityLedGrowthCanalAquisicao,
+  instagramRotuloIaLimitaAlcance,
+  instagramTrocarAudioPostPublicado,
+  tiktokMonetizacaoDiretaCriadores,
+  tiktokAntiDeepfakeCriadores,
+  threadsCommunities500mUsuarios,
+  threadsControlePrivadoFeedAlgoritmo,
+  precosInfluenciaBolhaEstourando,
+  gemini38FlashCyberFairwind,
+  googlePicsWorkspaceEdicaoImagem,
+  voicestudioAlternativaLocalElevenlabs,
+  minimindTreinarLlmLocal2h,
+  commentBaitIroniaDesgaste,
+  ownYourStackAutomacaoSubstituiRevenda,
+  thinkTankFakeEnvenenaRespostasIa,
+  aiOverviewsConvergemAiMode,
+  muellerNadaEspecialAiSearch,
+  glm53LideraSegurancaCodigoAberto,
+  gpt6AstraGemini38FlashMuseSparkLancamentos,
+  metaMuseAgentePessoalAutonomo,
+  gpt56SolEmpataOpus5MetadePreco,
+  deepseekV4Pro964Swebench010,
+  claudeFable51LideraTerminalBenchCorteCache,
+  buscaMulticanalEstrategia2026,
+  descobertaProdutoIaSuperaBusca,
+  metaAdsMaisCaroNaoPior,
+  coldEmailVivoSoComPrecisao,
+  webinarCanalB2bSubestimado,
+  nvidiaCompraHuggingFace129bi,
+  gemini37FlashAgenteCoding,
+  deepseekV4ProSaiPreviewPrecoSobe,
+  glm53750bSuperaKimiK3,
+  debateRedditIaDestroiTalentos,
+  comandosVsPromptsEdicaoImagemChatgpt,
+  googleAiModeReservaViagens,
+  archifyDiagramasArquiteturaAgentes,
+  awesomeGptImage2PromptCode,
+  aiJobSearchCandidaturaLocal,
+  scientificAgentSkills,
+  openhumanMemoriaLocalAgentes,
+  marketplacesSkillsAgentesTrending,
+  contentEngineeringPitchVendaIa,
+  incomeTransparencyConsultorIa1600,
+  glm52MelhorOpenWeightCodigo,
+  regra10xCustoModelosCodigo,
+  seoAeoMesmoConteudoCasoReal,
+  ferramentasAiVisibilityPrecos,
+  paperGeoPrincetonCitacoes40,
+  geoNumeros2026AiOverviews,
+  llmsTxtV2CrawlersNaoLeem,
+  zeroClick68BuscasEua,
+  googlePreferredSourcesAiOverviews,
+  rankingDeputadosProjetosPernambuco,
+  agentSkillsEngenhariaAgentes,
+  needleModelo14mbDispositivos,
+  tencentdbAgentMemoryEquipe,
+  semanticaGraphNativeContextoIa,
+  primeAgentCodigoSelfImproving,
+  vibeCodingCursoGoogle353Mil,
+  managedAgentsGeminiApi36Flash,
+  googleAdsAnalyticsNovidadesIa,
+  sheetsCanvasDashboardPrompt,
+  amieIaConsultasClinicasVideo,
+  kimiK3OpenWeight28t,
+  nytxDebateEscreverComIa,
+  claudeFable5SwebenchOpus5Contexto,
+  amdNvidiaUs5biLabsIa,
+  anthropicMarcaDaguaC2paClaude,
+  appleModeloIaChinaAlibaba,
+  openaiGpt56LunaCortePreco,
+  searchConsoleRelatorioGenerativeAi,
+  mencaoMarcaFator1IaOverviews,
+  trafegoLlmConverte6xGoogle,
+  fanOutQueriesChatgptCitacao,
+  eGeoToolkitOpenSource,
+  ueRotuloConteudoIa,
+  seoSubstituidoPorTrafegoIa,
+  seoOtimizaCliquesGeoCitacoes,
+  minimaxM25MelhorCustoBeneficio,
+  deepseekV4Pro37xMaisBarato,
+  qwen38MaxMelhorModeloArena,
+  gpt55LideraTerminalBench,
+  gemini35FlashFlagshipBarato,
+  lancamentosModelosIaSemana,
+  saveRateMetricaDominanteTiktok,
+  commentBaitEntregaRealLeads,
+  founderStoryIaEngajamento,
+  agenciaVsConsultorIa,
+  operadorSoloAgentesIaViraliza,
+  threadsAutoridadeNaoAlcance,
+  claudeCodeEcossistemaQuente,
+  top5NewslettersIa,
+  videoCurtoMaiorRoi,
+  conteudoHumanoVenceAiSlop,
+  socialSeoNovoTopoFunil,
+  consistenciaPontoDeVista,
+  agenticAiCampanhasMarketing,
+  influencerMarketingRoi,
+  comunidadesPrivadasLealdade,
+  socialSearchUltrapassaGoogle,
+  comoAparecerNoChatgpt,
   frameworkGeoExtracaoIa,
   atendenteIaWhatsApp24h,
   captacaoAutomaticaClientes,
