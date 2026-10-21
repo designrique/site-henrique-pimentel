@@ -6,6 +6,7 @@ import hmac
 import html
 import json
 import os
+import re
 import time
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -26,8 +27,12 @@ logo = root / "public/signature.svg"
 assert logo.is_file(), "Logo oficial do hp-site ausente"
 logo_svg = logo.read_text()
 assert "M25 54 Q50 46 75 54" in logo_svg and "HP.</text>" not in logo_svg, "Logo legado recusado"
-brand_css = (root / "private/guides/pdf-brand-tokens.css").read_text()
-font_css = (root / "private/guides/pdf-brand-fonts.css").read_text()
+# O SVG entra inline no HTML: so asset confiavel e sem script/imagem remota.
+assert not re.search(r"<script|on\w+\s*=|xlink:href=|href=[\"']https?:", logo_svg, re.I), "SVG com conteudo ativo recusado"
+brand_files = [root / "private/guides/pdf-brand-tokens.css", root / "private/guides/pdf-brand-fonts.css"]
+for path in brand_files:
+    assert path.is_file(), f"Arquivo de marca ausente: {path.name}"
+brand_css, font_css = (path.read_text() for path in brand_files)
 body = base64.urlsafe_b64encode(json.dumps({"sid": "owner-pdf-export-local-test", "exp": int(time.time()) + 600}, separators=(",", ":")).encode()).decode().rstrip("=")
 signature = base64.urlsafe_b64encode(hmac.new(secret.encode(), body.encode(), hashlib.sha256).digest()).decode().rstrip("=")
 with sync_playwright() as pw:
