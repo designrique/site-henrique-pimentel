@@ -1,0 +1,48 @@
+
+> web@0.1.0 test
+> node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/*.test.ts
+
+✔ logo do PDF é o SVG original do site atual, não HP genérico (78.250342ms)
+✔ tokens do PDF são os tokens reais da mesma revisão do site (86.355698ms)
+✔ fontes oficiais Jost e Raleway estão incorporadas ao exportador (25.346908ms)
+✔ download sem sessão, adulterado ou expirado não lê o PDF (141.012767ms)
+✔ download com sessão válida entrega PDF privado como anexo (37.422507ms)
+✔ PDF ausente ou inválido falha fechado sem revelar caminho (171.388844ms)
+✔ normalizeWhatsapp converte numero BR nacional para E164 (2.25192ms)
+✔ normalizeWhatsapp rejeita entradas invalidas (0.304797ms)
+✔ validateLead aceita lead valido e normaliza campos (0.94829ms)
+✔ validateLead rejeita campos invalidos individualmente (0.470303ms)
+✔ validateLead ignora tenant/org vindos do cliente (anti-spoof) (0.68207ms)
+✔ createSession/verifySession faz roundtrip e rejeita adulteracao/expiracao (2.220154ms)
+✔ sessionIsValid exige cookie e secret (0.57451ms)
+✔ buildSetCookie traz flags de seguranca e nao carrega PII (0.397655ms)
+✔ rate limiter bloqueia acima do limite e reseta na janela (0.96871ms)
+✔ idempotency store guarda e respeita TTL (3.040523ms)
+✔ createCrmAdapter sem configuracao falha fechado (0.675382ms)
+✔ createCrmAdapter expoe adapter http quando configurado (0.251897ms)
+✔ fixture de CRM (TESTE) exige flag explicita e grava arquivo (179.874729ms)
+✔ handleSubmit valido: 200, persiste uma vez, cookie assinado sem PII (4.551524ms)
+✔ handleSubmit invalido: 400, nao persiste, sem cookie (0.684485ms)
+✔ handleSubmit sem secret: 503, falha fechado (1.920775ms)
+✔ handleSubmit respeita rate limit: 429 sem persistir (9.412722ms)
+✔ handleSubmit com CRM nao configurado: 502 sem liberar guia (6.236016ms)
+✔ handleSubmit com falha upstream: 502 preserva dados e sinaliza retry (2.193695ms)
+✔ double submit e idempotente: persiste uma vez, mesmo cookie (10.979588ms)
+✔ payload nao vaza tenant para o adapter (anti-spoof end-to-end) (0.570133ms)
+✔ idempotency store reserva em andamento e libera no release (0.281811ms)
+✔ submit concorrente da mesma chave persiste uma vez (1.612603ms)
+✔ falha de persistencia libera a reserva para retry (0.532106ms)
+✔ CRM 2xx sem confirmação ou com org errada não libera sessão (56.896282ms)
+✔ idempotência é vinculada ao cadastro, não à chave escolhida pelo cliente (4.252276ms)
+✔ cookie com assinatura multibyte falha fechado, sem exceção (2.1573ms)
+✔ telefone nacional exige DDD e formato brasileiro válido (0.753689ms)
+✔ produção não habilita fixture nem permite org diferente (0.412407ms)
+✔ corpo chunked é interrompido ao exceder o limite em bytes (18.204886ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 933.880493

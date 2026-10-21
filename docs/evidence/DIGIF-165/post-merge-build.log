@@ -1,0 +1,68 @@
+Started hpguide-postmerge-build.service - /root/.hermes/tools/node-26.7.0-linux-x64/bin/npm run build.
+> web@0.1.0 build
+> next build
+▲ Next.js 16.2.6 (Turbopack)
+  Creating an optimized production build ...
+✓ Compiled successfully in 48s
+  Running TypeScript ...
+  Finished TypeScript in 46s ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/314) ...
+  Generating static pages using 5 workers (78/314)
+  Generating static pages using 5 workers (156/314)
+  Generating static pages using 5 workers (235/314)
+✓ Generating static pages using 5 workers (314/314) in 11.5s
+  Finalizing page optimization ...
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/guia
+├ ○ /baseline-geo
+├ ○ /baseline-geo/index.md
+├ ○ /blog
+├ ● /blog/[slug]
+│ ├ /blog/meta-muse-agente-pessoal-autonomo
+│ ├ /blog/ranking-deputados-projetos-pernambuco
+│ ├ /blog/como-aparecer-no-chatgpt
+│ └ [+7 more paths]
+├ ● /blog/[slug]/index.md
+│ ├ /blog/gemini-4-argon-modelo-fronteira/index.md
+│ ├ /blog/google-agentes-ia-empresas/index.md
+│ ├ /blog/context-mode-reduz-saida-ferramentas/index.md
+│ └ [+145 more paths]
+├ ○ /blog/index.md
+├ ○ /cases
+├ ○ /cases/index.md
+├ ○ /contato
+├ ○ /contato/index.md
+├ ○ /guia-claude-design
+├ ƒ /guia-claude-design/baixar
+├ ƒ /guia-claude-design/conteudo
+├ ○ /guia-claude-design/index.md
+├ ○ /index.md
+├ ○ /medcitado
+├ ○ /medcitado/index.md
+├ ○ /noticias
+├ ● /noticias/[slug]
+│ ├ /noticias/gemini-4-argon-modelo-fronteira
+│ ├ /noticias/google-agentes-ia-empresas
+│ ├ /noticias/context-mode-reduz-saida-ferramentas
+│ └ [+131 more paths]
+├ ○ /servicos/consultoria-ia
+├ ○ /sitemap.xml
+├ ○ /sobre
+└ ○ /sobre/index.md
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+hpguide-postmerge-build.service: Failed to kill control group /system.slice/hpguide-postmerge-build.service, ignoring: Invalid argument
+hpguide-postmerge-build.service: Failed to kill control group /system.slice/hpguide-postmerge-build.service, ignoring: Invalid argument
+hpguide-postmerge-build.service: Deactivated successfully.
+hpguide-postmerge-build.service: Consumed 2min 42.569s CPU time, 1.0G memory peak, 0B memory swap peak.
+Running as unit: hpguide-postmerge-build.service; invocation ID: fd16ea00adfd46a48a620e43e6e12a93
+Finished with result: success
+Main processes terminated with: code=exited/status=0
+Service runtime: 2min 1.073s
+CPU time consumed: 2min 42.569s
+Memory peak: 1.0G
+Memory swap peak: 0B

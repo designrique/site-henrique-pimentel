@@ -1,0 +1,59 @@
+{
+  "url": "https://ozoavosvtqvzosxbvihz.supabase.co/functions/v1/guia-lead",
+  "unauthorized": 401,
+  "tests": {
+    "get": [
+      405,
+      {
+        "error": "method_not_allowed"
+      }
+    ],
+    "no_token": [
+      401,
+      {
+        "error": "unauthorized"
+      }
+    ],
+    "wrong_token": [
+      401,
+      {
+        "error": "unauthorized"
+      }
+    ],
+    "missing_consent": [
+      400,
+      {
+        "error": "invalid",
+        "fields": {
+          "name": true,
+          "email": true,
+          "whatsapp": true,
+          "consent": false
+        }
+      }
+    ],
+    "spoofed_org": [
+      400,
+      {
+        "error": "invalid_organization"
+      }
+    ],
+    "valid": [
+      200,
+      {
+        "id": "c230bcb0-d6d6-4219-a3b7-db9cbfc05dc1",
+        "organization_id": "a3e29f94-746c-47c1-be74-e79040e22db0",
+        "created": true
+      }
+    ],
+    "repeat": [
+      200,
+      {
+        "id": "c230bcb0-d6d6-4219-a3b7-db9cbfc05dc1",
+        "organization_id": "a3e29f94-746c-47c1-be74-e79040e22db0",
+        "created": false
+      }
+    ],
+    "same_id": true
+  }
+}
