@@ -34,7 +34,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
-      url: `${BASE_URL}/guia-claude-design/`,
+      url: `${BASE_URL}/guia-claude-design`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.6,

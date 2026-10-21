@@ -179,7 +179,7 @@ export function buildAccessLink(
   now: number = Math.floor(Date.now() / 1000)
 ): string {
   const { token } = createSession(signingKey, ttlSeconds, now);
-  return baseUrl.replace(/\/+$/, "") + "/guia-claude-design/acesso/?t=" + token;
+  return baseUrl.replace(/\/+$/, "") + "/guia-claude-design/acesso?t=" + token;
 }
 
 const ACCESS_HEADERS = {
@@ -202,14 +202,14 @@ export function accessResponse(
 ): Response {
   const payload = verifySession(token, signingKey, now);
   if (!payload || !signingKey) {
-    return new Response(null, { status: 307, headers: { ...ACCESS_HEADERS, Location: "/guia-claude-design/?acesso=invalido" } });
+    return new Response(null, { status: 307, headers: { ...ACCESS_HEADERS, Location: "/guia-claude-design?acesso=invalido" } });
   }
   const remaining = payload.exp - now;
   return new Response(null, {
     status: 303,
     headers: {
       ...ACCESS_HEADERS,
-      Location: "/guia-claude-design/conteudo/",
+      Location: "/guia-claude-design/conteudo",
       "Set-Cookie": buildSetCookie(String(token), remaining, secure),
     },
   });
@@ -523,7 +523,7 @@ export async function guidePdfResponse(
     Vary: "Cookie",
   };
   if (!sessionIsValid(token, secret)) {
-    return new Response(null, { status: 307, headers: { ...headers, Location: "/guia-claude-design/" } });
+    return new Response(null, { status: 307, headers: { ...headers, Location: "/guia-claude-design" } });
   }
   try {
     const pdf = await loadPdf();

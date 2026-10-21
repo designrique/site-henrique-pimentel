@@ -10,7 +10,7 @@ test("link válido emite sessão e redireciona para o guia privado", () => {
   const { token } = createSession(secret, 259200, now);
   const res = accessResponse(token, secret, now + 10);
   assert.equal(res.status, 303);
-  assert.equal(res.headers.get("location"), "/guia-claude-design/conteudo/");
+  assert.equal(res.headers.get("location"), "/guia-claude-design/conteudo");
   const cookie = res.headers.get("set-cookie") ?? "";
   assert.ok(cookie.startsWith(SESSION_COOKIE + "=" + token));
   assert.match(cookie, /HttpOnly/);
@@ -26,7 +26,7 @@ test("link inválido, expirado ou multibyte volta para a captura sem sessão", (
   for (const token of [undefined, "", "forged", expired, createSession(secret, 60, now).token.slice(0, -1) + "é", createSession(secret, 60, now).token.replace(".", "")]) {
     const res = accessResponse(token, secret, now + 3600);
     assert.equal(res.status, 307);
-    assert.equal(res.headers.get("location"), "/guia-claude-design/?acesso=invalido");
+    assert.equal(res.headers.get("location"), "/guia-claude-design?acesso=invalido");
     assert.equal(res.headers.get("set-cookie"), null);
   }
 });

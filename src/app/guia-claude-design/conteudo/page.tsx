@@ -16,7 +16,7 @@ export default async function GuiaConteudoPage() {
   const store = await cookies();
   const raw = store.get(SESSION_COOKIE)?.value;
   if (!sessionIsValid(raw, process.env.GUIDE_SESSION_SECRET)) {
-    redirect("/guia-claude-design/");
+    redirect("/guia-claude-design");
   }
 
   return (
@@ -30,7 +30,7 @@ export default async function GuiaConteudoPage() {
         </h1>
       </header>
       <div className="mx-auto mt-6 max-w-2xl print:hidden">
-        <a href="/guia-claude-design/baixar/" className="inline-flex min-h-11 items-center rounded-[10px] border border-[color:var(--accent-primary)] px-4 font-medium text-[color:var(--accent-primary)] hover:underline">Baixar PDF</a>
+        <a href="/guia-claude-design/baixar" className="inline-flex min-h-11 items-center rounded-[10px] border border-[color:var(--accent-primary)] px-4 font-medium text-[color:var(--accent-primary)] hover:underline">Baixar PDF</a>
       </div>
       <GuideContent />
     </Container>

@@ -11,7 +11,7 @@ test("download sem sessão, adulterado ou expirado não lê o PDF", async () => 
   for (const token of [undefined,"forged",createSession(secret,1,1).token]) {
     const res=await download.guidePdfResponse(token,secret,load);
     assert.equal(res.status,307);
-    assert.equal(res.headers.get("location"),"/guia-claude-design/");
+    assert.equal(res.headers.get("location"),"/guia-claude-design");
     assert.match(res.headers.get("cache-control")??"",/no-store/);
   }
   assert.equal(reads,0);

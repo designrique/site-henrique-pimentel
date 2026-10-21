@@ -41,7 +41,7 @@ function fakeTransport(options: Record<string, unknown>) {
 
 test("link de acesso é assinado, temporário e sem dados pessoais", () => {
   const link = buildAccessLink(base, secret, 259200, 1_700_000_000);
-  assert.match(link, /^https:\/\/henriquepimentel\.com\.br\/guia-claude-design\/acesso\/\?t=[A-Za-z0-9_\-]+\.[A-Za-z0-9_\-]{43}$/);
+  assert.match(link, /^https:\/\/henriquepimentel\.com\.br\/guia-claude-design\/acesso\?t=[A-Za-z0-9_\-]+\.[A-Za-z0-9_\-]{43}$/);
   const token = new URL(link).searchParams.get("t") ?? "";
   assert.doesNotMatch(link, /@|%40|\+55|nome|email/i);
   const payload = verifySession(token, secret, 1_700_000_000);

@@ -51,7 +51,7 @@ export function CaptureForm() {
     setFieldErrors({});
 
     try {
-      const res = await fetch("/api/guia/", {
+      const res = await fetch("/api/guia", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(payload),
@@ -89,8 +89,8 @@ export function CaptureForm() {
             : "Não consegui enviar o e-mail agora. Use os botões abaixo ou tente novamente mais tarde."}
         </p>
         <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-          <a href="/guia-claude-design/conteudo/" className="inline-flex min-h-12 items-center justify-center rounded-[10px] border border-[color:var(--border-default)] px-5 font-medium text-[color:var(--text-primary)] hover:underline">Ler online</a>
-          <a href="/guia-claude-design/baixar/" className="inline-flex min-h-12 items-center justify-center rounded-[10px] border border-[color:var(--accent-primary)] px-5 font-medium text-[color:var(--accent-primary)] hover:underline">Baixar PDF</a>
+          <a href="/guia-claude-design/conteudo" className="inline-flex min-h-12 items-center justify-center rounded-[10px] border border-[color:var(--border-default)] px-5 font-medium text-[color:var(--text-primary)] hover:underline">Ler online</a>
+          <a href="/guia-claude-design/baixar" className="inline-flex min-h-12 items-center justify-center rounded-[10px] border border-[color:var(--accent-primary)] px-5 font-medium text-[color:var(--accent-primary)] hover:underline">Baixar PDF</a>
         </div>
       </div>
     );

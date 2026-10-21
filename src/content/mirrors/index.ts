@@ -267,7 +267,7 @@ Implementações, falhas e aprendizados em texto longo. Posts técnicos sobre IA
 // ponytail: teaser hardcoded aqui de proposito; nao importa o modulo do guia
 // (que traz React) para dentro da rota de espelho estatico.
 const guiaClaudeDesignMirror: Mirror = {
-  path: "/guia-claude-design/",
+  path: "/guia-claude-design",
   title: "Guia: automatize a geração de postagens com Claude Design",
   description:
     "Guia prático em pt-BR para transformar uma ideia em lote de postagens com Claude Design: briefing replicável, identidade visual, geração em lote, carrossel, refinamento com aprovação humana, exportação e QA.",
@@ -301,7 +301,7 @@ Inclui prompts copiáveis, cadência de producao, checklist e limites reais da f
 ## Acesso
 
 O conteudo completo fica em uma área privada, liberada após cadastro em
-https://henriquepimentel.com.br/guia-claude-design/ (nome, e-mail e WhatsApp).
+https://henriquepimentel.com.br/guia-claude-design (nome, e-mail e WhatsApp).
 Este espelho traz apenas o resumo público e não inclui o guia.
 
 ## Fontes
