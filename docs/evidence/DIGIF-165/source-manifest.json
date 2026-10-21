@@ -1,9 +1,9 @@
 {
   "next.config.ts": "6aecc581a9c4686fde4708edbb1b53cab3d8d55589eb5140b96c2deee91808b6",
   "package.json": "3dd4b8396a37b9129a98876a3c8fa31bf8889c3ec5873a4032e256b28ec5b32b",
-  "private/guides/claude-design.pdf": "b2ad742ec12a42327880ab69dba19f53f89903d2d220d6653e3baad3dcb5f4e9",
+  "private/guides/claude-design.pdf": "ec5968af2cdc51724691d0897fa5258bb3eb2a734fd554a29b69aa98a7130d84",
   "public/llms.txt": "97df13e175a9a0848ab7536761d63e7bdf7fdd71409b1be33c5c3e2e04c1d864",
-  "scripts/export-guide-pdf.py": "9e143ea8c90024278648a6c8a3f737a792e95d93c18ea487312d3d3241fc7063",
+  "scripts/export-guide-pdf.py": "d380116d901c3a7b5efb1e7c57642b1195b528600598766a2a005ce84b35758d",
   "src/app/api/guia/route.ts": "87a137b1ffd5f8578306b0da5cb860e0d549be8184b506b314dec707d6fdd505",
   "src/app/guia-claude-design/baixar/route.ts": "a7be5d9e3acac499fdcd22d99d55be4ddd10588ac3d8afb2c504571662261019",
   "src/app/guia-claude-design/capture-form.tsx": "e4a41972687786ecba7e657e76926108211ee39ab5cdabc26af97008119f17c4",
@@ -17,5 +17,10 @@
   "tests/download.test.ts": "90d8500f55896cf89fbaf5b26cb8098e228e20633d00134383b35703f4d7de87",
   "tests/gate.test.ts": "007a0d22b9c2be20e0c3ad7b2ea5c83530049b313a13accaea88251433e9ac62",
   "tests/review-regressions.test.ts": "6a3e7a8789245045bbdcb42e45c85c919e48e51b965c4f858f60dbb0b7aff25f",
-  "tsconfig.json": "f0f4f7c6b62b64864ba8f7693104e8cc094f0c0806a8e2ff3863969de4f3adb5"
+  "tsconfig.json": "f0f4f7c6b62b64864ba8f7693104e8cc094f0c0806a8e2ff3863969de4f3adb5",
+  "public/signature.svg": "cfc3e1d632c8bef00f268fdfa6f2e314f9f992fd806f3248d9c8fc6670b1d8d3",
+  "private/guides/pdf-brand-fonts.css": "94e7cea5c51eec95abfcee172907b24fa374ed39ea1ac23155a2f2276b957139",
+  "private/guides/pdf-brand-tokens.css": "840851d798353f9df978274124e6fd919c611e3adff42db4e64cf0b881906cda",
+  "private/guides/DESIGN.md": "0a2df31f1da7c52482e140332dbc11ca2bf0a0c1fb265e10bafdb5f6f566428c",
+  "tests/brand.test.ts": "fc76f7f6f5f5eabf4bc6b993a649474d17f6778d77fabeb57047e61637cce185"
 }

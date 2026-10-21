@@ -1,0 +1,5 @@
+PDF corrigido com o SVG original do próprio site e tokens canônicos. Fontes Jost e Raleway incorporadas.
+A capa e este PDF são prévias para conferência da marca pelo proprietário.
+Testes: 36/36. Build, typecheck e lint do teste novo: exit 0. PDF: 9 páginas, nenhuma palavra fora dos limites.
+O cadastro e os dois acessos continuam protegidos; integração real DFChat/HP Consultoria ainda pendente.
+Sem publicação, push ou deploy. Branch 3 commits à frente e 42 atrás de origin/main, exige reconciliação antes de implantação.

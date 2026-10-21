@@ -1,0 +1,97 @@
+
+> web@0.1.0 test
+> node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/*.test.ts
+
+✖ logo do PDF é o SVG original do site atual, não HP genérico (373.56178ms)
+✖ tokens do PDF são os tokens reais da mesma revisão do site (6.575831ms)
+✖ fontes oficiais Jost e Raleway estão incorporadas ao exportador (12.531731ms)
+✔ download sem sessão, adulterado ou expirado não lê o PDF (44.000719ms)
+✔ download com sessão válida entrega PDF privado como anexo (5.479937ms)
+✔ PDF ausente ou inválido falha fechado sem revelar caminho (5.13666ms)
+✔ normalizeWhatsapp converte numero BR nacional para E164 (1.742015ms)
+✔ normalizeWhatsapp rejeita entradas invalidas (0.357205ms)
+✔ validateLead aceita lead valido e normaliza campos (1.090929ms)
+✔ validateLead rejeita campos invalidos individualmente (0.418017ms)
+✔ validateLead ignora tenant/org vindos do cliente (anti-spoof) (1.295385ms)
+✔ createSession/verifySession faz roundtrip e rejeita adulteracao/expiracao (3.279482ms)
+✔ sessionIsValid exige cookie e secret (0.747922ms)
+✔ buildSetCookie traz flags de seguranca e nao carrega PII (0.523737ms)
+✔ rate limiter bloqueia acima do limite e reseta na janela (0.655314ms)
+✔ idempotency store guarda e respeita TTL (3.242898ms)
+✔ createCrmAdapter sem configuracao falha fechado (0.904117ms)
+✔ createCrmAdapter expoe adapter http quando configurado (0.48008ms)
+✔ fixture de CRM (TESTE) exige flag explicita e grava arquivo (44.068702ms)
+✔ handleSubmit valido: 200, persiste uma vez, cookie assinado sem PII (1.448083ms)
+✔ handleSubmit invalido: 400, nao persiste, sem cookie (1.103317ms)
+✔ handleSubmit sem secret: 503, falha fechado (1.133841ms)
+✔ handleSubmit respeita rate limit: 429 sem persistir (0.709646ms)
+✔ handleSubmit com CRM nao configurado: 502 sem liberar guia (2.649678ms)
+✔ handleSubmit com falha upstream: 502 preserva dados e sinaliza retry (0.358759ms)
+✔ double submit e idempotente: persiste uma vez, mesmo cookie (0.950367ms)
+✔ payload nao vaza tenant para o adapter (anti-spoof end-to-end) (0.632981ms)
+✔ idempotency store reserva em andamento e libera no release (0.227611ms)
+✔ submit concorrente da mesma chave persiste uma vez (1.5386ms)
+✔ falha de persistencia libera a reserva para retry (0.468543ms)
+✔ CRM 2xx sem confirmação ou com org errada não libera sessão (64.051277ms)
+✔ idempotência é vinculada ao cadastro, não à chave escolhida pelo cliente (1.503697ms)
+✔ cookie com assinatura multibyte falha fechado, sem exceção (0.967553ms)
+✔ telefone nacional exige DDD e formato brasileiro válido (0.356736ms)
+✔ produção não habilita fixture nem permite org diferente (0.277046ms)
+✔ corpo chunked é interrompido ao exceder o limite em bytes (6.044985ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 33
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 843.799439
+
+✖ failing tests:
+
+test at tests/brand.test.ts:6:1
+✖ logo do PDF é o SVG original do site atual, não HP genérico (373.56178ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '1a161df5900bdfbcea0e101929bc0317474738746ee278f56bb183ba6739ebfd'
+  - 'cfc3e1d632c8bef00f268fdfa6f2e314f9f992fd806f3248d9c8fc6670b1d8d3'
+  
+      at TestContext.<anonymous> (file:///home/orca/orca/workspaces/hp-site/claude-design-guide/tests/brand.test.ts:8:9)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '1a161df5900bdfbcea0e101929bc0317474738746ee278f56bb183ba6739ebfd',
+    expected: 'cfc3e1d632c8bef00f268fdfa6f2e314f9f992fd806f3248d9c8fc6670b1d8d3',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/brand.test.ts:12:1
+✖ tokens do PDF são os tokens reais da mesma revisão do site (6.575831ms)
+  Error: ENOENT: no such file or directory, open '/home/orca/orca/workspaces/hp-site/claude-design-guide/private/guides/pdf-brand-tokens.css'
+      at async open (node:internal/fs/promises:1360:25)
+      at async readFile (node:internal/fs/promises:2149:14)
+      at async TestContext.<anonymous> (file:///home/orca/orca/workspaces/hp-site/claude-design-guide/tests/brand.test.ts:13:15)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/home/orca/orca/workspaces/hp-site/claude-design-guide/private/guides/pdf-brand-tokens.css'
+  }
+
+test at tests/brand.test.ts:16:1
+✖ fontes oficiais Jost e Raleway estão incorporadas ao exportador (12.531731ms)
+  Error: ENOENT: no such file or directory, open '/home/orca/orca/workspaces/hp-site/claude-design-guide/private/guides/pdf-brand-fonts.css'
+      at async open (node:internal/fs/promises:1360:25)
+      at async readFile (node:internal/fs/promises:2149:14)
+      at async TestContext.<anonymous> (file:///home/orca/orca/workspaces/hp-site/claude-design-guide/tests/brand.test.ts:17:14)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/home/orca/orca/workspaces/hp-site/claude-design-guide/private/guides/pdf-brand-fonts.css'
+  }

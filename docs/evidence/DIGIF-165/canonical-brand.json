@@ -1,0 +1,46 @@
+{
+  "site": "https://henriquepimentel.com.br/",
+  "repository": "https://github.com/designrique/site-henrique-pimentel",
+  "ref": "148a4b14add127c44fcadfd3194e3d805bd8a8aa",
+  "logo": "public/signature.svg",
+  "logo_sha256": "cfc3e1d632c8bef00f268fdfa6f2e314f9f992fd806f3248d9c8fc6670b1d8d3",
+  "tokens": "src/styles/tokens.css",
+  "fonts_css_source": "https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&family=Raleway:wght@400;600;700&display=swap",
+  "fonts": [
+    {
+      "url": "https://fonts.gstatic.com/s/jost/v20/92zPtBhPNqw79Ij1E865zBUv7myjJQVG.ttf",
+      "bytes": 58796,
+      "sha256": "c3143e923ed1ca7bdf27f96c351fbafaebcbd3cf3f4c2d30d03e6c7f98e73d7a"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/jost/v20/92zPtBhPNqw79Ij1E865zBUv7mx9IgVG.ttf",
+      "bytes": 58936,
+      "sha256": "a63c8d75600a2d42e0e152e4c4810474a90a0b93206f47530a741dbb78a9e571"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/jost/v20/92zPtBhPNqw79Ij1E865zBUv7mxEIgVG.ttf",
+      "bytes": 58880,
+      "sha256": "3e49280c154002dcbab4344a77ad291d5587d4157b24b5a02341f68cccd24615"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/raleway/v37/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvaooCP.ttf",
+      "bytes": 138808,
+      "sha256": "943300b002516feaf028c27aceaa2f473f2e1c0229ed913652a406d43277d9ba"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/raleway/v37/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVsEpYCP.ttf",
+      "bytes": 138840,
+      "sha256": "85ad6f6d9c2737c93ee3f1c2e420f46fe5da289914aec32a11666801b34780a3"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/raleway/v37/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVs9pYCP.ttf",
+      "bytes": 138748,
+      "sha256": "6cd34aa42be80b5ae85cc8c816f241d46a6d77a3a3277a6a20962b134b567cea"
+    }
+  ],
+  "design_system": {
+    "local": "private/guides/DESIGN.md",
+    "derived_from": "src/styles/tokens.css + src/components/logo.tsx + public/signature.svg",
+    "ref": "148a4b14add127c44fcadfd3194e3d805bd8a8aa"
+  }
+}
