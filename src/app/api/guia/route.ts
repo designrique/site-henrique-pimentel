@@ -8,6 +8,7 @@ import {
   createRateLimiter,
   createIdempotencyStore,
   readRequestBody,
+  rateLimitKey,
 } from "@/lib/lead-guide/gate";
 
 export const runtime = "nodejs";
@@ -20,12 +21,6 @@ const mailer = createMailer(process.env);
 const BASE_URL = process.env.GUIDE_BASE_URL?.trim() || "https://henriquepimentel.com.br";
 
 const MAX_BODY = 4096;
-
-function clientKey(req: Request): string {
-  const xff = req.headers.get("x-forwarded-for");
-  const ip = xff ? xff.split(",")[0].trim() : req.headers.get("x-real-ip") ?? "unknown";
-  return ip;
-}
 
 export async function POST(req: Request) {
   const contentType = req.headers.get("content-type") ?? "";
@@ -51,7 +46,7 @@ export async function POST(req: Request) {
     sessionSecret: process.env.GUIDE_SESSION_SECRET,
     limiter,
     dedupe,
-    requestKey: clientKey(req),
+    requestKey: rateLimitKey(req.headers),
     ttlSeconds: 60 * 60 * 24 * 7,
     secure: process.env.NODE_ENV === "production",
     mailer,

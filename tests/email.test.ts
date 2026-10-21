@@ -136,6 +136,31 @@ test("envio de e-mail acontece uma única vez por cadastro, mesmo em repetição
   assert.equal(first.setCookie, second.setCookie);
 });
 
+test("após falha de e-mail, reenviar o cadastro tenta entregar de novo", async () => {
+  const attempts: number[] = [];
+  let fail = true;
+  const mailer = createMailer(smtpEnv, {
+    createTransport: () => ({
+      sendMail: async () => {
+        attempts.push(1);
+        if (fail) throw new Error("smtp down");
+        return { messageId: "<ok@example.com>" };
+      },
+    }),
+  });
+  const adapter = { name: "test", persistLead: async () => ({ ok: true as const, id: "lead-id-3" }) };
+  const dedupe = createIdempotencyStore({ ttlMs: 600_000 });
+  const payload = { name: "Rita Alves", email: "rita@example.com", whatsapp: "(81) 96666-5555", consent: true };
+  const first = await handleSubmit(payload, { adapter, sessionSecret: secret, mailer, baseUrl: base, dedupe, now: () => 1_700_000_010 });
+  const second = await handleSubmit(payload, { adapter, sessionSecret: secret, mailer, baseUrl: base, dedupe, now: () => 1_700_000_020 });
+  fail = false;
+  const third = await handleSubmit(payload, { adapter, sessionSecret: secret, mailer, baseUrl: base, dedupe, now: () => 1_700_000_030 });
+  assert.equal(first.body.email, "failed");
+  assert.equal(second.body.email, "failed");
+  assert.equal(third.body.email, "sent");
+  assert.equal(attempts.length, 3);
+});
+
 test("cookie de sessão continua válido como link de acesso ao guia", () => {
   const { token } = createSession(secret, 600, 1_700_000_000);
   assert.ok(verifySession(token, secret, 1_700_000_100));

@@ -1,0 +1,69 @@
+Started hpguide-fix-build.service - /root/.hermes/tools/node-26.7.0-linux-x64/bin/npm run build.
+> web@0.1.0 build
+> next build
+▲ Next.js 16.2.6 (Turbopack)
+  Creating an optimized production build ...
+✓ Compiled successfully in 31.9s
+  Running TypeScript ...
+  Finished TypeScript in 30.3s ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/314) ...
+  Generating static pages using 5 workers (78/314)
+  Generating static pages using 5 workers (156/314)
+  Generating static pages using 5 workers (235/314)
+✓ Generating static pages using 5 workers (314/314) in 11.6s
+  Finalizing page optimization ...
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/guia
+├ ○ /baseline-geo
+├ ○ /baseline-geo/index.md
+├ ○ /blog
+├ ● /blog/[slug]
+│ ├ /blog/meta-muse-agente-pessoal-autonomo
+│ ├ /blog/ranking-deputados-projetos-pernambuco
+│ ├ /blog/como-aparecer-no-chatgpt
+│ └ [+7 more paths]
+├ ● /blog/[slug]/index.md
+│ ├ /blog/gemini-4-argon-modelo-fronteira/index.md
+│ ├ /blog/google-agentes-ia-empresas/index.md
+│ ├ /blog/context-mode-reduz-saida-ferramentas/index.md
+│ └ [+145 more paths]
+├ ○ /blog/index.md
+├ ○ /cases
+├ ○ /cases/index.md
+├ ○ /contato
+├ ○ /contato/index.md
+├ ○ /guia-claude-design
+├ ƒ /guia-claude-design/acesso
+├ ƒ /guia-claude-design/baixar
+├ ƒ /guia-claude-design/conteudo
+├ ○ /guia-claude-design/index.md
+├ ○ /index.md
+├ ○ /medcitado
+├ ○ /medcitado/index.md
+├ ○ /noticias
+├ ● /noticias/[slug]
+│ ├ /noticias/gemini-4-argon-modelo-fronteira
+│ ├ /noticias/google-agentes-ia-empresas
+│ ├ /noticias/context-mode-reduz-saida-ferramentas
+│ └ [+131 more paths]
+├ ○ /servicos/consultoria-ia
+├ ○ /sitemap.xml
+├ ○ /sobre
+└ ○ /sobre/index.md
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+hpguide-fix-build.service: Failed to kill control group /system.slice/hpguide-fix-build.service, ignoring: Invalid argument
+hpguide-fix-build.service: Failed to kill control group /system.slice/hpguide-fix-build.service, ignoring: Invalid argument
+hpguide-fix-build.service: Deactivated successfully.
+hpguide-fix-build.service: Consumed 2min 11.201s CPU time, 993.9M memory peak, 0B memory swap peak.
+Running as unit: hpguide-fix-build.service; invocation ID: d9409184c10646cda5163c65f27a175d
+Finished with result: success
+Main processes terminated with: code=exited/status=0
+Service runtime: 1min 23.933s
+CPU time consumed: 2min 11.201s
+Memory peak: 993.9M
+Memory swap peak: 0B

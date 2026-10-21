@@ -149,7 +149,7 @@ export function guideEmail(link: string): { subject: string; text: string; html:
   const text = [
     "Aqui esta o seu guia pratico de postagens em lote com Claude Design.",
     "",
-    "Abra pelo link abaixo. Ele e pessoal, vale por 3 dias e nao precisa de senha:",
+    "Abra pelo link abaixo. Ele e pessoal, vale por 24 horas e nao precisa de senha:",
     link,
     "",
     "No guia: configuracao, prompts reutilizaveis, producao em lote e revisao antes de publicar.",
@@ -161,7 +161,7 @@ export function guideEmail(link: string): { subject: string; text: string; html:
   const html = [
     '<div style="font-family:Raleway,Segoe UI,system-ui,sans-serif;color:#141413;line-height:1.6">',
     "<p>Aqui esta o seu guia pratico de <strong>postagens em lote com Claude Design</strong>.</p>",
-    "<p>Abra pelo link abaixo. Ele e pessoal, vale por 3 dias e nao precisa de senha:</p>",
+    "<p>Abra pelo link abaixo. Ele e pessoal, vale por 24 horas e nao precisa de senha:</p>",
     '<p><a href="' + link + '" style="color:#067E86">Abrir o guia completo</a></p>',
     '<p style="color:#3A4A66">No guia: configuracao, prompts reutilizaveis, producao em lote e revisao antes de publicar.</p>',
     '<p style="margin-top:24px">Henrique Pimentel<br><span style="color:#3A4A66">Consultor de Tecnologia em IA</span><br>',
@@ -397,6 +397,20 @@ function createUnconfiguredAdapter(): CrmAdapter {
   };
 }
 
+/**
+ * Chave de rate limit. Usa o valor que NOSSO proxy anexou (ultima entrada do
+ * X-Forwarded-For), nao o valor que o cliente pode forjar no inicio do header.
+ */
+export function rateLimitKey(headers: Headers): string {
+  const forwarded = headers.get("x-forwarded-for");
+  if (forwarded) {
+    const parts = forwarded.split(",").map((p) => p.trim()).filter(Boolean);
+    const last = parts[parts.length - 1];
+    if (last) return last;
+  }
+  return headers.get("x-real-ip")?.trim() || "unknown";
+}
+
 // --------------------------------------------------------------------------
 // Orquestracao do gate
 // --------------------------------------------------------------------------
@@ -476,14 +490,22 @@ export async function handleSubmit(raw: unknown, deps: SubmitDeps): Promise<Subm
   // cadastro devolve o resultado guardado e nao reenvia nada.
   let email: "sent" | "failed" | "not_configured" = "not_configured";
   if (deps.mailer && deps.mailer.name === "smtp" && deps.baseUrl) {
-    const accessTtl = deps.accessTtlSeconds ?? 60 * 60 * 24 * 3;
+    const accessTtl = deps.accessTtlSeconds ?? 60 * 60 * 24;
     const content = guideEmail(buildAccessLink(deps.baseUrl, deps.sessionSecret, accessTtl, clockSec));
     const sent = await deps.mailer.send({ to: validation.value.email, ...content });
     email = sent.ok ? "sent" : "failed";
   }
 
   const result: SubmitResult = { status: 200, body: { ok: true, email }, setCookie };
-  if (deps.dedupe) deps.dedupe.set(idemKey, result, clockMs);
+  if (deps.dedupe) {
+    if (email === "failed") {
+      // Falha de entrega NAO fica cacheada: o reenvio do cadastro pode tentar
+      // de novo. O CRM continua idempotente pelo proprio cadastro (chave unica).
+      deps.dedupe.release(idemKey);
+    } else {
+      deps.dedupe.set(idemKey, result, clockMs);
+    }
+  }
   return result;
 }
 

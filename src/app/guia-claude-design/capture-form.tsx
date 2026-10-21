@@ -85,7 +85,7 @@ export function CaptureForm() {
         <h2 className="text-xl font-semibold text-[color:var(--text-primary)]">Seu guia está pronto.</h2>
         <p className="mt-2 text-sm text-[color:var(--text-secondary)]">
           {emailStatus === "sent"
-            ? "Também enviei o link de acesso para o seu e-mail. Ele vale por 3 dias."
+            ? "Também enviei o link de acesso para o seu e-mail. Ele vale por 24 horas."
             : "Não consegui enviar o e-mail agora. Use os botões abaixo ou tente novamente mais tarde."}
         </p>
         <div className="mt-5 flex flex-col gap-3 sm:flex-row">
