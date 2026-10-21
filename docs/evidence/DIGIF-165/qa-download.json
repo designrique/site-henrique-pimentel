@@ -1,0 +1,29 @@
+{
+  "mode": "LOCAL_HTTP_FIXTURE_NOT_DFCHAT",
+  "anonymous_/guia-claude-design/conteudo/": 307,
+  "anonymous_/guia-claude-design/baixar/": 307,
+  "direct_/private/guides/claude-design.pdf": 404,
+  "direct_/guia-claude-design.pdf": 404,
+  "choices": [
+    1,
+    1
+  ],
+  "local_fixture_persists": 1,
+  "tenant_fixed": true,
+  "email_in_fixture": true,
+  "mobile_no_overflow": true,
+  "download_filename": "guia-claude-design-henrique-pimentel.pdf",
+  "download_bytes": 313079,
+  "download_matches_private_pdf": true,
+  "download_headers": {
+    "cache-control": "private, no-store, max-age=0, must-revalidate",
+    "content-disposition": "attachment; filename=\"guia-claude-design-henrique-pimentel.pdf\"",
+    "content-type": "application/pdf",
+    "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch\nCookie",
+    "x-robots-tag": "noindex, nofollow, noarchive"
+  },
+  "web_access_h1": "Automatize a geração de postagens com Claude Design",
+  "web_download_link": 1,
+  "after_cookie_removal": 307,
+  "browser_exceptions": []
+}

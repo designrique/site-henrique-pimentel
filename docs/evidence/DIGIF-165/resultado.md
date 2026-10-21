@@ -4,8 +4,8 @@ Implementado somente no worktree Orca do hp-site. Nenhum push, merge ou deploy.
 
 - Página /guia-claude-design/ com nome, e-mail, WhatsApp e consentimento.
 - Guia privado em /guia-claude-design/conteudo/, com 16 seções e fontes, total de 17 seções renderizadas incluindo fontes.
-- PDF proprietário de 8 páginas em guia-claude-design.pdf, texto extraído e validado (11.814 caracteres); não fica em public/.
-- 30 testes passam; typecheck e lint dos arquivos alterados sem erros.
+- PDF proprietário de 9 páginas em guia-claude-design.pdf, texto extraído e validado (conteúdo e fontes conferidos); não fica em public/.
+- 33 testes passam; typecheck e lint dos arquivos alterados sem erros.
 - Build final real: build-verified.log, status 0 em unidade systemd isolada.
 - QA final real: qa-final.json e final-*.png, fluxo de erro e proteção sem cookie verificados.
 - As quatro falhas bloqueantes da primeira revisão foram corrigidas com testes RED/GREEN.
@@ -21,3 +21,5 @@ Este worktree requer runtime Node (API/cookies) e não static export. O deploy e
 ## Escopo de evidência
 
 Fixtures e sessão pré-carregada de QA não provam persistência externa. O PDF e as imagens privadas foram exportados com sessão efêmera do preview local para revisão do proprietário. As imagens antigas qa-* precedem a revisão; usar final-* e qa-final.json.
+
+Atualização: aceite de marca e download protegido em download-acceptance.md; os testes de ambas as opções estão em qa-download.json.

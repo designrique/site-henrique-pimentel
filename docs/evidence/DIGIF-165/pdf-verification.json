@@ -1,7 +1,12 @@
 {
-  "bytes": 244075,
-  "sha256": "7f1177b32992d5d641d818bd6a95b1a1799fdabe0ab8ace6ea8dc31301c7a548",
-  "text_characters": 11814,
-  "contains_checklist": true,
-  "contains_sources": true
+  "pages": 9,
+  "bytes": 313079,
+  "sha256": "b2ad742ec12a42327880ab69dba19f53f89903d2d220d6653e3baad3dcb5f4e9",
+  "logo_source": "public/signature.svg",
+  "logo_source_sha256": "1a161df5900bdfbcea0e101929bc0317474738746ee278f56bb183ba6739ebfd",
+  "tagged_pdf": true,
+  "rendered_pages": 9,
+  "page_word_overflow": false,
+  "private_path": "private/guides/claude-design.pdf",
+  "download_route": "/guia-claude-design/baixar/"
 }

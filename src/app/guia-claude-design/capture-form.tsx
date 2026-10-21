@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
 
 type FieldErrors = Record<string, string>;
 
@@ -20,17 +19,17 @@ function messageFor(status: number, code: string | undefined): string {
 }
 
 export function CaptureForm() {
-  const router = useRouter();
   const statusRef = useRef<HTMLDivElement>(null);
   const inFlight = useRef(false); // guarda sincrona: estado do React não atualiza no mesmo tick
   const [pending, setPending] = useState(false);
+  const [granted, setGranted] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
 
   // Move o foco para o alerta quando ele aparece (o elemento só existe depois do render).
   useEffect(() => {
-    if (message) statusRef.current?.focus();
-  }, [message]);
+    if (message || granted) statusRef.current?.focus();
+  }, [message, granted]);
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -63,8 +62,8 @@ export function CaptureForm() {
       };
 
       if (res.ok && data.ok) {
-        router.push("/guia-claude-design/conteudo/");
-        return; // mantem o estado pendente ate a navegacao
+        setGranted(true);
+        return;
       }
 
       if (data.errors) setFieldErrors(data.errors);
@@ -75,6 +74,18 @@ export function CaptureForm() {
       inFlight.current = false;
       setPending(false);
     }
+  }
+
+  if (granted) {
+    return (
+      <div ref={statusRef} role="status" tabIndex={-1} className="rounded-2xl border border-[color:var(--border-default)] bg-[color:var(--bg-subtle)] p-6 sm:p-8">
+        <h2 className="text-xl font-semibold text-[color:var(--text-primary)]">Seu guia está pronto.</h2>
+        <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+          <a href="/guia-claude-design/conteudo/" className="inline-flex min-h-12 items-center justify-center rounded-[10px] border border-[color:var(--border-default)] px-5 font-medium text-[color:var(--text-primary)] hover:underline">Ler online</a>
+          <a href="/guia-claude-design/baixar/" className="inline-flex min-h-12 items-center justify-center rounded-[10px] border border-[color:var(--accent-primary)] px-5 font-medium text-[color:var(--accent-primary)] hover:underline">Baixar PDF</a>
+        </div>
+      </div>
+    );
   }
 
   return (

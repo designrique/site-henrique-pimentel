@@ -58,3 +58,7 @@ Direta, prática, precisa. Sem promessas de API, publicação automática ou exp
 
 ## 9. Anti-padrões
 Não alterar logo, navegação ou cores globais. Não publicar guia em llms.txt ou espelho markdown. Não usar imagem de dashboard fictício, gradiente roxo ou cartões genéricos de benefícios. Não confundir teste local com cadastro no DFChat. Não aceitar 2xx sem comprovação explícita de persistência e org correta. Não ativar fixture em produção.
+
+### PDF editorial proprietário
+
+Logo: reutilizar exatamente public/signature.svg, preservando proporção. Capa com logo, título e promessa prática; sumário e seções com Geist/Fraunces/JetBrains carregadas do próprio site, branco, navy e azul-cobalto. Corpo legível em A4, prompts com quebra de linha, cabeçalho/rodapé discretos com marca e páginas. O PDF pertence à área privada: nunca armazenar em public nem expor URL estática.

@@ -84,3 +84,12 @@ apenas NESTE worktree para habilitar o gate real server-side. `trailingSlash` e
 - Nao publicar, nao push, nao merge, nao comentar/fechar issue.
 - Nao alterar deploy real, nao mudar configs globais, nao tocar outros repos.
 - Nao prometer API publica nativa, scheduler ou autopublish sem fonte oficial.
+
+## Correção aprovada pelo proprietário: PDF e opções de acesso
+
+- PDF editorial com logo real public/signature.svg, tokens do DESIGN.md, capa e sumário, cabeçalho/rodapé da marca e metadados. Não usar captura genérica sem marca.
+- Artefato em private/guides/claude-design.pdf, fora de public e do bundle cliente.
+- GET /guia-claude-design/baixar/ exige a mesma sessão validada do guia, noindex e Cache-Control private,no-store.
+- Sem sessão, com sessão adulterada ou expirada: redirecionar à captura sem ler o arquivo. Com arquivo indisponível: falha fechada sem revelar caminhos.
+- Após cadastro confirmado, mostrar duas opções: Ler online e Baixar PDF. Acesso privado também oferece download.
+- TDD para autorização, headers e ausência de vazamento público; QA real com sessão/CRM fixture identificados apenas como teste.

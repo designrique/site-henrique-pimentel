@@ -29,6 +29,9 @@ export default async function GuiaConteudoPage() {
           Automatize a geração de postagens com Claude Design
         </h1>
       </header>
+      <div className="mx-auto mt-6 max-w-2xl print:hidden">
+        <a href="/guia-claude-design/baixar/" className="inline-flex min-h-11 items-center rounded-[10px] border border-[color:var(--accent-primary)] px-4 font-medium text-[color:var(--accent-primary)] hover:underline">Baixar PDF</a>
+      </div>
       <GuideContent />
     </Container>
   );

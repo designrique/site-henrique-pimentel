@@ -420,3 +420,33 @@ export async function readRequestBody(req: Request, maxBytes: number): Promise<s
     reader.releaseLock();
   }
 }
+
+/** O PDF usa a mesma autorização do guia web e nunca é um asset público. */
+export async function guidePdfResponse(
+  token: unknown,
+  secret: string | undefined,
+  loadPdf: () => Promise<Buffer>
+): Promise<Response> {
+  const headers = {
+    "Cache-Control": "private, no-store, max-age=0, must-revalidate",
+    "X-Robots-Tag": "noindex, nofollow, noarchive",
+    "X-Content-Type-Options": "nosniff",
+    Vary: "Cookie",
+  };
+  if (!sessionIsValid(token, secret)) {
+    return new Response(null, { status: 307, headers: { ...headers, Location: "/guia-claude-design/" } });
+  }
+  try {
+    const pdf = await loadPdf();
+    if (pdf.subarray(0, 5).toString() !== "%PDF-") throw new Error("invalid_pdf");
+    return new Response(new Uint8Array(pdf), {
+      headers: {
+        ...headers,
+        "Content-Type": "application/pdf",
+        "Content-Disposition": 'attachment; filename="guia-claude-design-henrique-pimentel.pdf"',
+      },
+    });
+  } catch {
+    return new Response("Arquivo temporariamente indisponível.", { status: 503, headers });
+  }
+}

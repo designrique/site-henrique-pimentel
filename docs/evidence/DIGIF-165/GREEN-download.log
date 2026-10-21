@@ -1,0 +1,45 @@
+
+> web@0.1.0 test
+> node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/*.test.ts
+
+✔ download sem sessão, adulterado ou expirado não lê o PDF (128.186116ms)
+✔ download com sessão válida entrega PDF privado como anexo (5.99967ms)
+✔ PDF ausente ou inválido falha fechado sem revelar caminho (2.673709ms)
+✔ normalizeWhatsapp converte numero BR nacional para E164 (1.980097ms)
+✔ normalizeWhatsapp rejeita entradas invalidas (0.39219ms)
+✔ validateLead aceita lead valido e normaliza campos (1.313434ms)
+✔ validateLead rejeita campos invalidos individualmente (0.667713ms)
+✔ validateLead ignora tenant/org vindos do cliente (anti-spoof) (0.964511ms)
+✔ createSession/verifySession faz roundtrip e rejeita adulteracao/expiracao (2.643154ms)
+✔ sessionIsValid exige cookie e secret (0.981537ms)
+✔ buildSetCookie traz flags de seguranca e nao carrega PII (0.681345ms)
+✔ rate limiter bloqueia acima do limite e reseta na janela (2.005174ms)
+✔ idempotency store guarda e respeita TTL (3.359921ms)
+✔ createCrmAdapter sem configuracao falha fechado (0.984231ms)
+✔ createCrmAdapter expoe adapter http quando configurado (0.343667ms)
+✔ fixture de CRM (TESTE) exige flag explicita e grava arquivo (77.350409ms)
+✔ handleSubmit valido: 200, persiste uma vez, cookie assinado sem PII (21.607194ms)
+✔ handleSubmit invalido: 400, nao persiste, sem cookie (0.674924ms)
+✔ handleSubmit sem secret: 503, falha fechado (0.381724ms)
+✔ handleSubmit respeita rate limit: 429 sem persistir (1.258331ms)
+✔ handleSubmit com CRM nao configurado: 502 sem liberar guia (0.369366ms)
+✔ handleSubmit com falha upstream: 502 preserva dados e sinaliza retry (0.268111ms)
+✔ double submit e idempotente: persiste uma vez, mesmo cookie (0.546231ms)
+✔ payload nao vaza tenant para o adapter (anti-spoof end-to-end) (0.470077ms)
+✔ idempotency store reserva em andamento e libera no release (0.237517ms)
+✔ submit concorrente da mesma chave persiste uma vez (2.576142ms)
+✔ falha de persistencia libera a reserva para retry (0.865502ms)
+✔ CRM 2xx sem confirmação ou com org errada não libera sessão (92.727787ms)
+✔ idempotência é vinculada ao cadastro, não à chave escolhida pelo cliente (2.981432ms)
+✔ cookie com assinatura multibyte falha fechado, sem exceção (4.201496ms)
+✔ telefone nacional exige DDD e formato brasileiro válido (0.476206ms)
+✔ produção não habilita fixture nem permite org diferente (3.036164ms)
+✔ corpo chunked é interrompido ao exceder o limite em bytes (57.445124ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 632.771212

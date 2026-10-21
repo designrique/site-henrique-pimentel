@@ -6,6 +6,9 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   trailingSlash: true,
   images: { unoptimized: true },
+  outputFileTracingIncludes: {
+    "/guia-claude-design/baixar": ["./private/guides/claude-design.pdf"],
+  },
 };
 
 export default nextConfig;

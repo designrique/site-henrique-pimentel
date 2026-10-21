@@ -1,0 +1,81 @@
+
+> web@0.1.0 test
+> node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/*.test.ts
+
+✖ download sem sessão, adulterado ou expirado não lê o PDF (2.574541ms)
+✖ download com sessão válida entrega PDF privado como anexo (0.621063ms)
+✖ PDF ausente ou inválido falha fechado sem revelar caminho (0.410838ms)
+✔ normalizeWhatsapp converte numero BR nacional para E164 (2.448832ms)
+✔ normalizeWhatsapp rejeita entradas invalidas (0.247051ms)
+✔ validateLead aceita lead valido e normaliza campos (0.822687ms)
+✔ validateLead rejeita campos invalidos individualmente (0.4127ms)
+✔ validateLead ignora tenant/org vindos do cliente (anti-spoof) (2.513748ms)
+✔ createSession/verifySession faz roundtrip e rejeita adulteracao/expiracao (2.124224ms)
+✔ sessionIsValid exige cookie e secret (0.6913ms)
+✔ buildSetCookie traz flags de seguranca e nao carrega PII (0.371008ms)
+✔ rate limiter bloqueia acima do limite e reseta na janela (0.776879ms)
+✔ idempotency store guarda e respeita TTL (7.188548ms)
+✔ createCrmAdapter sem configuracao falha fechado (33.072202ms)
+✔ createCrmAdapter expoe adapter http quando configurado (0.846552ms)
+✔ fixture de CRM (TESTE) exige flag explicita e grava arquivo (607.171176ms)
+✔ handleSubmit valido: 200, persiste uma vez, cookie assinado sem PII (1.642429ms)
+✔ handleSubmit invalido: 400, nao persiste, sem cookie (0.25868ms)
+✔ handleSubmit sem secret: 503, falha fechado (0.154413ms)
+✔ handleSubmit respeita rate limit: 429 sem persistir (0.364407ms)
+✔ handleSubmit com CRM nao configurado: 502 sem liberar guia (13.380517ms)
+✔ handleSubmit com falha upstream: 502 preserva dados e sinaliza retry (0.311748ms)
+✔ double submit e idempotente: persiste uma vez, mesmo cookie (1.064761ms)
+✔ payload nao vaza tenant para o adapter (anti-spoof end-to-end) (0.302455ms)
+✔ idempotency store reserva em andamento e libera no release (0.128684ms)
+✔ submit concorrente da mesma chave persiste uma vez (0.663067ms)
+✔ falha de persistencia libera a reserva para retry (0.220221ms)
+✔ CRM 2xx sem confirmação ou com org errada não libera sessão (135.152264ms)
+✔ idempotência é vinculada ao cadastro, não à chave escolhida pelo cliente (1.392885ms)
+✔ cookie com assinatura multibyte falha fechado, sem exceção (0.920405ms)
+✔ telefone nacional exige DDD e formato brasileiro válido (0.360171ms)
+✔ produção não habilita fixture nem permite org diferente (0.412259ms)
+✔ corpo chunked é interrompido ao exceder o limite em bytes (10.148187ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 30
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2421.311779
+
+✖ failing tests:
+
+test at tests/download.test.ts:8:1
+✖ download sem sessão, adulterado ou expirado não lê o PDF (2.574541ms)
+  TypeError: download.guidePdfResponse is not a function
+      at TestContext.<anonymous> (file:///home/orca/orca/workspaces/hp-site/claude-design-guide/tests/download.test.ts:12:30)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.start (node:internal/test_runner/test:1257:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+test at tests/download.test.ts:20:1
+✖ download com sessão válida entrega PDF privado como anexo (0.621063ms)
+  TypeError: download.guidePdfResponse is not a function
+      at TestContext.<anonymous> (file:///home/orca/orca/workspaces/hp-site/claude-design-guide/tests/download.test.ts:21:27)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at tests/download.test.ts:32:1
+✖ PDF ausente ou inválido falha fechado sem revelar caminho (0.410838ms)
+  TypeError: download.guidePdfResponse is not a function
+      at TestContext.<anonymous> (file:///home/orca/orca/workspaces/hp-site/claude-design-guide/tests/download.test.ts:35:28)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
