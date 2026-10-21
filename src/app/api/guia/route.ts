@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 import {
+  createMailer,
+} from "@/lib/lead-guide/email";
+import {
   handleSubmit,
   createCrmAdapter,
   createRateLimiter,
@@ -13,6 +16,8 @@ export const dynamic = "force-dynamic";
 // Singletons de modulo: estado bounded, vive enquanto o processo do servidor viver.
 const limiter = createRateLimiter({ limit: 5, windowMs: 60_000 });
 const dedupe = createIdempotencyStore({ ttlMs: 10 * 60_000, maxEntries: 5000 });
+const mailer = createMailer(process.env);
+const BASE_URL = process.env.GUIDE_BASE_URL?.trim() || "https://henriquepimentel.com.br";
 
 const MAX_BODY = 4096;
 
@@ -49,6 +54,8 @@ export async function POST(req: Request) {
     requestKey: clientKey(req),
     ttlSeconds: 60 * 60 * 24 * 7,
     secure: process.env.NODE_ENV === "production",
+    mailer,
+    baseUrl: BASE_URL,
   });
 
   const res = NextResponse.json(result.body, { status: result.status });

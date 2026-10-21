@@ -23,6 +23,7 @@ export function CaptureForm() {
   const inFlight = useRef(false); // guarda sincrona: estado do React não atualiza no mesmo tick
   const [pending, setPending] = useState(false);
   const [granted, setGranted] = useState(false);
+  const [emailStatus, setEmailStatus] = useState<"sent" | "failed" | "not_configured">("not_configured");
   const [message, setMessage] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
 
@@ -58,10 +59,12 @@ export function CaptureForm() {
       const data = (await res.json().catch(() => ({}))) as {
         ok?: boolean;
         error?: string;
+        email?: "sent" | "failed" | "not_configured";
         errors?: FieldErrors;
       };
 
       if (res.ok && data.ok) {
+        setEmailStatus(data.email ?? "not_configured");
         setGranted(true);
         return;
       }
@@ -80,6 +83,11 @@ export function CaptureForm() {
     return (
       <div ref={statusRef} role="status" tabIndex={-1} className="rounded-2xl border border-[color:var(--border-default)] bg-[color:var(--bg-subtle)] p-6 sm:p-8">
         <h2 className="text-xl font-semibold text-[color:var(--text-primary)]">Seu guia está pronto.</h2>
+        <p className="mt-2 text-sm text-[color:var(--text-secondary)]">
+          {emailStatus === "sent"
+            ? "Também enviei o link de acesso para o seu e-mail. Ele vale por 3 dias."
+            : "Não consegui enviar o e-mail agora. Use os botões abaixo ou tente novamente mais tarde."}
+        </p>
         <div className="mt-5 flex flex-col gap-3 sm:flex-row">
           <a href="/guia-claude-design/conteudo/" className="inline-flex min-h-12 items-center justify-center rounded-[10px] border border-[color:var(--border-default)] px-5 font-medium text-[color:var(--text-primary)] hover:underline">Ler online</a>
           <a href="/guia-claude-design/baixar/" className="inline-flex min-h-12 items-center justify-center rounded-[10px] border border-[color:var(--accent-primary)] px-5 font-medium text-[color:var(--accent-primary)] hover:underline">Baixar PDF</a>

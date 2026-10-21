@@ -7,6 +7,7 @@
  * e de sessao (segredo). O guia so e liberado depois de persistir no CRM.
  */
 import { createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypto";
+import type { Mailer } from "./email";
 import { appendFile } from "node:fs/promises";
 
 export const SESSION_COOKIE = "hp_guia_session";
@@ -140,6 +141,78 @@ export function buildSetCookie(token: string, ttlSeconds: number, secure: boolea
   ];
   if (secure) parts.push("Secure");
   return parts.join("; ");
+}
+
+/** Conteudo do e-mail de entrega. Puro: recebe o link ja assinado, nunca gera segredo. */
+export function guideEmail(link: string): { subject: string; text: string; html: string } {
+  const subject = "Seu guia: postagens em lote com Claude Design";
+  const text = [
+    "Aqui esta o seu guia pratico de postagens em lote com Claude Design.",
+    "",
+    "Abra pelo link abaixo. Ele e pessoal, vale por 3 dias e nao precisa de senha:",
+    link,
+    "",
+    "No guia: configuracao, prompts reutilizaveis, producao em lote e revisao antes de publicar.",
+    "",
+    "Henrique Pimentel",
+    "Consultor de Tecnologia em IA",
+    "https://henriquepimentel.com.br",
+  ].join("\n");
+  const html = [
+    '<div style="font-family:Raleway,Segoe UI,system-ui,sans-serif;color:#141413;line-height:1.6">',
+    "<p>Aqui esta o seu guia pratico de <strong>postagens em lote com Claude Design</strong>.</p>",
+    "<p>Abra pelo link abaixo. Ele e pessoal, vale por 3 dias e nao precisa de senha:</p>",
+    '<p><a href="' + link + '" style="color:#067E86">Abrir o guia completo</a></p>',
+    '<p style="color:#3A4A66">No guia: configuracao, prompts reutilizaveis, producao em lote e revisao antes de publicar.</p>',
+    '<p style="margin-top:24px">Henrique Pimentel<br><span style="color:#3A4A66">Consultor de Tecnologia em IA</span><br>',
+    '<a href="https://henriquepimentel.com.br" style="color:#067E86">henriquepimentel.com.br</a></p>',
+    "</div>",
+  ].join("");
+  return { subject, text, html };
+}
+
+/** Link pessoal de acesso ao guia, enviado por e-mail. Sem PII na URL. */
+export function buildAccessLink(
+  baseUrl: string,
+  signingKey: string,
+  ttlSeconds: number,
+  now: number = Math.floor(Date.now() / 1000)
+): string {
+  const { token } = createSession(signingKey, ttlSeconds, now);
+  return baseUrl.replace(/\/+$/, "") + "/guia-claude-design/acesso/?t=" + token;
+}
+
+const ACCESS_HEADERS = {
+  "Cache-Control": "private, no-store, max-age=0, must-revalidate",
+  "X-Robots-Tag": "noindex, nofollow, noarchive",
+  "X-Content-Type-Options": "nosniff",
+  "Referrer-Policy": "no-referrer",
+  Vary: "Cookie",
+};
+
+/**
+ * Consome o link do e-mail: emite a mesma sessao do guia e manda para o conteudo.
+ * Link invalido, expirado ou segredo ausente volta para a captura, sem cookie.
+ */
+export function accessResponse(
+  token: unknown,
+  signingKey: string | undefined,
+  now: number = Math.floor(Date.now() / 1000),
+  secure: boolean = true
+): Response {
+  const payload = verifySession(token, signingKey, now);
+  if (!payload || !signingKey) {
+    return new Response(null, { status: 307, headers: { ...ACCESS_HEADERS, Location: "/guia-claude-design/?acesso=invalido" } });
+  }
+  const remaining = payload.exp - now;
+  return new Response(null, {
+    status: 303,
+    headers: {
+      ...ACCESS_HEADERS,
+      Location: "/guia-claude-design/conteudo/",
+      "Set-Cookie": buildSetCookie(String(token), remaining, secure),
+    },
+  });
 }
 
 // --------------------------------------------------------------------------
@@ -337,6 +410,11 @@ export interface SubmitDeps {
   idempotencyKey?: string;
   ttlSeconds?: number;
   secure?: boolean;
+  /** Entrega por e-mail do link pessoal de acesso. Ausente = nao envia (nao finge envio). */
+  mailer?: Mailer;
+  baseUrl?: string;
+  /** Validade do link enviado por e-mail. */
+  accessTtlSeconds?: number;
   /** clock em segundos; default = Date.now()/1000. Usado tambem (x1000) em ms. */
   now?: () => number;
 }
@@ -393,7 +471,18 @@ export async function handleSubmit(raw: unknown, deps: SubmitDeps): Promise<Subm
 
   const { token } = createSession(deps.sessionSecret, ttlSeconds, clockSec);
   const setCookie = buildSetCookie(token, ttlSeconds, deps.secure ?? true);
-  const result: SubmitResult = { status: 200, body: { ok: true }, setCookie };
+
+  // A entrega por e-mail faz parte do MESMO resultado idempotente: repetir o
+  // cadastro devolve o resultado guardado e nao reenvia nada.
+  let email: "sent" | "failed" | "not_configured" = "not_configured";
+  if (deps.mailer && deps.mailer.name === "smtp" && deps.baseUrl) {
+    const accessTtl = deps.accessTtlSeconds ?? 60 * 60 * 24 * 3;
+    const content = guideEmail(buildAccessLink(deps.baseUrl, deps.sessionSecret, accessTtl, clockSec));
+    const sent = await deps.mailer.send({ to: validation.value.email, ...content });
+    email = sent.ok ? "sent" : "failed";
+  }
+
+  const result: SubmitResult = { status: 200, body: { ok: true, email }, setCookie };
   if (deps.dedupe) deps.dedupe.set(idemKey, result, clockMs);
   return result;
 }

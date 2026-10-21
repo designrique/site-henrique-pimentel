@@ -1,0 +1,67 @@
+Started hpguide-email-build.service - /root/.hermes/tools/node-26.7.0-linux-x64/bin/npm run build.
+> web@0.1.0 build
+> next build
+▲ Next.js 16.2.6 (Turbopack)
+  Creating an optimized production build ...
+✓ Compiled successfully in 27.8s
+  Running TypeScript ...
+  Finished TypeScript in 20.9s ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/314) ...
+  Generating static pages using 5 workers (78/314)
+  Generating static pages using 5 workers (156/314)
+  Generating static pages using 5 workers (235/314)
+✓ Generating static pages using 5 workers (314/314) in 10.4s
+  Finalizing page optimization ...
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/guia
+├ ○ /baseline-geo
+├ ○ /baseline-geo/index.md
+├ ○ /blog
+├ ● /blog/[slug]
+│ ├ /blog/meta-muse-agente-pessoal-autonomo
+│ ├ /blog/ranking-deputados-projetos-pernambuco
+│ ├ /blog/como-aparecer-no-chatgpt
+│ └ [+7 more paths]
+├ ● /blog/[slug]/index.md
+│ ├ /blog/gemini-4-argon-modelo-fronteira/index.md
+│ ├ /blog/google-agentes-ia-empresas/index.md
+│ ├ /blog/context-mode-reduz-saida-ferramentas/index.md
+│ └ [+145 more paths]
+├ ○ /blog/index.md
+├ ○ /cases
+├ ○ /cases/index.md
+├ ○ /contato
+├ ○ /contato/index.md
+├ ○ /guia-claude-design
+├ ƒ /guia-claude-design/acesso
+├ ƒ /guia-claude-design/baixar
+├ ƒ /guia-claude-design/conteudo
+├ ○ /guia-claude-design/index.md
+├ ○ /index.md
+├ ○ /medcitado
+├ ○ /medcitado/index.md
+├ ○ /noticias
+├ ● /noticias/[slug]
+│ ├ /noticias/gemini-4-argon-modelo-fronteira
+│ ├ /noticias/google-agentes-ia-empresas
+│ ├ /noticias/context-mode-reduz-saida-ferramentas
+│ └ [+131 more paths]
+├ ○ /servicos/consultoria-ia
+├ ○ /sitemap.xml
+├ ○ /sobre
+└ ○ /sobre/index.md
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+hpguide-email-build.service: Deactivated successfully.
+hpguide-email-build.service: Consumed 1min 46.858s CPU time, 256.0K memory peak, 0B memory swap peak.
+Running as unit: hpguide-email-build.service; invocation ID: f305f176eab34209aec9d3f04a881eee
+Finished with result: success
+Main processes terminated with: code=exited/status=0
+Service runtime: 1min 7.958s
+CPU time consumed: 1min 46.858s
+Memory peak: 256.0K
+Memory swap peak: 0B
