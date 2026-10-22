@@ -1,0 +1,170 @@
+{
+  "project": {
+    "name": "Curso de IA",
+    "working_title": "IA que Destrava",
+    "subtitle": "Comunicação, clientes e operação com IA, na prática",
+    "status": "privado",
+    "owner": "Henrique Pimentel",
+    "format": "presencial",
+    "dates": ["2026-11-20", "2026-11-21"],
+    "audience": [
+      "profissionais autônomos",
+      "MEIs",
+      "pequenos negócios de serviços",
+      "pequenas equipes de comunicação, atendimento, vendas e operação",
+      "profissionais de outras áreas com tarefas reais para melhorar"
+    ],
+    "publication": {
+      "public_route": false,
+      "site_navigation": false,
+      "deploy_requested": false,
+      "external_distribution": false
+    },
+    "source_images": 10
+  },
+  "research": {
+    "thesis": "Há uma lacuna entre conhecer IA e aplicá-la com frequência em tarefas concretas de pequenos negócios.",
+    "evidence": [
+      {
+        "source": "Sebrae/FGV IBRE/Google, pesquisa citada no estudo de demanda",
+        "finding": "96% das MPE têm familiaridade com IA generativa, mas apenas 15% a usam com frequência; entre MEIs, 23% dizem não saber como aplicar IA no negócio.",
+        "implication": "Ensinar aplicações reconhecíveis da rotina, em vez de apresentar ferramentas de forma abstrata."
+      },
+      {
+        "source": "Sebrae/FGV IBRE/Google",
+        "finding": "Marketing e divulgação lideram as aplicações relatadas de IA entre pequenos negócios; comunicação e análise de dados também aparecem.",
+        "implication": "Comunicação e divulgação são uma porta de entrada, junto a atendimento, decisão e tarefas repetitivas."
+      },
+      {
+        "source": "Microsoft/Edelman, pesquisa com MPMEs",
+        "finding": "Decisores percebem ganhos de agilidade e produtividade; 24% relatam dificuldade para capacitar as equipes.",
+        "implication": "A experiência deve ser prática, com entregáveis e fluxos que possam ser testados no trabalho."
+      },
+      {
+        "source": "Cetic.br, TIC Empresas 2025",
+        "finding": "Adoção de IA ainda é baixa entre empresas pequenas; WhatsApp e Telegram são amplamente usados nos negócios.",
+        "implication": "Usar canais e ferramentas acessíveis que já fazem parte da rotina do público."
+      },
+      {
+        "source": "World Economic Forum, Future of Jobs 2025",
+        "finding": "Empregadores apontam lacunas de habilidades como barreira à transformação e planejam qualificar equipes.",
+        "implication": "Combinar uso de tecnologia com julgamento, verificação e adaptação ao contexto."
+      }
+    ],
+    "priority_audience": "Profissionais autônomos, MEIs e pequenos negócios de serviços.",
+    "demand_limit": "Os dados sustentam lacuna de aplicação e capacitação, mas não comprovam intenção de compra para esta turma. Validar com conversas, formulário e pré-inscrição.",
+    "confidence": "Alta para a lacuna geral de aplicação; ainda não validada para a conversão comercial desta turma."
+  },
+  "positioning": {
+    "brand_name": "IA que Destrava",
+    "promise": "Aplicar IA em tarefas reais de comunicação, atendimento, informação e operação, e sair com um fluxo que possa ser testado no trabalho.",
+    "aida": {
+      "attention": "Você já testou IA, mas ainda perde tempo com tarefas que se repetem?",
+      "interest": "Em dois dias, veja como aplicá-la à comunicação, ao atendimento e à operação de um pequeno negócio.",
+      "desire": "Traga uma tarefa real. Saia com materiais, um fluxo testável e um plano para aplicar o que aprendeu.",
+      "action": "Entre na lista de interesse para a turma presencial de 20 e 21 de novembro."
+    },
+    "principles": [
+      "dor de trabalho antes de ferramenta",
+      "comunicação, clientes, decisão e operação como eixo",
+      "fundamentos e instruções ensinados dentro das tarefas",
+      "revisão humana e segurança proporcionais ao risco",
+      "um teste mensurável vale mais que uma coleção de prompts"
+    ]
+  },
+  "learning_outcomes": [
+    "priorizar tarefas por frequência, tempo, impacto e risco",
+    "criar comunicação e divulgação contextualizadas para uma oferta real",
+    "estruturar respostas de atendimento, qualificação e acompanhamento",
+    "transformar documentos, reuniões e dados em sínteses verificáveis e decisões",
+    "documentar uma tarefa recorrente em um fluxo simples com revisão humana",
+    "identificar dados que não devem ser compartilhados com ferramentas de IA",
+    "definir um teste de 30 dias e uma medida de resultado"
+  ],
+  "modules": [
+    {
+      "id": "M1",
+      "title": "Encontrar o trabalho que vale melhorar",
+      "research_need": "Não saber como aplicar IA no próprio trabalho",
+      "practice": "Mapear tarefas reais por esforço, frequência, impacto e risco",
+      "deliverable": "Mapa de oportunidades e caso individual"
+    },
+    {
+      "id": "M2",
+      "title": "Comunicação e divulgação com contexto",
+      "research_need": "Marketing, divulgação e comunicação",
+      "practice": "Criar materiais a partir de uma oferta real e adaptar por canal",
+      "deliverable": "Pacote de comunicação com checklist de revisão"
+    },
+    {
+      "id": "M3",
+      "title": "Atendimento e vendas na jornada do cliente",
+      "research_need": "Atendimento, qualificação e relacionamento",
+      "practice": "Simular situações de atendimento, proposta e follow-up",
+      "deliverable": "Roteiro de atendimento e acompanhamento com transferência humana"
+    },
+    {
+      "id": "M4",
+      "title": "Da informação à decisão",
+      "research_need": "Síntese de documentos, análise de informação e apoio à decisão",
+      "practice": "Preparar síntese verificável a partir de dados não sensíveis",
+      "deliverable": "Resumo com evidências, dúvidas, decisão e próximos passos"
+    },
+    {
+      "id": "M5",
+      "title": "Tarefas repetitivas em fluxos simples",
+      "research_need": "Economia de tempo, retrabalho e organização operacional",
+      "practice": "Redesenhar e testar uma tarefa recorrente com IA onde fizer sentido",
+      "deliverable": "Procedimento com etapas, revisão humana e indicador"
+    },
+    {
+      "id": "M6",
+      "title": "Aplicação segura e plano de continuidade",
+      "research_need": "Capacitação prática, confiança e uso responsável",
+      "practice": "Consolidar o caso individual e planejar teste de 30 dias",
+      "deliverable": "Checklist seguro e plano de aplicação mensurável"
+    }
+  ],
+  "delivery": {
+    "day_1": {
+      "morning": ["mapa de trabalho", "seleção de problema", "comunicação e divulgação"],
+      "afternoon": ["pacote de comunicação", "atendimento", "jornada do cliente"]
+    },
+    "day_2": {
+      "morning": ["documentos e reuniões", "informação e dados", "decisão verificável"],
+      "afternoon": ["fluxos repetitivos", "segurança", "apresentação de casos", "plano de 30 dias"]
+    },
+    "student_leaves_with": [
+      "mapa priorizado de oportunidades",
+      "pacote de comunicação para uma oferta ou serviço",
+      "roteiro de atendimento e acompanhamento",
+      "síntese de decisão verificável",
+      "procedimento de uma tarefa recorrente",
+      "checklist de revisão e segurança",
+      "plano de teste de 30 dias com medida de resultado"
+    ],
+    "method": "Aulas curtas, demonstrações e laboratórios baseados em casos generalistas e tarefas trazidas pelos participantes."
+  },
+  "source_notes": {
+    "used_as_context_not_outline": [
+      "conceitos básicos de IA generativa quando necessários à aplicação",
+      "estruturação de instruções e contexto dentro dos exercícios",
+      "limites e revisão de respostas geradas"
+    ],
+    "excluded_from_new_course_architecture": [
+      "ordem de capítulos da ementa jurídica",
+      "pensamento exponencial como módulo de abertura",
+      "teoria extensa de LLMs, tokens e janelas de contexto",
+      "prompt engineering como eixo central",
+      "casos, exemplos e prompts exclusivos de advocacia"
+    ],
+    "content_warning": "A pesquisa sustenta lacuna de aplicação, não intenção de compra já validada. Confirmar interesse antes do lançamento."
+  },
+  "sources": [
+    "https://datasebrae.com.br/transformacao-digital/",
+    "https://blogdoibre.fgv.br/posts/uso-de-ia-nos-negocios-no-brasil-0",
+    "https://www.cetic.br/pt/noticia/uso-de-inteligencia-artificial-por-empresas-brasileiras-avanca-e-atinge-17-aponta-pesquisa-do-cetic-br/",
+    "https://news.microsoft.com/source/latam/features/noticias-da-microsoft/75-das-mpmes-no-brasil-estao-otimistas-sobre-o-impacto-da-inteligencia-artificial-em-seus-negocios-aponta-estudo-da-microsoft/?lang=pt-br",
+    "https://www.weforum.org/press/2025/01/future-of-jobs-report-2025-78-million-new-job-opportunities-by-2030-but-urgent-upskilling-needed-to-prepare-workforces/"
+  ]
+}

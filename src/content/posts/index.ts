@@ -1,5 +1,20 @@
 import type { PostEntry } from "@/lib/posts";
 
+import ahrefsIaSearch23xConversao from "./ahrefs-ia-search-23x-conversao";
+import creatorsInfraestruturaBuscaIa from "./creators-infraestrutura-busca-ia";
+import microcreators1k5kVencemCampanhas from "./microcreators-1k-5k-vencem-campanhas";
+import cortarFrequenciaMetadeSobeEngajamento from "./cortar-frequencia-metade-sobe-engajamento";
+import organicoValidaAntesMidiaPaga from "./organico-valida-antes-midia-paga";
+import personalizacaoHubspot93PorCento from "./personalizacao-hubspot-93-por-cento-marketers";
+import instagramEditsAssistantCopiloto from "./instagram-edits-assistant-copiloto-criador";
+import carrosselConfiancaVideoDescoberta from "./carrossel-confianca-video-descoberta";
+import tiktokZero7MilSeguidoresQualidade from "./tiktok-zero-7-mil-seguidores-qualidade";
+import tiktokBuyDirectCheckoutFeed from "./tiktok-buy-direct-checkout-feed";
+import tiktokShopCriadoresPequenosDigiday from "./tiktok-shop-criadores-pequenos-digiday";
+import threadsGemsConversaNativa from "./threads-gems-conversa-nativa";
+import threadsAlcanceSeguidoresHayes from "./threads-alcance-seguidores-hayes";
+import threads92PorCentoViews from "./threads-92-por-cento-views-31-por-cento-posts";
+
 import gemini4ArgonModeloFronteira from "./gemini-4-argon-modelo-fronteira";
 import googleAgentesIaEmpresas from "./google-agentes-ia-empresas";
 import contextModeReduzSaidaFerramentas from "./context-mode-reduz-saida-ferramentas";
@@ -153,6 +168,20 @@ import tiktokShopBoostExposicaoVideoCompreavel from "./tiktok-shop-boost-exposic
 import instagramControleAlgoritmoUsuario from "./instagram-controle-algoritmo-usuario";
 
 export const postRegistry: PostEntry[] = [
+  ahrefsIaSearch23xConversao,
+  creatorsInfraestruturaBuscaIa,
+  microcreators1k5kVencemCampanhas,
+  cortarFrequenciaMetadeSobeEngajamento,
+  organicoValidaAntesMidiaPaga,
+  personalizacaoHubspot93PorCento,
+  instagramEditsAssistantCopiloto,
+  carrosselConfiancaVideoDescoberta,
+  tiktokZero7MilSeguidoresQualidade,
+  tiktokBuyDirectCheckoutFeed,
+  tiktokShopCriadoresPequenosDigiday,
+  threadsGemsConversaNativa,
+  threadsAlcanceSeguidoresHayes,
+  threads92PorCentoViews,
   gemini4ArgonModeloFronteira,
   googleAgentesIaEmpresas,
   contextModeReduzSaidaFerramentas,

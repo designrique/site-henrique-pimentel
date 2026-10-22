@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { Container } from "@/components/ui/container";
 
-const WHATSAPP_NUMBER = "5581997906153";
+const WHATSAPP_NUMBER = "5581951688711";
 
 const steps = [
   {

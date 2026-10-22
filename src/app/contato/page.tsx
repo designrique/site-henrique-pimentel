@@ -166,7 +166,7 @@ export default function ContatoPage() {
             <LinkButton
               variant="ghost"
               size="default"
-              href="https://wa.me/5581"
+              href="https://wa.me/5581951688711"
             >
               WhatsApp
             </LinkButton>
